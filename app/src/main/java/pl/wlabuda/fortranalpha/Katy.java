@@ -499,6 +499,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
             tekst1 = tekst1 + solucja1;
         }
     }
+    //testowe zmiany
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
