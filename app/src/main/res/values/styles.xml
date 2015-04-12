@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="CustomAppTheme" parent="@android:style/Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#000</item>
+
+    </style>
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#009688</item>009688<!--dd4b39-->
+        <item name="android:height">85dp</item>
+    </style>
+    <style name="CustomAppTheme1" parent="@android:style/Theme.Holo.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyActionBar1</item>
+        <item name="android:textColor">#DCDCDC</item>
+        <item name="android:textSize">25dp</item>
+
+    </style>
+    <style name="MyActionBar1"
+        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#009688</item>
+        <item name="android:height">85dp</item>
+        <item name="android:textColor">#DCDCDC</item>
+    </style>
+        <!-- Customize your theme here. <item name="android:background">#ff00</item>-->
+
+
+
+
+</resources>

@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">FortranAlpha</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    //buttons
+    <string name="count">Policz</string>
+    <string name="clear">Wyczyść</string>
+    <string name="sqrt">Wstaw\npierwiastek\n\u221a</string>
+    <string name="pow">Wstaw\npotęgę\nx^y</string>
+    <string name="solution">Rozwiązanie</string>
+
+    //extras
+    <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
+
+    //menu
+    <string name="about">O autorze</string>
+    <string name="futurePlans">Plany na przyszłość</string>
+    <string name="finish">Zakończ</string>
+
+    //toast
+    <string name="notEnough">Za mało danych aby policzyć!</string>
+    <string name="premium">Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
+    <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
+    <string name="deleted">Skasowane!</string>
+
+    //titles
+    <string name="tales">Twierdzenie Talesa</string>
+
+    //tales
+    <string name="policzAC">Obliczanie AC mając a i c</string>
+    <string name="policzBD">Obliczanie BD mając b i d</string>
+    <string name="policzDzABC">Obliczanie d mając a, b i c</string>
+    <string name="policzB">Obliczanie b mając BD i d</string>
+    <string name="policzD">Obliczanie d mając BD i b</string>
+    <string name="policzA">Obliczanie a mając AC i c</string>
+    <string name="policzC">Obliczanie c mając AC i a</string>
+    <string name="policzAzBCD">Obliczanie a mając b, c i d</string>
+    <string name="policzBzACD">Obliczanie b mając a, c i d</string>
+    <string name="policzCzABD">Obliczanie c mając a, b i d</string>
+    <string name="policzBzACBDA">Obliczanie b mając AC, BD i a</string>
+    <string name="policzAzACBDB">Obliczanie a mając AC, BD i b</string>
+    <string name="policzACzAEF">Obliczanie AC mając a, e i f</string>
+    <string name="policzBDzBEF">Obliczanie BD mając b, e i f</string>
+    <string name="policzAzACEF">Obliczanie a mając AC, e i f</string>
+    <string name="policzBzBDEF">Obliczanie b mając BD, e i f</string>
+    <string name="policzFzBD">Obliczanie f mając BD, b i e</string>
+    <string name="policzEzBD">Obliczanie e mając BD, b i f</string>
+    <string name="policzFzAC">Obliczanie f mając AC, a i e</string>
+    <string name="policzEzAC">Obliczanie e mając AC, a i f</string>
+</resources>
