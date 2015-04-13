@@ -499,6 +499,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
             tekst1 = tekst1 + solucja1;
         }
     }
+
     //zmieniony komentarz testowy
 
     @Override

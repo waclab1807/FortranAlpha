@@ -262,9 +262,6 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
                 mWebView.setVisibility(View.VISIBLE);
             }
         });
-
-
-
     }
     public Boolean isEmpty(EditText x){
         if(x.getText().toString().equals("")){
