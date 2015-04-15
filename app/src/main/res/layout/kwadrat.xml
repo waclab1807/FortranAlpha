@@ -67,12 +67,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="                          "
-                        android:id="@+id/textView14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -87,14 +81,26 @@
                         android:text="Pole:"
                         android:id="@+id/textView" />
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent">
 
-                        android:id="@+id/pp"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+
+                            android:id="@+id/pp"
+                            android:layout_weight="1"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+
+                        <WebView
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/webView1"
+                            android:layout_gravity="left|center_vertical" />
+                    </FrameLayout>
+
                 </LinearLayout>
 
                 <LinearLayout

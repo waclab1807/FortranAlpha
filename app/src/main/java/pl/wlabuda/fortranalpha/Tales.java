@@ -448,16 +448,12 @@ public class Tales extends Activity implements OnFocusChangeListener {
     }
 
     public Boolean isEmpty(EditText x) {
-        if (x.getText().toString().equals("")) {
-            return true;
-        } else {
-            return false;
-        }
+        return x.getText().toString().equals("");
     }
 
     private String policzAC(String a, String c) {
         String jeden = Wartosc.policz(a, c, "+");
-        String solucja1 = "<center><b>"+getString(R.string.policzAC)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczAC)+"</b></center><br>" +
                 "$$AC={a + c}$$<br>" +
                 "$$AC={{" + Wartosc.formatuj(a) + "} + {" + Wartosc.formatuj(c) + "}}$$<br>" +
                 "$$AC={" + Wartosc.formatuj(jeden) + "}$$<br>" +
@@ -470,7 +466,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private String policzBD(String b, String d) {
         String jeden = Wartosc.policz(b, d, "+");
-        String solucja1 = "<center><b>"+getString(R.string.policzBD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczBD)+"</b></center><br>" +
                 "$$BD={b + d}$$<br>" +
                 "$$BD={{" + Wartosc.formatuj(b) + "} + {" + Wartosc.formatuj(d) + "}}$$<br>" +
                 "$$BD={" + Wartosc.formatuj(jeden) + "}$$<br>" +
@@ -484,7 +480,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzDzABC(String a, String b, String c) {
         String jeden = Wartosc.policz(b, c, "*");
         String dwa = Wartosc.policz(jeden, a, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzDzABC)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczDzABC)+"</b></center><br>" +
                 "$${a}/{b}={c}/{d}$$<br>" +
                 "$$d={b*c}/{a}$$<br>" +
                 "$$d={{" + Wartosc.formatuj(b) + "}*{" + Wartosc.formatuj(c) + "}}/{" + Wartosc.formatuj(a) + "}$$<br>" +
@@ -500,7 +496,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzCzABD(String a, String b, String d) {
         String jeden = Wartosc.policz(d, a, "*");
         String dwa = Wartosc.policz(jeden, b, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzCzABD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczCzABD)+"</b></center><br>" +
                 "$${a}/{c}={b}/{d}$$<br>" +
                 "$$c={d*a}/{b}$$<br>" +
                 "$$c={{" + Wartosc.formatuj(d) + "}*{" + Wartosc.formatuj(a) + "}}/{" + Wartosc.formatuj(b) + "}$$<br>" +
@@ -516,7 +512,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzBzACD(String a, String c, String d) {
         String jeden = Wartosc.policz(d, a, "*");
         String dwa = Wartosc.policz(jeden, c, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzBzACD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczBzACD)+"</b></center><br>" +
                 "$${a}/{c}={b}/{d}$$<br>" +
                 "$$b={d*a}/{c}$$<br>" +
                 "$$b={{" + Wartosc.formatuj(d) + "}*{" + Wartosc.formatuj(a) + "}}/{" + Wartosc.formatuj(c) + "}$$<br>" +
@@ -532,7 +528,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzAzBCD(String b, String c, String d) {
         String jeden = Wartosc.policz(b, c, "*");
         String dwa = Wartosc.policz(jeden, d, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzAzBCD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczAzBCD)+"</b></center><br>" +
                 "$${a}/{c}={b}/{d}$$<br>" +
                 "$$b={d*a}/{c}$$<br>" +
                 "$$b={{" + Wartosc.formatuj(b) + "}*{" + Wartosc.formatuj(c) + "}}/{" + Wartosc.formatuj(d) + "}$$<br>" +
@@ -547,7 +543,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private String policzC(String ac, String a) {
         String jeden = Wartosc.policz(ac, a, "-");
-        String solucja1 = "<center><b>"+getString(R.string.policzC)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczC)+"</b></center><br>" +
                 "$${AC}={a + c}$$<br>" +
                 "$$c={AC - a}$$<br>" +
                 "$$c={" + Wartosc.formatuj(ac) + "}-{" + Wartosc.formatuj(a) + "}$$<br>" +
@@ -561,7 +557,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private String policzA(String ac, String c) {
         String jeden = Wartosc.policz(ac, c, "-");
-        String solucja1 = "<center><b>"+getString(R.string.policzA)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczA)+"</b></center><br>" +
                 "$${AC}={a + c}$$<br>" +
                 "$$a={AC - c}$$<br>" +
                 "$$c={" + Wartosc.formatuj(ac) + "}-{" + Wartosc.formatuj(c) + "}$$<br>" +
@@ -575,7 +571,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private String policzD(String bd, String b) {
         String jeden = Wartosc.policz(bd, b, "-");
-        String solucja1 = "<center><b>"+getString(R.string.policzD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczD)+"</b></center><br>" +
                 "$${BD}={b + d}$$<br>" +
                 "$$d={BD - b}$$<br>" +
                 "$$d={" + Wartosc.formatuj(bd) + "}-{" + Wartosc.formatuj(b) + "}$$<br>" +
@@ -589,7 +585,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private String policzB(String bd, String d) {
         String jeden = Wartosc.policz(bd, d, "-");
-        String solucja1 = "<center><b>"+getString(R.string.policzB)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczB)+"</b></center><br>" +
                 "$${BD}={b + d}$$<br>" +
                 "$$b={BD - d}$$<br>" +
                 "$$b={" + Wartosc.formatuj(bd) + "}-{" + Wartosc.formatuj(d) + "}$$<br>" +
@@ -604,7 +600,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzBzACBDA(String ac, String bd, String a) {
         String jeden = Wartosc.policz(a, bd, "*");
         String dwa = Wartosc.policz(jeden, ac, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzBzACBDA)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczBzACBDA)+"</b></center><br>" +
                 "$${a}/{AC}={b}/{BD}$$<br>" +
                 "$$b={a*BD}/{AC}$$<br>" +
                 "$$b={{" + Wartosc.formatuj(a) + "}*{" + Wartosc.formatuj(bd) + "}}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
@@ -620,7 +616,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzAzACBDB(String ac, String bd, String b) {
         String jeden = Wartosc.policz(ac, b, "*");
         String dwa = Wartosc.policz(jeden, bd, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzAzACBDB)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczAzACBDB)+"</b></center><br>" +
                 "$${a}/{AC}={b}/{BD}$$<br>" +
                 "$$a={AC*b}/{BD}$$<br>" +
                 "$$a={{" + Wartosc.formatuj(ac) + "}*{" + Wartosc.formatuj(b) + "}}/{" + Wartosc.formatuj(bd) + "}$$<br>" +
@@ -636,7 +632,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzACzAEF(String a, String e, String f) {
         String jeden = Wartosc.policz(a, f, "*");
         String dwa = Wartosc.policz(jeden, e, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzACzAEF)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczACzAEF)+"</b></center><br>" +
                 "$${a}/{e}={AC}/{f}$$<br>" +
                 "$$AC={a*f}/{e}$$<br>" +
                 "$$AC={{" + Wartosc.formatuj(a) + "}*{" + Wartosc.formatuj(f) + "}}/{" + Wartosc.formatuj(e) + "}$$<br>" +
@@ -652,7 +648,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzBDzBEF(String b, String e, String f) {
         String jeden = Wartosc.policz(b, f, "*");
         String dwa = Wartosc.policz(jeden, e, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzBDzBEF)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talestalespoliczBDzBEF)+"</b></center><br>" +
                 "$${b}/{e}={BD}/{f}$$<br>" +
                 "$$BD={b*f}/{e}$$<br>" +
                 "$$BD={{" + Wartosc.formatuj(b) + "}*{" + Wartosc.formatuj(f) + "}}/{" + Wartosc.formatuj(e) + "}$$<br>" +
@@ -668,7 +664,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzAzACEF(String ac, String e, String f) {
         String jeden = Wartosc.policz(ac, e, "*");
         String dwa = Wartosc.policz(jeden, f, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzAzACEF)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczAzACEF)+"</b></center><br>" +
                 "$${a}/{e}={AC}/{f}$$<br>" +
                 "$$a={AC*e}/{f}$$<br>" +
                 "$$a={{" + Wartosc.formatuj(ac) + "}*{" + Wartosc.formatuj(e) + "}}/{" + Wartosc.formatuj(f) + "}$$<br>" +
@@ -684,7 +680,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzBzBDEF(String bd, String e, String f) {
         String jeden = Wartosc.policz(bd, e, "*");
         String dwa = Wartosc.policz(jeden, f, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzBzBDEF)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczBzBDEF)+"</b></center><br>" +
                 "$${b}/{e}={BD}/{f}$$<br>" +
                 "$$b={BD*e}/{f}$$<br>" +
                 "$$b={{" + Wartosc.formatuj(bd) + "}*{" + Wartosc.formatuj(e) + "}}/{" + Wartosc.formatuj(f) + "}$$<br>" +
@@ -700,7 +696,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzFzBD(String bd, String b, String e) {
         String jeden = Wartosc.policz(bd, e, "*");
         String dwa = Wartosc.policz(jeden, b, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzFzBD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczFzBD)+"</b></center><br>" +
                 "$${b}/{e}={BD}/{f}$$<br>" +
                 "$$f={BD*e}/{b}$$<br>" +
                 "$$f={{" + Wartosc.formatuj(bd) + "}*{" + Wartosc.formatuj(e) + "}}/{" + Wartosc.formatuj(b) + "}$$<br>" +
@@ -716,7 +712,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzEzBD(String bd, String b, String f) {
         String jeden = Wartosc.policz(f, b, "*");
         String dwa = Wartosc.policz(jeden, bd, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzEzBD)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczEzBD)+"</b></center><br>" +
                 "$${b}/{e}={BD}/{f}$$<br>" +
                 "$$e={f*b}/{BD}$$<br>" +
                 "$$f={{" + Wartosc.formatuj(f) + "}*{" + Wartosc.formatuj(b) + "}}/{" + Wartosc.formatuj(bd) + "}$$<br>" +
@@ -732,7 +728,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzFzAC(String ac, String a, String e) {
         String jeden = Wartosc.policz(ac, e, "*");
         String dwa = Wartosc.policz(jeden, a, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzFzAC)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczFzAC)+"</b></center><br>" +
                 "$${a}/{e}={AC}/{f}$$<br>" +
                 "$$f={AC*e}/{a}$$<br>" +
                 "$$f={{" + Wartosc.formatuj(ac) + "}*{" + Wartosc.formatuj(e) + "}}/{" + Wartosc.formatuj(a) + "}$$<br>" +
@@ -748,7 +744,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private String policzEzAC(String ac, String a, String f) {
         String jeden = Wartosc.policz(a, f, "*");
         String dwa = Wartosc.policz(jeden, ac, "/");
-        String solucja1 = "<center><b>"+getString(R.string.policzEzAC)+"</b></center><br>" +
+        String solucja1 = "<center><b>"+getString(R.string.talespoliczEzAC)+"</b></center><br>" +
                 "$${a}/{e}={AC}/{f}$$<br>" +
                 "$$e={a*f}/{ac}$$<br>" +
                 "$$e={{" + Wartosc.formatuj(a) + "}*{" + Wartosc.formatuj(f) + "}}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
@@ -774,7 +770,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        String ktoryElement = "";
+        //String ktoryElement = "";
         switch (item.getItemId()) {
             case id.item1:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

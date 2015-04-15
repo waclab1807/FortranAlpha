@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
 
     //buttons
-    <string name="count">Policz</string>
+    <string name="count">Count</string>
     <string name="clear">Wyczyść</string>
     <string name="sqrt">Wstaw\npierwiastek\n\u221a</string>
     <string name="pow">Wstaw\npotęgę\nx^y</string>
@@ -21,11 +21,8 @@
 
     //toast
     <string name="notEnough">Za mało danych aby policzyć!</string>
-    <string name="premium">Wszystko jest już policzone :) \n
-Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
+    <string name="premium">Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
     <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
-    <string name="bracket">Liczba nawiasów otwierających nie równa się
-liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="deleted">Skasowane!</string>
 
     //titles
@@ -52,12 +49,4 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="talespoliczEzBD">Obliczanie e mając BD, b i f</string>
     <string name="talespoliczFzAC">Obliczanie f mając AC, a i e</string>
     <string name="talespoliczEzAC">Obliczanie e mając AC, a i f</string>
-
-    //kwadrat
-    <string name="kwadratpoliczPp">Obliczanie pola mając a</string>
-    <string name="kwadratpoliczAzD">Obliczanie a mając przekątną</string>
-    <string name="kwadratpoliczD">Obliczanie przekątnej mając a</string>
-    <string name="kwadratpoliczObwp">Obliczanie obwodu mając a</string>
-    <string name="kwadratpoliczAzPp">Obliczanie a mając pole</string>
-    <string name="kwadratpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
 </resources>
