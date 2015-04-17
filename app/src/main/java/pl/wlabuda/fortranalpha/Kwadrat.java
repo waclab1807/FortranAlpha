@@ -1,15 +1,22 @@
 package pl.wlabuda.fortranalpha;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.app.TabActivity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -17,12 +24,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by waclab1807 on 31.03.15.
  */
 
-public class Kwadrat extends Activity implements OnFocusChangeListener {
+public class Kwadrat extends Activity implements OnFocusChangeListener, TabListener{
 
     private Button licz;
     private Button clear;
@@ -46,10 +58,39 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
     String D;
     String obwp;
 
+    List<Fragment> fragList = new ArrayList<Fragment>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kwadrat);
+
+        float x_screen = getResources().getDisplayMetrics().density;;
+        int y_screen = getWindowManager().getDefaultDisplay().getWidth();
+
+        boolean layout = true;
+        if(layout) {
+
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            ActionBar bar = getActionBar();
+            bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+            Tab tab0 = bar.newTab();
+            tab0.setText("Podgląd");
+            tab0.setTabListener(this);
+            bar.addTab(tab0);
+            Tab tab1 = bar.newTab();
+            tab1.setText("Dane");
+            tab1.setTabListener(this);
+            bar.addTab(tab1);
+            Tab tab2 = bar.newTab();
+            tab2.setText("Rozwiązanie");
+            tab2.setTabListener(this);
+            bar.addTab(tab2);
+            setContentView(R.layout.kwadrat);
+        }else{
+            setContentView(R.layout.kwadrat);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         Global.mContext = this.getBaseContext();
         //Global global = new Global(getBaseContext());
@@ -58,7 +99,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
         getSupportActionBar().setLogo(drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-*/      mWebView1 = (WebView) findViewById(R.id.webView1);
+*/      /*mWebView1 = (WebView) findViewById(R.id.webView1);
         mWebView1.setVisibility(View.GONE);
         mWebView1.setBackgroundColor(0xff0);
         WebSettings webSettings1 = mWebView1.getSettings();
@@ -67,12 +108,12 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
         mWebView = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = mWebView.getSettings();
         mWebView.setBackgroundColor(0xff0);
-        webSettings.setJavaScriptEnabled(true);
+        webSettings.setJavaScriptEnabled(true);*/
 
 
         pp_val = (EditText) findViewById(R.id.pp);
-        a_val = (EditText) findViewById(R.id.a_val);
-        D_val = (EditText) findViewById(R.id.D_val);
+        a_val = (EditText) findViewById(R.id.a);
+        D_val = (EditText) findViewById(R.id.D);
         obwp_val = (EditText) findViewById(R.id.obwp);
         licz = (Button) findViewById(R.id.licz);
         clear = (Button) findViewById(R.id.clear);
@@ -82,7 +123,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
         solution = (TextView) findViewById(R.id.solution);
         figura = (ImageView) findViewById(R.id.imageView);
 
-        a_val.setOnFocusChangeListener(this);
+        /*a_val.setOnFocusChangeListener(this);
         D_val.setOnFocusChangeListener(this);
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
@@ -114,9 +155,10 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
                 figura.setImageResource(R.drawable.kwadratobw);
                 return false;
             }
-        });
+        });*/
 
-        //final JavaScript JS = null;
+        //a_val.setText(""+x_screen);
+        //pp_val.setText(y_screen);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,6 +305,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
             }
         });
     }
+
     public Boolean isEmpty(EditText x){
         return x.getText().toString().equals("");
     }
@@ -409,5 +452,38 @@ public class Kwadrat extends Activity implements OnFocusChangeListener {
         if(hasFocus){
             lastFocused = (EditText)v;
         }
+    }
+
+    @Override
+    public void onTabSelected(Tab tab, FragmentTransaction ft) {
+        Fragment f = null;
+        TabFragment tf = null;
+
+        if (fragList.size() > tab.getPosition())
+            fragList.get(tab.getPosition());
+
+        if (f == null) {
+            tf = new TabFragment();
+            Bundle data = new Bundle();
+            data.putInt("idx",  tab.getPosition());
+            tf.setArguments(data);
+            fragList.add(tf);
+        }
+        else
+            tf = (TabFragment) f;
+
+        ft.replace(android.R.id.content, tf);
+    }
+
+    @Override
+    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+        if (fragList.size() > tab.getPosition()) {
+            ft.remove(fragList.get(tab.getPosition()));
+        }
+    }
+
+    @Override
+    public void onTabReselected(Tab tab, FragmentTransaction ft) {
+
     }
 }

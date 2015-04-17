@@ -25,45 +25,59 @@
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Graniastosłup prawidłowy trójkątny"></activity>
+
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Sześcian"></activity>
+
         <activity android:name=".Kwadrat"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Kwadrat"></activity>
+
         <activity android:name=".TrojkatPrawidlowy"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Trojkąt prawidlowy"></activity>
+
         <activity android:name=".TrojkatProstokatny"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="landscape"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
             android:label="Trojkąt prostokątny"></activity>
+
         <activity android:name=".Tales"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Twierdzenie Talesa"></activity>
+
         <activity android:name=".Katy"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Zależności pomiędzy kątami"></activity>
+
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="MainActivity"></activity>
+
         <activity android:name=".ListViewGeometriaNaPlaszczyznie"
             android:theme="@style/CustomAppTheme1"
             android:label="Geometria na plaszczyźnie"></activity>
+
         <activity android:name=".ListViewGeometriaWPrzestrzeni"
             android:theme="@style/CustomAppTheme1"
             android:label="Geometria w przestrzeni"></activity>
