@@ -1,24 +1,13 @@
 package pl.wlabuda.fortranalpha;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.view.ViewPager;
 import android.text.method.ScrollingMovementMethod;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -26,11 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by waclab1807 on 31.03.15.
@@ -64,6 +48,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kwadrat);
+
         float x_screen = getResources().getDisplayMetrics().density;;
         int y_screen = getWindowManager().getDefaultDisplay().getWidth();
 
@@ -85,7 +70,6 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         mWebView.setBackgroundColor(0xff0);
         webSettings.setJavaScriptEnabled(true);
 
-
         pp_val = (EditText) findViewById(R.id.pp);
         a_val = (EditText) findViewById(R.id.a);
         D_val = (EditText) findViewById(R.id.D);
@@ -103,6 +87,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
+        //todo wsadzic to do klasy
         pp_val.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -249,24 +234,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                         Toast.LENGTH_LONG).show();
             }
         });
-        sqrtbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //lastFocused.setText("()\u221a()");
-                //lastFocused.setText(lastFocused.getText() + "()\u221a()");
-                String wacek = "()\u221a()";
-                System.out.println("lastFocused" + lastFocused.getSelectionStart());
-                lastFocused.append(wacek);
-                lastFocused.setSelection(5);
-            }
-        });
-        powbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lastFocused.setText("()^()");
-                lastFocused.setSelection(1);
-            }
-        });
+        new SqrtButton(sqrtbtn,lastFocused);
+        new PowButton(powbtn,lastFocused);
         solutionbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -372,7 +341,6 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -384,41 +352,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         //String ktoryElement = "";
-        switch (item.getItemId()) {
-            case R.id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(Kwadrat.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case R.id.item4:
-                //finish();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                //System.exit(0);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 
