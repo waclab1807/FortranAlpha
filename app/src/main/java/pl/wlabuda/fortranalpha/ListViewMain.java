@@ -76,6 +76,10 @@ public class ListViewMain extends Activity {
                         Intent intent1 = new Intent(ListViewMain.this, ListViewGeometriaWPrzestrzeni.class);
                         startActivity(intent1);
                         break;
+                    case 2:
+                        Intent intent2 = new Intent(ListViewMain.this, NowaKlasa.class);
+                        startActivity(intent2);
+                        break;
                     case 3:
                         Intent intent3 = new Intent(ListViewMain.this, Tales.class);
                         startActivity(intent3);

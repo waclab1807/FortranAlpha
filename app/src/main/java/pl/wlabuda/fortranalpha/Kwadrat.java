@@ -63,7 +63,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.kwadrat);
         float x_screen = getResources().getDisplayMetrics().density;;
         int y_screen = getWindowManager().getDefaultDisplay().getWidth();
 

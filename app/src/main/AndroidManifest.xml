@@ -67,12 +67,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="Zależności pomiędzy kątami"></activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".NowaKlasa"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"
-            android:label="MainActivity"></activity>
+            android:label="NowaKlasa"></activity>
 
         <activity android:name=".ListViewGeometriaNaPlaszczyznie"
             android:theme="@style/CustomAppTheme1"
