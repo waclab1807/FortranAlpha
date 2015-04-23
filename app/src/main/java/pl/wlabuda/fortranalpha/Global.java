@@ -16,4 +16,18 @@ public class Global {
     public Context getmContext() {
         return mContext;
     }
+
+    public static void setImgRes(int imgRes) {
+        Global.imgRes = imgRes;
+    }
+
+    private volatile static int imgRes=0;
+
+    public static int getImgRes() {
+        if(imgRes==0){
+
+
+        }
+        return imgRes;
+    }
 }

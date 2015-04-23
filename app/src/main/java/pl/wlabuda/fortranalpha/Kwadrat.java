@@ -9,6 +9,8 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,7 +36,7 @@ import java.util.List;
  * Created by waclab1807 on 31.03.15.
  */
 
-public class Kwadrat extends Activity implements OnFocusChangeListener, TabListener{
+public class Kwadrat extends Activity implements OnFocusChangeListener{
 
     private Button licz;
     private Button clear;
@@ -58,39 +60,12 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
     String D;
     String obwp;
 
-    List<Fragment> fragList = new ArrayList<Fragment>();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         float x_screen = getResources().getDisplayMetrics().density;;
         int y_screen = getWindowManager().getDefaultDisplay().getWidth();
-
-        boolean layout = true;
-        if(layout) {
-
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            ActionBar bar = getActionBar();
-            bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-            Tab tab0 = bar.newTab();
-            tab0.setText("Podgląd");
-            tab0.setTabListener(this);
-            bar.addTab(tab0);
-            Tab tab1 = bar.newTab();
-            tab1.setText("Dane");
-            tab1.setTabListener(this);
-            bar.addTab(tab1);
-            Tab tab2 = bar.newTab();
-            tab2.setText("Rozwiązanie");
-            tab2.setTabListener(this);
-            bar.addTab(tab2);
-            setContentView(R.layout.kwadrat);
-        }else{
-            setContentView(R.layout.kwadrat);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
 
         Global.mContext = this.getBaseContext();
         //Global global = new Global(getBaseContext());
@@ -99,7 +74,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
         getSupportActionBar().setLogo(drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-*/      /*mWebView1 = (WebView) findViewById(R.id.webView1);
+*/      mWebView1 = (WebView) findViewById(R.id.webView1);
         mWebView1.setVisibility(View.GONE);
         mWebView1.setBackgroundColor(0xff0);
         WebSettings webSettings1 = mWebView1.getSettings();
@@ -108,7 +83,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
         mWebView = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = mWebView.getSettings();
         mWebView.setBackgroundColor(0xff0);
-        webSettings.setJavaScriptEnabled(true);*/
+        webSettings.setJavaScriptEnabled(true);
 
 
         pp_val = (EditText) findViewById(R.id.pp);
@@ -123,7 +98,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
         solution = (TextView) findViewById(R.id.solution);
         figura = (ImageView) findViewById(R.id.imageView);
 
-        /*a_val.setOnFocusChangeListener(this);
+        a_val.setOnFocusChangeListener(this);
         D_val.setOnFocusChangeListener(this);
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
@@ -155,7 +130,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
                 figura.setImageResource(R.drawable.kwadratobw);
                 return false;
             }
-        });*/
+        });
 
         //a_val.setText(""+x_screen);
         //pp_val.setText(y_screen);
@@ -452,38 +427,5 @@ public class Kwadrat extends Activity implements OnFocusChangeListener, TabListe
         if(hasFocus){
             lastFocused = (EditText)v;
         }
-    }
-
-    @Override
-    public void onTabSelected(Tab tab, FragmentTransaction ft) {
-        Fragment f = null;
-        TabFragment tf = null;
-
-        if (fragList.size() > tab.getPosition())
-            fragList.get(tab.getPosition());
-
-        if (f == null) {
-            tf = new TabFragment();
-            Bundle data = new Bundle();
-            data.putInt("idx",  tab.getPosition());
-            tf.setArguments(data);
-            fragList.add(tf);
-        }
-        else
-            tf = (TabFragment) f;
-
-        ft.replace(android.R.id.content, tf);
-    }
-
-    @Override
-    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-        if (fragList.size() > tab.getPosition()) {
-            ft.remove(fragList.get(tab.getPosition()));
-        }
-    }
-
-    @Override
-    public void onTabReselected(Tab tab, FragmentTransaction ft) {
-
     }
 }
