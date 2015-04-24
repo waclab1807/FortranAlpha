@@ -7,12 +7,16 @@
     //buttons
     <string name="count">Policz</string>
     <string name="clear">Wyczyść</string>
-    <string name="sqrt">Wstaw\npierwiastek\n\u221a</string>
-    <string name="pow">Wstaw\npotęgę\nx^y</string>
+    <string name="sqrt">Wstaw\npierwiastek</string>
+    <string name="pow">Wstaw\npotęgę</string>
     <string name="solution">Rozwiązanie</string>
 
     //extras
     <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
+    
+    //names
+    <string name="baseArea">Pole podstawy: </string>
+    <string name="baseCircuit">Obwód podstawy: </string>
 
     //menu
     <string name="about">O autorze</string>

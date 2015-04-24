@@ -2,10 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.webkit.WebSettings;
@@ -13,7 +11,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -24,19 +21,19 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
 
     private Button licz;
     private Button clear;
-    private Button solutionbtn;
     private Button sqrtbtn;
     private Button powbtn;
     private EditText pp_val;
     private EditText a_val;
     private EditText D_val;
     private EditText obwp_val;
-    private TextView solution;
     private EditText lastFocused;
     public static String tekst = "";
-    public static String tekst1 = "";
     private WebView mWebView;
-    private WebView mWebView1;
+    private WebView mWebViewPp;
+    private WebView mWebViewA;
+    private WebView mWebViewD;
+    private WebView mWebViewObw;
     private ImageView figura;
 
     String a;
@@ -47,42 +44,56 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kwadrat);
+        setContentView(R.layout.kwadrat1);
 
         Global.mContext = this.getBaseContext();
 
-        mWebView1 = (WebView) findViewById(R.id.webView1);
-        mWebView1.setVisibility(View.GONE);
-        mWebView1.setBackgroundColor(0xff0);
-        WebSettings webSettings1 = mWebView1.getSettings();
-        webSettings1.setJavaScriptEnabled(true);
+        pp_val = (EditText) findViewById(R.id.pp);
+        a_val = (EditText) findViewById(R.id.a);
+        D_val = (EditText) findViewById(R.id.d);
+        obwp_val = (EditText) findViewById(R.id.obwp);
+        licz = (Button) findViewById(R.id.magic);
+        clear = (Button) findViewById(R.id.clear);
+        sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
+        powbtn = (Button) findViewById(R.id.powbtn);
+        figura = (ImageView) findViewById(R.id.imageView);
 
-        mWebView = (WebView) findViewById(R.id.webView);
+        mWebView = (WebView) findViewById(R.id.webSolution);
         WebSettings webSettings = mWebView.getSettings();
         mWebView.setBackgroundColor(0xff0);
         webSettings.setJavaScriptEnabled(true);
 
-        pp_val = (EditText) findViewById(R.id.pp);
-        a_val = (EditText) findViewById(R.id.a);
-        D_val = (EditText) findViewById(R.id.D);
-        obwp_val = (EditText) findViewById(R.id.obwp);
-        licz = (Button) findViewById(R.id.licz);
-        clear = (Button) findViewById(R.id.clear);
-        sqrtbtn = (Button) findViewById(R.id.btnsqrt);
-        powbtn = (Button) findViewById(R.id.btnpow);
-        solutionbtn = (Button) findViewById(R.id.solutionbtn);
-        solution = (TextView) findViewById(R.id.solution);
-        figura = (ImageView) findViewById(R.id.imageView);
+        mWebViewPp = (WebView) findViewById(R.id.webPp);
+        WebSettings webSettings1 = mWebViewPp.getSettings();
+        mWebViewPp.setBackgroundColor(0xff0);
+        webSettings1.setJavaScriptEnabled(true);
+
+        mWebViewA = (WebView) findViewById(R.id.weba);
+        WebSettings webSettings2 = mWebViewA.getSettings();
+        mWebViewA.setBackgroundColor(0xff0);
+        webSettings2.setJavaScriptEnabled(true);
+
+        mWebViewD = (WebView) findViewById(R.id.webD);
+        WebSettings webSettings3 = mWebViewD.getSettings();
+        mWebViewD.setBackgroundColor(0xff0);
+        webSettings3.setJavaScriptEnabled(true);
+
+        mWebViewObw = (WebView) findViewById(R.id.webObwp);
+        WebSettings webSettings4 = mWebViewObw.getSettings();
+        mWebViewObw.setBackgroundColor(0xff0);
+        webSettings4.setJavaScriptEnabled(true);
 
         a_val.setOnFocusChangeListener(this);
         D_val.setOnFocusChangeListener(this);
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura,R.drawable.kwadratp,pp_val);
+        new TouchListener(figura,R.drawable.kwadratpp,pp_val);
         new TouchListener(figura,R.drawable.kwadrata,a_val);
         new TouchListener(figura,R.drawable.kwadratd,D_val);
         new TouchListener(figura,R.drawable.kwadratobw,obwp_val);
+
+        figura.setImageResource(R.drawable.kwadrat);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,12 +103,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 boolean bpp = false;
                 boolean bobwp = false;
 
-                solution.setText("");
                 tekst = "";
-                tekst1 = "";
-
-                //todo "1-2√3+4*2+2+2√3-4√2+2" pole 5+1
-                //System.out.println("%%%%%%%%% " + Wartosc.obliczWyrazenie("4"));
 
                 int x = 0; //koniec petli, wszystko policzone
 
@@ -113,26 +119,44 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                 System.out.println("^^^^^^^^1");
                                 a = a_val.getText().toString();
                                 if (isEmpty(pp_val) && !bpp) {
+                                    System.out.println("^^^^^^^^1.1");
                                     String s = policzPp(a);
                                     pp_val.setText(s);
                                     s = s.replace("(","{");
                                     s = s.replace(")","}");
                                     s = "$$"+s+"$$";
                                     JavaScript JS = new JavaScript(s);
-                                    mWebView1.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
-                                    pp_val.setVisibility(View.GONE);
-                                    mWebView1.setVisibility(View.VISIBLE);
+                                    mWebViewPp.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
                                     bpp = true;
                                 }
                                 if (isEmpty(obwp_val) && !bobwp) {
                                     String s = policzObwp(a);
-                                    obwp_val.setVisibility(View.GONE);
+                                    obwp_val.setText(s);
+                                    s = s.replace("(","{");
+                                    s = s.replace(")","}");
+                                    s = "$$"+s+"$$";
+                                    JavaScript JS = new JavaScript(s);
+                                    mWebViewObw.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
                                     bobwp = true;
+                                    System.out.println("^^^^^^^^1.2");
                                 }
                                 if (isEmpty(D_val) && !bD) {
-                                    D_val.setText(policzD(a));
+                                    String s = policzD(a);
+                                    D_val.setText(s);
+                                    s = s.replace("(","{");
+                                    s = s.replace(")","}");
+                                    s = "$$"+s+"$$";
+                                    JavaScript JS = new JavaScript(s);
+                                    mWebViewD.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
                                     bD = true;
+                                    System.out.println("^^^^^^^^1.3");
                                 }
+                                String s = a;
+                                s = s.replace("(","{");
+                                s = s.replace(")","}");
+                                s = "$$"+s+"$$";
+                                JavaScript JS = new JavaScript(s);
+                                mWebViewA.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
                             } else {
                                 if (!isEmpty(pp_val)) {
                                     System.out.println("^^^^^^^^2");
@@ -160,8 +184,11 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                     !D_val.getText().toString().equals("")
                                     ) {
                                 x = 1;
-                                Toast.makeText(Kwadrat.this, "Wszystko jest już policzone :)\nSkorzystaj z konta premium aby zobaczyć rozwiązanie",
-                                        Toast.LENGTH_LONG).show();
+                                figura.setImageResource(R.drawable.kwadrat);
+                                licz.setEnabled(false);
+
+                                new WebViewHide(false,mWebViewPp,mWebViewObw,mWebViewD,mWebViewA);
+                                new EditTextHide(true,pp_val,a_val,D_val,obwp_val);
                             }
                         }
                     } catch (Exception e) {
@@ -173,12 +200,13 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                     Toast.makeText(Kwadrat.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
-                System.out.println("$$$$$$$$$ " + tekst1);
-                if(tekst1.equals("")){
-                    tekst1 = "<center>"+getString(R.string.notEnough)+"</center>";
+                System.out.println("$$$$$$$$$ " + tekst);
+                if(tekst.equals("")){
+                    tekst = "<center>"+getString(R.string.notEnough)+"</center>";
                 }
-                JavaScript JS = new JavaScript(tekst1);
+                JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", ""+ JS.getTekst(), "text/html", "UTF-8", "");
+                mWebView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -189,27 +217,31 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 D_val.setText("");
                 pp_val.setText("");
                 obwp_val.setText("");
-                solution.setText("");
-                tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-                mWebView1.setVisibility(View.GONE);
-                pp_val.setVisibility(View.VISIBLE);
+                new EditTextHide(false,a_val,D_val,pp_val,obwp_val);
+                new WebViewHide(true,mWebViewA,mWebViewD,mWebViewObw,mWebViewPp);
+                licz.setEnabled(true);
+                figura.setImageResource(R.drawable.kwadrat);
                 Toast.makeText(Kwadrat.this, getString(R.string.deleted),
                         Toast.LENGTH_LONG).show();
             }
         });
-        new SqrtButton(sqrtbtn,lastFocused);
-        new PowButton(powbtn,lastFocused);
-        solutionbtn.setOnClickListener(new View.OnClickListener() {
+        sqrtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //solution
-                solution.setMovementMethod(new ScrollingMovementMethod());
-                if(solution.getText()!=""){
-                    solution.setText("");
-                }
-                solution.setText(tekst);
-                mWebView.setVisibility(View.VISIBLE);
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()\u221a()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 1;
+                lastFocused.setSelection(a);
+            }
+        });
+        powbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lastFocused.getText().insert(lastFocused.getSelectionStart(),"()^()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 4;
+                lastFocused.setSelection(a);
             }
         });
     }
@@ -226,8 +258,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$P={({"+Wartosc.formatuj(a)+"})^2}$$<br>" +
                 "$$P={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -243,8 +275,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$a={{"+Wartosc.formatuj(dwa)+"}/2}$$<br>" +
                 "$$a={"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return piec;
     }
@@ -256,8 +288,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$d={{"+Wartosc.formatuj(a)+"}*√2}$$<br>" +
                 "$$d={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -269,8 +301,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$ObwP={{"+Wartosc.formatuj(a)+"}*4}$$<br>" +
                 "$$ObwP={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -283,8 +315,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$a={√{"+Wartosc.formatuj(Pp)+"}}$$<br>" +
                 "$$a={"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
@@ -297,8 +329,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 "$$a={{"+Wartosc.formatuj(Obwp)+"}/4}$$<br>" +
                 "$$a={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if(!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }

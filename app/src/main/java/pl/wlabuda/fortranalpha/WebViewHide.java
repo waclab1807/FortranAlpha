@@ -10,8 +10,14 @@ import android.widget.EditText;
 public class WebViewHide {
 
     public WebViewHide(Boolean hide, WebView... webViews){
-        for(WebView t:webViews){
-            t.setVisibility((hide)? View.VISIBLE:View.GONE);
+        if (hide){
+            for(WebView t:webViews){
+                t.setVisibility(View.GONE);
+            }
+        }else{
+            for(WebView t:webViews){
+                t.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
