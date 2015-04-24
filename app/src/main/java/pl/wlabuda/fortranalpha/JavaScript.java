@@ -1,5 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
+import android.webkit.WebView;
+
 /**
  * Created by waclab1807 on 14.04.15.
  */
@@ -20,5 +22,14 @@ public class JavaScript {
     }
     public String getTekst() {
         return js;
+    }
+
+    public static void showFormatted(String policzone, WebView webView){
+        String s = policzone;
+        s = s.replace("(","{");
+        s = s.replace(")","}");
+        s = "$$"+s+"$$";
+        JavaScript JS = new JavaScript(s);
+        webView.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
     }
 }

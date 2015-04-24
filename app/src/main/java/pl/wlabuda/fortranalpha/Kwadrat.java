@@ -122,59 +122,51 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                     System.out.println("^^^^^^^^1.1");
                                     String s = policzPp(a);
                                     pp_val.setText(s);
-                                    s = s.replace("(","{");
-                                    s = s.replace(")","}");
-                                    s = "$$"+s+"$$";
-                                    JavaScript JS = new JavaScript(s);
-                                    mWebViewPp.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
+                                    JavaScript.showFormatted(s,mWebViewPp);
                                     bpp = true;
                                 }
                                 if (isEmpty(obwp_val) && !bobwp) {
                                     String s = policzObwp(a);
                                     obwp_val.setText(s);
-                                    s = s.replace("(","{");
-                                    s = s.replace(")","}");
-                                    s = "$$"+s+"$$";
-                                    JavaScript JS = new JavaScript(s);
-                                    mWebViewObw.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
+                                    JavaScript.showFormatted(s,mWebViewObw);
                                     bobwp = true;
                                     System.out.println("^^^^^^^^1.2");
                                 }
                                 if (isEmpty(D_val) && !bD) {
                                     String s = policzD(a);
                                     D_val.setText(s);
-                                    s = s.replace("(","{");
-                                    s = s.replace(")","}");
-                                    s = "$$"+s+"$$";
-                                    JavaScript JS = new JavaScript(s);
-                                    mWebViewD.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
+                                    JavaScript.showFormatted(s,mWebViewD);
                                     bD = true;
                                     System.out.println("^^^^^^^^1.3");
                                 }
-                                String s = a;
-                                s = s.replace("(","{");
-                                s = s.replace(")","}");
-                                s = "$$"+s+"$$";
-                                JavaScript JS = new JavaScript(s);
-                                mWebViewA.loadDataWithBaseURL("", ""+JS.getTekst(), "text/html", "UTF-8", "");
+                                JavaScript.showFormatted(a,mWebViewA);
                             } else {
                                 if (!isEmpty(pp_val)) {
                                     System.out.println("^^^^^^^^2");
                                     pp = pp_val.getText().toString();
+                                    JavaScript.showFormatted(pp,mWebViewPp);
                                     bpp = true;
-                                    a_val.setText(policzAzPp(pp));
+                                    String s = policzAzPp(pp);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s,mWebViewA);
                                 }
                                 if (!isEmpty(D_val)) {
                                     System.out.println("^^^^^^^^7");
                                     D = D_val.getText().toString();
+                                    JavaScript.showFormatted(D,mWebViewD);
                                     bD = true;
-                                    a_val.setText(policzAzD(D));
+                                    String s = policzAzD(D);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s,mWebViewA);
                                 }
                                 if (!isEmpty(obwp_val)) {
                                     System.out.println("^^^^^^^^0");
                                     obwp = obwp_val.getText().toString();
+                                    JavaScript.showFormatted(obwp,mWebViewObw);
                                     bobwp = true;
-                                    a_val.setText(policzAzObwp(obwp));
+                                    String s = policzAzObwp(obwp);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s,mWebViewA);
                                 }
                             }
                             //wszystko policzone, koniec petli
