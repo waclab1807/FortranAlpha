@@ -49,17 +49,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kwadrat);
 
-        float x_screen = getResources().getDisplayMetrics().density;;
-        int y_screen = getWindowManager().getDefaultDisplay().getWidth();
-
         Global.mContext = this.getBaseContext();
-        //Global global = new Global(getBaseContext());
-/*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-*/      mWebView1 = (WebView) findViewById(R.id.webView1);
+        mWebView1 = (WebView) findViewById(R.id.webView1);
         mWebView1.setVisibility(View.GONE);
         mWebView1.setBackgroundColor(0xff0);
         WebSettings webSettings1 = mWebView1.getSettings();
@@ -87,38 +79,10 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
-        //todo wsadzic to do klasy
-        pp_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(R.drawable.kwadratp);
-                return false;
-            }
-        });
-        a_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(R.drawable.kwadrata);
-                return false;
-            }
-        });
-        D_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(R.drawable.kwadratd);
-                return false;
-            }
-        });
-        obwp_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(R.drawable.kwadratobw);
-                return false;
-            }
-        });
-
-        //a_val.setText(""+x_screen);
-        //pp_val.setText(y_screen);
+        new TouchListener(figura,R.drawable.kwadratp,pp_val);
+        new TouchListener(figura,R.drawable.kwadrata,a_val);
+        new TouchListener(figura,R.drawable.kwadratd,D_val);
+        new TouchListener(figura,R.drawable.kwadratobw,obwp_val);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override

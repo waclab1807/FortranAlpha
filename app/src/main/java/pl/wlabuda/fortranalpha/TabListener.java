@@ -3,6 +3,7 @@ package pl.wlabuda.fortranalpha;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
