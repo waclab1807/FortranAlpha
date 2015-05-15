@@ -9,6 +9,8 @@
     <string name="clear">Wyczyść</string>
     <string name="sqrt">Wstaw\npierwiastek</string>
     <string name="pow">Wstaw\npotęgę</string>
+    <string name="data">Dane</string>
+    <string name="review">Podgląd</string>
     <string name="solution">Rozwiązanie</string>
 
     //extras

@@ -12,6 +12,13 @@ import android.widget.ScrollView;
  */
 public class TabListener {
 
+
+    public static void refresh(ImageView imageView, ScrollView data, WebView webView){
+        data.setVisibility(View.VISIBLE);
+        webView.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
+    }
+
     public TabListener(Button btn1, Button btn2, Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
 
         if(btn1!=null) {

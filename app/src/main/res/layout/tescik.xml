@@ -11,25 +11,25 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn1"
+            android:id="@+id/btnReview"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Podgląd" />
+            android:text="@string/review" />
 
         <Button
-            android:id="@+id/btn2"
+            android:id="@+id/btnData"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Dane" />
+            android:text="@string/data" />
 
         <Button
-            android:id="@+id/btn3"
+            android:id="@+id/btnSolution"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="Rozwiązanie" />
+            android:text="@string/solution" />
     </LinearLayout>
 
     <FrameLayout
@@ -508,14 +508,14 @@
                             android:layout_height="fill_parent"
                             android:visibility="gone"
                             android:background="@android:color/background_light"
-                            android:id="@+id/webView27" />
+                            android:id="@+id/webD" />
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
         <WebView
-            android:id="@+id/webView"
+            android:id="@+id/webSolution"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

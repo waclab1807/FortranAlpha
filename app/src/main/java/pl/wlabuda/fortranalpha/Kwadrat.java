@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 /**
@@ -23,6 +24,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     private Button clear;
     private Button sqrtbtn;
     private Button powbtn;
+    private Button btnReview;
+    private Button btnData;
+    private Button btnSolution;
     private EditText pp_val;
     private EditText a_val;
     private EditText D_val;
@@ -35,6 +39,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     private WebView mWebViewD;
     private WebView mWebViewObw;
     private ImageView figura;
+    private ScrollView scrollView;
 
     String a;
     String pp;
@@ -47,7 +52,6 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         setContentView(R.layout.kwadrat1);
 
         Global.mContext = this.getBaseContext();
-
         pp_val = (EditText) findViewById(R.id.pp);
         a_val = (EditText) findViewById(R.id.a);
         D_val = (EditText) findViewById(R.id.d);
@@ -57,6 +61,10 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
         powbtn = (Button) findViewById(R.id.powbtn);
         figura = (ImageView) findViewById(R.id.imageView);
+        btnReview = (Button)findViewById(R.id.btnReview);
+        btnData = (Button)findViewById(R.id.btnData);
+        btnSolution = (Button)findViewById(R.id.btnSolution);
+        scrollView = (ScrollView)findViewById(R.id.dwa);
 
         mWebView = (WebView) findViewById(R.id.webSolution);
         WebSettings webSettings = mWebView.getSettings();
@@ -73,7 +81,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         mWebViewA.setBackgroundColor(0xff0);
         webSettings2.setJavaScriptEnabled(true);
 
-        mWebViewD = (WebView) findViewById(R.id.webD);
+        mWebViewD = (WebView) findViewById(R.id.webd);
         WebSettings webSettings3 = mWebViewD.getSettings();
         mWebViewD.setBackgroundColor(0xff0);
         webSettings3.setJavaScriptEnabled(true);
@@ -93,6 +101,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         new TouchListener(figura,R.drawable.kwadratd,D_val);
         new TouchListener(figura,R.drawable.kwadratobw,obwp_val);
 
+        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+
         figura.setImageResource(R.drawable.kwadrat);
 
         licz.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +116,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 tekst = "";
 
                 int x = 0; //koniec petli, wszystko policzone
+                int y = 0; //za mało danych aby policzyć
 
                 if(Wartosc.nawiasy(a_val.getText().toString()) &&
                         Wartosc.nawiasy(pp_val.getText().toString()) &&
@@ -178,9 +189,12 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                 x = 1;
                                 figura.setImageResource(R.drawable.kwadrat);
                                 licz.setEnabled(false);
-
-                                new WebViewHide(false,mWebViewPp,mWebViewObw,mWebViewD,mWebViewA);
-                                new EditTextHide(true,pp_val,a_val,D_val,obwp_val);
+                            } //za malo danych
+                            if(isEmpty(a_val) && isEmpty(pp_val) && isEmpty(obwp_val) && isEmpty(D_val)){
+                                Toast.makeText(Kwadrat.this, getString(R.string.notEnough),
+                                        Toast.LENGTH_LONG).show();
+                                x = 1;
+                                y = 1;
                             }
                         }
                     } catch (Exception e) {
@@ -192,13 +206,22 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                     Toast.makeText(Kwadrat.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
-                System.out.println("$$$$$$$$$ " + tekst);
+                //System.out.println("$$$$$$$$$ " + tekst);
                 if(tekst.equals("")){
                     tekst = "<center>"+getString(R.string.notEnough)+"</center>";
                 }
                 JavaScript JS = new JavaScript(tekst);
-                mWebView.loadDataWithBaseURL("", ""+ JS.getTekst(), "text/html", "UTF-8", "");
-                mWebView.setVisibility(View.VISIBLE);
+                mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
+
+                if(y == 0) {
+                    new WebViewHide(false, mWebView, mWebViewPp, mWebViewObw, mWebViewD, mWebViewA);
+                    new EditTextHide(true, pp_val, a_val, D_val, obwp_val);
+                }
+                TabListener refresh = new TabListener(null,null,null,null,null,null);
+                if (btnData.getVisibility() == View.VISIBLE) {
+                    refresh.refresh(figura, scrollView, mWebView);
+                }
+
             }
         });
 
@@ -211,11 +234,11 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 obwp_val.setText("");
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 new EditTextHide(false,a_val,D_val,pp_val,obwp_val);
-                new WebViewHide(true,mWebViewA,mWebViewD,mWebViewObw,mWebViewPp);
+                new WebViewHide(true, mWebViewA,mWebViewD,mWebViewObw,mWebViewPp);
                 licz.setEnabled(true);
                 figura.setImageResource(R.drawable.kwadrat);
                 Toast.makeText(Kwadrat.this, getString(R.string.deleted),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         });
         sqrtbtn.setOnClickListener(new View.OnClickListener() {
