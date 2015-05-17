@@ -1,11 +1,13 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import static android.content.Context.*;
 
 /**
  * Created by waclab1807 on 31.03.15.
@@ -32,7 +36,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     private EditText D_val;
     private EditText obwp_val;
     private EditText lastFocused;
-    public static String tekst = "";
+    private String tekst;
     private WebView mWebView;
     private WebView mWebViewPp;
     private WebView mWebViewA;
@@ -49,9 +53,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kwadrat1);
-
+        setContentView(R.layout.kwadrat);
         Global.mContext = this.getBaseContext();
+
         pp_val = (EditText) findViewById(R.id.pp);
         a_val = (EditText) findViewById(R.id.a);
         D_val = (EditText) findViewById(R.id.d);
@@ -101,9 +105,13 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         new TouchListener(figura,R.drawable.kwadratd,D_val);
         new TouchListener(figura,R.drawable.kwadratobw,obwp_val);
 
+        final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+
         new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(R.drawable.kwadrat);
+
+        btnSolution.setEnabled(false);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,6 +197,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                 x = 1;
                                 figura.setImageResource(R.drawable.kwadrat);
                                 licz.setEnabled(false);
+                                btnSolution.setEnabled(true);
+                                imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
                             } //za malo danych
                             if(isEmpty(a_val) && isEmpty(pp_val) && isEmpty(obwp_val) && isEmpty(D_val)){
                                 Toast.makeText(Kwadrat.this, getString(R.string.notEnough),
@@ -206,18 +216,14 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                     Toast.makeText(Kwadrat.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
-                //System.out.println("$$$$$$$$$ " + tekst);
-                if(tekst.equals("")){
-                    tekst = "<center>"+getString(R.string.notEnough)+"</center>";
-                }
                 JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
                 if(y == 0) {
-                    new WebViewHide(false, mWebView, mWebViewPp, mWebViewObw, mWebViewD, mWebViewA);
+                    new WebViewHide(false, mWebView, mWebViewA, mWebViewObw, mWebViewD, mWebViewPp);
                     new EditTextHide(true, pp_val, a_val, D_val, obwp_val);
                 }
-                TabListener refresh = new TabListener(null,null,null,null,null,null);
+                TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
                     refresh.refresh(figura, scrollView, mWebView);
                 }
@@ -232,10 +238,12 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 D_val.setText("");
                 pp_val.setText("");
                 obwp_val.setText("");
+                tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 new EditTextHide(false,a_val,D_val,pp_val,obwp_val);
                 new WebViewHide(true, mWebViewA,mWebViewD,mWebViewObw,mWebViewPp);
                 licz.setEnabled(true);
+                btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.kwadrat);
                 Toast.makeText(Kwadrat.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
@@ -362,7 +370,6 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        //String ktoryElement = "";
         new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }

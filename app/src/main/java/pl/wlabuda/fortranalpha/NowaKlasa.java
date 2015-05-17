@@ -23,7 +23,7 @@ public class NowaKlasa extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kwadrat1);
+        setContentView(R.layout.kwadrat);
 /**
  * podpięcie tab'ów z małego layout'u
  * podpięcie widoków
@@ -37,12 +37,12 @@ public class NowaKlasa extends Activity {
         imageView = (ImageView)findViewById(R.id.imageView);
         webView = (WebView)findViewById(R.id.webView);
 
-        new TabListener(btn1,btn2,btn3,imageView,data,webView);
+        //new TabListener(btn1,btn2,btn3,imageView,data,webView);
 
         imageView.setImageResource(R.drawable.gran_prosty);
         webView.loadData("dupa",null,null);
 
         //imageView = (ImageView)findViewById(R.id.imageView);
-        //imageView.setImageResource(R.drawable.kwadrat);
+        //imageView.setImageResource(R.drawable.starykwadrat);
     }
 }

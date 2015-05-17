@@ -1,10 +1,14 @@
 package pl.wlabuda.fortranalpha;
 
+import android.content.Context;
+import android.hardware.input.InputManager;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ScrollView;
 
 /**
@@ -18,6 +22,7 @@ public class TabListener {
         webView.setVisibility(View.GONE);
         imageView.setVisibility(View.GONE);
     }
+    public TabListener(){};
 
     public TabListener(Button btn1, Button btn2, Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
 

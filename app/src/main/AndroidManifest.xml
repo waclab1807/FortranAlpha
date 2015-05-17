@@ -63,7 +63,6 @@
         <activity android:name=".Katy"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Zależności pomiędzy kątami"></activity>
 

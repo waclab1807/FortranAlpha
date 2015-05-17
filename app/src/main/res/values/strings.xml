@@ -27,6 +27,7 @@
 
     //toast
     <string name="notEnough">Za mało danych aby policzyć!</string>
+    <string name="solutionText">Uzupełnij dane i kliknij policz, aby zobaczyć rozwiązanie</string>
     <string name="premium">Wszystko jest już policzone :) \n
 Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
     <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
@@ -66,4 +67,8 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="kwadratpoliczObwp">Obliczanie obwodu mając a</string>
     <string name="kwadratpoliczAzPp">Obliczanie a mając pole</string>
     <string name="kwadratpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
+
+    //katy
+    <string name="katypoliczBzA">Obliczanie b mając a</string>
+    <string name="katypoliczAzB">Obliczanie a mając b</string>
 </resources>
