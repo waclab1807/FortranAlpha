@@ -32,10 +32,10 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
         listView = (ListView) findViewById(R.id.list);
 
         // Defined Array values to show in ListView
-        String[] values = new String[] { "Trójkąt prawidłowy",
-                "Trójkąt równoramienny",
-                "Trójkąt prostokątny",
-                "Kwadrat",
+        String[] values = new String[] { getString(R.string.scaleneTriangle),
+                getString(R.string.isoscelesTriangle),
+                getString(R.string.rightangledTriangle),
+                getString(R.string.square),
         };
 
         // Define a new Adapter
@@ -98,27 +98,27 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
                     case 0:
                         AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
                         builder
-                                .setTitle("Trójkąt prawidłowy")
-                                .setMessage("Wszystkie jego boki są równe")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle(getString(R.string.scaleneTriangle))
+                                .setMessage(R.string.scaleneTriangleDesc)
+                                .setIcon(R.drawable.trojkaprawidlowy)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;
                     case 2:
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
                         builder1
-                                .setTitle("Trójkąt prostokątny")
-                                .setMessage("Posiada kąt prosty")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle(getString(R.string.rightangledTriangle))
+                                .setMessage(R.string.rightangledTriangleDesc)
+                                .setIcon(R.drawable.trojkat_prostokatny)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;
                     case 3:
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
                         builder2
-                                .setTitle("Kwadrat")
-                                .setMessage("Wszystkie jego boki są równe, a kąty proste")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle(getString(R.string.square))
+                                .setMessage(R.string.squareDesc)
+                                .setIcon(R.drawable.kwadrat)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;
@@ -141,43 +141,7 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        String ktoryElement = "";
-        switch (item.getItemId()) {
-            case R.id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(ListViewGeometriaNaPlaszczyznie.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case R.id.item4:
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 }

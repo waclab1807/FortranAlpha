@@ -150,7 +150,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/obwp"
+                            android:id="@+id/obj"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
@@ -183,7 +183,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/a"
+                            android:id="@+id/pb"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
@@ -216,7 +216,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/d"
+                            android:id="@+id/obj"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />

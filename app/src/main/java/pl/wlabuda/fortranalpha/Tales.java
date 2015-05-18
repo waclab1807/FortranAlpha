@@ -68,7 +68,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         Global.mContext = this.getBaseContext();
         //Global global1 = new Global(getBaseContext());
 
-        mWebView = (WebView) findViewById(id.webView2);
+        mWebView = (WebView) findViewById(id.webSolution);
         mWebView.setBackgroundColor(0xff0);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -83,22 +83,13 @@ public class Tales extends Activity implements OnFocusChangeListener {
         d_val = (EditText) findViewById(id.d);
         e_val = (EditText) findViewById(id.e);
         f_val = (EditText) findViewById(id.f);
-        ac_val = (EditText) findViewById(id.ac);
-        bd_val = (EditText) findViewById(id.bd);
-        licz = (Button) findViewById(id.licz);
+        ac_val = (EditText) findViewById(id.AC);
+        bd_val = (EditText) findViewById(id.BD);
+        licz = (Button) findViewById(id.magic);
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.btnsqrt);
         powbtn = (Button) findViewById(id.btnpow);
         solutionbtn = (Button) findViewById(id.solutionbtn);
-
-        aclackable = (TextView) findViewById(id.a_text);
-        bclackable = (TextView) findViewById(id.b_text);
-        cclackable = (TextView) findViewById(id.c_text);
-        dclackable = (TextView) findViewById(id.d_text);
-        eclackable = (TextView) findViewById(id.e_text);
-        fclackable = (TextView) findViewById(id.f_text);
-        acclackable = (TextView) findViewById(id.AC_text);
-        bdclackable = (TextView) findViewById(id.BD_text);
 
         figura = (ImageView) findViewById(id.imageView);
 

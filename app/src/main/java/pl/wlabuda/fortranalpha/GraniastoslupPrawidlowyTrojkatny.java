@@ -40,15 +40,9 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private EditText obwb_val;
     private EditText triangle_val;
     private TextView solution;
-    private TextView dclackable;
-    private TextView Dclackable;
-    private TextView aclackable;
-    private TextView Hclackable;
-    private TextView hclackable;
     private ImageView figura;
     private EditText lastFocused;
     public static String tekst = "";
-    public static String tekst1 = "";
     private WebView mWebView;
 
     String a;
@@ -73,7 +67,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         Global.mContext = this.getBaseContext();
         //Global global1 = new Global(getBaseContext());
 
-        mWebView = (WebView) findViewById(R.id.webView2);
+        mWebView = (WebView) findViewById(id.webSolution);
         mWebView.setBackgroundColor(0xff0);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -86,62 +80,22 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         obj_val = (EditText) findViewById(R.id.obj);
         pb_val = (EditText) findViewById(R.id.pb);
         pc_val = (EditText) findViewById(R.id.pc);
-        a_val = (EditText) findViewById(id.a_val);
-        h_val = (EditText) findViewById(id.h_val);
-        H_val = (EditText) findViewById(R.id.H_val);
-        d_val = (EditText) findViewById(R.id.d_val);
-        D_val = (EditText) findViewById(R.id.D_val);
+        a_val = (EditText) findViewById(id.a);
+        h_val = (EditText) findViewById(id.h);
+        H_val = (EditText) findViewById(R.id.H);
+        d_val = (EditText) findViewById(R.id.d);
+        D_val = (EditText) findViewById(R.id.D);
         obwp_val = (EditText) findViewById(R.id.obwp);
         obwb_val = (EditText) findViewById(R.id.obwb);
-        triangle_val = (EditText) findViewById(id.triangle);
-        licz = (Button) findViewById(R.id.licz);
+        triangle_val = (EditText) findViewById(id.ptw);
+        licz = (Button) findViewById(id.magic);
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.btnsqrt);
         powbtn = (Button) findViewById(id.btnpow);
         solutionbtn = (Button) findViewById(id.solutionbtn);
         solution = (TextView) findViewById(id.solution);
-        dclackable = (TextView) findViewById(id.c_text);
-        Dclackable = (TextView) findViewById(id.e_text);
-        aclackable = (TextView) findViewById(id.a);
-        Hclackable = (TextView) findViewById(id.d);
-        hclackable = (TextView) findViewById(id.c_text);
-        figura = (ImageView) findViewById(id.imageView);
 
-        dclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.granprzekd);
-                d_val.requestFocus();
-            }
-        });
-        Dclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.granprzek);
-                D_val.requestFocus();
-            }
-        });
-        aclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.grana);
-                a_val.requestFocus();
-            }
-        });
-        Hclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.granwys);
-                H_val.requestFocus();
-            }
-        });
-        hclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.granh);
-                h_val.requestFocus();
-            }
-        });
+        figura = (ImageView) findViewById(id.imageView);
 
         a_val.setOnFocusChangeListener(this);
         h_val.setOnFocusChangeListener(this);
@@ -258,7 +212,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 boolean bobwb = false;
                 boolean btriangle = false;
 
-                tekst1 = "";
                 figura.setImageResource(drawable.gran_prosty);
                 //todo schowac klawiature
 
@@ -266,7 +219,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
 
                 try{
                     while (x == 0) {
-                        System.out.println("%%%%%%% "+tekst1);
                         //obliczanie a lub h lub pp lub obwp
                         //czy jest a
                         if (!isEmpty(a_val)) {
@@ -289,7 +241,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 bobwp = true;
                             }
                         }
-                        System.out.println("%%%%%%%1 "+tekst1);
                         //czy jest h
                         if (!isEmpty(h_val)) {
                             System.out.println("^^^^^^^^2");
@@ -311,7 +262,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 bobwp = true;
                             }
                         }
-                        System.out.println("%%%%%%%2 "+tekst1);
                         //czy jest pp
                         if (!isEmpty(pp_val)) {
                             System.out.println("^^^^^^^^3");
@@ -333,7 +283,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 bobwp = true;
                             }
                         }
-                        System.out.println("%%%%%%%3 "+tekst1);
                         //czy jest obwp
                         if (!isEmpty(obwp_val)) {
                             System.out.println("^^^^^^^^4");
@@ -355,7 +304,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 bh = true;
                             }
                         }
-                        System.out.println("%%%%%%%4 "+tekst1);
                         //czy jest obj i H
                         if (!isEmpty(H_val)) {
                             System.out.println("^^^^^^^^5");
@@ -393,7 +341,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 ba = true;
                             }
                         }
-                        System.out.println("%%%%%%%5 "+tekst1);
                         //obliczanie H
                         if (!isEmpty(a_val)) {
                             System.out.println("^^^^^^^^6");
@@ -451,7 +398,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                         Toast.LENGTH_LONG).show();
                             }
                         }
-                        System.out.println("%%%%%%%6 "+tekst1);
                         //czy jest pc i pb
                         if (!isEmpty(pc_val)) {
                             System.out.println("^^^^^^^^7");
@@ -464,7 +410,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 bpp = true;
                             }
                         }
-                        System.out.println("%%%%%%%7 "+tekst1);
                         //obliczanie pozostałych na podstawie a i H
                         //D
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bD) {
@@ -474,7 +419,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             D_val.setText(policzDzHiA(H, a));
                             bD = true;
                         }
-                        System.out.println("%%%%%%%8 "+tekst1);
                         //d
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bd) {
                             System.out.println("^^^^^^^^9");
@@ -483,7 +427,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             d_val.setText(policzdzHiA(H, a));
                             bd = true;
                         }
-                        System.out.println("%%%%%%%9 "+tekst1);
                         //pb
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bpb) {
                             System.out.println("^^^^^^^^10");
@@ -492,7 +435,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             pb_val.setText(policzPbzAiH(a, H));
                             bpb = true;
                         }
-                        System.out.println("%%%%%%%0 "+tekst1);
                         //pc
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bpc) {
                             System.out.println("^^^^^^^^11");
@@ -501,7 +443,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             pc_val.setText(policzPczAiH(a, H));
                             bpc = true;
                         }
-                        System.out.println("%%%%%%%1 "+tekst1);
                         //obwb
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bobwb) {
                             System.out.println("^^^^^^^^12");
@@ -510,7 +451,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             obwb_val.setText(policzObwbZAiH(a, H));
                             bobwb = true;
                         }
-                        System.out.println("%%%%%%%2 "+tekst1);
                         //triangle
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !btriangle) {
                             System.out.println("^^^^^^^^13");
@@ -519,7 +459,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             triangle_val.setText(policzTriangleZaiH(a, H));
                             btriangle = true;
                         }
-                        System.out.println("%%%%%%%3 "+tekst1);
                         //obj
                         if (!isEmpty(a_val) && !isEmpty(H_val) && !bobj) {
                             System.out.println("^^^^^^^^14");
@@ -528,7 +467,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             obj_val.setText(policzObjZaiH(a, H));
                             bobj = true;
                         }
-                        System.out.println("%%%%%%%4 "+tekst1);
                         //za malo danych
                         if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
                             x = 1;
@@ -560,14 +498,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                             Toast.LENGTH_LONG).show();
                 }
 
-                System.out.println("%%%%%%% "+tekst1);
+                System.out.println("%%%%%%% "+tekst);
                 String js = "<html><head>"
                         + "<link rel='stylesheet' href='file:///android_asset/mathscribe/jqmath-0.4.0.css'>"
                         + "<script src = 'file:///android_asset/mathscribe/jquery-1.4.3.min.js'></script>"
                         + "<script src = 'file:///android_asset/mathscribe/jqmath-etc-0.4.2.min.js'></script>"
                         + "</head><body>"
                         + "<script>var s =   " +
-                        "'"+tekst1+"';" +
+                        "'"+tekst+"';" +
                         "M.parseMath(s);document.body.style.fontSize = \"20pt\";document.write(s);</script> " +
                         "</body>";
                 mWebView.loadDataWithBaseURL("", js, "text/html", "UTF-8", "");
@@ -591,7 +529,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 triangle_val.setText("");
                 solution.setText("");
                 tekst = "";
-                tekst1 = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
 
                 Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, "Skasowane!",
@@ -645,13 +582,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz(a, a, "*");
         String dwa = Wartosc.policz(jeden, "()\u221a(3)", "*");
         String trzy = Wartosc.policz(dwa, "4", "/");
-        String solucja = "Obliczanie pola podstawy mając a \n\n" +
-                "Pp = [(a^2) * √3] / 4 \n\n" +
-                "Pp = [(" + a + "^2) * √(3)] / 4 \n\n" +
-                "Pp = (" + jeden + ")√(3) / 4 \n\n" +
-                "Pp = (" + dwa + ") / 4\n\n" +
-                "Pp = " +trzy+" \n\n"+
-                "*===========================*\n\n";
         String solucja1 = "<center><b>Obliczanie pola podstawy mając a</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
                 "$$Pp={{"+Wartosc.formatuj(a)+"^2}*√3}/4$$<br>" +
@@ -659,32 +589,21 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$Pp={"+Wartosc.formatuj(dwa)+"}/4$$<br>" +
                 "$$Pp={"+Wartosc.formatuj(trzy)+"}$$<br>" +
         "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
-        }
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
 
     private String policzPpZObjiH(String Obj, String H) {
         String jeden = Wartosc.policz(Obj, H, "/");
-        String solucja = "Obliczanie pola podstawy mając objętość i H \n\n" +
-                "Pp = Obj / H \n\n" +
-                "Pp = " + Obj + " / " + H + " \n\n" +
-                "a = " + jeden + " \n\n" +
-                "*===========================*\n\n";
         String solucja1 = "<center><b>Obliczanie pola podstawy mając objętość i H</b></center><br>" +
                 "$$Pp={Obj}/{H}$$<br>" +
                 "$$Pp={{"+Wartosc.formatuj(Obj)+"}/{"+Wartosc.formatuj(H)+"}}$$<br>" +
                 "$$Pp={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
-        }
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -694,13 +613,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(H, H, "*");
         String trzy = Wartosc.policz(jeden, dwa, "-");
         String cztery = Wartosc.policz("()\u221a(" + trzy + ")", "1", "*");
-        String solucja = "Obliczanie a mając H i d \n\n" +
-                "a = √[(d^2) - (H^2)] \n\n" +
-                "a = √[(" + d + "^2) - (" + H + "^2)] \n\n" +
-                "a = √[(" + jeden + ") - (" + dwa + ")] \n\n" +
-                "a = √(" + trzy + ") \n\n" +
-                "a = " + cztery + " \n\n" +
-                "*===========================*\n\n";
         String solucja1 = "<center><b>Obliczanie a mając H i d</b></center><br>" +
                 "$$a={√{{d^2}-{H^2}}}$$<br>" +
                 "$$a = {√{{{" + Wartosc.formatuj(d) + "}^2}-{{" + Wartosc.formatuj(H) + "}^2}}}$$<br>" +
@@ -708,11 +620,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$a = {√{{" + Wartosc.formatuj(trzy) + "}}}$$<br>" +
                 "$$a = {" + Wartosc.formatuj(cztery) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
-        }
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -722,16 +631,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(H, H, "*");
         String trzy = Wartosc.policz(jeden, dwa, "-");
         String cztery = Wartosc.policz("()\u221a(" + trzy + ")", "1", "*");
-        String solucja = "Obliczanie h mając H i D \n\n" +
-                "h = √[(D^2) - (H^2)] \n\n" +
-                "h = √[(" + D + "^2) - (" + H + "^2)] \n\n" +
-                "h = √[(" + jeden + ") - (" + dwa + ")] \n\n" +
-                "h = √(" + trzy + ") \n\n" +
-                "h = " + cztery + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie h mając H i D</b></center><br>" +
                 "$$h = {√{{D^2} - {H^2}}}$$<br>" +
                 "$$h = {√{{{"+Wartosc.formatuj(D)+"}^2} - {{"+Wartosc.formatuj(H)+"}^2}}}$$<br>" +
@@ -739,8 +638,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$h = {√{"+Wartosc.formatuj(trzy)+"}}$$<br>" +
                 "$$h = {"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -751,16 +650,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String t = Wartosc.policz(d, "4", "/");
         String jeden = t;
         String dwa = Wartosc.policz(Obj, jeden, "/");
-        String solucja = "Obliczanie H mając objętość i a \n\n" +
-                "Pp = [(a^2) * √3] / 4 \n\n" +
-                "Pp = " + jeden + " \n\n" +
-                "H = Obj / Pp \n\n" +
-                "H = " + Obj + " / " + jeden + " \n\n" +
-                "H = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając objętość i a</b></center><br>" +
                 "$$Pp = {{{a^2}*√3}/4}$$<br>" +
                 "$$Pp = {"+jeden+"}$$<br>" +
@@ -768,8 +657,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {{"+Wartosc.formatuj(Obj)+"}/{"+jeden+"}}$$<br>" +
                 "$$H = {"+dwa+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -779,16 +668,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(a, a, "*");
         String trzy = Wartosc.policz(jeden, dwa, "-");
         String cztery = Wartosc.policz("()\u221a(" + trzy + ")", "1", "*");
-        String solucja = "Obliczanie H mając d i a \n\n" +
-                "H = √[(d^2) - (a^2)] \n\n" +
-                "H = √[(" + d + "^2) - (" + a + "^2)] \n\n" +
-                "H = √(" + jeden + " - " + dwa + ") \n\n" +
-                "H = √(" + trzy + ") \n\n" +
-                "H = " + cztery + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając d i a</b></center><br>" +
                 "$$H = {√{{d^2} - {a^2}}}$$<br>" +
                 "$$H = {√{{{"+Wartosc.formatuj(d)+"}^2} - {{"+Wartosc.formatuj(a)+"}^2}}}$$<br>" +
@@ -796,8 +675,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {√{"+Wartosc.formatuj(trzy)+"}}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -810,18 +689,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz(dwa, dwa, "*");
         String cztery = Wartosc.policz(jeden, trzy, "-");
         String piec = Wartosc.policz("()\u221a(" + trzy + ")", "1", "*");
-        String solucja = "Obliczanie H mając D i a \n\n" +
-                "H = √[(D^2) - (h^2)] \n\n" +
-                "h = [a * √(3)] / 2 " +
-                "h = " + dwa + " \n\n" +
-                "H = √[(" + D + "^2) - (" + dwa + "^2)] \n\n" +
-                "H = √(" + jeden + " - " + trzy + ") \n\n" +
-                "H = √(" + cztery + ") \n\n" +
-                "H = " + piec + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając D i a</b></center><br>" +
                 "$$h = {{a*√3}/2}$$<br>" +
                 "$$h = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
@@ -831,8 +698,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {√{"+Wartosc.formatuj(cztery)+"}}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return piec;
     }
@@ -846,18 +713,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz(Pc, dwa, "-");
         String cztery = Wartosc.policz("3", a, "*");
         String piec = Wartosc.policz(trzy, cztery, "/");
-        String solucja = "Obliczanie H mając Pc i a \n\n" +
-                "Pp = [(a^2) * √3] / 4 \n\n" +
-                "Pp = " + jeden + " \n\n" +
-                "H = {[Pc - (2 * Pp)] / (3 * a)} \n\n" +
-                "H = {[" + Pc + " - (2 * " + jeden + ")] / (3 * " + a + ")} \n\n" +
-                "H = (" + Pc + " - " + dwa + ") / (" + cztery + ") \n\n" +
-                "H = (" + trzy + ") / (" + cztery + ") \n\n" +
-                "H = " + piec + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając Pc i a</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
                 "$$Pp = {"+jeden+"}$$<br>"+
@@ -867,8 +722,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {{"+Wartosc.formatuj(trzy)+"} / {"+Wartosc.formatuj(cztery)+"}}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return piec;
     }
@@ -876,17 +731,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzHzPbiA(String Pb, String a) {
         String jeden = Wartosc.policz("3", a, "*");
         String dwa = Wartosc.policz(Pb, jeden, "/");
-        String solucja = "Obliczanie H mając Pb i a \n\n" +
-                "Pp = 3 * a * H \n\n" +
-                "3 * Pp = a * H \n\n" +
-                "H = Pb / (3 * a) \n\n" +
-                "H = "+Pb+" / (3 * "+a+") \n\n" +
-                "H = "+Pb+" / "+jeden+" \n\n" +
-                "H = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając Pb i a</b></center><br>" +
                 "$$Pb={a*H*3}$$<br>" +
                 "$${Pb}/{3} = {a*H}$$<br>"+
@@ -895,8 +739,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {{"+Wartosc.formatuj(Pb)+"}/{"+Wartosc.formatuj(jeden)+"}}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -905,16 +749,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz("6", a, "*");
         String dwa = Wartosc.policz(ObwB, jeden, "-");
         String trzy = Wartosc.policz(dwa, "3", "/");
-        String solucja = "Obliczanie H mając obwód bryły i a \n\n" +
-                "H = [ObwB - (6 * a)] / 3 \n\n" +
-                "H = [" + ObwB + " - (6 * " + a + ")] / 3 \n\n" +
-                "H = (" + ObwB + " - " + jeden + ") / 3 \n\n" +
-                "H = (" + dwa + ") / 3 \n\n" +
-                "H = " + trzy + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając obwód bryły i a</b></center><br>" +
                 "$$H = {{ObwB - {6 * a}} / 3}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(ObwB)+"} - {6 * {"+Wartosc.formatuj(a)+"}}} / 3}$$<br>" +
@@ -922,8 +756,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {{"+Wartosc.formatuj(dwa)+"} / 3}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
@@ -934,19 +768,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = d;
         String trzy = Wartosc.policz(Ptw, "2", "*");
         String cztery = Wartosc.policz(trzy, dwa, "/");
-        String solucja = "Obliczanie H mając Ptw i a \n\n" +
-                "Ptw = (1 / 2) * h * H \n\n" +
-                "2 * Ptw = h * H \n\n" +
-                "H = (2 * Ptw) / h" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "h = " + dwa + " \n\n" +
-                "H = (2 * " + Ptw + ") / (" + dwa + ") \n\n" +
-                "H = (" + trzy + " / " + dwa + ") \n\n" +
-                "H = (" + cztery + ") \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie H mając Ptw i a</b></center><br>" +
                 "$$Ptw = {{1/2}*h*H}$$<br>" +
                 "$${2*Ptw} = {h*H}$$<br>" +
@@ -957,8 +778,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$H = {{"+Wartosc.formatuj(trzy)+"}/{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
                 "$$H = {"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -966,23 +787,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzPpzPciPb(String Pc, String Pb) {
         String jeden = Wartosc.policz(Pc, Pb, "-");
         String dwa = Wartosc.policz(jeden, "2", "/");
-        String solucja = "Obliczanie pola podstawy mając Pc i Pb \n\n" +
-                "Pp = (Pc - Pb) / 2 \n\n" +
-                "Pp = (" + Pc + " - " + Pb + ") / 2 \n\n" +
-                "Pp = (" + jeden + ") / 2 \n\n" +
-                "Pp = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie pola podstawy mając Pc i Pb</b></center><br>" +
                 "$$Pp = {{Pc - Pb} / 2}$$<br>" +
                 "$$Pp = {{{"+Wartosc.formatuj(Pc)+"} - {"+Wartosc.formatuj(Pb)+"}} / 2}$$<br>" +
                 "$$Pp = {{"+Wartosc.formatuj(jeden)+"} / 2}$$<br>" +
                 "$$Pp = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -995,18 +807,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz(H, H, "*");
         String cztery = Wartosc.policz(trzy, dwa, "+");
         String piec = Wartosc.policz("()\u221a(" + cztery + ")", "1", "*");
-        String solucja = "Obliczanie D mając H i a \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "h = " + jeden + " \n\n" +
-                "D = √[(H^2) + (h^2)] \n\n" +
-                "D = √[(" + H + "^2) + (" + jeden + "^2)] \n\n" +
-                "D = √[" + trzy + " + " + dwa + ") \n\n" +
-                "D = √(" + cztery + ") \n\n" +
-                "D = " + piec + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie D mając H i a</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
                 "$$h={"+jeden+"}$$<br>" +
@@ -1016,8 +816,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$D = {√{"+Wartosc.formatuj(cztery)+"}}$$<br>" +
                 "$$D = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return piec;
     }
@@ -1027,16 +827,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(a, a, "*");
         String trzy = Wartosc.policz(jeden, dwa, "+");
         String cztery = Wartosc.policz("()\u221a(" + trzy + ")", "1", "*");
-        String solucja = "Obliczanie d mając H i a \n\n" +
-                "d = √[(H^2) + (a^2)] \n\n" +
-                "d = √[(" + H + "^2) + (" + a + "^2)] \n\n" +
-                "d = √[" + jeden + " + " + dwa + ") \n\n" +
-                "d = √(" + trzy + ") \n\n" +
-                "d = " + cztery + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie d mając H i a</b></center><br>" +
                 "$$d = {√{{H^2} + {a^2}}}$$<br>" +
                 "$$d = {√{{{"+Wartosc.formatuj(H)+"}^2} + {{"+Wartosc.formatuj(a)+"}^2}}}$$<br>" +
@@ -1044,8 +834,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$d = {√{"+Wartosc.formatuj(trzy)+"}}$$<br>" +
                 "$$d = {"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -1053,23 +843,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzPbzAiH(String a, String H) {
         String jeden = Wartosc.policz("3", a, "*");
         String dwa = Wartosc.policz(jeden, H, "*");
-        String solucja = "Obliczanie pola bocznego mając a i H \n\n" +
-                "Pb = (3 * a) * H \n\n" +
-                "Pb = (3 * " + a + ") * " + H + " \n\n" +
-                "Pb = " + jeden + " * " + H + " \n\n" +
-                "Pb = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie pola bocznego mając a i H</b></center><br>" +
                 "$$Pb = {{3*a}*H}$$<br>" +
                 "$$Pb = {{3*{"+Wartosc.formatuj(a)+"}}*{"+Wartosc.formatuj(H)+"}}$$<br>" +
                 "$$Pb = {{"+Wartosc.formatuj(jeden)+"}*{"+Wartosc.formatuj(H)+"}}$$<br>" +
                 "$$Pb = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -1082,17 +863,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(jeden, H, "*");
         String trzy = Wartosc.policz("2", t, "*");
         String cztery = Wartosc.policz(trzy, dwa, "+");
-        String solucja = "Obliczanie pola całkowitego mając a i H \n\n" +
-                "Pp = " + t + " \n\n" +
-                "Pc = (2 * Pp) + [(3 * a) * H] \n\n" +
-                "Pc = (2 * " + t + ") + [(3 * " + a + ") * " + H + "] \n\n" +
-                "Pc = " + trzy + " + (" + jeden + " * " + H + ") \n\n" +
-                "Pc = " + trzy + " + " + dwa + " \n\n" +
-                "Pc = " + cztery + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie pola całkowitego mając a i H</b></center><br>" +
                 "$$Pp = {"+t+"}$$<br>" +
                 "$$Pc = {{2 * Pp} + {{3 * a} * H}}$$<br>" +
@@ -1101,8 +871,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$Pc = {{"+Wartosc.formatuj(trzy)+"} + {"+Wartosc.formatuj(dwa)+"}}$$<br>" +
                 "$$Pc = {"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return cztery;
     }
@@ -1111,23 +881,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz("6", a, "*");
         String dwa = Wartosc.policz("3", H, "*");
         String trzy = Wartosc.policz(jeden, dwa, "+");
-        String solucja = "Obliczanie obwodu bryły mając a i H \n\n" +
-                "ObwB = (6 * a) + (3 * H) \n\n" +
-                "ObwB = (6 * " + a + ") + (3 * " + H + ") \n\n" +
-                "ObwB = " + jeden + " + " + dwa + " \n\n" +
-                "ObwB = " + trzy + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie obwodu bryły mając a i H</b></center><br>" +
                 "$$ObwB = {{6 * a} + {3 * H}}$$<br>" +
                 "$$ObwB = {{6 * {"+Wartosc.formatuj(a)+"}} + {3 * {"+Wartosc.formatuj(H)+"}}}$$<br>" +
                 "$$ObwB = {{"+Wartosc.formatuj(jeden)+"} + {"+Wartosc.formatuj(dwa)+"}}$$<br>" +
                 "$$ObwP = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
@@ -1141,21 +902,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz(dwa, jeden, "+");
         String cztery = Wartosc.policz("()\u221a(" + trzy + ")","1", "*");
         String piec = Wartosc.policz(cztery, "2", "/");
-
-        String solucja = "Obliczanie pola trójkąta wewnętrznego mając a i H \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "h = " + zero + " \n\n" +
-                "Ptw = √[(h^2) + (H^2)] / 2 \n\n" +
-                "Ptw = √[(" + zero + "^2) + (" + H + "^2)] / 2 \n\n" +
-                "Ptw = √[" + jeden + " + " + dwa + "] / 2 \n\n" +
-                "Ptw = √(" + trzy + ") / 2 \n\n" +
-                "Ptw = (" + cztery + ") / 2 \n\n" +
-                "Ptw = " + piec + " \n\n" +
-                "*===========================*\n\n";
-
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie pola trójkąta wewnętrznego mając a i H</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
                 "$$h = {"+zero+"}$$<br>" +
@@ -1166,8 +912,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$Ptw = {{"+Wartosc.formatuj(cztery)+"}/2}$$<br>" +
                 "$$Ptw = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return piec;
     }
@@ -1178,16 +924,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String t = Wartosc.policz(d, "4", "/");
         String jeden = t;
         String dwa = Wartosc.policz(jeden, H, "*");
-        String solucja = "Obliczanie objętości mając a i H \n\n" +
-                "Pp = [(a^2) * √3] / 4 \n\n" +
-                "Pp = " + jeden + " \n\n" +
-                "Obj = Pp * H \n\n" +
-                "Obj = " + jeden + " * " + H + " \n\n" +
-                "Obj = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie objętości mając a i H</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
                 "$$Pp = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
@@ -1195,29 +931,21 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$Obj = {{"+Wartosc.formatuj(jeden)+"}*{"+Wartosc.formatuj(H)+"}}$$<br>" +
                 "$$Obj = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
 
     private String policzObwp(String a) {
         String jeden = Wartosc.policz("3", a, "*");
-        String solucja = "Obliczanie obwodu podstawy mając a \n\n" +
-                "ObwP = a * 3 \n\n" +
-                "ObwP = " + a + " * 3 \n\n" +
-                "ObwP = " + jeden + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie obwodu podstawy mając a</b></center><br>" +
                 "$$ObwP={a*3}$$<br>" +
                 "$$ObwP = {{" + Wartosc.formatuj(a) + "}*3}$$<br>" +
                 "$$ObwP = {" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -1225,16 +953,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzAzh(String h) {
         String jeden = Wartosc.policz(h, "(2)\u221a(3)", "*");
         String dwa = Wartosc.policz(jeden, "3", "/");
-        String solucja = "Obliczanie a mając h \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "a = [(2)√(3) * h] / 3 \n\n" +
-                "a = [(2)√(3) * " + h + "]/3 \n\n" +
-                "a = [" + jeden + "] / 3 \n\n" +
-                "a = " + dwa + "\n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie a mając h</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
                 "$${2*h} = {a * √3}$$<br>" +
@@ -1244,8 +962,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$a = {{"+Wartosc.formatuj(jeden)+"}/3}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -1253,22 +971,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzAzHiPb(String H, String Pb) {
         String jeden = Wartosc.policz(H, "3", "*");
         String dwa = Wartosc.policz(Pb, jeden, "/");
-        String solucja = "Obliczanie a mając H i pole boczne \n\n" +
-                "a = Pb / (3 * H) \n\n" +
-                "a = Pb / (" + jeden + ") \n\n" +
-                "a = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie a mając H i pole boczne</b></center><br>" +
                 "$$a = {Pb/{3*H}}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Pb)+"}/{3*{"+Wartosc.formatuj(H)+"}}}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Pb)+"}/{"+Wartosc.formatuj(jeden)+"}}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -1277,19 +987,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz(Pp, "4", "*");
         String dwa = Wartosc.policz(jeden, "()\u221a(3)", "/");
         String trzy = Wartosc.policz("()\u221a(" + dwa + ")", "1", "*");
-        String solucja = "Obliczanie a mając pole podstawy \n\n" +
-                "Pp = [(a^2) * √(3)] / 4 \n\n" +
-                "4 * Pp = [(a^2) * √(3)] \n\n" +
-                "(4 * Pp) / √(3) = (a^2) \n\n" +
-                "a = √[(4 * Pp) / √(3)] \n\n" +
-                "a = √[(4 * " + Pp + ") / √(3)] \n\n" +
-                "a = √[" + jeden + " / √(3)] \n\n" +
-                "a = √[" + dwa + "] \n\n" +
-                "a = " + trzy + "\n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie a mając pole podstawy</b></center><br>" +
                 "$$Pp = {{{a^2} * √3} / 4}$$<br>" +
                 "$${4 * Pp} = {{a^2} * √3} $$<br>" +
@@ -1300,8 +997,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$a = {√{"+Wartosc.formatuj(dwa)+"}} $$<br>" +
                 "$$a = {" + Wartosc.formatuj(trzy) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
@@ -1310,15 +1007,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz(H, "3", "*");
         String dwa = Wartosc.policz(Obwb, jeden, "-");
         String trzy = Wartosc.policz(dwa, "6", "/");
-        String solucja = "Obliczanie a mając H i obwód bryły \n\n" +
-                "a = [ObwB - (3 * H)] / 6 \n\n" +
-                "a = [ObwB - (" + jeden + ")] / 6 \n\n" +
-                "a = (" + dwa + ") / 6 \n\n" +
-                "a = " + trzy + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie a mając H i obwód bryły</b></center><br>" +
                 "$$a = {{Obwb-{3*H}}/6}$$<br>" +
                 "$$a = {{{"+Wartosc.formatuj(Obwb)+"}-{3*{"+Wartosc.formatuj(H)+"}}}/6}$$<br>" +
@@ -1326,31 +1014,22 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$a = {{"+Wartosc.formatuj(dwa)+"}/6}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return trzy;
     }
 
     private String policzAzObwp(String Obwp) {
         String jeden = Wartosc.policz(Obwp, "3", "/");
-        String solucja = "Obliczanie a mając obwód podstawy \n\n" +
-                "ObwP = a * 3 \n\n" +
-                "a = ObwP / 3 \n\n" +
-                "a = " + Obwp + " / 3 \n\n" +
-                "a = " + jeden + " \n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie a mając obwód podstawy</b></center><br>" +
                 "$$ObwP = {a * 3}$$<br>" +
                 "$$a = {ObwP / 3}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Obwp)+"} / 3}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -1358,23 +1037,14 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private String policzhza(String a) {
         String jeden = Wartosc.policz(a, "()\u221a(3)", "*");
         String dwa = Wartosc.policz(jeden, "2", "/");
-        String solucja = "Obliczanie h mając a \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "h = [" + a + " * √(3)] / 2 \n\n" +
-                "h = (" + jeden + ") / 2 \n\n" +
-                "h = " + dwa + "\n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
         String solucja1 = "<center><b>Obliczanie h mając a</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
                 "$$h = {{{"+Wartosc.formatuj(a)+"} * √3}/2}$$<br>" +
                 "$$h = {{"+Wartosc.formatuj(jeden)+"}/2}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -1383,25 +1053,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz("3", Pp, "*");
         String dwa = Wartosc.policz(jeden, "()\u221a(3)", "/");
         String trzy = Wartosc.policz("()\u221a(" + dwa + ")", "1", "*");
-        String solucja = "Obliczanie h mając pole podstawy \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "2 * h = a * √(3) \n\n" +
-                "a = (2 * h) / √(3) \n\n" +
-                "a = [(2)√(3) * h] / 3 \n\n" +
-                "Pp = [(a^2) * √(3)] / 4 \n\n" +
-                "Pp = {[(12 * (h^2)) / 9] * √(3)} / 4 \n\n" +
-                "Pp = [(h^2) * √(3)] / 3 \n\n" +
-                "3 * Pp = (h^2) * √(3) \n\n" +
-                "(3 * Pp) / √(3) = (h^2) \n\n" +
-                "h = √[(3 * Pp) / √(3)] \n\n" +
-                "h = √[(" + jeden + ") / √(3)] \n\n" +
-                "h = √(" + dwa + ") \n\n" +
-                "h = " + trzy + "\n\n" +
-                "*===========================*\n\n";
-        if (!tekst.contains(solucja)) {
-            tekst = tekst + solucja;
-        }
-        String solucja1 = "<center><b>Obliczanie h mając pole podstawy</b></center><br>" +
+        String solucja = "<center><b>Obliczanie h mając pole podstawy</b></center><br>" +
                 "$$h = {{a * {√3}} / 2}$$<br>" +
                 "$${2 * h} = {a * {√3}}$$<br>" +
                 "$$a = {{2 * h} / {√3}}$$<br>" +
@@ -1419,8 +1071,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$h = {√{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
                 "$$h = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja)) {
+            tekst = tekst + solucja;
         }
         return trzy;
         //return Wartosc.policz(Wartosc.policz(policzAzPp(Pp),"()\u221a(3)","*"),"2","/");

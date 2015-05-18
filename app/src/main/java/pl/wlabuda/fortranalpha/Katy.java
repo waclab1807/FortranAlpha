@@ -1,6 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -111,10 +112,10 @@ public class Katy extends Activity implements OnFocusChangeListener {
         WebSettings webSettingsH = mWebViewH.getSettings();
         webSettingsH.setJavaScriptEnabled(true);
 
-        a_val = (EditText) findViewById(id.a);
-        b_val = (EditText) findViewById(id.b);
+        a_val = (EditText) findViewById(id.pb);
+        b_val = (EditText) findViewById(id.pb);
         c_val = (EditText) findViewById(id.c);
-        d_val = (EditText) findViewById(id.d);
+        d_val = (EditText) findViewById(id.obj);
         e_val = (EditText) findViewById(id.e);
         f_val = (EditText) findViewById(id.f);
         g_val = (EditText) findViewById(id.g);
@@ -154,6 +155,12 @@ public class Katy extends Activity implements OnFocusChangeListener {
         figura.setImageResource(R.drawable.katy);
 
         btnSolution.setEnabled(false);
+
+        if (btnData.getVisibility() == View.VISIBLE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override

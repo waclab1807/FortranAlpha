@@ -17,8 +17,14 @@
     <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
     
     //names
-    <string name="baseArea">Pole podstawy: </string>
-    <string name="baseCircuit">Obwód podstawy: </string>
+    <string name="baseArea"> Pole podstawy: </string>
+    <string name="baseCircuit"> Obwód podstawy: </string>
+    <string name="capacity"> Objętość: </string>
+    <string name="sideArea"> Pole boczne: </string>
+    <string name="baseRound"> Obwód podstawy: </string>
+    <string name="blockRound"> Obwód bryły: </string>
+    <string name="overallArea"> Pole całkowite: </string>
+    <string name="triangleArea"> Pole trójkąta wewnętrznego: </string>
 
     //menu
     <string name="about">O autorze</string>
@@ -37,6 +43,26 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
 
     //titles
     <string name="tales">Twierdzenie Talesa</string>
+    <string name="square">Kwadrat</string>
+    <string name="angle">Zależności pomiędzy kątami</string>
+    <string name="cube">Sześcian</string>
+    <string name="geomerty2d">Geometria 2D</string>
+    <string name="geometry3d">Geometria 3D</string>
+    <string name="trigonometry">Trygonometria</string>
+    <string name="pyramid">Ostrosłup</string>
+    <string name="cylinder">Walec</string>
+    <string name="globe">Kula</string>
+    <string name="prismAndscaleneTriangle">Graniastosłup prowidłowy trójkątny</string>
+    <string name="scaleneTriangle">Trójkątny prawidłowy</string>
+    <string name="isoscelesTriangle">Trójkątny równoramienny</string>
+    <string name="rightangledTriangle">Trójkątny prostokątny</string>
+
+    //menu descriptions
+    <string name="scaleneTriangleDesc">Wszystkie jego boki są równe</string>
+    <string name="rightangledTriangleDesc">Posiada kąt prosty</string>
+    <string name="squareDesc">Wszystkie jego boki są równe, a kąty proste</string>
+    <string name="prismAndscaleneTriangleDesc">W podstawie ma trójkąt, którego wszystkie boki są równe</string>
+    <string name="cubeDesc">Złożony z kwadratów, wszystkie jego boki są równe</string>
 
     //tales
     <string name="talespoliczAC">Obliczanie AC mając a i c</string>
@@ -71,4 +97,6 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     //katy
     <string name="katypoliczBzA">Obliczanie b mając a</string>
     <string name="katypoliczAzB">Obliczanie a mając b</string>
+
+    <string name="splashscreen">Witaj w programie FortranAlpha!</string>
 </resources>

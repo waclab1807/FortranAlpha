@@ -4,14 +4,13 @@
     <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
     <application
         android:allowBackup="true"
-        android:icon="@drawable/android_logo"
-        android:debuggable="true"
+        android:icon="@drawable/ico"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:windowSoftInputMode="stateHidden"
-            android:theme="@style/CustomAppTheme1"
-            android:name=".ListViewMain"
+            android:theme="@style/CustomAppTheme"
+            android:name=".SplashScreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ListViewMain"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme1"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"></activity>
+
         <activity android:name=".GraniastoslupPrawidlowyTrojkatny"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
@@ -31,13 +36,13 @@
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Sześcian"></activity>
+            android:label="@string/cube"></activity>
 
         <activity android:name=".Kwadrat"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Kwadrat"></activity>
+            android:label="@string/square"></activity>
 
         <activity android:name=".TrojkatPrawidlowy"
             android:windowSoftInputMode="stateHidden"
@@ -58,27 +63,21 @@
             android:theme="@style/CustomAppTheme"
             android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Twierdzenie Talesa"></activity>
+            android:label="@string/tales"></activity>
 
         <activity android:name=".Katy"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Zależności pomiędzy kątami"></activity>
-
-        <activity android:name=".NowaKlasa"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/CustomAppTheme"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="NowaKlasa"></activity>
+            android:label="@string/angle"></activity>
 
         <activity android:name=".ListViewGeometriaNaPlaszczyznie"
             android:theme="@style/CustomAppTheme1"
-            android:label="Geometria na plaszczyźnie"></activity>
+            android:label="@string/geomerty2d"></activity>
 
         <activity android:name=".ListViewGeometriaWPrzestrzeni"
             android:theme="@style/CustomAppTheme1"
-            android:label="Geometria w przestrzeni"></activity>
+            android:label="@string/geometry3d"></activity>
     </application>
 
 </manifest>

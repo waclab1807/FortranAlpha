@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +59,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
         pp_val = (EditText) findViewById(id.pp);
         a_val = (EditText) findViewById(id.a_val);
         h_val = (EditText) findViewById(id.h_val);
-        obwp_val = (EditText) findViewById(id.obwp);
+        obwp_val = (EditText) findViewById(id.obj);
         licz = (Button) findViewById(id.licz);
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.btnsqrt);

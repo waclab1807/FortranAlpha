@@ -1,7 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
-
-import static android.content.Context.*;
 
 /**
  * Created by waclab1807 on 31.03.15.
@@ -57,9 +55,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         Global.mContext = this.getBaseContext();
 
         pp_val = (EditText) findViewById(R.id.pp);
-        a_val = (EditText) findViewById(R.id.a);
-        D_val = (EditText) findViewById(R.id.d);
-        obwp_val = (EditText) findViewById(R.id.obwp);
+        a_val = (EditText) findViewById(R.id.pb);
+        D_val = (EditText) findViewById(R.id.obj);
+        obwp_val = (EditText) findViewById(R.id.obj);
         licz = (Button) findViewById(R.id.magic);
         clear = (Button) findViewById(R.id.clear);
         sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
@@ -69,6 +67,12 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         btnData = (Button)findViewById(R.id.btnData);
         btnSolution = (Button)findViewById(R.id.btnSolution);
         scrollView = (ScrollView)findViewById(R.id.dwa);
+
+        if (btnData.getVisibility() == View.VISIBLE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         mWebView = (WebView) findViewById(R.id.webSolution);
         WebSettings webSettings = mWebView.getSettings();

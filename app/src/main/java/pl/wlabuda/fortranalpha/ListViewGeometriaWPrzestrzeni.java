@@ -33,11 +33,11 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
         listView = (ListView) findViewById(R.id.list);
 
         // Defined Array values to show in ListView
-        String[] values = new String[] { "Graniastosłup prawidłowy trójkątny",
-                "Sześcian",
-                "Ostrosłup",
-                "Walec",
-                "Kula"
+        String[] values = new String[] { getString(R.string.prismAndscaleneTriangle),
+                getString(R.string.cube),
+                getString(R.string.pyramid),
+                getString(R.string.cylinder),
+                getString(R.string.globe)
         };
 
         // Define a new Adapter
@@ -94,18 +94,18 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
                     case 0:
                         AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometriaWPrzestrzeni.this);
                         builder
-                                .setTitle("Graniastosłup prawidłowy trójkątny")
-                                .setMessage("W podstawie ma trójkąt, którego wszystkie boki są równe")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle(getString(R.string.prismAndscaleneTriangle))
+                                .setMessage(R.string.prismAndscaleneTriangleDesc)
+                                .setIcon(R.drawable.gran_prosty)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;
                     case 1:
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometriaWPrzestrzeni.this);
                         builder1
-                                .setTitle("Sześcian")
-                                .setMessage("Złożony z kwadratów, wszystkie jego boki są równe")
-                                .setIcon(R.mipmap.ic_launcher)
+                                .setTitle(getString(R.string.cube))
+                                .setMessage(getString(R.string.cubeDesc))
+                                .setIcon(R.drawable.szescian)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;
@@ -126,43 +126,7 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        String ktoryElement = "";
-        switch (item.getItemId()) {
-            case R.id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(ListViewGeometriaWPrzestrzeni.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case R.id.item4:
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 }

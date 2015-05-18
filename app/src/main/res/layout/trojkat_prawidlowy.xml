@@ -132,7 +132,7 @@
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/obwp"
+                        android:id="@+id/obj"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="100"
@@ -189,7 +189,7 @@
                     android:text="Policz"
                     android:id="@+id/licz"
                     android:layout_gravity="center"
-                    android:layout_alignTop="@+id/a"
+                    android:layout_alignTop="@+id/pb"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true" />
 

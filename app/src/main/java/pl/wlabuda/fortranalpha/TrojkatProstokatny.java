@@ -54,7 +54,7 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
         pp_val = (EditText) findViewById(id.pp);
         a_val = (EditText) findViewById(id.a_val);
         h_val = (EditText) findViewById(id.h_val);
-        obwp_val = (EditText) findViewById(id.obwp);
+        obwp_val = (EditText) findViewById(id.obj);
         licz = (Button) findViewById(id.licz);
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.btnsqrt);

@@ -33,11 +33,11 @@ public class ListViewMain extends Activity {
         listView = (ListView) findViewById(R.id.list);
 
         // Defined Array values to show in ListView
-        String[] values = new String[] { "Figury płaskie",
-                "Bryły",
-                "Trygonometria",
-                "Twierdzenie Talesa",
-                "Kąty"
+        String[] values = new String[] { getString(R.string.geomerty2d),
+                getString(R.string.geometry3d),
+                getString(R.string.trigonometry),
+                getString(R.string.tales),
+                getString(R.string.angle)
         };
 
         // Define a new Adapter
@@ -77,9 +77,7 @@ public class ListViewMain extends Activity {
                         startActivity(intent1);
                         break;
                     case 2:
-                        Intent intent2 = new Intent(ListViewMain.this, NowaKlasa.class);
-                        startActivity(intent2);
-                        break;
+
                     case 3:
                         Intent intent3 = new Intent(ListViewMain.this, Tales.class);
                         startActivity(intent3);
@@ -109,45 +107,7 @@ public class ListViewMain extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        String ktoryElement = "";
-        switch (item.getItemId()) {
-            case R.id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Trygonometria-jedynka trygonometryczna itd. \n" +
-                                "Obliczanie delty i miejsc zerowych \n" +
-                                "Twierdzenie Bezouta" +
-                                "Ciągi" +
-                                "Odcinki w układzie współrzędnych" +
-                                "Macierze" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(ListViewMain.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case R.id.item4:
-                finish();
-                System.exit(0);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 }
