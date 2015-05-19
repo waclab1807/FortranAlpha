@@ -27,14 +27,12 @@
         <activity android:name=".GraniastoslupPrawidlowyTrojkatny"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Graniastosłup prawidłowy trójkątny"></activity>
 
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/cube"></activity>
 
@@ -47,13 +45,11 @@
         <activity android:name=".TrojkatPrawidlowy"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="Trojkąt prawidlowy"></activity>
 
         <activity android:name=".TrojkatProstokatny"
             android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="landscape"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
             android:label="Trojkąt prostokątny"></activity>
@@ -61,7 +57,6 @@
         <activity android:name=".Tales"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
-            android:screenOrientation="landscape"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/tales"></activity>
 

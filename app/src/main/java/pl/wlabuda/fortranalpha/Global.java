@@ -1,6 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 import android.content.Context;
+import android.widget.EditText;
 
 /**
  * Created by waclab1807 on 03.04.15.
@@ -13,21 +14,10 @@ public class Global {
         mContext = context;
     }
 
-    public Context getmContext() {
-        return mContext;
-    }
-
-    public static void setImgRes(int imgRes) {
-        Global.imgRes = imgRes;
-    }
-
-    private volatile static int imgRes=0;
-
-    public static int getImgRes() {
-        if(imgRes==0){
-
-
+    public static void setEmpty(EditText ... editTexts){
+        for(EditText t:editTexts){
+            t.setText("");
         }
-        return imgRes;
     }
+
 }

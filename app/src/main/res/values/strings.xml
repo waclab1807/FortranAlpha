@@ -2,7 +2,7 @@
     <string name="app_name">FortranAlpha</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Ustawienia</string>
 
     //buttons
     <string name="count">Policz</string>
@@ -15,6 +15,7 @@
 
     //extras
     <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
+    <string name="splashscreen">Witaj w programie FortranAlpha!</string>
     
     //names
     <string name="baseArea"> Pole podstawy: </string>
@@ -97,6 +98,4 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     //katy
     <string name="katypoliczBzA">Obliczanie b mając a</string>
     <string name="katypoliczAzB">Obliczanie a mając b</string>
-
-    <string name="splashscreen">Witaj w programie FortranAlpha!</string>
 </resources>

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.webkit.WebSettings;
@@ -14,7 +13,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import pl.wlabuda.fortranalpha.R.drawable;
@@ -25,7 +23,6 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     private Button licz;
     private Button clear;
-    private Button solutionbtn;
     private Button sqrtbtn;
     private Button powbtn;
     private EditText a_val;
@@ -36,18 +33,9 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private EditText f_val;
     private EditText ac_val;
     private EditText bd_val;
-    private TextView aclackable;
-    private TextView bclackable;
-    private TextView cclackable;
-    private TextView dclackable;
-    private TextView eclackable;
-    private TextView fclackable;
-    private TextView acclackable;
-    private TextView bdclackable;
     private ImageView figura;
     private EditText lastFocused;
     public static String tekst = "";
-    public static String tekst1 = "";
     private WebView mWebView;
 
     String a;
@@ -72,11 +60,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         mWebView.setBackgroundColor(0xff0);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-/*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-*/
+
         a_val = (EditText) findViewById(id.a);
         b_val = (EditText) findViewById(id.b);
         c_val = (EditText) findViewById(id.c);
@@ -87,68 +71,10 @@ public class Tales extends Activity implements OnFocusChangeListener {
         bd_val = (EditText) findViewById(id.BD);
         licz = (Button) findViewById(id.magic);
         clear = (Button) findViewById(id.clear);
-        sqrtbtn = (Button) findViewById(id.btnsqrt);
-        powbtn = (Button) findViewById(id.btnpow);
-        solutionbtn = (Button) findViewById(id.solutionbtn);
+        sqrtbtn = (Button) findViewById(id.sqrtbtn);
+        powbtn = (Button) findViewById(id.powbtn);
 
         figura = (ImageView) findViewById(id.imageView);
-
-        aclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesa);
-                a_val.requestFocus();
-            }
-        });
-        bclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesb);
-                b_val.requestFocus();
-            }
-        });
-        cclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesc);
-                c_val.requestFocus();
-            }
-        });
-        dclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesd);
-                d_val.requestFocus();
-            }
-        });
-        eclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talese);
-                e_val.requestFocus();
-            }
-        });
-        fclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesf);
-                f_val.requestFocus();
-            }
-        });
-        acclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesac);
-                ac_val.requestFocus();
-            }
-        });
-        bdclackable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                figura.setImageResource(drawable.talesbd);
-                bd_val.requestFocus();
-            }
-        });
 
         a_val.setOnFocusChangeListener(this);
         b_val.setOnFocusChangeListener(this);
@@ -159,68 +85,22 @@ public class Tales extends Activity implements OnFocusChangeListener {
         ac_val.setOnFocusChangeListener(this);
         bd_val.setOnFocusChangeListener(this);
 
-        a_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesa);
-                return false;
-            }
-        });
-        b_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesb);
-                return false;
-            }
-        });
-        c_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesc);
-                return false;
-            }
-        });
-        d_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesd);
-                return false;
-            }
-        });
-        e_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talese);
-                return false;
-            }
-        });
-        f_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesf);
-                return false;
-            }
-        });
-        ac_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesac);
-                return false;
-            }
-        });
-        bd_val.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                figura.setImageResource(drawable.talesbd);
-                return false;
-            }
-        });
+        new TouchListener(figura,R.drawable.talesa,a_val);
+        new TouchListener(figura,R.drawable.talesb,b_val);
+        new TouchListener(figura,R.drawable.talesc,c_val);
+        new TouchListener(figura,R.drawable.talesd,d_val);
+        new TouchListener(figura,R.drawable.talese,e_val);
+        new TouchListener(figura,R.drawable.talesf,f_val);
+        new TouchListener(figura,R.drawable.talesac,ac_val);
+        new TouchListener(figura,R.drawable.talesbd,bd_val);
+
+        figura.setImageResource(drawable.tales);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                tekst1 = "";
+                tekst = "";
                 figura.setImageResource(drawable.tales);
                 //todo schowac klawiature
 
@@ -369,14 +249,14 @@ public class Tales extends Activity implements OnFocusChangeListener {
                             Toast.LENGTH_LONG).show();
                 }
 
-                System.out.println("%%%%%%% " + tekst1);
+                System.out.println("%%%%%%% " + tekst);
                 String js = "<html><head>"
                         + "<link rel='stylesheet' href='file:///android_asset/mathscribe/jqmath-0.4.0.css'>"
                         + "<script src = 'file:///android_asset/mathscribe/jquery-1.4.3.min.js'></script>"
                         + "<script src = 'file:///android_asset/mathscribe/jqmath-etc-0.4.2.min.js'></script>"
                         + "</head><body>"
                         + "<script>var s =   " +
-                        "'" + tekst1 + "';" +
+                        "'" + tekst + "';" +
                         "M.parseMath(s);document.body.style.fontSize = \"20pt\";document.write(s);</script> " +
                         "</body>";
                 mWebView.loadDataWithBaseURL("", js, "text/html", "UTF-8", "");
@@ -386,17 +266,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a_val.setText("");
-                b_val.setText("");
-                c_val.setText("");
-                d_val.setText("");
-                e_val.setText("");
-                f_val.setText("");
-                ac_val.setText("");
-                bd_val.setText("");
-                //solution.setText("");
+                Global.setEmpty(a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
                 tekst = "";
-                tekst1 = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
 
                 Toast.makeText(Tales.this, getString(R.string.deleted),
@@ -422,20 +293,6 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 lastFocused.setSelection(1);
             }
         });
-        solutionbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //solution
-                /*solution.setMovementMethod(new ScrollingMovementMethod());
-                if (!solution.equals("")) {
-                    solution.setText("");
-                }
-                solution.setText(tekst);*/
-                mWebView.setVisibility(View.VISIBLE);
-            }
-        });
-
-
     }
 
     public Boolean isEmpty(EditText x) {
@@ -449,8 +306,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$AC={{" + Wartosc.formatuj(a) + "} + {" + Wartosc.formatuj(c) + "}}$$<br>" +
                 "$$AC={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -462,8 +319,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$BD={{" + Wartosc.formatuj(b) + "} + {" + Wartosc.formatuj(d) + "}}$$<br>" +
                 "$$BD={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -478,8 +335,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$d={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(a) + "}$$<br>" +
                 "$$d={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -494,8 +351,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$c={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(b) + "}$$<br>" +
                 "$$c={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -510,8 +367,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$b={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(c) + "}$$<br>" +
                 "$$b={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -526,8 +383,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$b={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(d) + "}$$<br>" +
                 "$$b={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -540,8 +397,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$c={" + Wartosc.formatuj(ac) + "}-{" + Wartosc.formatuj(a) + "}$$<br>" +
                 "$$c={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -554,8 +411,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$c={" + Wartosc.formatuj(ac) + "}-{" + Wartosc.formatuj(c) + "}$$<br>" +
                 "$$c={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -568,8 +425,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$d={" + Wartosc.formatuj(bd) + "}-{" + Wartosc.formatuj(b) + "}$$<br>" +
                 "$$d={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -582,8 +439,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$b={" + Wartosc.formatuj(bd) + "}-{" + Wartosc.formatuj(d) + "}$$<br>" +
                 "$$b={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return jeden;
     }
@@ -598,8 +455,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$b={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
                 "$$b={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -614,8 +471,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$a={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -630,8 +487,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$AC={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(e) + "}$$<br>" +
                 "$$AC={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -646,8 +503,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$BD={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(e) + "}$$<br>" +
                 "$$BD={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -662,8 +519,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$a={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(f) + "}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -678,8 +535,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$b={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(f) + "}$$<br>" +
                 "$$b={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -694,8 +551,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$f={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(b) + "}$$<br>" +
                 "$$f={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -710,8 +567,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$f={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(bd) + "}$$<br>" +
                 "$$f={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -726,8 +583,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$f={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(a) + "}$$<br>" +
                 "$$f={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }
@@ -742,8 +599,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 "$$e={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
                 "$$e={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
-        if (!tekst1.contains(solucja1)) {
-            tekst1 = tekst1 + solucja1;
+        if (!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
         }
         return dwa;
     }

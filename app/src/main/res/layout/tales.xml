@@ -183,7 +183,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/pb"
+                            android:id="@+id/b"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
@@ -216,7 +216,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/obj"
+                            android:id="@+id/d"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />

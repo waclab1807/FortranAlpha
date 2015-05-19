@@ -112,10 +112,10 @@ public class Katy extends Activity implements OnFocusChangeListener {
         WebSettings webSettingsH = mWebViewH.getSettings();
         webSettingsH.setJavaScriptEnabled(true);
 
-        a_val = (EditText) findViewById(id.pb);
-        b_val = (EditText) findViewById(id.pb);
+        a_val = (EditText) findViewById(id.a);
+        b_val = (EditText) findViewById(id.b);
         c_val = (EditText) findViewById(id.c);
-        d_val = (EditText) findViewById(id.obj);
+        d_val = (EditText) findViewById(id.d);
         e_val = (EditText) findViewById(id.e);
         f_val = (EditText) findViewById(id.f);
         g_val = (EditText) findViewById(id.g);
@@ -380,14 +380,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a_val.setText("");
-                b_val.setText("");
-                c_val.setText("");
-                d_val.setText("");
-                e_val.setText("");
-                f_val.setText("");
-                g_val.setText("");
-                h_val.setText("");
+                Global.setEmpty(a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
                 tekst = "";
                 new EditTextHide(false, a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
                 new WebViewHide(true, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewG, mWebViewH);

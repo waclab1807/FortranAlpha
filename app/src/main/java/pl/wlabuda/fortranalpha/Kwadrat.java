@@ -55,9 +55,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         Global.mContext = this.getBaseContext();
 
         pp_val = (EditText) findViewById(R.id.pp);
-        a_val = (EditText) findViewById(R.id.pb);
-        D_val = (EditText) findViewById(R.id.obj);
-        obwp_val = (EditText) findViewById(R.id.obj);
+        a_val = (EditText) findViewById(R.id.a);
+        D_val = (EditText) findViewById(R.id.d);
+        obwp_val = (EditText) findViewById(R.id.obwp);
         licz = (Button) findViewById(R.id.magic);
         clear = (Button) findViewById(R.id.clear);
         sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
@@ -238,10 +238,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a_val.setText("");
-                D_val.setText("");
-                pp_val.setText("");
-                obwp_val.setText("");
+                Global.setEmpty(a_val,D_val,pp_val,obwp_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 new EditTextHide(false,a_val,D_val,pp_val,obwp_val);
