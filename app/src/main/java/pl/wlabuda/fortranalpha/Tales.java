@@ -3,16 +3,19 @@ package pl.wlabuda.fortranalpha;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import pl.wlabuda.fortranalpha.R.drawable;
@@ -37,6 +40,18 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private EditText lastFocused;
     public static String tekst = "";
     private WebView mWebView;
+    private WebView mWebViewA;
+    private WebView mWebViewB;
+    private WebView mWebViewC;
+    private WebView mWebViewD;
+    private WebView mWebViewE;
+    private WebView mWebViewF;
+    private WebView mWebViewAC;
+    private WebView mWebViewBD;
+    private ScrollView scrollView;
+    private Button btnReview;
+    private Button btnData;
+    private Button btnSolution;
 
     String a;
     String b;
@@ -52,14 +67,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         super.onCreate(savedInstanceState);
         setContentView(layout.tales);
 
-        //GraniastoslupPrawidlowyTrojkatny.context = getApplicationContext();
         Global.mContext = this.getBaseContext();
-        //Global global1 = new Global(getBaseContext());
-
-        mWebView = (WebView) findViewById(id.webSolution);
-        mWebView.setBackgroundColor(0xff0);
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
 
         a_val = (EditText) findViewById(id.a);
         b_val = (EditText) findViewById(id.b);
@@ -73,8 +81,62 @@ public class Tales extends Activity implements OnFocusChangeListener {
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.sqrtbtn);
         powbtn = (Button) findViewById(id.powbtn);
-
+        btnReview = (Button)findViewById(R.id.btnReview);
+        btnData = (Button)findViewById(R.id.btnData);
+        btnSolution = (Button)findViewById(R.id.btnSolution);
+        scrollView = (ScrollView)findViewById(R.id.dwa);
         figura = (ImageView) findViewById(id.imageView);
+
+        if (btnData.getVisibility() == View.VISIBLE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+        mWebView = (WebView) findViewById(id.webSolution);
+        mWebView.setBackgroundColor(0xff0);
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        mWebViewA = (WebView) findViewById(id.weba);
+        WebSettings webSettingsA = mWebViewA.getSettings();
+        mWebViewA.setBackgroundColor(0xff0);
+        webSettingsA.setJavaScriptEnabled(true);
+
+        mWebViewB = (WebView) findViewById(R.id.webb);
+        WebSettings webSettingsB = mWebViewB.getSettings();
+        mWebViewB.setBackgroundColor(0xff0);
+        webSettingsB.setJavaScriptEnabled(true);
+
+        mWebViewC = (WebView) findViewById(R.id.webc);
+        WebSettings webSettingsC = mWebViewC.getSettings();
+        mWebViewC.setBackgroundColor(0xff0);
+        webSettingsC.setJavaScriptEnabled(true);
+
+        mWebViewD = (WebView) findViewById(R.id.webd);
+        WebSettings webSettings3 = mWebViewD.getSettings();
+        mWebViewD.setBackgroundColor(0xff0);
+        webSettings3.setJavaScriptEnabled(true);
+
+        mWebViewE = (WebView) findViewById(R.id.webe);
+        WebSettings webSettingsE = mWebViewE.getSettings();
+        mWebViewE.setBackgroundColor(0xff0);
+        webSettingsE.setJavaScriptEnabled(true);
+
+        mWebViewF = (WebView) findViewById(R.id.webf);
+        WebSettings webSettingsF = mWebViewF.getSettings();
+        mWebViewF.setBackgroundColor(0xff0);
+        webSettingsF.setJavaScriptEnabled(true);
+
+        mWebViewAC = (WebView) findViewById(id.webAC);
+        WebSettings webSettingsAC = mWebViewAC.getSettings();
+        mWebViewAC.setBackgroundColor(0xff0);
+        webSettingsAC.setJavaScriptEnabled(true);
+
+        mWebViewBD = (WebView) findViewById(R.id.webBD);
+        WebSettings webSettingsBD = mWebViewBD.getSettings();
+        mWebViewBD.setBackgroundColor(0xff0);
+        webSettingsBD.setJavaScriptEnabled(true);
 
         a_val.setOnFocusChangeListener(this);
         b_val.setOnFocusChangeListener(this);
@@ -94,7 +156,13 @@ public class Tales extends Activity implements OnFocusChangeListener {
         new TouchListener(figura,R.drawable.talesac,ac_val);
         new TouchListener(figura,R.drawable.talesbd,bd_val);
 
+        final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+
+        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+
         figura.setImageResource(drawable.tales);
+
+        btnSolution.setEnabled(false);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,161 +173,271 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 //todo schowac klawiature
 
                 int x = 0; //koniec petli, wszystko policzone
+                int y = 0; //za mało danych aby policzyć
 
-                try {
-                    while (x == 0) {
-                        if (!isEmpty(a_val) && !isEmpty(c_val) && isEmpty(ac_val)) {
-                            System.out.println("^^^^^^^^1");
-                            a = a_val.getText().toString();
-                            c = c_val.getText().toString();
-                            ac_val.setText(policzAC(a, c));
-                        } else if (!isEmpty(b_val) && !isEmpty(d_val) && isEmpty(bd_val)) {
-                            System.out.println("^^^^^^^^2");
-                            b = b_val.getText().toString();
-                            d = d_val.getText().toString();
-                            bd_val.setText(policzBD(b, d));
-                        } else if (!isEmpty(a_val) && !isEmpty(b_val) && !isEmpty(c_val) && isEmpty(d_val)) {
-                            System.out.println("^^^^^^^^3");
-                            a = a_val.getText().toString();
-                            b = b_val.getText().toString();
-                            c = c_val.getText().toString();
-                            d_val.setText(policzDzABC(a, b, c));
-                        } else if (!isEmpty(a_val) && !isEmpty(b_val) && !isEmpty(d_val) && isEmpty(c_val)) {
-                            System.out.println("^^^^^^^^4");
-                            a = a_val.getText().toString();
-                            b = b_val.getText().toString();
-                            d = d_val.getText().toString();
-                            c_val.setText(policzCzABD(a, b, d));
-                        } else if (!isEmpty(a_val) && !isEmpty(c_val) && !isEmpty(d_val) && isEmpty(b_val)) {
-                            System.out.println("^^^^^^^^5");
-                            a = a_val.getText().toString();
-                            c = c_val.getText().toString();
-                            d = d_val.getText().toString();
-                            b_val.setText(policzBzACD(a, c, d));
-                        } else if (!isEmpty(b_val) && !isEmpty(c_val) && !isEmpty(d_val) && isEmpty(a_val)) {
-                            System.out.println("^^^^^^^^6");
-                            b = b_val.getText().toString();
-                            c = c_val.getText().toString();
-                            d = d_val.getText().toString();
-                            a_val.setText(policzAzBCD(b, c, d));
-                        } else if (!isEmpty(ac_val) && !isEmpty(a_val) && isEmpty(c_val)) {
-                            System.out.println("^^^^^^^^7");
-                            a = a_val.getText().toString();
-                            AC = ac_val.getText().toString();
-                            c_val.setText(policzC(AC, a));
-                        } else if (!isEmpty(ac_val) && !isEmpty(c_val) && isEmpty(a_val)) {
-                            System.out.println("^^^^^^^^7");
-                            c = c_val.getText().toString();
-                            AC = ac_val.getText().toString();
-                            a_val.setText(policzA(AC, c));
-                        } else if (!isEmpty(bd_val) && !isEmpty(b_val) && isEmpty(d_val)) {
-                            System.out.println("^^^^^^^^8");
-                            b = b_val.getText().toString();
-                            BD = bd_val.getText().toString();
-                            d_val.setText(policzD(BD, b));
-                        } else if (!isEmpty(bd_val) && !isEmpty(d_val) && isEmpty(b_val)) {
-                            System.out.println("^^^^^^^^9");
-                            d = d_val.getText().toString();
-                            BD = bd_val.getText().toString();
-                            b_val.setText(policzB(BD, d));
-                        } else if (!isEmpty(bd_val) && !isEmpty(a_val) && !isEmpty(ac_val) && isEmpty(b_val)) {
-                            System.out.println("^^^^^^^14");
-                            BD = bd_val.getText().toString();
-                            AC = ac_val.getText().toString();
-                            a = a_val.getText().toString();
-                            b_val.setText(policzBzACBDA(AC, BD, a));
-                        } else if (!isEmpty(bd_val) && !isEmpty(b_val) && !isEmpty(ac_val) && isEmpty(a_val)) {
-                            System.out.println("^^^^^^^15");
-                            BD = bd_val.getText().toString();
-                            AC = ac_val.getText().toString();
-                            b = b_val.getText().toString();
-                            a_val.setText(policzAzACBDB(AC, BD, b));
-                        } else if (!isEmpty(a_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(ac_val)) {
-                            System.out.println("^^^^^^^16");
-                            a = a_val.getText().toString();
-                            e = e_val.getText().toString();
-                            f = f_val.getText().toString();
-                            c_val.setText(policzACzAEF(a, e, f));
-                        } else if (!isEmpty(b_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(bd_val)) {
-                            System.out.println("^^^^^^^17");
-                            b = b_val.getText().toString();
-                            e = e_val.getText().toString();
-                            f = f_val.getText().toString();
-                            d_val.setText(policzBDzBEF(b, e, f));
-                        } else if (!isEmpty(ac_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(a_val)) {
-                            System.out.println("^^^^^^^20");
-                            AC = ac_val.getText().toString();
-                            e = e_val.getText().toString();
-                            f = f_val.getText().toString();
-                            a_val.setText(policzAzACEF(AC, e, f));
-                        } else if (!isEmpty(bd_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(b_val)) {
-                            System.out.println("^^^^^^^21");
-                            BD = bd_val.getText().toString();
-                            e = e_val.getText().toString();
-                            f = f_val.getText().toString();
-                            b_val.setText(policzBzBDEF(BD, e, f));
-                        } else if (!isEmpty(bd_val) && !isEmpty(e_val) && !isEmpty(b_val) && isEmpty(f_val)) {
-                            System.out.println("^^^^^^^22");
-                            BD = bd_val.getText().toString();
-                            e = e_val.getText().toString();
-                            b = b_val.getText().toString();
-                            f_val.setText(policzFzBD(BD, b, e));
-                        } else if (!isEmpty(bd_val) && !isEmpty(f_val) && !isEmpty(b_val) && isEmpty(e_val)) {
-                            System.out.println("^^^^^^^23");
-                            BD = bd_val.getText().toString();
-                            f = f_val.getText().toString();
-                            b = b_val.getText().toString();
-                            e_val.setText(policzEzBD(BD, b, f));
-                        } else if (!isEmpty(ac_val) && !isEmpty(e_val) && !isEmpty(a_val) && isEmpty(f_val)) {
-                            System.out.println("^^^^^^^24");
-                            AC = ac_val.getText().toString();
-                            e = e_val.getText().toString();
-                            a = a_val.getText().toString();
-                            f_val.setText(policzFzAC(AC, a, e));
-                        } else if (!isEmpty(ac_val) && !isEmpty(f_val) && !isEmpty(a_val) && isEmpty(e_val)) {
-                            System.out.println("^^^^^^^24");
-                            AC = ac_val.getText().toString();
-                            f = f_val.getText().toString();
-                            a = a_val.getText().toString();
-                            e_val.setText(policzEzAC(AC, a, f));
-                        } else {      //za malo danych
-                            x = 1;
-                            Toast.makeText(Tales.this, getString(R.string.notEnough),
-                                    Toast.LENGTH_LONG).show();
+                if(Wartosc.nawiasy(a_val.getText().toString()) &&
+                        Wartosc.nawiasy(b_val.getText().toString()) &&
+                        Wartosc.nawiasy(c_val.getText().toString()) &&
+                        Wartosc.nawiasy(d_val.getText().toString())&&
+                        Wartosc.nawiasy(e_val.getText().toString())&&
+                        Wartosc.nawiasy(f_val.getText().toString())&&
+                        Wartosc.nawiasy(ac_val.getText().toString())&&
+                        Wartosc.nawiasy(bd_val.getText().toString())) {
+                    try {
+                        while (x == 0) {
+                            if (!isEmpty(a_val) && !isEmpty(c_val) && isEmpty(ac_val)) {
+                                System.out.println("^^^^^^^^1");
+                                a = a_val.getText().toString();
+                                c = c_val.getText().toString();
+                                String s = policzAC(a, c);
+                                ac_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(c, mWebViewC);
+                                JavaScript.showFormatted(s, mWebViewAC);
+                            } else if (!isEmpty(b_val) && !isEmpty(d_val) && isEmpty(bd_val)) {
+                                System.out.println("^^^^^^^^2");
+                                b = b_val.getText().toString();
+                                d = d_val.getText().toString();
+                                String s = policzBD(b, d);
+                                bd_val.setText(s);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(d, mWebViewD);
+                                JavaScript.showFormatted(s, mWebViewBD);
+                            } else if (!isEmpty(a_val) && !isEmpty(b_val) && !isEmpty(c_val) && isEmpty(d_val)) {
+                                System.out.println("^^^^^^^^3");
+                                a = a_val.getText().toString();
+                                b = b_val.getText().toString();
+                                c = c_val.getText().toString();
+                                String s = policzDzABC(a, b, c);
+                                d_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(c, mWebViewC);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewD);
+                            } else if (!isEmpty(a_val) && !isEmpty(b_val) && !isEmpty(d_val) && isEmpty(c_val)) {
+                                System.out.println("^^^^^^^^4");
+                                a = a_val.getText().toString();
+                                b = b_val.getText().toString();
+                                d = d_val.getText().toString();
+                                String s = policzCzABD(a, b, d);
+                                c_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(d, mWebViewD);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewC);
+                            } else if (!isEmpty(a_val) && !isEmpty(c_val) && !isEmpty(d_val) && isEmpty(b_val)) {
+                                System.out.println("^^^^^^^^5");
+                                a = a_val.getText().toString();
+                                c = c_val.getText().toString();
+                                d = d_val.getText().toString();
+                                String s = policzBzACD(a, c, d);
+                                b_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(c, mWebViewC);
+                                JavaScript.showFormatted(d, mWebViewD);
+                                JavaScript.showFormatted(s, mWebViewB);
+                            } else if (!isEmpty(b_val) && !isEmpty(c_val) && !isEmpty(d_val) && isEmpty(a_val)) {
+                                System.out.println("^^^^^^^^6");
+                                b = b_val.getText().toString();
+                                c = c_val.getText().toString();
+                                d = d_val.getText().toString();
+                                String s = policzAzBCD(b, c, d);
+                                a_val.setText(s);
+                                JavaScript.showFormatted(d, mWebViewD);
+                                JavaScript.showFormatted(c, mWebViewC);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewA);
+                            } else if (!isEmpty(ac_val) && !isEmpty(a_val) && isEmpty(c_val)) {
+                                System.out.println("^^^^^^^^7");
+                                a = a_val.getText().toString();
+                                AC = ac_val.getText().toString();
+                                String s = policzC(AC, a);
+                                c_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(s, mWebViewC);
+                            } else if (!isEmpty(ac_val) && !isEmpty(c_val) && isEmpty(a_val)) {
+                                System.out.println("^^^^^^^^7");
+                                c = c_val.getText().toString();
+                                AC = ac_val.getText().toString();
+                                String s = policzA(AC, c);
+                                a_val.setText(s);
+                                JavaScript.showFormatted(c, mWebViewC);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(s, mWebViewA);
+                            } else if (!isEmpty(bd_val) && !isEmpty(b_val) && isEmpty(d_val)) {
+                                System.out.println("^^^^^^^^8");
+                                b = b_val.getText().toString();
+                                BD = bd_val.getText().toString();
+                                String s = policzD(BD, b);
+                                d_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewD);
+                            } else if (!isEmpty(bd_val) && !isEmpty(d_val) && isEmpty(b_val)) {
+                                System.out.println("^^^^^^^^9");
+                                d = d_val.getText().toString();
+                                BD = bd_val.getText().toString();
+                                String s = policzB(BD, d);
+                                b_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(d, mWebViewD);
+                                JavaScript.showFormatted(s, mWebViewB);
+                            } else if (!isEmpty(bd_val) && !isEmpty(a_val) && !isEmpty(ac_val) && isEmpty(b_val)) {
+                                System.out.println("^^^^^^^14");
+                                BD = bd_val.getText().toString();
+                                AC = ac_val.getText().toString();
+                                a = a_val.getText().toString();
+                                String s = policzBzACBDA(AC, BD, a);
+                                b_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(s, mWebViewB);
+                            } else if (!isEmpty(bd_val) && !isEmpty(b_val) && !isEmpty(ac_val) && isEmpty(a_val)) {
+                                System.out.println("^^^^^^^15");
+                                BD = bd_val.getText().toString();
+                                AC = ac_val.getText().toString();
+                                b = b_val.getText().toString();
+                                String s = policzAzACBDB(AC, BD, b);
+                                a_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewA);
+                            } else if (!isEmpty(a_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(ac_val)) {
+                                System.out.println("^^^^^^^16");
+                                a = a_val.getText().toString();
+                                e = e_val.getText().toString();
+                                f = f_val.getText().toString();
+                                String s = policzACzAEF(a, e, f);
+                                c_val.setText(s);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(s, mWebViewC);
+                            } else if (!isEmpty(b_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(bd_val)) {
+                                System.out.println("^^^^^^^17");
+                                b = b_val.getText().toString();
+                                e = e_val.getText().toString();
+                                f = f_val.getText().toString();
+                                String s = policzBDzBEF(b, e, f);
+                                d_val.setText(s);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(s, mWebViewD);
+                            } else if (!isEmpty(ac_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(a_val)) {
+                                System.out.println("^^^^^^^20");
+                                AC = ac_val.getText().toString();
+                                e = e_val.getText().toString();
+                                f = f_val.getText().toString();
+                                String s = policzAzACEF(AC, e, f);
+                                a_val.setText(s);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(s, mWebViewA);
+                            } else if (!isEmpty(bd_val) && !isEmpty(e_val) && !isEmpty(f_val) && isEmpty(b_val)) {
+                                System.out.println("^^^^^^^21");
+                                BD = bd_val.getText().toString();
+                                e = e_val.getText().toString();
+                                f = f_val.getText().toString();
+                                String s = policzBzBDEF(BD, e, f);
+                                b_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(s, mWebViewB);
+                            } else if (!isEmpty(bd_val) && !isEmpty(e_val) && !isEmpty(b_val) && isEmpty(f_val)) {
+                                System.out.println("^^^^^^^22");
+                                BD = bd_val.getText().toString();
+                                e = e_val.getText().toString();
+                                b = b_val.getText().toString();
+                                String s = policzFzBD(BD, b, e);
+                                f_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(s, mWebViewF);
+                            } else if (!isEmpty(bd_val) && !isEmpty(f_val) && !isEmpty(b_val) && isEmpty(e_val)) {
+                                System.out.println("^^^^^^^23");
+                                BD = bd_val.getText().toString();
+                                f = f_val.getText().toString();
+                                b = b_val.getText().toString();
+                                String s = policzEzBD(BD, b, f);
+                                e_val.setText(s);
+                                JavaScript.showFormatted(BD, mWebViewBD);
+                                JavaScript.showFormatted(b, mWebViewB);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(s, mWebViewE);
+                            } else if (!isEmpty(ac_val) && !isEmpty(e_val) && !isEmpty(a_val) && isEmpty(f_val)) {
+                                System.out.println("^^^^^^^24");
+                                AC = ac_val.getText().toString();
+                                e = e_val.getText().toString();
+                                a = a_val.getText().toString();
+                                String s = policzFzAC(AC, a, e);
+                                f_val.setText(s);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(e, mWebViewE);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(s, mWebViewF);
+                            } else if (!isEmpty(ac_val) && !isEmpty(f_val) && !isEmpty(a_val) && isEmpty(e_val)) {
+                                System.out.println("^^^^^^^24");
+                                AC = ac_val.getText().toString();
+                                f = f_val.getText().toString();
+                                a = a_val.getText().toString();
+                                String s = policzEzAC(AC, a, f);
+                                e_val.setText(s);
+                                JavaScript.showFormatted(AC, mWebViewAC);
+                                JavaScript.showFormatted(f, mWebViewF);
+                                JavaScript.showFormatted(a, mWebViewA);
+                                JavaScript.showFormatted(s, mWebViewE);
+                            } else {      //za malo danych
+                                y = 1;
+                                x = 1;
+                                btnSolution.setEnabled(true);
+                                new WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD,mWebViewE,mWebViewF,mWebViewAC,mWebViewBD);
+                                new EditTextHide(true, a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
+                                imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                Toast.makeText(Tales.this, getString(R.string.notEnough),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            //wszystko policzone, koniec petli
+                            if (!a_val.getText().toString().equals("") &&
+                                    !a_val.getText().toString().equals("") &&
+                                    !b_val.getText().toString().equals("") &&
+                                    !c_val.getText().toString().equals("") &&
+                                    !d_val.getText().toString().equals("") &&
+                                    !e_val.getText().toString().equals("") &&
+                                    !f_val.getText().toString().equals("") &&
+                                    !ac_val.getText().toString().equals("") &&
+                                    !bd_val.getText().toString().equals("")
+                                    ) {
+                                x = 1;
+                                Toast.makeText(Tales.this, getString(R.string.premium),
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-                        //wszystko policzone, koniec petli
-                        if (!a_val.getText().toString().equals("") &&
-                                !a_val.getText().toString().equals("") &&
-                                !b_val.getText().toString().equals("") &&
-                                !c_val.getText().toString().equals("") &&
-                                !d_val.getText().toString().equals("") &&
-                                !e_val.getText().toString().equals("") &&
-                                !f_val.getText().toString().equals("") &&
-                                !ac_val.getText().toString().equals("") &&
-                                !bd_val.getText().toString().equals("")
-                                ) {
-                            x = 1;
-                            Toast.makeText(Tales.this, getString(R.string.premium),
-                                    Toast.LENGTH_LONG).show();
-                        }
+                    } catch (Exception e) {
+                        System.out.println("eMessage " + e.getMessage());
+                        Toast.makeText(Tales.this, getString(R.string.ups),
+                                Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e) {
-                    System.out.println("eMessage " + e.getMessage());
-                    Toast.makeText(Tales.this, getString(R.string.ups),
+                }else{
+                    Toast.makeText(Tales.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
+                JavaScript JS = new JavaScript(tekst);
+                mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
-                System.out.println("%%%%%%% " + tekst);
-                String js = "<html><head>"
-                        + "<link rel='stylesheet' href='file:///android_asset/mathscribe/jqmath-0.4.0.css'>"
-                        + "<script src = 'file:///android_asset/mathscribe/jquery-1.4.3.min.js'></script>"
-                        + "<script src = 'file:///android_asset/mathscribe/jqmath-etc-0.4.2.min.js'></script>"
-                        + "</head><body>"
-                        + "<script>var s =   " +
-                        "'" + tekst + "';" +
-                        "M.parseMath(s);document.body.style.fontSize = \"20pt\";document.write(s);</script> " +
-                        "</body>";
-                mWebView.loadDataWithBaseURL("", js, "text/html", "UTF-8", "");
+                licz.setEnabled(false);
+                figura.setImageResource(drawable.tales);
+
+                TabListener refresh = new TabListener();
+                if (btnData.getVisibility() == View.VISIBLE) {
+                    refresh.refresh(figura, scrollView, mWebView);
+                }
             }
         });
 
@@ -269,28 +447,32 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 Global.setEmpty(a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-
+                new EditTextHide(false,a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
+                new WebViewHide(true, mWebViewA,mWebViewB,mWebViewC,mWebViewD,mWebViewE,mWebViewF,mWebViewAC,mWebViewBD);
+                licz.setEnabled(true);
+                btnSolution.setEnabled(false);
+                figura.setImageResource(R.drawable.tales);
                 Toast.makeText(Tales.this, getString(R.string.deleted),
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_SHORT).show();
             }
         });
         sqrtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //lastFocused.setText("()\u221a()");
-                //lastFocused.setText(lastFocused.getText() + "()\u221a()");
-                String wacek = "()\u221a()";
-                System.out.println("lastFocused" + lastFocused.getSelectionStart());
-                lastFocused.append(wacek);
-                lastFocused.setSelection(4);
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()\u221a()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 1;
+                lastFocused.setSelection(a);
 
             }
         });
         powbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastFocused.setText("()^()");
-                lastFocused.setSelection(1);
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()^()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 4;
+                lastFocused.setSelection(a);
             }
         });
     }
@@ -615,45 +797,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        //String ktoryElement = "";
-        switch (item.getItemId()) {
-            case id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle(getString(R.string.about))
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle(getString(R.string.futurePlans))
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case id.item3:
-                Toast.makeText(Tales.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case id.item4:
-                //finish();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                //System.exit(0);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 

@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/baseArea"
-                    android:id="@+id/textView18"
+                    android:id="@+id/textView23"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -104,7 +104,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText2"
+                        android:id="@+id/pp"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -113,7 +113,7 @@
                     <WebView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/webView3"
+                        android:id="@+id/webpp"
                         android:background="@android:color/background_light"
                         android:visibility="gone" />
                 </FrameLayout>
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" Objętość:"
-                    android:id="@+id/textView19"
+                    android:id="@+id/textView26"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -139,7 +139,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText3"
+                        android:id="@+id/obj"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -150,7 +150,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView4" />
+                        android:id="@+id/webobj" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" Pole boczne:"
-                    android:id="@+id/textView20"
+                    android:id="@+id/textView46"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -174,7 +174,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText4"
+                        android:id="@+id/pb"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -185,7 +185,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView5" />
+                        android:id="@+id/webpb" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -199,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/baseCircuit"
-                    android:id="@+id/textView54"
+                    android:id="@+id/textView47"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -209,7 +209,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText5"
+                        android:id="@+id/obwp"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -220,7 +220,7 @@
                         android:layout_height="fill_parent"
                         android:background="@android:color/background_light"
                         android:visibility="gone"
-                        android:id="@+id/webView6" />
+                        android:id="@+id/webobwp" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" Obwód bryły:"
-                    android:id="@+id/textView55"
+                    android:id="@+id/textView48"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -244,7 +244,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText6"
+                        android:id="@+id/obwb"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -255,7 +255,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView7" />
+                        android:id="@+id/webobwb" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" Pole całkowite:"
-                    android:id="@+id/textView56"
+                    android:id="@+id/textView49"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -279,7 +279,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText7"
+                        android:id="@+id/pc"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -290,7 +290,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView8" />
+                        android:id="@+id/webpc" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -304,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" Pole trójkąta wewnętrznego:"
-                    android:id="@+id/textView57"
+                    android:id="@+id/textView50"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -314,7 +314,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText8"
+                        android:id="@+id/ptw"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -325,7 +325,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView9" />
+                        android:id="@+id/webptw" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -339,7 +339,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" a: "
-                    android:id="@+id/textView58"
+                    android:id="@+id/textView51"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -349,7 +349,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText9"
+                        android:id="@+id/a"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -360,7 +360,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView10" />
+                        android:id="@+id/webA" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -374,7 +374,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" D: "
-                    android:id="@+id/textView59"
+                    android:id="@+id/textView52"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -384,7 +384,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText10"
+                        android:id="@+id/D"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -395,7 +395,7 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView11" />
+                        android:id="@+id/webD" />
                 </FrameLayout>
             </LinearLayout>
 
@@ -409,7 +409,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" d: "
-                    android:id="@+id/textView60"
+                    android:id="@+id/textView53"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -419,7 +419,7 @@
                     <EditText
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/editText11"
+                        android:id="@+id/d"
                         android:layout_weight="1"
                         android:focusable="true"
                         android:maxLength="15"
@@ -430,12 +430,12 @@
                         android:layout_height="fill_parent"
                         android:visibility="gone"
                         android:background="@android:color/background_light"
-                        android:id="@+id/webView12" />
+                        android:id="@+id/webd" />
                 </FrameLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

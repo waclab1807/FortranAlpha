@@ -23,7 +23,6 @@ public class Szescian extends Activity implements OnFocusChangeListener {
 
     private Button licz;
     private Button clear;
-    private Button solutionbtn;
     private Button sqrtbtn;
     private Button powbtn;
     private EditText pp_val;
@@ -36,10 +35,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
     private EditText obwp_val;
     private EditText obwb_val;
     private EditText triangle_val;
-    private TextView solution;
     private EditText lastFocused;
     public static String tekst = "";
-    private static Context context;
 
     String a;
     String pp;
@@ -58,13 +55,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.szescian);
+        Global.mContext = this.getBaseContext();
 
-        Szescian.context = getApplicationContext();
-/*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-*/
         pp_val = (EditText) findViewById(R.id.pp);
         obj_val = (EditText) findViewById(R.id.obj);
         pb_val = (EditText) findViewById(R.id.pb);
@@ -77,10 +69,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         triangle_val = (EditText) findViewById(R.id.ptw);
         licz = (Button) findViewById(R.id.magic);
         clear = (Button) findViewById(R.id.clear);
-        sqrtbtn = (Button) findViewById(R.id.btnsqrt);
-        powbtn = (Button) findViewById(R.id.btnpow);
-        solutionbtn = (Button) findViewById(R.id.solutionbtn);
-        solution = (TextView) findViewById(R.id.solution);
+        sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
+        powbtn = (Button) findViewById(R.id.powbtn);
 
         a_val.setOnFocusChangeListener(this);
         d_val.setOnFocusChangeListener(this);
@@ -108,7 +98,6 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 boolean bobwb = false;
                 boolean btriangle = false;
 
-                solution.setText("");
                 tekst = "";
 
                 int x = 0; //koniec petli, wszystko policzone
@@ -245,7 +234,6 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 obwp_val.setText("");
                 obwb_val.setText("");
                 triangle_val.setText("");
-                solution.setText("");
                 tekst = "";
 
                 Toast.makeText(Szescian.this, "Skasowane!",
@@ -270,20 +258,6 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 lastFocused.setSelection(1);
             }
         });
-        solutionbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //solution
-                solution.setMovementMethod(new ScrollingMovementMethod());
-                if(!solution.equals("")){
-                    solution.setText("");
-                }
-                solution.setText(tekst);
-            }
-        });
-
-
-
     }
     public Boolean isEmpty(EditText x){
         if(x.getText().toString().equals("")){
@@ -291,10 +265,6 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         }else{
             return false;
         }
-    }
-
-    public static Context getAppContext() {
-        return Szescian.context;
     }
 
     private String policzPp(String a) {

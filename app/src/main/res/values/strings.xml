@@ -7,8 +7,8 @@
     //buttons
     <string name="count">Policz</string>
     <string name="clear">Wyczyść</string>
-    <string name="sqrt">Wstaw\npierwiastek</string>
-    <string name="pow">Wstaw\npotęgę</string>
+    <string name="sqrt">Wstaw \u221ax\u0305</string>
+    <string name="pow">Wstaw x\u207F</string>
     <string name="data">Dane</string>
     <string name="review">Podgląd</string>
     <string name="solution">Rozwiązanie</string>
@@ -18,6 +18,7 @@
     <string name="splashscreen">Witaj w programie FortranAlpha!</string>
     
     //names
+    <string name="area"> Pole: </string>
     <string name="baseArea"> Pole podstawy: </string>
     <string name="baseCircuit"> Obwód podstawy: </string>
     <string name="capacity"> Objętość: </string>
@@ -33,10 +34,9 @@
     <string name="finish">Zakończ</string>
 
     //toast
-    <string name="notEnough">Za mało danych aby policzyć!</string>
+    <string name="notEnough">Za mało danych aby policzyć!\nWyczyść i wprowadź nowe dane</string>
     <string name="solutionText">Uzupełnij dane i kliknij policz, aby zobaczyć rozwiązanie</string>
-    <string name="premium">Wszystko jest już policzone :) \n
-Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
+    <string name="premium">Wszystko jest już policzone :)\nZobacz rozwiązanie!</string>
     <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
     <string name="bracket">Liczba nawiasów otwierających nie równa się
 liczbie nawiasów zamykających! Popraw to, prosze.</string>
