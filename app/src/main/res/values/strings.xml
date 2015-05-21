@@ -20,6 +20,7 @@
     //names
     <string name="area"> Pole: </string>
     <string name="baseArea"> Pole podstawy: </string>
+    <string name="circuit"> Obwód: </string>
     <string name="baseCircuit"> Obwód podstawy: </string>
     <string name="capacity"> Objętość: </string>
     <string name="sideArea"> Pole boczne: </string>
@@ -53,6 +54,7 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="pyramid">Ostrosłup</string>
     <string name="cylinder">Walec</string>
     <string name="globe">Kula</string>
+    <string name="circle">Koło</string>
     <string name="prismAndscaleneTriangle">Graniastosłup prowidłowy trójkątny</string>
     <string name="scaleneTriangle">Trójkątny prawidłowy</string>
     <string name="isoscelesTriangle">Trójkątny równoramienny</string>
@@ -94,6 +96,55 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="kwadratpoliczObwp">Obliczanie obwodu mając a</string>
     <string name="kwadratpoliczAzPp">Obliczanie a mając pole</string>
     <string name="kwadratpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
+
+    //szescian
+    <string name="szescianpoliczPp">Obliczanie pola podstawy mając a</string>
+    <string name="szescianpoliczAzObj">Obliczanie a mając objętość</string>
+    <string name="szescianpoliczAzPc">Obliczanie a mając pole całkowite</string>
+    <string name="szescianpoliczAzPb">Obliczanie a mając pole boczne</string>
+    <string name="szescianpoliczAzd">Obliczanie a mając przekątną bryły</string>
+    <string name="szescianpoliczAzD">Obliczanie a mając przekątną podstawy</string>
+    <string name="szescianpoliczAzTriangle">Obliczanie a mając pole trójkąta wewnętrznego</string>
+    <string name="szescianpoliczD">Obliczanie przekątnej podstawy mając a</string>
+    <string name="szescianpoliczd">Obliczanie przekątnej bryły mając a</string>
+    <string name="szescianpoliczPb">Obliczanie pola bocznego mając a</string>
+    <string name="szescianpoliczPc">Obliczanie pola całkowitego mając a</string>
+    <string name="szescianpoliczObwb">Obliczanie obwodu bryły mając a</string>
+    <string name="szescianpoliczTriangle">Obliczanie pola trójkąta wewnętrznego mając a</string>
+    <string name="szescianpoliczObj">Obliczanie objętości mając a</string>
+    <string name="szescianpoliczObwp">Obliczanie obwodu podstawy mając a</string>
+    <string name="szescianpoliczAzPp">Obliczanie a mając pole podstawy</string>
+    <string name="szescianpoliczAzObwb">Obliczanie a mając obwód bryły</string>
+    <string name="szescianpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
+
+    //graniastoslup prawidlowy trojkatny
+    <string name="granprostroj_policzPp">Obliczanie pola podstawy mając a</string>
+    <string name="granprostroj_policzPpZObjiH">Obliczanie pola podstawy mając objętość i H</string>
+    <string name="granprostroj_policzAzHid">Obliczanie a mając H i d</string>
+    <string name="granprostroj_policzhzHiD">Obliczanie h mając H i D</string>
+    <string name="granprostroj_policzHzObjiA">Obliczanie H mając objętość i a</string>
+    <string name="granprostroj_policzHzdiA">Obliczanie H mając d i a</string>
+    <string name="granprostroj_policzHzDiA">Obliczanie H mając D i a</string>
+    <string name="granprostroj_policzHzPciA">Obliczanie H mając Pc i a</string>
+    <string name="granprostroj_policzHzPbiA">Obliczanie H mając Pb i a</string>
+    <string name="granprostroj_policzHzObwbiA">Obliczanie H mając obwód bryły i a</string>
+    <string name="granprostroj_policzHzTriangleiA">Obliczanie H mając Ptw i a</string>
+    <string name="granprostroj_policzPpzPciPb">Obliczanie pola podstawy mając Pc i Pb</string>
+    <string name="granprostroj_policzDzHiA">Obliczanie D mając H i a</string>
+    <string name="granprostroj_policzdzHiA">Obliczanie d mając H i a</string>
+    <string name="granprostroj_policzPbzAiH">Obliczanie pola bocznego mając a i H</string>
+    <string name="granprostroj_policzPczAiH">Obliczanie pola całkowitego mając a i H</string>
+    <string name="granprostroj_policzObwbZAiH">Obliczanie obwodu bryły mając a i H</string>
+    <string name="granprostroj_policzTriangleZaiH">Obliczanie pola trójkąta wewnętrznego mając a i H</string>
+    <string name="granprostroj_policzObjZaiH">Obliczanie objętości mając a i H</string>
+    <string name="granprostroj_policzObwp">Obliczanie obwodu podstawy mając a</string>
+    <string name="granprostroj_policzAzh">Obliczanie a mając h</string>
+    <string name="granprostroj_policzAzHiPb">Obliczanie a mając H i pole boczne</string>
+    <string name="granprostroj_policzAzPp">Obliczanie a mając pole podstawy</string>
+    <string name="granprostroj_policzAzHiObwb">Obliczanie a mając H i obwód bryły</string>
+    <string name="granprostroj_policzAzObwp">Obliczanie a mając obwód podstawy</string>
+    <string name="granprostroj_policzhza">Obliczanie h mając a</string>
+    <string name="granprostroj_policzhzPp">Obliczanie h mając pole podstawy</string>
 
     //katy
     <string name="katypoliczBzA">Obliczanie b mając a</string>

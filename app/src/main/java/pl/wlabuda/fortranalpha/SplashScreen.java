@@ -8,7 +8,7 @@ import android.view.Window;
 
 public class SplashScreen extends Activity {
 
-	private static final int CZAS = 50;
+	private static final int CZAS = 500;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

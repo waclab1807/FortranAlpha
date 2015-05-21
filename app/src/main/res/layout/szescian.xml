@@ -126,7 +126,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:id="@+id/webpp"
-                            android:background="@android:color/background_light"
                             android:visibility="gone" />
                     </FrameLayout>
                 </LinearLayout>
@@ -140,7 +139,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" Objętość:"
+                        android:text="@string/capacity"
                         android:id="@+id/textView26"
                         android:layout_gravity="center_vertical" />
 
@@ -161,7 +160,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webobj" />
                     </FrameLayout>
                 </LinearLayout>
@@ -175,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" Pole boczne:"
+                        android:text="@string/sideArea"
                         android:id="@+id/textView46"
                         android:layout_gravity="center_vertical" />
 
@@ -196,7 +194,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webpb" />
                     </FrameLayout>
                 </LinearLayout>
@@ -230,7 +227,6 @@
                         <WebView
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:background="@android:color/background_light"
                             android:visibility="gone"
                             android:id="@+id/webobwp" />
                     </FrameLayout>
@@ -245,7 +241,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" Obwód bryły:"
+                        android:text="@string/blockRound"
                         android:id="@+id/textView48"
                         android:layout_gravity="center_vertical" />
 
@@ -266,7 +262,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webobwb" />
                     </FrameLayout>
                 </LinearLayout>
@@ -280,7 +275,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" Pole całkowite:"
+                        android:text="@string/overallArea"
                         android:id="@+id/textView49"
                         android:layout_gravity="center_vertical" />
 
@@ -301,7 +296,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webpc" />
                     </FrameLayout>
                 </LinearLayout>
@@ -315,7 +309,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" Pole trójkąta wewnętrznego:"
+                        android:text="@string/triangleArea"
                         android:id="@+id/textView50"
                         android:layout_gravity="center_vertical" />
 
@@ -336,7 +330,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webptw" />
                     </FrameLayout>
                 </LinearLayout>
@@ -356,7 +349,7 @@
 
                     <FrameLayout
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent" >
+                        android:layout_height="fill_parent">
 
                         <EditText
                             android:layout_width="fill_parent"
@@ -371,7 +364,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webA" />
                     </FrameLayout>
                 </LinearLayout>
@@ -406,7 +398,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webD" />
                     </FrameLayout>
                 </LinearLayout>
@@ -441,7 +432,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:background="@android:color/background_light"
                             android:id="@+id/webd" />
                     </FrameLayout>
                 </LinearLayout>

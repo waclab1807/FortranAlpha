@@ -1,6 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 import android.content.Context;
+import android.webkit.WebView;
 import android.widget.EditText;
 
 /**
@@ -17,6 +18,12 @@ public class Global {
     public static void setEmpty(EditText ... editTexts){
         for(EditText t:editTexts){
             t.setText("");
+        }
+    }
+
+    public static void setEmptyWeb(WebView... webViews){
+        for(WebView t:webViews){
+            t.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
         }
     }
 

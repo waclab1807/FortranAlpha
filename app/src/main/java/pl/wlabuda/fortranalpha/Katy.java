@@ -351,6 +351,8 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                Toast.makeText(Katy.this, getString(R.string.premium),
+                                        Toast.LENGTH_LONG).show();
                                 test = true;
                             }
                         }

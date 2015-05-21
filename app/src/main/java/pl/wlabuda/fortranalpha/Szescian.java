@@ -1,17 +1,18 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Toast;
 
@@ -37,11 +38,25 @@ public class Szescian extends Activity implements OnFocusChangeListener {
     private EditText triangle_val;
     private EditText lastFocused;
     public static String tekst = "";
+    private Button btnReview;
+    private Button btnData;
+    private Button btnSolution;
+    private WebView mWebView;
+    private WebView mWebViewPp;
+    private WebView mWebViewA;
+    private WebView mWebViewObj;
+    private WebView mWebViewObwp;
+    private WebView mWebViewPb;
+    private WebView mWebViewPc;
+    private WebView mWebViewPtw;
+    private WebView mWebViewObwb;
+    private WebView mWebViewD;
+    private WebView mWebViewd;
+    private ImageView figura;
+    private ScrollView scrollView;
 
     String a;
     String pp;
-    String H;
-    String h;
     String D;
     String d;
     String obj;
@@ -71,6 +86,11 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         clear = (Button) findViewById(R.id.clear);
         sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
         powbtn = (Button) findViewById(R.id.powbtn);
+        figura = (ImageView) findViewById(R.id.imageView);
+        btnReview = (Button) findViewById(R.id.btnReview);
+        btnData = (Button) findViewById(R.id.btnData);
+        btnSolution = (Button) findViewById(R.id.btnSolution);
+        scrollView = (ScrollView) findViewById(R.id.dwa);
 
         a_val.setOnFocusChangeListener(this);
         d_val.setOnFocusChangeListener(this);
@@ -82,6 +102,94 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         obwb_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
         triangle_val.setOnFocusChangeListener(this);
+
+        if (btnData.getVisibility() == View.VISIBLE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
+        mWebView = (WebView) findViewById(R.id.webSolution);
+        WebSettings webSettings = mWebView.getSettings();
+        mWebView.setBackgroundColor(0xff0);
+        webSettings.setJavaScriptEnabled(true);
+
+        mWebViewPp = (WebView) findViewById(R.id.webpp);
+        WebSettings webSettings1 = mWebViewPp.getSettings();
+        mWebViewPp.setBackgroundColor(0xff0);
+        webSettings1.setJavaScriptEnabled(true);
+
+        mWebViewA = (WebView) findViewById(R.id.webA);
+        WebSettings webSettings2 = mWebViewA.getSettings();
+        mWebViewA.setBackgroundColor(0xff0);
+        webSettings2.setJavaScriptEnabled(true);
+
+        mWebViewD = (WebView) findViewById(R.id.webD);
+        WebSettings webSettings3 = mWebViewD.getSettings();
+        mWebViewD.setBackgroundColor(0xff0);
+        webSettings3.setJavaScriptEnabled(true);
+
+        mWebViewObwp = (WebView) findViewById(R.id.webobwp);
+        WebSettings webSettings4 = mWebViewObwp.getSettings();
+        mWebViewObwp.setBackgroundColor(0xff0);
+        webSettings4.setJavaScriptEnabled(true);
+
+        mWebViewObj = (WebView) findViewById(R.id.webobj);
+        WebSettings webSettings5 = mWebViewObj.getSettings();
+        mWebViewObj.setBackgroundColor(0xff0);
+        webSettings5.setJavaScriptEnabled(true);
+
+        mWebViewPb = (WebView) findViewById(R.id.webpb);
+        WebSettings webSettings6 = mWebViewPb.getSettings();
+        mWebViewPb.setBackgroundColor(0xff0);
+        webSettings6.setJavaScriptEnabled(true);
+
+        mWebViewObwb = (WebView) findViewById(R.id.webobwb);
+        WebSettings webSettings7 = mWebViewObwb.getSettings();
+        mWebViewObwb.setBackgroundColor(0xff0);
+        webSettings7.setJavaScriptEnabled(true);
+
+        mWebViewPc = (WebView) findViewById(R.id.webpc);
+        WebSettings webSettings8 = mWebViewPc.getSettings();
+        mWebViewPc.setBackgroundColor(0xff0);
+        webSettings8.setJavaScriptEnabled(true);
+
+        mWebViewPtw = (WebView) findViewById(R.id.webptw);
+        WebSettings webSettings9 = mWebViewPtw.getSettings();
+        mWebViewPtw.setBackgroundColor(0xff0);
+        webSettings9.setJavaScriptEnabled(true);
+
+        mWebViewd = (WebView) findViewById(R.id.webd);
+        WebSettings webSettings0 = mWebViewd.getSettings();
+        mWebViewd.setBackgroundColor(0xff0);
+        webSettings0.setJavaScriptEnabled(true);
+
+        a_val.setOnFocusChangeListener(this);
+        D_val.setOnFocusChangeListener(this);
+        pp_val.setOnFocusChangeListener(this);
+        obwp_val.setOnFocusChangeListener(this);
+        d_val.setOnFocusChangeListener(this);
+        triangle_val.setOnFocusChangeListener(this);
+        obwb_val.setOnFocusChangeListener(this);
+        pc_val.setOnFocusChangeListener(this);
+        obj_val.setOnFocusChangeListener(this);
+        pb_val.setOnFocusChangeListener(this);
+
+        new TouchListener(figura, R.drawable.szescianpp, pp_val);
+        new TouchListener(figura, R.drawable.szesciana, a_val);
+        new TouchListener(figura, R.drawable.szesciand, d_val);
+        new TouchListener(figura, R.drawable.szescianobwp, obwp_val);
+        new TouchListener(figura, R.drawable.szescianpb, pb_val);
+        new TouchListener(figura, R.drawable.szescianpc, pc_val);
+        new TouchListener(figura, R.drawable.szesciandd, D_val);
+        new TouchListener(figura, R.drawable.szescianobwb, obwb_val);
+        new TouchListener(figura, R.drawable.szescianobj, obj_val);
+        new TouchListener(figura, R.drawable.szescianptw, triangle_val);
+
+        final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        new TabListener(btnReview, btnData, btnSolution, figura, scrollView, mWebView);
+        figura.setImageResource(R.drawable.szescian);
+        btnSolution.setEnabled(false);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,122 +209,219 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 tekst = "";
 
                 int x = 0; //koniec petli, wszystko policzone
+                int y = 0; //za malo danych
 
-                while (x == 0) {
-                    //obliczanie a lub pp lub obwp
-                    //czy jest a
-                    if (!isEmpty(a_val)) {
-                        System.out.println("^^^^^^^^1");
-                        a = a_val.getText().toString();
-                        ba = true;
-                        if (isEmpty(pp_val) && !bpp) {
-                            pp_val.setText(policzPp(a));
-                            bpp = true;
+                if (Wartosc.nawiasy(a_val.getText().toString()) &&
+                        Wartosc.nawiasy(pp_val.getText().toString()) &&
+                        Wartosc.nawiasy(D_val.getText().toString()) &&
+                        Wartosc.nawiasy(obwp_val.getText().toString())&&
+                        Wartosc.nawiasy(obwb_val.getText().toString())&&
+                        Wartosc.nawiasy(pb_val.getText().toString())&&
+                        Wartosc.nawiasy(pc_val.getText().toString())&&
+                        Wartosc.nawiasy(d_val.getText().toString())&&
+                        Wartosc.nawiasy(obj_val.getText().toString())&&
+                        Wartosc.nawiasy(triangle_val.getText().toString())) {
+                    try {
+                        while (x == 0) {
+                            //obliczanie a lub pp lub obwp
+                            //czy jest a
+                            if (!isEmpty(a_val)) {
+                                System.out.println("^^^^^^^^1");
+                                a = a_val.getText().toString();
+                                ba = true;
+                                if (isEmpty(pp_val) && !bpp) {
+                                    String s = policzPp(a);
+                                    pp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                }
+                                if (isEmpty(obwp_val) && !bobwp) {
+                                    String s = policzObwp(a);
+                                    obwp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObwp);
+                                    bobwp = true;
+                                }
+                                if (isEmpty(obwb_val) && !bobwb) {
+                                    String s = policzObwb(a);
+                                    obwb_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObwb);
+                                    bobwb = true;
+                                }
+                                if (isEmpty(obj_val) && !bobj) {
+                                    String s = policzObj(a);
+                                    obj_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObj);
+                                    bobj = true;
+                                }
+                                if (isEmpty(pc_val) && !bpc) {
+                                    String s = policzPc(a);
+                                    pc_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPc);
+                                    bpc = true;
+                                }
+                                if (isEmpty(pb_val) && !bpb) {
+                                    String s = policzPb(a);
+                                    pb_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPb);
+                                    bpb = true;
+                                }
+                                if (isEmpty(triangle_val) && !btriangle) {
+                                    String s = policzTriangle(a);
+                                    triangle_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPtw);
+                                    btriangle = true;
+                                }
+                                if (isEmpty(d_val) && !bd) {
+                                    String s = policzd(a);
+                                    d_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewd);
+                                    bd = true;
+                                }
+                                if (isEmpty(D_val) && !bD) {
+                                    String s = policzD(a);
+                                    D_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewD);
+                                    bD = true;
+                                }
+                            } else {
+                                if (!isEmpty(pp_val)) {
+                                    System.out.println("^^^^^^^^2");
+                                    pp = pp_val.getText().toString();
+                                    JavaScript.showFormatted(pp, mWebViewPp);
+                                    bpp = true;
+                                    String s = policzAzPp(pp);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(obj_val)) {
+                                    System.out.println("^^^^^^^^3");
+                                    obj = obj_val.getText().toString();
+                                    JavaScript.showFormatted(obj, mWebViewObj);
+                                    bobj = true;
+                                    String s = policzAzObj(obj);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(pc_val)) {
+                                    System.out.println("^^^^^^^^4");
+                                    pc = pc_val.getText().toString();
+                                    JavaScript.showFormatted(pc, mWebViewPc);
+                                    bpc = true;
+                                    String s = policzAzPc(pc);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(pb_val)) {
+                                    System.out.println("^^^^^^^^5");
+                                    pb = pb_val.getText().toString();
+                                    JavaScript.showFormatted(pb, mWebViewPb);
+                                    bpb = true;
+                                    String s = policzAzPb(pb);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(d_val)) {
+                                    System.out.println("^^^^^^^^6");
+                                    d = d_val.getText().toString();
+                                    JavaScript.showFormatted(d, mWebViewd);
+                                    bd = true;
+                                    String s = policzAzd(d);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(D_val)) {
+                                    System.out.println("^^^^^^^^7");
+                                    D = D_val.getText().toString();
+                                    JavaScript.showFormatted(D, mWebViewD);
+                                    bD = true;
+                                    String s = policzAzD(D);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(triangle_val)) {
+                                    System.out.println("^^^^^^^^8");
+                                    triangle = triangle_val.getText().toString();
+                                    JavaScript.showFormatted(triangle, mWebViewPtw);
+                                    btriangle = true;
+                                    String s = policzAzTriangle(triangle);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(obwb_val)) {
+                                    System.out.println("^^^^^^^^9");
+                                    obwb = obwb_val.getText().toString();
+                                    JavaScript.showFormatted(obwb, mWebViewObwb);
+                                    bobwb = true;
+                                    String s = policzAzObwb(obwb);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (!isEmpty(obwp_val)) {
+                                    System.out.println("^^^^^^^^0");
+                                    obwp = obwp_val.getText().toString();
+                                    JavaScript.showFormatted(obwp, mWebViewObwp);
+                                    bobwp = true;
+                                    String s = policzAzObwp(obwp);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                            }
+                            //za malo danych
+                            if(isEmpty(pp_val) && isEmpty(pb_val) && isEmpty(pc_val) && isEmpty(obwp_val) && isEmpty(obwb_val) && isEmpty(triangle_val) && isEmpty(a_val) && isEmpty(d_val) && isEmpty(D_val) && isEmpty(obj_val)){
+                                Toast.makeText(Szescian.this, getString(R.string.notEnough),
+                                        Toast.LENGTH_LONG).show();
+                                x = 1;
+                                y = 1;
+                            }
+                            //wszystko policzone, koniec petli
+                            if (!a_val.getText().toString().equals("") &&
+                                    !pp_val.getText().toString().equals("") &&
+                                    !obwp_val.getText().toString().equals("") &&
+                                    !obj_val.getText().toString().equals("") &&
+                                    !pb_val.getText().toString().equals("") &&
+                                    !pc_val.getText().toString().equals("") &&
+                                    !triangle_val.getText().toString().equals("") &&
+                                    !D_val.getText().toString().equals("") &&
+                                    !d_val.getText().toString().equals("") &&
+                                    !obwb_val.getText().toString().equals("")
+                                    ) {
+                                x = 1;
+                                figura.setImageResource(R.drawable.szescian);
+                                licz.setEnabled(false);
+                                btnSolution.setEnabled(true);
+                                imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                Toast.makeText(Szescian.this, getString(R.string.premium),
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-                        if (isEmpty(obwp_val) && !bobwp) {
-                            obwp_val.setText(policzObwp(a));
-                            bobwp = true;
-                        }
-                        if (isEmpty(obwb_val) && !bobwb) {
-                            obwb_val.setText(policzObwb(a));
-                            bobwb = true;
-                        }
-                        if (isEmpty(obj_val) && !bobj) {
-                            obj_val.setText(policzObj(a));
-                            bobj = true;
-                        }
-                        if (isEmpty(pc_val) && !bpc) {
-                            pc_val.setText(policzPc(a));
-                            bpc = true;
-                        }
-                        if (isEmpty(pb_val) && !bpb) {
-                            pb_val.setText(policzPb(a));
-                            bpb = true;
-                        }
-                        if (isEmpty(triangle_val) && !btriangle) {
-                            triangle_val.setText(policzTriangle(a));
-                            btriangle = true;
-                        }
-                        if (isEmpty(d_val) && !bd) {
-                            d_val.setText(policzd(a));
-                            bd = true;
-                        }
-                        if (isEmpty(D_val) && !bD) {
-                            D_val.setText(policzD(a));
-                            bD = true;
-                        }
-                    }else{
-                        if (!isEmpty(pp_val)) {
-                            System.out.println("^^^^^^^^2");
-                            pp = pp_val.getText().toString();
-                            bpp = true;
-                            a_val.setText(policzAzPp(pp));
-                        }
-                        if (!isEmpty(obj_val)) {
-                            System.out.println("^^^^^^^^3");
-                            obj = obj_val.getText().toString();
-                            bobj = true;
-                            a_val.setText(policzAzObj(obj));
-                        }
-                        if (!isEmpty(pc_val)) {
-                            System.out.println("^^^^^^^^4");
-                            pc = pc_val.getText().toString();
-                            bpc = true;
-                            a_val.setText(policzAzPc(pc));
-                        }
-                        if (!isEmpty(pb_val)) {
-                            System.out.println("^^^^^^^^5");
-                            pb = pb_val.getText().toString();
-                            bpb = true;
-                            a_val.setText(policzAzPb(pb));
-                        }
-                        if (!isEmpty(d_val)) {
-                            System.out.println("^^^^^^^^6");
-                            d = d_val.getText().toString();
-                            bd = true;
-                            a_val.setText(policzAzd(d));
-                        }
-                        if (!isEmpty(D_val)) {
-                            System.out.println("^^^^^^^^7");
-                            D = D_val.getText().toString();
-                            bD = true;
-                            a_val.setText(policzAzD(D));
-                        }
-                        if (!isEmpty(triangle_val)) {
-                            System.out.println("^^^^^^^^8");
-                            triangle = triangle_val.getText().toString();
-                            btriangle = true;
-                            a_val.setText(policzAzTriangle(triangle));
-                        }
-                        if (!isEmpty(obwb_val)) {
-                            System.out.println("^^^^^^^^9");
-                            obwb = obwb_val.getText().toString();
-                            bobwb = true;
-                            a_val.setText(policzAzObwb(obwb));
-                        }
-                        if (!isEmpty(obwp_val)) {
-                            System.out.println("^^^^^^^^0");
-                            obwp = obwp_val.getText().toString();
-                            bobwp = true;
-                            a_val.setText(policzAzObwp(obwp));
-                        }
-                    }
-                    //wszystko policzone, koniec petli
-                    if (!a_val.getText().toString().equals("") &&
-                            !pp_val.getText().toString().equals("") &&
-                            !obwp_val.getText().toString().equals("") &&
-                            !obj_val.getText().toString().equals("") &&
-                            !pb_val.getText().toString().equals("") &&
-                            !pc_val.getText().toString().equals("") &&
-                            !triangle_val.getText().toString().equals("") &&
-                            !D_val.getText().toString().equals("") &&
-                            !d_val.getText().toString().equals("") &&
-                            !obwb_val.getText().toString().equals("")
-                            ) {
-                        x = 1;
-                        Toast.makeText(Szescian.this, "Skorzystaj z konta premium aby zobaczyć rozwiązanie",
+                    } catch (Exception e) {
+                        System.out.println("emessage " + e.getMessage());
+                        Toast.makeText(Szescian.this, getString(R.string.ups),
                                 Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(Szescian.this, getString(R.string.bracket),
+                            Toast.LENGTH_LONG).show();
+                }
+                JavaScript JS = new JavaScript(tekst);
+                mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
+
+                if(y == 0) {
+                    new WebViewHide(false, mWebView, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
+                    new EditTextHide(true, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
+                }
+                TabListener refresh = new TabListener();
+                if (btnData.getVisibility() == View.VISIBLE) {
+                    refresh.refresh(figura, scrollView, mWebView);
                 }
             }
         });
@@ -224,222 +429,222 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a_val.setText("");
-                d_val.setText("");
-                D_val.setText("");
-                pp_val.setText("");
-                pb_val.setText("");
-                pc_val.setText("");
-                obj_val.setText("");
-                obwp_val.setText("");
-                obwb_val.setText("");
-                triangle_val.setText("");
+                Global.setEmpty(pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
                 tekst = "";
-
-                Toast.makeText(Szescian.this, "Skasowane!",
-                        Toast.LENGTH_LONG).show();
+                mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
+                new EditTextHide(false,pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
+                new WebViewHide(true, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
+                licz.setEnabled(true);
+                btnSolution.setEnabled(false);
+                figura.setImageResource(R.drawable.szescian);
+                Toast.makeText(Szescian.this, getString(R.string.deleted),
+                        Toast.LENGTH_SHORT).show();
             }
         });
         sqrtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //lastFocused.setText("()\u221a()");
-                //lastFocused.setText(lastFocused.getText() + "()\u221a()");
-                String wacek = "()\u221a()";
-                System.out.println("lastFocused" + lastFocused.getSelectionStart());
-                lastFocused.append(wacek);
-                lastFocused.setSelection(5);
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()\u221a()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 1;
+                lastFocused.setSelection(a);
             }
         });
         powbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastFocused.setText("()^()");
-                lastFocused.setSelection(1);
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()^()");
+                int s = lastFocused.getSelectionStart();
+                int a = s - 4;
+                lastFocused.setSelection(a);
             }
         });
     }
-    public Boolean isEmpty(EditText x){
-        if(x.getText().toString().equals("")){
+
+    public Boolean isEmpty(EditText x) {
+        if (x.getText().toString().equals("")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     private String policzPp(String a) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String solucja = "Obliczanie pola podstawy mając a \n\n" +
-                "Pp = a^2 \n\n" +
-                "Pp = " + a + "^2 \n\n" +
-                "Pp = " + jeden + "\n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, a, "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczPp)+"</b></center><br>" +
+                "$$Pp={a^2}$$<br>" +
+                "$$Pp={{" + Wartosc.formatuj(a) + "}^2$$<br>" +
+                "$$Pp={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
     }
 
     private String policzAzObj(String Obj) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String cztery = Wartosc.policz(Obj,jeden,"/");
-        String solucja = "Obliczanie a mając objętość \n\n" +
-                "Obj = Pp * a \n\n" +
-                "a = Obj / Pp \n\n" +
-                "Pp = a^2 \n\n" +
-                "a = "+Obj+" / "+jeden+" \n\n" +
-                "a = "+cztery+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        double a = 1.0;
+        double b = 3.0;
+        double y = a/b;
+        String jeden = ""+(int)Math.pow(Double.parseDouble(Obj),y);
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzObj)+"</b></center><br>" +
+                "$$Obj={Pp * a}$$<br>" +
+                "$$Pp={a * a}$$<br>" +
+                "$$Obj={a^3}$$<br>" +
+                "$$a={\u221b{Obj}}$$<br>" +
+                "$$a={\u221b{"+Wartosc.formatuj(Obj)+"}}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return cztery;
+        return jeden;
     }
 
     private String policzAzPc(String Pc) {
-        String piec = Wartosc.policz("6",Pc,"*");
-        String dwa = Wartosc.policz("()\u221a("+piec+")","1","*");
-        String trzy = Wartosc.policz(piec,"6","/");
-        String solucja = "Obliczanie a mając pole całkowite \n\n" +
-                "a = √(Pc / 6) \n\n" +
-                "a = √(Pc) / √(6) \n\n" +
-                "a = [√(Pc) * √(6)] / 6 \n\n" +
-                "a = [√(Pc * 6)] / 6 \n\n" +
-                "a = [√("+Pc+" * 6)] / 6 \n\n" +
-                "a = [√("+piec+")] / 6 \n\n" +
-                "a = ("+dwa+") / 6 \n\n" +
-                "a = "+trzy+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("6", Pc, "*");
+        String dwa = Wartosc.policz("()\u221a(" + jeden + ")", "1", "*");
+        String trzy = Wartosc.policz(dwa, "6", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPc)+"</b></center><br>" +
+                "$$a={√{Pc / 6}}$$<br>" +
+                "$$a={√Pc / √6}$$<br>" +
+                "$$a={{√Pc * √6}}/{6}$$<br>" +
+                "$$a={√{Pc*6}}/{6}$$<br>" +
+                "$$a={√{" + Wartosc.formatuj(Pc) + "*6}}/{6}$$<br>" +
+                "$$a={√" + Wartosc.formatuj(jeden) + "}/{6}$$<br>" +
+                "$$a={" + Wartosc.formatuj(dwa) + "}/{6}$$<br>" +
+                "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return trzy;
     }
 
     private String policzAzPb(String Pb) {
-        String dwa = Wartosc.policz("()\u221a("+Pb+")","1","*");
-        String piec = Wartosc.policz(dwa,"2","/");
-        String solucja = "Obliczanie a mając pole boczne \n\n" +
-                "a = √(Pb / 4) \n\n" +
-                "a = √(Pb) / 2 \n\n" +
-                "a = √("+Pb+") / 2 \n\n" +
-                "a = ("+dwa+") / 2 \n\n" +
-                "a = "+piec+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("()\u221a(" + Pb + ")", "1", "*");
+        String dwa = Wartosc.policz(jeden, "2", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPb)+"</b></center><br>" +
+                "$$a={√{Pc / 4}}$$<br>" +
+                "$$a={√Pc / 2}$$<br>" +
+                "$$a={√" + Wartosc.formatuj(Pb) + "}/{2}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}/{2}$$<br>" +
+                "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return piec;
+        return dwa;
     }
 
     private String policzAzd(String d) {
-        String dwa = Wartosc.policz("()\u221a(3)",d,"*");
-        String piec = Wartosc.policz(dwa,"3","/");
-        String solucja = "Obliczanie a mając przekątną bryły \n\n" +
-                "d = a * √(3) \n\n" +
-                "a = d / √(3) \n\n" +
-                "a = [d * √(3)] / 3 \n\n" +
-                "a = ["+d+" * √(3)] / 3 \n\n" +
-                "a = ("+dwa+") / 3 \n\n" +
-                "a = "+piec+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("()\u221a(3)", d, "*");
+        String dwa = Wartosc.policz(jeden, "3", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzd)+"</b></center><br>" +
+                "$$d={a * √3}$$<br>" +
+                "$$a={d / √3}$$<br>" +
+                "$$a={{d * √3}}/{3}$$<br>" +
+                "$$a={" + Wartosc.formatuj(d) + "*√3}/{3}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}/{3}$$<br>" +
+                "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return piec;
+        return dwa;
     }
 
     private String policzAzD(String D) {
-        String dwa = Wartosc.policz("()\u221a(2)",D,"*");
-        String piec = Wartosc.policz(dwa,"2","/");
-        String solucja = "Obliczanie a mając przekątną podstawy \n\n" +
-                "D = a * √(2) \n\n" +
-                "a = D / √(2) \n\n" +
-                "a = [D * √(2)] / 2 \n\n" +
-                "a = ["+D+" * √(2)] / 2 \n\n" +
-                "a = ("+dwa+") / 2 \n\n" +
-                "a = "+piec+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("()\u221a(2)", D, "*");
+        String dwa = Wartosc.policz(jeden, "2", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzD)+"</b></center><br>" +
+                "$$D={a * √2}$$<br>" +
+                "$$a={D / √2}$$<br>" +
+                "$$a={{D * √2}}/{2}$$<br>" +
+                "$$a={" + Wartosc.formatuj(D) + "*√3}/{3}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}/{3}$$<br>" +
+                "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return piec;
+        return dwa;
     }
 
     private String policzAzTriangle(String Triangle) {
-        String jeden = Wartosc.policz("2",Triangle,"*");
-        String dwa = Wartosc.policz(jeden,"()\u221a(2)","/");
-        String trzy = Wartosc.policz("()\u221a("+dwa+")","1","*");
-        String solucja = "Obliczanie a mając pole trójkąta wewnętrznego \n\n" +
-                "Ptw = (1 / 2) * D * a \n\n" +
-                "D = a * √(2) \n\n" +
-                "Ptw = (1 / 2) * a * √(2) * a \n\n" +
-                "Ptw = [(a^2) * √(2)] / 2 \n\n" +
-                "2 * Ptw = (a^2) * √(2) \n\n" +
-                "(2 * Ptw) / √(2) = (a^2) \n\n" +
-                "a = √[(2 * Ptw) / √(2)] \n\n" +
-                "a = √[(2 * "+Triangle+") / √(2)] \n\n" +
-                "a = √["+jeden+" / √(2)] \n\n" +
-                "a = √["+dwa+"] \n\n" +
-                "a = "+trzy+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("2", Triangle, "*");
+        String dwa = Wartosc.policz(jeden, "()\u221a(2)", "/");
+        String trzy = Wartosc.policz("()\u221a(" + dwa + ")", "1", "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzTriangle)+"</b></center><br>" +
+                "$$Ptw={{1/2} * D * a}$$<br>" +
+                "$$D={a * √2}$$<br>" +
+                "$$Ptw={{1/2} * a * √2 * a}$$<br>" +
+                "$$Ptw={{{a^2} * √2}/2}$$<br>" +
+                "$${2*Ptw}={{a^2} * √2}$$<br>" +
+                "$${{2*Ptw}/√2}={a^2}$$<br>" +
+                "$$a=√{{2*Ptw}/√2}$$<br>" +
+                "$$a=√{{2*"+Wartosc.formatuj(Triangle)+"}/√2}$$<br>" +
+                "$$a=√{{"+Wartosc.formatuj(jeden)+"}/√2}$$<br>" +
+                "$$a=√{"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return trzy;
     }
 
     private String policzD(String a) {
-        String jeden = Wartosc.policz(a,"()\u221a(2)","*");
-        String solucja = "Obliczanie przekątnej podstawy mając a \n\n" +
-                "D = a * √(2) \n\n" +
-                "D = "+a+" * √(2) \n\n" +
-                "D = "+jeden+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, "()\u221a(2)", "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczD)+"</b></center><br>" +
+                "$$D={a*√2}$$<br>" +
+                "$$D={{" + Wartosc.formatuj(a) + "}*√2$$<br>" +
+                "$$D={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
     }
 
     private String policzd(String a) {
-        String jeden = Wartosc.policz(a,"()\u221a(3)","*");
-        String solucja = "Obliczanie przekątnej bryły mając a \n\n" +
-                "d = a * √(3) \n\n" +
-                "d = "+a+" * √(3) \n\n" +
-                "d = "+jeden+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, "()\u221a(3)", "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczd)+"</b></center><br>" +
+                "$$d={a*√3}$$<br>" +
+                "$$d={{" + Wartosc.formatuj(a) + "}*√3$$<br>" +
+                "$$d={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
     }
 
     private String policzPb(String a) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String dwa = Wartosc.policz("4",jeden,"*");
-        String solucja = "Obliczanie pola bocznego mając a \n\n" +
-                "Pb = 4 * (a^2) \n\n" +
-                "Pb = 4 * ("+a+"^2)  \n\n" +
-                "Pb = 4 * "+jeden+" \n\n" +
-                "Pb = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, a, "*");
+        String dwa = Wartosc.policz("4", jeden, "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczPb)+"</b></center><br>" +
+                "$$Pb={4*{a^2}}$$<br>" +
+                "$$Pb={4*{{" + Wartosc.formatuj(a) + "}^2}}$$<br>" +
+                "$$Pb={4*{" + Wartosc.formatuj(jeden) + "}}$$<br>" +
+                "$$Pb={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return dwa;
     }
 
     private String policzPc(String a) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String dwa = Wartosc.policz(jeden,"6","*");
-        String solucja = "Obliczanie pola całkowitego mając a \n\n" +
-                "Pc = 6 * (a^2) \n\n" +
-                "Pc = 6 * ("+a+"^2)  \n\n" +
-                "Pc = 6 * "+jeden+" \n\n" +
-                "Pc = " + dwa + " \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, a, "*");
+        String dwa = Wartosc.policz(jeden, "6", "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczPc)+"</b></center><br>" +
+                "$$Pc={6*{a^2}}$$<br>" +
+                "$$Pc={6*{{" + Wartosc.formatuj(a) + "}^2}}$$<br>" +
+                "$$Pc={6*{" + Wartosc.formatuj(jeden) + "}}$$<br>" +
+                "$$Pc={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return dwa;
@@ -447,101 +652,101 @@ public class Szescian extends Activity implements OnFocusChangeListener {
 
     private String policzObwb(String a) {
         String jeden = Wartosc.policz("12", a, "*");
-        String solucja = "Obliczanie obwodu bryły mając a \n\n" +
-                "ObwB = 12 * a \n\n" +
-                "ObwB = 12 * "+a+" \n\n" +
-                "ObwB = " + jeden + " \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczObwb)+"</b></center><br>" +
+                "$$ObwB={12*a}$$<br>" +
+                "$$ObwB={12*{" + Wartosc.formatuj(a) + "}}$$<br>" +
+                "$$ObwB={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
     }
 
     private String policzTriangle(String a) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String dwa = Wartosc.policz(jeden,"()\u221a(2)","*");
-        String trzy = Wartosc.policz(dwa,"2","/");
-        String solucja = "Obliczanie pola trójkąta wewnętrznego mając a \n\n" +
-                "Ptw = (1 / 2) * D * a \n\n" +
-                "D = a * √(2) \n\n" +
-                "Ptw = (1 / 2) * a * √(2) * a \n\n" +
-                "Ptw = [(a^2) * √(2)] / 2 \n\n" +
-                "Ptw = [("+a+"^2) * √(2)] / 2 \n\n" +
-                "Ptw = ["+jeden+" * √(2)] / 2 \n\n" +
-                "Ptw = ["+dwa+"] / 2 \n\n" +
-                "Ptw = "+trzy+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, a, "*");
+        String dwa = Wartosc.policz(jeden, "()\u221a(2)", "*");
+        String trzy = Wartosc.policz(dwa, "2", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczTriangle)+"</b></center><br>" +
+                "$$Ptw={1/2}*D*a$$<br>" +
+                "$$D={a*√2}$$<br>" +
+                "$$Ptw={1/2}*a*√2*a$$<br>" +
+                "$$Ptw={{a^2}*√2}/2$$<br>" +
+                "$$a={{{" + Wartosc.formatuj(a) + "}^2}*√2}/2$$<br>" +
+                "$$a={{" + Wartosc.formatuj(jeden) + "}*√2}/2$$<br>" +
+                "$$a={" + Wartosc.formatuj(dwa) + "}/2$$<br>" +
+                "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return trzy;
     }
 
     private String policzObj(String a) {
-        String jeden = Wartosc.policz(a,a,"*");
-        String dwa = Wartosc.policz(jeden,a,"*");
-        String solucja = "Obliczanie objętości mając a \n\n" +
-                "Obj = a^3 \n\n" +
-                "Obj = "+a+"^3 \n\n" +
-                "Obj = "+dwa+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz(a, a, "*");
+        String dwa = Wartosc.policz(jeden, a, "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczObj)+"</b></center><br>" +
+                "$$Obj={a^3}$$<br>" +
+                "$$Obj={" + Wartosc.formatuj(a) + "}^3$$<br>" +
+                "$$Obj={" + Wartosc.formatuj(dwa) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return dwa;
     }
 
     private String policzObwp(String a) {
-        String jeden = Wartosc.policz("4",a,"*");
-        String solucja = "Obliczanie obwodu podstawy mając a \n\n" +
-                "ObwP = 4 * a \n\n" +
-                "ObwP = 4 * "+a+" \n\n" +
-                "ObwP = "+jeden+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("4", a, "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczObwp)+"</b></center><br>" +
+                "$$ObwP={4*a}$$<br>" +
+                "$$ObwP={4*{" + Wartosc.formatuj(a) + "}}$$<br>" +
+                "$$ObwP={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
     }
 
     private String policzAzPp(String Pp) {
-        String trzy = Wartosc.policz("()\u221a("+Pp+")","1","*");
-        String solucja = "Obliczanie a mając pole podstawy \n\n" +
-                "Pp = a^2 \n\n" +
-                "a = √(Pp) \n\n" +
-                "a = √("+Pp+") \n\n" +
-                "a = " + trzy + "\n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+        String jeden = Wartosc.policz("()\u221a(" + Pp + ")", "1", "*");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPp)+"</b></center><br>" +
+                "$$Pp={a^2}$$<br>" +
+                "$$a={√Pp}$$<br>" +
+                "$$a={√{" + Wartosc.formatuj(Pp) + "}}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return trzy;
+        return jeden;
     }
 
-    private String policzAzObwb(String Obwb){
-        String trzy = Wartosc.policz(Obwb,"12","/");
-        String solucja = "Obliczanie a mając obwód bryły \n\n" +
-                "ObwB = 12 * a \n\n" +
-                "a = (ObwB / 12) \n\n" +
-                "a = ("+Obwb +" / 12) \n\n" +
-                "a = "+trzy+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+    private String policzAzObwb(String Obwb) {
+        String jeden = Wartosc.policz(Obwb, "12", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzObwb)+"</b></center><br>" +
+                "$$ObwB={12*a}$$<br>" +
+                "$$a={ObwB/12}$$<br>" +
+                "$$a={{" + Wartosc.formatuj(Obwb) + "}/12}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
-        return trzy;
+        return jeden;
     }
 
-    private String policzAzObwp(String Obwp){
-        String jeden = Wartosc.policz(Obwp,"4","/");
-        String solucja = "Obliczanie a mając obwód podstawy \n\n" +
-                "ObwP = 4 * a \n\n" +
-                "a = ObwP / 4 \n\n" +
-                "a = "+Obwp+" / 4 \n\n" +
-                "a = "+jeden+" \n\n" +
-                "*===========================*\n\n";
-        if(!tekst.contains(solucja)) {
+    private String policzAzObwp(String Obwp) {
+        String jeden = Wartosc.policz(Obwp, "4", "/");
+        String solucja = "<center><b>"+getString(R.string.szescianpoliczAzObwp)+"</b></center><br>" +
+                "$$ObwP={4*a}$$<br>" +
+                "$$a={ObwB/4}$$<br>" +
+                "$$a={{" + Wartosc.formatuj(Obwp) + "}/4}$$<br>" +
+                "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
+                "<center>*============================*</center>";
+        if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
         return jeden;
@@ -557,52 +762,14 @@ public class Szescian extends Activity implements OnFocusChangeListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        String ktoryElement = "";
-        switch (item.getItemId()) {
-            case R.id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(Szescian.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case R.id.item4:
-                //finish();
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                //System.exit(0);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 
     @Override
-    public void onFocusChange(View v, boolean hasFocus)  {
-        if(hasFocus){
-            lastFocused = (EditText)v;
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+            lastFocused = (EditText) v;
         }
     }
 }

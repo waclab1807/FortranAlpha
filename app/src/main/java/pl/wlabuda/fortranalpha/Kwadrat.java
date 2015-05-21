@@ -57,7 +57,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         pp_val = (EditText) findViewById(R.id.pp);
         a_val = (EditText) findViewById(R.id.a);
         D_val = (EditText) findViewById(R.id.d);
-        obwp_val = (EditText) findViewById(R.id.obwp);
+        obwp_val = (EditText) findViewById(R.id.obw);
         licz = (Button) findViewById(R.id.magic);
         clear = (Button) findViewById(R.id.clear);
         sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
@@ -203,6 +203,9 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+
+                                Toast.makeText(Kwadrat.this, getString(R.string.premium),
+                                        Toast.LENGTH_LONG).show();
                             } //za malo danych
                             if(isEmpty(a_val) && isEmpty(pp_val) && isEmpty(obwp_val) && isEmpty(D_val)){
                                 Toast.makeText(Kwadrat.this, getString(R.string.notEnough),
@@ -349,7 +352,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         String jeden = Wartosc.policz(Obwp,"4","/");
         String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczAzObwp)+"</b></center><br>" +
                 "$$ObwP={4*a}$$<br>" +
-                "$$a={ObwP/4}$$<br>" +
+                "$$a={{ObwP}/4}$$<br>" +
                 "$$a={{"+Wartosc.formatuj(Obwp)+"}/4}$$<br>" +
                 "$$a={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
