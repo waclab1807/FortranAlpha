@@ -3,14 +3,11 @@ package pl.wlabuda.fortranalpha;
 import pl.wlabuda.fortranalpha.R.*;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
@@ -19,9 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Toast;
+import android.os.Handler;
 
 public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocusChangeListener {
 
@@ -62,6 +59,10 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private Button btnReview;
     private Button btnData;
     private Button btnSolution;
+    private ProgressDialog progressBar;
+    private Handler progressBarbHandler = new Handler();
+    private int progressBarStatus = 0;
+    private long fileSize = 0;
 
     String a;
     String pp;
@@ -190,23 +191,23 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         obwp_val.setOnFocusChangeListener(this);
         triangle_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura, drawable.granpp,pp_val);
-        new TouchListener(figura, drawable.granpb,pb_val);
-        new TouchListener(figura, drawable.granpc,pc_val);
-        new TouchListener(figura, drawable.grana,a_val);
-        new TouchListener(figura, drawable.granprzekd,D_val);
-        new TouchListener(figura, drawable.granprzek,d_val);
-        new TouchListener(figura, drawable.granh,h_val);
-        new TouchListener(figura, drawable.granwys,H_val);
-        new TouchListener(figura, drawable.granobwp,obwp_val);
-        new TouchListener(figura, drawable.granobwb,obwb_val);
-        new TouchListener(figura, drawable.gran_prosty,obj_val);//grafike zmienic
+        new TouchListener(figura, drawable.gran_pros_trojkatnypp,pp_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnypb,pb_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnypc,pc_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnya,a_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnydd,D_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyd,d_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyh,h_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyhh,H_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyobwp,obwp_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyobwb,obwb_val);
+        new TouchListener(figura, drawable.gran_pros_trojkatnyobj,obj_val);//grafike zmienic
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
-        figura.setImageResource(drawable.gran_prosty);
+        figura.setImageResource(drawable.gran_pros_trojkatny);
 
         btnSolution.setEnabled(false);
 
@@ -226,8 +227,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 boolean bobwp = false;
                 boolean bobwb = false;
                 boolean btriangle = false;
-
-                tekst = "";
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0; //za mało danych aby policzyć
@@ -454,7 +453,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 H_val.setText(s);
                                 JavaScript.showFormatted(s, mWebViewH);
                                 bH = true;
-                            } else if (!isEmpty(pb_val) && !bH) {//todo WAZNE!! obliczanie H majac a i pb dorobic
+                            } else if (!isEmpty(pb_val) && !bH) {
                                 System.out.println("^^^^^^^^6.4.1");
                                 pb = pb_val.getText().toString();
                                 JavaScript.showFormatted(pb, mWebViewPb);
@@ -477,16 +476,13 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 triangle = triangle_val.getText().toString();
                                 JavaScript.showFormatted(triangle, mWebViewPtw);
                                 btriangle = true;
-                                H_val.setText(policzHzTriangleiA(triangle,a));//todo przerobic to
-                                String tmp1 = "(((2Pp/a)*2Pp)/a)-(h^2)";
-                                String tmp = Wartosc.policz(Wartosc.policz(Wartosc.policz(Wartosc.policz(Wartosc.policz("2", policzPp(a), "*"), a, "/"), Wartosc.policz("2", policzPp(a), "*"), "*"), a, "/"), Wartosc.policz(policzhza(a), policzhza(a), "*"), "-");
-                                String s = Wartosc.policz("()\u221a(" + tmp + ")", "1", "*");
+                                String s = policzHzTriangleiA(triangle,a);
                                 H_val.setText(s);
                                 JavaScript.showFormatted(s, mWebViewH);
                                 bH = true;
                             } else if (isEmpty(obj_val) && isEmpty(d_val) && isEmpty(D_val) && isEmpty(pc_val) && isEmpty(obwb_val) && isEmpty(triangle_val)) {
                                 System.out.println("^^^^^^^^6.7");
-                                figura.setImageResource(drawable.gran_prosty);
+                                figura.setImageResource(drawable.gran_pros_trojkatny);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -599,7 +595,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                         if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
                             x = 1;
                             y = 1;
-                            figura.setImageResource(drawable.gran_prosty);
+                            figura.setImageResource(drawable.gran_pros_trojkatny);
                             licz.setEnabled(false);
                             btnSolution.setEnabled(true);
                             imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -621,7 +617,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 !obwb_val.getText().toString().equals("")
                                 ) {
                             x = 1;
-                            figura.setImageResource(drawable.gran_prosty);
+                            figura.setImageResource(drawable.gran_pros_trojkatny);
                             licz.setEnabled(false);
                             btnSolution.setEnabled(true);
                             imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -630,6 +626,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                     Toast.LENGTH_LONG).show();
                         }
                     }
+                    new ProgressBar(view);
                 }catch (Exception e){
                     System.out.println("eMessage "+e.getMessage());
                     Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.ups),
@@ -641,10 +638,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 }
                 JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
-                //if(y == 0) {
                     new WebViewHide(false, mWebView, mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
                     new EditTextHide(true, a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
-                //}
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
                     refresh.refresh(figura, scrollView, mWebView);
@@ -664,7 +659,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 new WebViewHide(true, mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
-                figura.setImageResource(R.drawable.kwadrat);
+                figura.setImageResource(drawable.gran_pros_trojkatny);
                 Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }
@@ -771,10 +766,10 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(Obj, jeden, "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzHzObjiA)+"</b></center><br>" +
                 "$$Pp = {{{a^2}*√3}/4}$$<br>" +
-                "$$Pp = {"+jeden+"}$$<br>" +
+                "$$Pp = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "$$H = {{Obj}/{Pp}}$$<br>" +
-                "$$H = {{"+Wartosc.formatuj(Obj)+"}/{"+jeden+"}}$$<br>" +
-                "$$H = {"+dwa+"}$$<br>" +
+                "$$H = {{"+Wartosc.formatuj(Obj)+"}/{"+Wartosc.formatuj(jeden)+"}}$$<br>" +
+                "$$H = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
         if (!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -834,7 +829,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String piec = Wartosc.policz(trzy, cztery, "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzHzPciA)+"</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
-                "$$Pp = {"+jeden+"}$$<br>"+
+                "$$Pp = {"+Wartosc.formatuj(jeden)+"}$$<br>"+
                 "$$H = {{Pc - {2 * Pp}} / {3 * a}}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(Pc)+"} - {2 * {"+Wartosc.formatuj(jeden)+"}}} / {3 * {"+Wartosc.formatuj(a)+"}}}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(Pc)+"} - {"+Wartosc.formatuj(dwa)+"}} / {"+Wartosc.formatuj(cztery)+"}}$$<br>" +
@@ -928,7 +923,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String piec = Wartosc.policz("()\u221a(" + cztery + ")", "1", "*");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzDzHiA)+"</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
-                "$$h={"+jeden+"}$$<br>" +
+                "$$h={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "$$D = {√{{H^2} + {h^2}}}$$<br>" +
                 "$$D = {√{{{"+Wartosc.formatuj(H)+"}^2} + {{"+Wartosc.formatuj(jeden)+"}^2}}}$$<br>" +
                 "$$D = {√{{"+Wartosc.formatuj(trzy)+"} + {"+Wartosc.formatuj(dwa)+"}}}$$<br>" +
@@ -983,7 +978,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz("2", t, "*");
         String cztery = Wartosc.policz(trzy, dwa, "+");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzPczAiH)+"</b></center><br>" +
-                "$$Pp = {"+t+"}$$<br>" +
+                "$$Pp = {"+Wartosc.formatuj(t)+"}$$<br>" +
                 "$$Pc = {{2 * Pp} + {{3 * a} * H}}$$<br>" +
                 "$$Pc = {{2 * {"+Wartosc.formatuj(t)+"}} + {{3 * {"+Wartosc.formatuj(a)+"}} * {"+Wartosc.formatuj(H)+"}}}$$<br>" +
                 "$$Pc = {{"+Wartosc.formatuj(trzy)+"} + {{"+Wartosc.formatuj(jeden)+"} * {"+Wartosc.formatuj(H)+"}}}$$<br>" +
@@ -1023,11 +1018,11 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String piec = Wartosc.policz(cztery, "2", "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzTriangleZaiH)+"</b></center><br>" +
                 "$$h = {{a * √3}/2}$$<br>" +
-                "$$h = {"+zero+"}$$<br>" +
+                "$$h = {"+Wartosc.formatuj(zero)+"}$$<br>" +
                 "$$Ptw = {√{{h^2} + {H^2}}/2}$$<br>" +
                 "$$Ptw = {√{{{"+Wartosc.formatuj(zero)+"}^2} + {{"+Wartosc.formatuj(H)+"}^2}}/2}$$<br>" +
                 "$$Ptw = {√{{"+Wartosc.formatuj(jeden)+"} + {"+Wartosc.formatuj(dwa)+"}}/2}$$<br>" +
-                "$$Ptw = {√{"+Wartosc.formatuj(trzy)+"}/2}$$<br>" +
+                "$$Ptw = {√{{"+Wartosc.formatuj(trzy)+"}}/2}$$<br>" +
                 "$$Ptw = {{"+Wartosc.formatuj(cztery)+"}/2}$$<br>" +
                 "$$Ptw = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
@@ -1143,7 +1138,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz(Obwp, "3", "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzAzObwp)+"</b></center><br>" +
                 "$$ObwP = {a * 3}$$<br>" +
-                "$$a = {ObwP / 3}$$<br>" +
+                "$$a = {{ObwP} / 3}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Obwp)+"} / 3}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
@@ -1194,7 +1189,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
             tekst = tekst + solucja;
         }
         return trzy;
-        //return Wartosc.policz(Wartosc.policz(policzAzPp(Pp),"()\u221a(3)","*"),"2","/");
     }
 
     @Override

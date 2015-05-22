@@ -150,7 +150,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(R.drawable.katy);
 
@@ -290,8 +290,8 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                         b_val.setText(c);
                                         f = c;
                                         f_val.setText(c);
-                                        h = c;
-                                        h_val.setText(c);
+                                        g = c;
+                                        g_val.setText(c);
                                         policzDwa(b, c, f, g);
                                         JavaScript.showFormatted(g, mWebViewG);
                                         JavaScript.showFormatted(b, mWebViewB);
@@ -356,6 +356,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                 test = true;
                             }
                         }
+                        new ProgressBar(view);
                     } catch (Exception e) {
                         System.out.println("eMessage " + e.getMessage());
                         Toast.makeText(Katy.this, getString(R.string.ups),

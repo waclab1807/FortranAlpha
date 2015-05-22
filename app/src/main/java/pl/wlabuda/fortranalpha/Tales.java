@@ -158,7 +158,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(drawable.tales);
 
@@ -170,7 +170,6 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
                 tekst = "";
                 figura.setImageResource(drawable.tales);
-                //todo schowac klawiature
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0; //za mało danych aby policzyć
@@ -419,6 +418,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
                                         Toast.LENGTH_LONG).show();
                             }
                         }
+                        new ProgressBar(view);
                     } catch (Exception e) {
                         System.out.println("eMessage " + e.getMessage());
                         Toast.makeText(Tales.this, getString(R.string.ups),

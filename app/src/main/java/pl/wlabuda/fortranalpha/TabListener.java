@@ -1,12 +1,8 @@
 package pl.wlabuda.fortranalpha;
 
-import android.content.Context;
-import android.hardware.input.InputManager;
 import android.view.View;
-import android.view.inputmethod.InputMethod;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ScrollView;
@@ -24,7 +20,7 @@ public class TabListener {
     }
     public TabListener(){};
 
-    public TabListener(Button btn1, Button btn2, Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
+    public TabListener(final InputMethodManager imm,Button btn1, Button btn2, Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
 
         if(btn1!=null) {
             btn1.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +29,11 @@ public class TabListener {
                     data.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     imageView.setVisibility(View.VISIBLE);
+                    if(imm.isActive()) {
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
+                    }else{
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0); // show
+                    }
                 }
             });
         }
@@ -43,6 +44,11 @@ public class TabListener {
                     imageView.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     data.setVisibility(View.VISIBLE);
+                    if(imm.isActive()) {
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
+                    }else{
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0); // show
+                    }
                 }
             });
         }
@@ -53,6 +59,11 @@ public class TabListener {
                     imageView.setVisibility(View.GONE);
                     data.setVisibility(View.GONE);
                     webView.setVisibility(View.VISIBLE);
+                    if(imm.isActive()) {
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
+                    }else{
+                        imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0); // show
+                    }
                 }
             });
         }

@@ -42,6 +42,7 @@
     <string name="bracket">Liczba nawiasów otwierających nie równa się
 liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="deleted">Skasowane!</string>
+    <string name="wait">Proszę czekać...</string>
 
     //titles
     <string name="tales">Twierdzenie Talesa</string>

@@ -96,7 +96,7 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
                         builder
                                 .setTitle(getString(R.string.prismAndscaleneTriangle))
                                 .setMessage(R.string.prismAndscaleneTriangleDesc)
-                                .setIcon(R.drawable.gran_prosty)
+                                .setIcon(R.drawable.gran_pros_trojkatny)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;

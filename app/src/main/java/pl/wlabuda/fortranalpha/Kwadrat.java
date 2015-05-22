@@ -111,7 +111,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(R.drawable.kwadrat);
 
@@ -214,6 +214,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                                 y = 1;
                             }
                         }
+                        new ProgressBar(view);
                     } catch (Exception e) {
                         System.out.println("emessage " + e.getMessage());
                         Toast.makeText(Kwadrat.this, getString(R.string.ups),
@@ -282,7 +283,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         System.out.println("policzPp "+a);
         String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczPp)+"</b></center><br>" +
                 "$$P={a^2}$$<br>" +
-                "$$P={({"+Wartosc.formatuj(a)+"})^2}$$<br>" +
+                "$$P={{"+Wartosc.formatuj(a)+"}^2}$$<br>" +
                 "$$P={"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {

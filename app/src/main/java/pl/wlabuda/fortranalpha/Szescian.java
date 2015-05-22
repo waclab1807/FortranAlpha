@@ -187,7 +187,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         new TouchListener(figura, R.drawable.szescianptw, triangle_val);
 
         final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        new TabListener(btnReview, btnData, btnSolution, figura, scrollView, mWebView);
+        new TabListener(imm,btnReview, btnData, btnSolution, figura, scrollView, mWebView);
         figura.setImageResource(R.drawable.szescian);
         btnSolution.setEnabled(false);
 
@@ -403,6 +403,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                                         Toast.LENGTH_LONG).show();
                             }
                         }
+                        new ProgressBar(view);
                     } catch (Exception e) {
                         System.out.println("emessage " + e.getMessage());
                         Toast.makeText(Szescian.this, getString(R.string.ups),
