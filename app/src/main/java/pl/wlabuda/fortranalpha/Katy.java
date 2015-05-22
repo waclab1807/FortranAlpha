@@ -139,14 +139,14 @@ public class Katy extends Activity implements OnFocusChangeListener {
         g_val.setOnFocusChangeListener(this);
         h_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura, drawable.katya,a_val);
-        new TouchListener(figura, drawable.katyb,b_val);
-        new TouchListener(figura, drawable.katyc,c_val);
-        new TouchListener(figura, drawable.katyd,d_val);
-        new TouchListener(figura, drawable.katye,e_val);
-        new TouchListener(figura, drawable.katyf,f_val);
-        new TouchListener(figura, drawable.katyg,g_val);
-        new TouchListener(figura, drawable.katyh,h_val);
+        Global.TouchListener(figura, drawable.katya, a_val);
+        Global.TouchListener(figura, drawable.katyb, b_val);
+        Global.TouchListener(figura, drawable.katyc, c_val);
+        Global.TouchListener(figura, drawable.katyd,d_val);
+        Global.TouchListener(figura, drawable.katye,e_val);
+        Global.TouchListener(figura, drawable.katyf,f_val);
+        Global.TouchListener(figura, drawable.katyg,g_val);
+        Global.TouchListener(figura, drawable.katyh,h_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
@@ -370,8 +370,8 @@ public class Katy extends Activity implements OnFocusChangeListener {
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
                 if(z == 0) {
-                    new WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewG, mWebViewH);
-                    new EditTextHide(true, a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
+                    Global.WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewG, mWebViewH);
+                    Global.EditTextHide(true, a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
                 }
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
@@ -385,8 +385,8 @@ public class Katy extends Activity implements OnFocusChangeListener {
             public void onClick(View view) {
                 Global.setEmpty(a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
                 tekst = "";
-                new EditTextHide(false, a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
-                new WebViewHide(true, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewG, mWebViewH);
+                Global.EditTextHide(false, a_val, b_val, c_val, d_val, e_val, f_val, g_val, h_val);
+                Global.WebViewHide(true, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewG, mWebViewH);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.katy);

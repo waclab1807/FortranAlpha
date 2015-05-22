@@ -1,8 +1,6 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -147,14 +145,14 @@ public class Tales extends Activity implements OnFocusChangeListener {
         ac_val.setOnFocusChangeListener(this);
         bd_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura,R.drawable.talesa,a_val);
-        new TouchListener(figura,R.drawable.talesb,b_val);
-        new TouchListener(figura,R.drawable.talesc,c_val);
-        new TouchListener(figura,R.drawable.talesd,d_val);
-        new TouchListener(figura,R.drawable.talese,e_val);
-        new TouchListener(figura,R.drawable.talesf,f_val);
-        new TouchListener(figura,R.drawable.talesac,ac_val);
-        new TouchListener(figura,R.drawable.talesbd,bd_val);
+        Global.TouchListener(figura,R.drawable.talesa,a_val);
+        Global.TouchListener(figura,R.drawable.talesb,b_val);
+        Global.TouchListener(figura,R.drawable.talesc,c_val);
+        Global.TouchListener(figura,R.drawable.talesd,d_val);
+        Global.TouchListener(figura,R.drawable.talese,e_val);
+        Global.TouchListener(figura,R.drawable.talesf,f_val);
+        Global.TouchListener(figura,R.drawable.talesac,ac_val);
+        Global.TouchListener(figura,R.drawable.talesbd,bd_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
@@ -396,8 +394,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                                 y = 1;
                                 x = 1;
                                 btnSolution.setEnabled(true);
-                                new WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD,mWebViewE,mWebViewF,mWebViewAC,mWebViewBD);
-                                new EditTextHide(true, a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
+                                Global.WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewAC, mWebViewBD);
+                                Global.EditTextHide(true, a_val, b_val, c_val, d_val, e_val, f_val, ac_val, bd_val);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
                                 Toast.makeText(Tales.this, getString(R.string.notEnough),
                                         Toast.LENGTH_LONG).show();
@@ -447,8 +445,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 Global.setEmpty(a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-                new EditTextHide(false,a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
-                new WebViewHide(true, mWebViewA,mWebViewB,mWebViewC,mWebViewD,mWebViewE,mWebViewF,mWebViewAC,mWebViewBD);
+                Global.EditTextHide(false, a_val, b_val, c_val, d_val, e_val, f_val, ac_val, bd_val);
+                Global.WebViewHide(true, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewAC, mWebViewBD);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.tales);

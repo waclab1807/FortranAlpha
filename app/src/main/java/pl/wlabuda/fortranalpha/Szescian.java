@@ -175,16 +175,16 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         obj_val.setOnFocusChangeListener(this);
         pb_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura, R.drawable.szescianpp, pp_val);
-        new TouchListener(figura, R.drawable.szesciana, a_val);
-        new TouchListener(figura, R.drawable.szesciand, d_val);
-        new TouchListener(figura, R.drawable.szescianobwp, obwp_val);
-        new TouchListener(figura, R.drawable.szescianpb, pb_val);
-        new TouchListener(figura, R.drawable.szescianpc, pc_val);
-        new TouchListener(figura, R.drawable.szesciandd, D_val);
-        new TouchListener(figura, R.drawable.szescianobwb, obwb_val);
-        new TouchListener(figura, R.drawable.szescianobj, obj_val);
-        new TouchListener(figura, R.drawable.szescianptw, triangle_val);
+        Global.TouchListener(figura, R.drawable.szescianpp, pp_val);
+        Global.TouchListener(figura, R.drawable.szesciana, a_val);
+        Global.TouchListener(figura, R.drawable.szesciand, d_val);
+        Global.TouchListener(figura, R.drawable.szescianobwp, obwp_val);
+        Global.TouchListener(figura, R.drawable.szescianpb, pb_val);
+        Global.TouchListener(figura, R.drawable.szescianpc, pc_val);
+        Global.TouchListener(figura, R.drawable.szesciandd, D_val);
+        Global.TouchListener(figura, R.drawable.szescianobwb, obwb_val);
+        Global.TouchListener(figura, R.drawable.szescianobj, obj_val);
+        Global.TouchListener(figura, R.drawable.szescianptw, triangle_val);
 
         final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         new TabListener(imm,btnReview, btnData, btnSolution, figura, scrollView, mWebView);
@@ -417,8 +417,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
                 if(y == 0) {
-                    new WebViewHide(false, mWebView, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
-                    new EditTextHide(true, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
+                    Global.WebViewHide(false, mWebView, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
+                    Global.EditTextHide(true, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
                 }
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
@@ -433,8 +433,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 Global.setEmpty(pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-                new EditTextHide(false,pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
-                new WebViewHide(true, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
+                Global.EditTextHide(false, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
+                Global.WebViewHide(true, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.szescian);

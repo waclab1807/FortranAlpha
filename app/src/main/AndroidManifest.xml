@@ -66,11 +66,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/angle"></activity>
 
-        <activity android:name=".ListViewGeometriaNaPlaszczyznie"
+        <activity android:name=".ListViewGeometria2D"
             android:theme="@style/CustomAppTheme1"
             android:label="@string/geomerty2d"></activity>
 
-        <activity android:name=".ListViewGeometriaWPrzestrzeni"
+        <activity android:name=".ListViewGeometria3D"
             android:theme="@style/CustomAppTheme1"
             android:label="@string/geometry3d"></activity>
     </application>

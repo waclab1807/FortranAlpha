@@ -29,10 +29,11 @@
     <string name="overallArea"> Pole całkowite: </string>
     <string name="triangleArea"> Pole trójkąta wewnętrznego: </string>
 
-    //menu
+    //dots menu
     <string name="about">O autorze</string>
     <string name="futurePlans">Plany na przyszłość</string>
     <string name="finish">Zakończ</string>
+    <string name="inProgress">W budowie...</string>
 
     //toast
     <string name="notEnough">Za mało danych aby policzyć!\nWyczyść i wprowadź nowe dane</string>

@@ -191,17 +191,17 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         obwp_val.setOnFocusChangeListener(this);
         triangle_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura, drawable.gran_pros_trojkatnypp,pp_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnypb,pb_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnypc,pc_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnya,a_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnydd,D_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyd,d_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyh,h_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyhh,H_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyobwp,obwp_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyobwb,obwb_val);
-        new TouchListener(figura, drawable.gran_pros_trojkatnyobj,obj_val);//grafike zmienic
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnypp, pp_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnypb,pb_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnypc,pc_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnya,a_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnydd,D_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyd,d_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyh,h_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyhh,H_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwp,obwp_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwb,obwb_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyobj,obj_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
@@ -476,7 +476,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 triangle = triangle_val.getText().toString();
                                 JavaScript.showFormatted(triangle, mWebViewPtw);
                                 btriangle = true;
-                                String s = policzHzTriangleiA(triangle,a);
+                                String s = policzHzTriangleiA(triangle, a);
                                 H_val.setText(s);
                                 JavaScript.showFormatted(s, mWebViewH);
                                 bH = true;
@@ -638,8 +638,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 }
                 JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
-                    new WebViewHide(false, mWebView, mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
-                    new EditTextHide(true, a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
+                Global.WebViewHide(false, mWebView, mWebViewA, mWebViewD, mWebViewObwp, mWebViewPp, mWebViewObwb, mWebViewObj, mWebViewd, mWebViewH, mWebViewh, mWebViewPtw, mWebViewPb, mWebViewPc);
+                Global.EditTextHide(true, a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
                     refresh.refresh(figura, scrollView, mWebView);
@@ -655,8 +655,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 Global.setEmptyWeb(mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-                new EditTextHide(false,a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
-                new WebViewHide(true, mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
+                Global.EditTextHide(false, a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
+                Global.WebViewHide(true, mWebViewA, mWebViewD, mWebViewObwp, mWebViewPp, mWebViewObwb, mWebViewObj, mWebViewd, mWebViewH, mWebViewh, mWebViewPtw, mWebViewPb, mWebViewPc);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(drawable.gran_pros_trojkatny);

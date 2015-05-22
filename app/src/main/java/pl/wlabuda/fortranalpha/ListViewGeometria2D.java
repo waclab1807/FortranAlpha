@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.Toast;
 /**
  * Created by waclab1807 on 30.03.15.
  */
-public class ListViewGeometriaNaPlaszczyznie extends Activity {
+public class ListViewGeometria2D extends Activity {
     ListView listView ;
 
     @Override
@@ -68,17 +67,17 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
                 switch (itemPosition){
                     case 0:
                         Intent intent;
-                        intent = new Intent(ListViewGeometriaNaPlaszczyznie.this, TrojkatPrawidlowy.class);
+                        intent = new Intent(ListViewGeometria2D.this, TrojkatPrawidlowy.class);
                         startActivity(intent);
                         break;
                     case 2:
                         Intent intent1;
-                        intent1 = new Intent(ListViewGeometriaNaPlaszczyznie.this, TrojkatProstokatny.class);
+                        intent1 = new Intent(ListViewGeometria2D.this, TrojkatProstokatny.class);
                         startActivity(intent1);
                         break;
                     case 3:
                         Intent intent2;
-                        intent2 = new Intent(ListViewGeometriaNaPlaszczyznie.this, Kwadrat.class);
+                        intent2 = new Intent(ListViewGeometria2D.this, Kwadrat.class);
                         startActivity(intent2);
                         break;
                     default:
@@ -96,7 +95,7 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
                     case 0:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometria2D.this);
                         builder
                                 .setTitle(getString(R.string.scaleneTriangle))
                                 .setMessage(R.string.scaleneTriangleDesc)
@@ -105,7 +104,7 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
                                 .show();
                         break;
                     case 2:
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometria2D.this);
                         builder1
                                 .setTitle(getString(R.string.rightangledTriangle))
                                 .setMessage(R.string.rightangledTriangleDesc)
@@ -114,7 +113,7 @@ public class ListViewGeometriaNaPlaszczyznie extends Activity {
                                 .show();
                         break;
                     case 3:
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(ListViewGeometriaNaPlaszczyznie.this);
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(ListViewGeometria2D.this);
                         builder2
                                 .setTitle(getString(R.string.square))
                                 .setMessage(R.string.squareDesc)

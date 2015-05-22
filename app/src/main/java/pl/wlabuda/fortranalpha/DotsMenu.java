@@ -17,7 +17,7 @@ public class DotsMenu extends Activity{
             case R.id.item1:
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder
-                        .setTitle("O autorze:")
+                        .setTitle(R.string.about)
                         .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
                         .setIcon(R.drawable.logo)
                         .setPositiveButton("OK", null)
@@ -29,14 +29,15 @@ public class DotsMenu extends Activity{
                         .setTitle("Plany na przyszłość:")
                         .setMessage("Kąty alfa, beta itd. \n" +
                                 "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
+                                "Więcej figur i brył, \n" +
+                                "Zmieniona klawiatura\n" +
                                 "Wiele, wiele innych...")
                         .setIcon(R.drawable.logo)
                         .setPositiveButton("OK", null)
                         .show();
                 break;
             case R.id.item3:
-                Toast.makeText(context, "W budowie...",
+                Toast.makeText(context, R.string.inProgress,
                         Toast.LENGTH_LONG).show();
                 break;
             case R.id.item4:

@@ -4,7 +4,6 @@ package pl.wlabuda.fortranalpha;
         import android.app.AlertDialog;
         import android.content.Intent;
         import android.os.Bundle;
-        import android.support.v7.app.ActionBarActivity;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
@@ -17,7 +16,7 @@ package pl.wlabuda.fortranalpha;
 /**
  * Created by waclab1807 on 30.03.15.
  */
-public class ListViewGeometriaWPrzestrzeni extends Activity {
+public class ListViewGeometria3D extends Activity {
     ListView listView ;
 
     @Override
@@ -70,12 +69,12 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
                 switch (itemPosition){
                     case 0:
                         Intent intent;
-                        intent = new Intent(ListViewGeometriaWPrzestrzeni.this, GraniastoslupPrawidlowyTrojkatny.class);
+                        intent = new Intent(ListViewGeometria3D.this, GraniastoslupPrawidlowyTrojkatny.class);
                         startActivity(intent);
                         break;
                     case 1:
                         Intent intent1;
-                        intent1 = new Intent(ListViewGeometriaWPrzestrzeni.this, Szescian.class);
+                        intent1 = new Intent(ListViewGeometria3D.this, Szescian.class);
                         startActivity(intent1);
                         break;
                     default:
@@ -92,7 +91,7 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
                     case 0:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometriaWPrzestrzeni.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometria3D.this);
                         builder
                                 .setTitle(getString(R.string.prismAndscaleneTriangle))
                                 .setMessage(R.string.prismAndscaleneTriangleDesc)
@@ -101,7 +100,7 @@ public class ListViewGeometriaWPrzestrzeni extends Activity {
                                 .show();
                         break;
                     case 1:
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometriaWPrzestrzeni.this);
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometria3D.this);
                         builder1
                                 .setTitle(getString(R.string.cube))
                                 .setMessage(getString(R.string.cubeDesc))

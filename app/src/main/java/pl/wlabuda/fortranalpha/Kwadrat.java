@@ -104,10 +104,10 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
-        new TouchListener(figura,R.drawable.kwadratpp,pp_val);
-        new TouchListener(figura,R.drawable.kwadrata,a_val);
-        new TouchListener(figura,R.drawable.kwadratd,D_val);
-        new TouchListener(figura,R.drawable.kwadratobw,obwp_val);
+        Global.TouchListener(figura,R.drawable.kwadratpp,pp_val);
+        Global.TouchListener(figura,R.drawable.kwadrata,a_val);
+        Global.TouchListener(figura,R.drawable.kwadratd,D_val);
+        Global.TouchListener(figura,R.drawable.kwadratobw,obwp_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
@@ -228,8 +228,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
                 if(y == 0) {
-                    new WebViewHide(false, mWebView, mWebViewA, mWebViewObw, mWebViewD, mWebViewPp);
-                    new EditTextHide(true, pp_val, a_val, D_val, obwp_val);
+                    Global.WebViewHide(false, mWebView, mWebViewA, mWebViewObw, mWebViewD, mWebViewPp);
+                    Global.EditTextHide(true, pp_val, a_val, D_val, obwp_val);
                 }
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
@@ -245,8 +245,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 Global.setEmpty(a_val,D_val,pp_val,obwp_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
-                new EditTextHide(false,a_val,D_val,pp_val,obwp_val);
-                new WebViewHide(true, mWebViewA,mWebViewD,mWebViewObw,mWebViewPp);
+                Global.EditTextHide(false, a_val, D_val, pp_val, obwp_val);
+                Global.WebViewHide(true, mWebViewA, mWebViewD, mWebViewObw, mWebViewPp);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.kwadrat);
