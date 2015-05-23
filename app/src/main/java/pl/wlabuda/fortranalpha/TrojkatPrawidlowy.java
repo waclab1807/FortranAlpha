@@ -115,16 +115,16 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
-        Global.TouchListener(figura, drawable.trojkaprawidlowyp, pp_val);
-        Global.TouchListener(figura, drawable.trojkaprawidlowyobw, obwp_val);
-        Global.TouchListener(figura, drawable.trojkaprawidlowyh, h_val);
-        Global.TouchListener(figura, drawable.trojkaprawidlowya, a_val); //todo grafiki zmienic
+        Global.TouchListener(figura, drawable.troj_praw_p, pp_val);
+        Global.TouchListener(figura, drawable.troj_praw_obw, obwp_val);
+        Global.TouchListener(figura, drawable.troj_praw_h, h_val);
+        Global.TouchListener(figura, drawable.troj_praw_a, a_val); //todo grafiki zmienic
 
         final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
         new TabListener(buttons,imm, btnReview, btnData, btnSolution, figura, scrollView, mWebView);
 
-        figura.setImageResource(drawable.trojkaprawidlowy);
+        figura.setImageResource(drawable.troj_praw);
 
         btnSolution.setEnabled(false);
 
@@ -139,7 +139,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
 
                 tekst = "";
 
-                figura.setImageResource(drawable.trojkaprawidlowy);
+                figura.setImageResource(drawable.troj_praw);
 
                 int x = 0; //koniec petli, wszystko policzone
 
@@ -253,7 +253,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
                             //za malo danych
                             if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
                                 x = 1;
-                                figura.setImageResource(drawable.trojkaprawidlowy);
+                                figura.setImageResource(drawable.troj_praw);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -267,7 +267,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
                                     !obwp_val.getText().toString().equals("")
                                     ) {
                                 x = 1;
-                                figura.setImageResource(drawable.trojkaprawidlowy);
+                                figura.setImageResource(drawable.troj_praw);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -308,7 +308,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
                 Global.WebViewHide(true, mWebViewA, mWebViewObwp, mWebViewPp, mWebViewH);
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
-                figura.setImageResource(drawable.trojkaprawidlowy);
+                figura.setImageResource(drawable.troj_praw);
                 Toast.makeText(TrojkatPrawidlowy.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }
@@ -345,13 +345,15 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
 
     private String policzPp(String a) {
         String jeden = Wartosc.policz(a, a, "*");
-        String dwa = Wartosc.policz(Wartosc.policz(Wartosc.policz(a, a, "*"), "()\u221a(3)", "*"), "4", "/");
-        String solucja = "Obliczanie pola mając a \n\n" +
-                "P = [(a^2) * √3] / 4 \n\n" +
-                "P = [(" + a + "^2) * √(3)] / 4 \n\n" +
-                "P = (" + jeden + ")√(3) / 4 \n\n" +
-                "P = " + dwa + "\n\n" +
-                "*===========================*\n\n";
+        String dwa = Wartosc.policz(jeden, "()\u221a(3)", "*");
+        String trzy = Wartosc.policz(dwa, "4", "/");
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzPp)+"</b></center><br>" +
+                "$$P={{a^2}*√3}/4$$<br>" +
+                "$$P={{{"+Wartosc.formatuj(a)+"}^2}*√3}/4$$<br>" +
+                "$$P={{"+Wartosc.formatuj(jeden)+"}*√3}/4$$<br>" +
+                "$$P={"+Wartosc.formatuj(dwa)+"}/4$$<br>" +
+                "$$P={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -360,11 +362,11 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
 
     private String policzObwp(String a) {
         String jeden = Wartosc.policz("3", a, "*");
-        String solucja = "Obliczanie obwodu mając a \n\n" +
-                "ObwP = a * 3 \n\n" +
-                "ObwP = " + a + " * 3 \n\n" +
-                "ObwP = " + jeden + " \n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzObwp)+"</b></center><br>" +
+                "$$ObwP={a*3}$$<br>" +
+                "$$ObwP={{"+Wartosc.formatuj(a)+"}*3}$$<br>" +
+                "$$ObwP={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -374,13 +376,15 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
     private String policzAzh(String h) {
         String jeden = Wartosc.policz(h, "(2)\u221a(3)", "*");
         String dwa = Wartosc.policz(jeden, "3", "/");
-        String solucja = "Obliczanie a mając h \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "a = [(2)√(3) * h] / 3 \n\n" +
-                "a = [(2)√(3) * " + h + "]/3 \n\n" +
-                "a = [" + jeden + "] / 3 \n\n" +
-                "a = " + dwa + "\n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzAzh)+"</b></center><br>" +
+                "$$h={{a*√3}/2}$$<br>" +
+                "$${2*h}={a*√3}$$<br>" +
+                "$$a={2*h}/√3$$<br>" +
+                "$$a={{2√3}*h}/3$$<br>" +
+                "$$a={{{2√3}*{"+Wartosc.formatuj(h)+"}}/3}$$<br>" +
+                "$$a={{"+Wartosc.formatuj(jeden)+"}/3}$$<br>" +
+                "$$a={"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -391,16 +395,15 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
         String jeden = Wartosc.policz(Pp, "4", "*");
         String dwa = Wartosc.policz(jeden, "()\u221a(3)", "/");
         String trzy = Wartosc.policz("()\u221a(" + dwa + ")", "1", "*");
-        String solucja = "Obliczanie a mając pole \n\n" +
-                "P = [(a^2) * √(3)] / 4 \n\n" +
-                "4 * P = [(a^2) * √(3)] \n\n" +
-                "(4 * P) / √(3) = (a^2) \n\n" +
-                "a = √[(4 * P) / √(3)] \n\n" +
-                "a = √[(4 * " + Pp + ") / √(3)] \n\n" +
-                "a = √[" + jeden + " / √(3)] \n\n" +
-                "a = √[" + dwa + "] \n\n" +
-                "a = " + trzy + "\n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzAzPp)+"</b></center><br>" +
+                "$$P={{a^2}*√3}/4$$<br>" +
+                "$$4*P={{a^2}*√3}$$<br>" +
+                "$${4*P}/{√3}={a^2}$$<br>" +
+                "$$a=√{{4*P}/{√3}}$$<br>" +
+                "$$a=√{{{"+Wartosc.formatuj(jeden)+"}}/{√3}}$$<br>" +
+                "$$a=√{{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
+                "$$a={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -409,12 +412,12 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
 
     private String policzAzObwp(String Obwp) {
         String jeden = Wartosc.policz(Obwp, "3", "/");
-        String solucja = "Obliczanie a mając obwód \n\n" +
-                "ObwP = a * 3 \n\n" +
-                "a = ObwP / 3 \n\n" +
-                "a = " + Obwp + " / 3 \n\n" +
-                "a = " + jeden + " \n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzAzObwp)+"</b></center><br>" +
+                "$$ObwP={a*3}$$<br>" +
+                "$$a={{ObwP}/3}$$<br>" +
+                "$$a={{"+Wartosc.formatuj(Obwp)+"}/3}$$<br>" +
+                "$$a={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -424,12 +427,12 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
     private String policzhza(String a) {
         String jeden = Wartosc.policz(a, "()\u221a(3)", "*");
         String dwa = Wartosc.policz(jeden, "2", "/");
-        String solucja = "Obliczanie h mając a \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "h = [" + a + " * √(3)] / 2 \n\n" +
-                "h = (" + jeden + ") / 2 \n\n" +
-                "h = " + dwa + "\n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzhza)+"</b></center><br>" +
+                "$$h={{a*√3}/2}$$<br>" +
+                "$$h={{{"+Wartosc.formatuj(a)+"}*√3}/2}$$<br>" +
+                "$$h={{"+Wartosc.formatuj(jeden)+"}/2}$$<br>" +
+                "$$h={"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }
@@ -440,21 +443,23 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
         String jeden = Wartosc.policz("3", Pp, "*");
         String dwa = Wartosc.policz(jeden, "()\u221a(3)", "/");
         String trzy = Wartosc.policz("()\u221a(" + dwa + ")", "1", "*");
-        String solucja = "Obliczanie h mając pole \n\n" +
-                "h = [a * √(3)] / 2 \n\n" +
-                "2 * h = a * √(3) \n\n" +
-                "a = (2 * h) / √(3) \n\n" +
-                "a = [(2)√(3) * h] / 3 \n\n" +
-                "P = [(a^2) * √(3)] / 4 \n\n" +
-                "P = {[(12 * (h^2)) / 9] * √(3)} / 4 \n\n" +
-                "P = [(h^2) * √(3)] / 3 \n\n" +
-                "3 * P = (h^2) * √(3) \n\n" +
-                "(3 * P) / √(3) = (h^2) \n\n" +
-                "h = √[(3 * P) / √(3)] \n\n" +
-                "h = √[(" + jeden + ") / √(3)] \n\n" +
-                "h = √(" + dwa + ") \n\n" +
-                "h = " + trzy + "\n\n" +
-                "*===========================*\n\n";
+        String solucja = "<center><b>"+getString(R.string.troj_praw_policzhzPp)+"</b></center><br>" +
+                "$$h={{a*√3}/2}$$<br>" +
+                "$${2*h}={a*√3}$$<br>" +
+                "$$a={{2*h}/√3}$$<br>" +
+                "$$a={{{2√3}*h}/3}$$<br>" +
+                "$$P={{a^2}*√3}/4$$<br>" +
+                "$$P={{{{{2√3}*h}/3}^2}*√3}/4$$<br>" +
+                "$$P={{{{4*{h^2}}*√3}/3}/4}$$<br>" +
+                "$$P={{{h^2}*√3}/3}$$<br>" +
+                "$${3*P}={{h^2}*√3}$$<br>" +
+                "$${{3*P}/√3}={h^2}$$<br>" +
+                "$$h=√{{{3*P}/√3}}$$<br>" +
+                "$$h=√{{{3*{"+Wartosc.formatuj(Pp)+"}}/√3}}$$<br>" +
+                "$$h=√{{"+Wartosc.formatuj(jeden)+"}/√3}$$<br>" +
+                "$$h=√{"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$h={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
         }

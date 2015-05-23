@@ -512,11 +512,11 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String trzy = Wartosc.policz(dwa, "6", "/");
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPc)+"</b></center><br>" +
                 "$$a={√{Pc / 6}}$$<br>" +
-                "$$a={√Pc / √6}$$<br>" +
-                "$$a={{√Pc * √6}}/{6}$$<br>" +
+                "$$a={√{Pc} / √6}$$<br>" +
+                "$$a={{√{Pc} * √6}}/{6}$$<br>" +
                 "$$a={√{Pc*6}}/{6}$$<br>" +
-                "$$a={√{" + Wartosc.formatuj(Pc) + "*6}}/{6}$$<br>" +
-                "$$a={√" + Wartosc.formatuj(jeden) + "}/{6}$$<br>" +
+                "$$a={√{{" + Wartosc.formatuj(Pc) + "}*6}}/{6}$$<br>" +
+                "$$a={√{" + Wartosc.formatuj(jeden) + "}}/{6}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}/{6}$$<br>" +
                 "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -531,8 +531,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String dwa = Wartosc.policz(jeden, "2", "/");
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPb)+"</b></center><br>" +
                 "$$a={√{Pc / 4}}$$<br>" +
-                "$$a={√Pc / 2}$$<br>" +
-                "$$a={√" + Wartosc.formatuj(Pb) + "}/{2}$$<br>" +
+                "$$a={√{Pc} / 2}$$<br>" +
+                "$$a={√{" + Wartosc.formatuj(Pb) + "}}/{2}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}/{2}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -549,7 +549,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 "$$d={a * √3}$$<br>" +
                 "$$a={d / √3}$$<br>" +
                 "$$a={{d * √3}}/{3}$$<br>" +
-                "$$a={" + Wartosc.formatuj(d) + "*√3}/{3}$$<br>" +
+                "$$a={{" + Wartosc.formatuj(d) + "}*√3}/{3}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}/{3}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -566,7 +566,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 "$$D={a * √2}$$<br>" +
                 "$$a={D / √2}$$<br>" +
                 "$$a={{D * √2}}/{2}$$<br>" +
-                "$$a={" + Wartosc.formatuj(D) + "*√3}/{3}$$<br>" +
+                "$$a={{" + Wartosc.formatuj(D) + "}*√3}/{3}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}/{3}$$<br>" +
                 "$$a={" + Wartosc.formatuj(dwa) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -583,12 +583,12 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzTriangle)+"</b></center><br>" +
                 "$$Ptw={{1/2} * D * a}$$<br>" +
                 "$$D={a * √2}$$<br>" +
-                "$$Ptw={{1/2} * a * √2 * a}$$<br>" +
+                "$$Ptw={{1/2} * a * {√2} * a}$$<br>" +
                 "$$Ptw={{{a^2} * √2}/2}$$<br>" +
                 "$${2*Ptw}={{a^2} * √2}$$<br>" +
                 "$${{2*Ptw}/√2}={a^2}$$<br>" +
                 "$$a=√{{2*Ptw}/√2}$$<br>" +
-                "$$a=√{{2*"+Wartosc.formatuj(Triangle)+"}/√2}$$<br>" +
+                "$$a=√{{2*{"+Wartosc.formatuj(Triangle)+"}}/√2}$$<br>" +
                 "$$a=√{{"+Wartosc.formatuj(jeden)+"}/√2}$$<br>" +
                 "$$a=√{"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
@@ -675,12 +675,12 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String solucja = "<center><b>"+getString(R.string.szescianpoliczTriangle)+"</b></center><br>" +
                 "$$Ptw={1/2}*D*a$$<br>" +
                 "$$D={a*√2}$$<br>" +
-                "$$Ptw={1/2}*a*√2*a$$<br>" +
+                "$$Ptw={1/2}*a*{√2}*a$$<br>" +
                 "$$Ptw={{a^2}*√2}/2$$<br>" +
-                "$$a={{{" + Wartosc.formatuj(a) + "}^2}*√2}/2$$<br>" +
-                "$$a={{" + Wartosc.formatuj(jeden) + "}*√2}/2$$<br>" +
-                "$$a={" + Wartosc.formatuj(dwa) + "}/2$$<br>" +
-                "$$a={" + Wartosc.formatuj(trzy) + "}$$<br>" +
+                "$$Ptw={{{" + Wartosc.formatuj(a) + "}^2}*√2}/2$$<br>" +
+                "$$Ptw={{" + Wartosc.formatuj(jeden) + "}*√2}/2$$<br>" +
+                "$$Ptw={" + Wartosc.formatuj(dwa) + "}/2$$<br>" +
+                "$$Ptw={" + Wartosc.formatuj(trzy) + "}$$<br>" +
                 "<center>*============================*</center>";
         if (!tekst.contains(solucja)) {
             tekst = tekst + solucja;
@@ -719,7 +719,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String jeden = Wartosc.policz("()\u221a(" + Pp + ")", "1", "*");
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzPp)+"</b></center><br>" +
                 "$$Pp={a^2}$$<br>" +
-                "$$a={√Pp}$$<br>" +
+                "$$a={√{Pp}}$$<br>" +
                 "$$a={√{" + Wartosc.formatuj(Pp) + "}}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -733,7 +733,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String jeden = Wartosc.policz(Obwb, "12", "/");
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzObwb)+"</b></center><br>" +
                 "$$ObwB={12*a}$$<br>" +
-                "$$a={ObwB/12}$$<br>" +
+                "$$a={{ObwB}/12}$$<br>" +
                 "$$a={{" + Wartosc.formatuj(Obwb) + "}/12}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";
@@ -747,7 +747,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         String jeden = Wartosc.policz(Obwp, "4", "/");
         String solucja = "<center><b>"+getString(R.string.szescianpoliczAzObwp)+"</b></center><br>" +
                 "$$ObwP={4*a}$$<br>" +
-                "$$a={ObwB/4}$$<br>" +
+                "$$a={{ObwB}/4}$$<br>" +
                 "$$a={{" + Wartosc.formatuj(Obwp) + "}/4}$$<br>" +
                 "$$a={" + Wartosc.formatuj(jeden) + "}$$<br>" +
                 "<center>*============================*</center>";

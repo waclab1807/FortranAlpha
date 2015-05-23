@@ -777,7 +777,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         String dwa = Wartosc.policz(jeden, ac, "/");
         String solucja1 = "<center><b>"+getString(R.string.talespoliczEzAC)+"</b></center><br>" +
                 "$${a}/{e}={AC}/{f}$$<br>" +
-                "$$e={a*f}/{ac}$$<br>" +
+                "$$e={a*f}/{AC}$$<br>" +
                 "$$e={{" + Wartosc.formatuj(a) + "}*{" + Wartosc.formatuj(f) + "}}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
                 "$$e={" + Wartosc.formatuj(jeden) + "}/{" + Wartosc.formatuj(ac) + "}$$<br>" +
                 "$$e={" + Wartosc.formatuj(dwa) + "}$$<br>" +

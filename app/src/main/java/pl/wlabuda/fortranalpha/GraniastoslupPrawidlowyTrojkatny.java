@@ -694,7 +694,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String trzy = Wartosc.policz(dwa, "4", "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzhzPp)+"</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
-                "$$Pp={{"+Wartosc.formatuj(a)+"^2}*√3}/4$$<br>" +
+                "$$Pp={{{"+Wartosc.formatuj(a)+"}^2}*√3}/4$$<br>" +
                 "$$Pp={{"+Wartosc.formatuj(jeden)+"}*√3}/4$$<br>" +
                 "$$Pp={"+Wartosc.formatuj(dwa)+"}/4$$<br>" +
                 "$$Pp={"+Wartosc.formatuj(trzy)+"}$$<br>" +
@@ -826,7 +826,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzHzPciA)+"</b></center><br>" +
                 "$$Pp={{a^2}*√3}/4$$<br>" +
                 "$$Pp = {"+Wartosc.formatuj(jeden)+"}$$<br>"+
-                "$$H = {{Pc - {2 * Pp}} / {3 * a}}$$<br>" +
+                "$$H = {{{Pc} - {2 * Pp}} / {3 * a}}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(Pc)+"} - {2 * {"+Wartosc.formatuj(jeden)+"}}} / {3 * {"+Wartosc.formatuj(a)+"}}}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(Pc)+"} - {"+Wartosc.formatuj(dwa)+"}} / {"+Wartosc.formatuj(cztery)+"}}$$<br>" +
                 "$$H = {{"+Wartosc.formatuj(trzy)+"} / {"+Wartosc.formatuj(cztery)+"}}$$<br>" +
@@ -860,7 +860,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(ObwB, jeden, "-");
         String trzy = Wartosc.policz(dwa, "3", "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzHzObwbiA)+"</b></center><br>" +
-                "$$H = {{ObwB - {6 * a}} / 3}$$<br>" +
+                "$$H = {{{ObwB} - {6 * a}} / 3}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(ObwB)+"} - {6 * {"+Wartosc.formatuj(a)+"}}} / 3}$$<br>" +
                 "$$H = {{{"+Wartosc.formatuj(ObwB)+"} - {"+Wartosc.formatuj(jeden)+"}} / 3}$$<br>" +
                 "$$H = {{"+Wartosc.formatuj(dwa)+"} / 3}$$<br>" +
@@ -995,7 +995,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$ObwB = {{6 * a} + {3 * H}}$$<br>" +
                 "$$ObwB = {{6 * {"+Wartosc.formatuj(a)+"}} + {3 * {"+Wartosc.formatuj(H)+"}}}$$<br>" +
                 "$$ObwB = {{"+Wartosc.formatuj(jeden)+"} + {"+Wartosc.formatuj(dwa)+"}}$$<br>" +
-                "$$ObwP = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "$$ObwB = {"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
         if (!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -1082,7 +1082,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String jeden = Wartosc.policz(H, "3", "*");
         String dwa = Wartosc.policz(Pb, jeden, "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzAzHiPb)+"</b></center><br>" +
-                "$$a = {Pb/{3*H}}$$<br>" +
+                "$$a = {{Pb}/{3*H}}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Pb)+"}/{3*{"+Wartosc.formatuj(H)+"}}}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(Pb)+"}/{"+Wartosc.formatuj(jeden)+"}}$$<br>" +
                 "$$a = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
@@ -1118,7 +1118,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         String dwa = Wartosc.policz(Obwb, jeden, "-");
         String trzy = Wartosc.policz(dwa, "6", "/");
         String solucja1 = "<center><b>"+getString(string.granprostroj_policzAzHiObwb)+"</b></center><br>" +
-                "$$a = {{Obwb-{3*H}}/6}$$<br>" +
+                "$$a = {{{Obwb}-{3*H}}/6}$$<br>" +
                 "$$a = {{{"+Wartosc.formatuj(Obwb)+"}-{3*{"+Wartosc.formatuj(H)+"}}}/6}$$<br>" +
                 "$$a = {{{"+Wartosc.formatuj(Obwb)+"}/{"+Wartosc.formatuj(jeden)+"}}/6}$$<br>" +
                 "$$a = {{"+Wartosc.formatuj(dwa)+"}/6}$$<br>" +
@@ -1151,7 +1151,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 "$$h = {{a * √3}/2}$$<br>" +
                 "$$h = {{{"+Wartosc.formatuj(a)+"} * √3}/2}$$<br>" +
                 "$$h = {{"+Wartosc.formatuj(jeden)+"}/2}$$<br>" +
-                "$$a = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$h = {"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
         if (!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;

@@ -99,7 +99,7 @@ public class ListViewGeometria2D extends Activity {
                         builder
                                 .setTitle(getString(R.string.scaleneTriangle))
                                 .setMessage(R.string.scaleneTriangleDesc)
-                                .setIcon(R.drawable.trojkaprawidlowy)
+                                .setIcon(R.drawable.troj_praw)
                                 .setPositiveButton("OK", null)
                                 .show();
                         break;

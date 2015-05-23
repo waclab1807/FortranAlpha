@@ -148,7 +148,17 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="granprostroj_policzhza">Obliczanie h mając a</string>
     <string name="granprostroj_policzhzPp">Obliczanie h mając pole podstawy</string>
 
+    //trojkat prawidlowy
+    <string name="troj_praw_policzPp">Obliczanie pola mając a</string>
+    <string name="troj_praw_policzAzh">Obliczanie a mając h</string>
+    <string name="troj_praw_policzhza">Obliczanie h mając a</string>
+    <string name="troj_praw_policzObwp">Obliczanie obwodu mając a</string>
+    <string name="troj_praw_policzAzPp">Obliczanie a mając pole</string>
+    <string name="troj_praw_policzAzObwp">Obliczanie a mając obwód</string>
+    <string name="troj_praw_policzhzPp">Obliczanie a mając pole</string>
+
     //katy
     <string name="katypoliczBzA">Obliczanie b mając a</string>
     <string name="katypoliczAzB">Obliczanie a mając b</string>
+
 </resources>

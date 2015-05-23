@@ -29,12 +29,10 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
     private EditText a_val;
     private EditText h_val;
     private EditText obwp_val;
-    private TextView solution;
     private EditText lastFocused;
     public static String tekst = "";
-    private static Context context;
 
-    String a;
+    String a;                                           //TODO zrobic obliczenia wszystkie
     String pp;
     String H;
     String h;
@@ -44,23 +42,17 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.graniastoslup_prawidlowy_trojkatny);
+        Global.mContext = this.getBaseContext();
 
-        TrojkatProstokatny.context = getApplicationContext();
-/*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-*/
         pp_val = (EditText) findViewById(id.pp);
         a_val = (EditText) findViewById(id.a);
         h_val = (EditText) findViewById(id.h);
         obwp_val = (EditText) findViewById(id.obj);
         licz = (Button) findViewById(id.magic);
         clear = (Button) findViewById(id.clear);
-        sqrtbtn = (Button) findViewById(id.btnsqrt);
-        powbtn = (Button) findViewById(id.btnpow);
+        sqrtbtn = (Button) findViewById(id.sqrtbtn);
+        powbtn = (Button) findViewById(id.powbtn);
         solutionbtn = (Button) findViewById(id.solutionbtn);
-        solution = (TextView) findViewById(id.solution);
 
         a_val.setOnFocusChangeListener(this);
         h_val.setOnFocusChangeListener(this);
@@ -84,7 +76,6 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
                 boolean bobwb = false;
                 boolean btriangle = false;
 
-                solution.setText("");
                 tekst = "";
 
                 int x = 0; //koniec petli, wszystko policzone
@@ -190,7 +181,6 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
                 h_val.setText("");
                 pp_val.setText("");
                 obwp_val.setText("");
-                solution.setText("");
                 tekst = "";
 
                 Toast.makeText(TrojkatProstokatny.this, "Skasowane!",
@@ -215,31 +205,14 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
                 lastFocused.setSelection(1);
             }
         });
-        solutionbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //solution
-                solution.setMovementMethod(new ScrollingMovementMethod());
-                if(!solution.equals("")){
-                    solution.setText("");
-                }
-                solution.setText(tekst);
-            }
-        });
-
-
-
     }
+
     public Boolean isEmpty(EditText x){
         if(x.getText().toString().equals("")){
             return true;
         }else{
             return false;
         }
-    }
-
-    public static Context getAppContext() {
-        return TrojkatProstokatny.context;
     }
 
     private String policzPp(String a) {
@@ -370,39 +343,7 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case id.item1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder
-                        .setTitle("O autorze:")
-                        .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case id.item2:
-                AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
-                builder2
-                        .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
-                                "Wbudowany kalkulator, \n" +
-                                "Wiele, wiele innych...")
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton("OK", null)
-                        .show();
-                break;
-            case id.item3:
-                Toast.makeText(TrojkatProstokatny.this, "W budowie...",
-                        Toast.LENGTH_LONG).show();
-                break;
-            case id.item4:
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                break;
-        }
+        new DotsMenu(item, this);
         return super.onOptionsItemSelected(item);
     }
 
