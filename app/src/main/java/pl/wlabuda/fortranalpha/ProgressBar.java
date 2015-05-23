@@ -1,6 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Handler;
 import android.view.View;
 
@@ -14,7 +15,7 @@ public class ProgressBar {
     public ProgressBar(View view){
         progressBar = new ProgressDialog(view.getContext());
         progressBar.setCancelable(true);
-        progressBar.setMessage("" + R.string.wait);
+        progressBar.setMessage(Global.mContext.getString(R.string.wait));
         progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressBar.setProgress(0);
         progressBar.setMax(100);

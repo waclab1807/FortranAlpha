@@ -33,13 +33,56 @@
         android:id="@+id/imageView"
         android:layout_weight="1"
         android:layout_gravity="center_vertical" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <ScrollView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/buttons"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="@string/sqrt"
+                android:id="@+id/sqrtbtn"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="@string/pow"
+                android:id="@+id/powbtn"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="@string/count"
+                android:id="@+id/magic"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="@string/clear"
+                android:id="@+id/clear"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/dwa"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1">
+        android:layout_gravity="center_vertical">
 
         <LinearLayout
             android:orientation="vertical"
@@ -47,47 +90,9 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent">
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:text="@string/sqrt"
-                    android:id="@+id/sqrtbtn"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:text="@string/pow"
-                    android:id="@+id/powbtn"
-                    android:layout_alignParentBottom="true"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:text="@string/count"
-                    android:id="@+id/magic"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:text="@string/clear"
-                    android:id="@+id/clear"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp">
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,7 +126,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp">
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -154,7 +159,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp">
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -187,7 +192,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp">
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -220,7 +225,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -253,7 +258,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -286,7 +291,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -319,7 +324,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -352,7 +357,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -385,7 +390,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -418,7 +423,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -451,7 +456,7 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="46dp" >
+                android:layout_height="75dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -482,7 +487,7 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
+    </LinearLayout>
     <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

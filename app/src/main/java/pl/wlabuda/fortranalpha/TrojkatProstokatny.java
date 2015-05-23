@@ -52,10 +52,10 @@ public class TrojkatProstokatny extends Activity implements OnFocusChangeListene
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 */
         pp_val = (EditText) findViewById(id.pp);
-        a_val = (EditText) findViewById(id.a_val);
-        h_val = (EditText) findViewById(id.h_val);
+        a_val = (EditText) findViewById(id.a);
+        h_val = (EditText) findViewById(id.h);
         obwp_val = (EditText) findViewById(id.obj);
-        licz = (Button) findViewById(id.licz);
+        licz = (Button) findViewById(id.magic);
         clear = (Button) findViewById(id.clear);
         sqrtbtn = (Button) findViewById(id.btnsqrt);
         powbtn = (Button) findViewById(id.btnpow);

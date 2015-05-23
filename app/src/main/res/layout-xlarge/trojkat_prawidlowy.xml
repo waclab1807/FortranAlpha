@@ -92,14 +92,81 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="75dp" >
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" a: "
-                    android:id="@+id/textView24"
+                    android:text="@string/area"
+                    android:id="@+id/textView22"
+                    android:layout_gravity="center_vertical" />
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/pp"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true" />
+
+                    <WebView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/webPp"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="75dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/circuit"
+                    android:id="@+id/textView25"
+                    android:layout_gravity="center_vertical" />
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/obw"
+                        android:layout_weight="1"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true" />
+
+                    <WebView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:visibility="gone"
+                        android:id="@+id/webObwp" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="75dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=" a:  "
+                    android:id="@+id/textView29"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -117,220 +184,22 @@
                     <WebView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/webA"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        android:id="@+id/weba" />
                 </FrameLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" b: "
-                    android:id="@+id/textView27"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/b"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webB"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" c: "
-                    android:id="@+id/textView28"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/c"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webC"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" d: "
-                    android:id="@+id/textView29"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/d"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webD"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" e: "
-                    android:id="@+id/textView30"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/e"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webE"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" f: "
-                    android:id="@+id/textView31"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/f"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webF"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text=" g: "
-                    android:id="@+id/textView32"
-                    android:layout_gravity="center_vertical" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/g"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true" />
-
-                    <WebView
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/webG"
-                        android:visibility="gone" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="75dp" >
+                android:layout_height="75dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text=" h: "
-                    android:id="@+id/textView33"
+                    android:id="@+id/textView32"
                     android:layout_gravity="center_vertical" />
 
                 <FrameLayout
@@ -348,8 +217,8 @@
                     <WebView
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/webH"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        android:id="@+id/webh" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>

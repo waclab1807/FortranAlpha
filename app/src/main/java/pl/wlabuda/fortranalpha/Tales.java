@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
     private Button btnReview;
     private Button btnData;
     private Button btnSolution;
+    private LinearLayout buttons;
 
     String a;
     String b;
@@ -84,6 +86,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
         btnSolution = (Button)findViewById(R.id.btnSolution);
         scrollView = (ScrollView)findViewById(R.id.dwa);
         figura = (ImageView) findViewById(id.imageView);
+        buttons = (LinearLayout) findViewById(id.buttons);
 
         if (btnData.getVisibility() == View.VISIBLE) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -156,7 +159,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(buttons,imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(drawable.tales);
 

@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
     private WebView mWebViewF;
     private WebView mWebViewG;
     private WebView mWebViewH;
+    private LinearLayout buttons;
 
     String a;
     String b;
@@ -129,6 +131,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
         btnReview = (Button)findViewById(R.id.btnReview);
         btnData = (Button)findViewById(R.id.btnData);
         btnSolution = (Button)findViewById(R.id.btnSolution);
+        buttons = (LinearLayout) findViewById(id.buttons);
 
         a_val.setOnFocusChangeListener(this);
         b_val.setOnFocusChangeListener(this);
@@ -150,7 +153,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(buttons,imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(R.drawable.katy);
 
@@ -198,6 +201,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                     if (isEmpty(d_val)) {
                                         if (isEmpty(e_val)) {
                                             System.out.println("&&&1.1 ");
+                                            h = Wartosc.policz(h,"1","*");
                                             a = h;
                                             a_val.setText(h);
                                             d = h;
@@ -211,6 +215,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                             JavaScript.showFormatted(e, mWebViewE);
                                         } else {
                                             System.out.println("&&&1.2 ");
+                                            e = Wartosc.policz(e,"1","*");
                                             a = e;
                                             a_val.setText(e);
                                             d = e;
@@ -225,6 +230,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                         }
                                     } else {
                                         System.out.println("&&&1.3 ");
+                                        d = Wartosc.policz(d,"1","*");
                                         a = d;
                                         a_val.setText(d);
                                         e = d;
@@ -239,6 +245,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                     }
                                 } else {
                                     System.out.println("&&&1.4 ");
+                                    a = Wartosc.policz(a,"1","*");
                                     d = a;
                                     d_val.setText(a);
                                     e = a;
@@ -259,6 +266,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                     if (isEmpty(c_val)) {
                                         if (isEmpty(f_val)) {
                                             System.out.println("&&&2.1 ");
+                                            g = Wartosc.policz(g,"1","*");
                                             b = g;
                                             b_val.setText(g);
                                             c = g;
@@ -272,6 +280,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                             JavaScript.showFormatted(f, mWebViewF);
                                         } else {
                                             System.out.println("&&&2.2 ");
+                                            f = Wartosc.policz(f,"1","*");
                                             b = f;
                                             b_val.setText(f);
                                             c = f;
@@ -286,6 +295,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                         }
                                     } else {
                                         System.out.println("&&&2.3 ");
+                                        c = Wartosc.policz(c,"1","*");
                                         b = c;
                                         b_val.setText(c);
                                         f = c;
@@ -300,6 +310,7 @@ public class Katy extends Activity implements OnFocusChangeListener {
                                     }
                                 } else {
                                     System.out.println("&&&2.4 ");
+                                    b = Wartosc.policz(b,"1","*");
                                     c = b;
                                     c_val.setText(b);
                                     f = b;

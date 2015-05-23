@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Toast;
@@ -54,6 +55,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
     private WebView mWebViewd;
     private ImageView figura;
     private ScrollView scrollView;
+    private LinearLayout buttons;
 
     String a;
     String pp;
@@ -91,6 +93,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         btnData = (Button) findViewById(R.id.btnData);
         btnSolution = (Button) findViewById(R.id.btnSolution);
         scrollView = (ScrollView) findViewById(R.id.dwa);
+        buttons = (LinearLayout) findViewById(R.id.buttons);
 
         a_val.setOnFocusChangeListener(this);
         d_val.setOnFocusChangeListener(this);
@@ -187,7 +190,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         Global.TouchListener(figura, R.drawable.szescianptw, triangle_val);
 
         final InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        new TabListener(imm,btnReview, btnData, btnSolution, figura, scrollView, mWebView);
+        new TabListener(buttons,imm,btnReview, btnData, btnSolution, figura, scrollView, mWebView);
         figura.setImageResource(R.drawable.szescian);
         btnSolution.setEnabled(false);
 
@@ -228,6 +231,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                             if (!isEmpty(a_val)) {
                                 System.out.println("^^^^^^^^1");
                                 a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
                                 ba = true;
                                 if (isEmpty(pp_val) && !bpp) {
                                     String s = policzPp(a);

@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.view.View.OnFocusChangeListener;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private EditText triangle_val;
     private ImageView figura;
     private EditText lastFocused;
-    public static String tekst = "";
+    private String tekst = "";
     private WebView mWebView;
     private WebView mWebViewA;
     private WebView mWebViewH;
@@ -59,10 +60,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private Button btnReview;
     private Button btnData;
     private Button btnSolution;
-    private ProgressDialog progressBar;
-    private Handler progressBarbHandler = new Handler();
-    private int progressBarStatus = 0;
-    private long fileSize = 0;
+    private LinearLayout buttons;
 
     String a;
     String pp;
@@ -111,6 +109,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         btnData = (Button)findViewById(R.id.btnData);
         btnSolution = (Button)findViewById(R.id.btnSolution);
         scrollView = (ScrollView)findViewById(R.id.dwa);
+        buttons = (LinearLayout) findViewById(id.buttons);
 
         if (btnData.getVisibility() == View.VISIBLE) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -202,10 +201,11 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwp,obwp_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwb,obwb_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobj,obj_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyptw,triangle_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
-        new TabListener(imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
+        new TabListener(buttons,imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
         figura.setImageResource(drawable.gran_pros_trojkatny);
 
@@ -229,7 +229,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 boolean btriangle = false;
 
                 int x = 0; //koniec petli, wszystko policzone
-                int y = 0; //za mało danych aby policzyć
 
                 if(Wartosc.nawiasy(a_val.getText().toString()) &&
                         Wartosc.nawiasy(pp_val.getText().toString()) &&
@@ -487,7 +486,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
                                 x = 1;
-                                y = 1;
                             }
                         }
                         //czy jest pc i pb
@@ -594,7 +592,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                         //za malo danych
                         if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
                             x = 1;
-                            y = 1;
                             figura.setImageResource(drawable.gran_pros_trojkatny);
                             licz.setEnabled(false);
                             btnSolution.setEnabled(true);
@@ -644,7 +641,6 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 if (btnData.getVisibility() == View.VISIBLE) {
                     refresh.refresh(figura, scrollView, mWebView);
                 }
-                System.out.println("eMessage "+y);
             }
         });
 
