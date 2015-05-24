@@ -5,25 +5,25 @@
     <string name="action_settings">Settings</string>
 
     //buttons
-    <string name="count">Count</string>
-    <string name="clear">Wyczyść</string>
-    <string name="sqrt">Wstaw\npierwiastek\n\u221a</string>
-    <string name="pow">Wstaw\npotęgę\nx^y</string>
-    <string name="solution">Rozwiązanie</string>
+    <string name="count">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="sqrt">Insert \u221ax\u0305</string>
+    <string name="pow">Insert x\u207F</string>
+    <string name="solution">Solution</string>
 
     //extras
     <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
 
     //menu
-    <string name="about">O autorze</string>
-    <string name="futurePlans">Plany na przyszłość</string>
-    <string name="finish">Zakończ</string>
+    <string name="about">About</string>
+    <string name="futurePlans">Plans for future</string>
+    <string name="finish">Quit</string>
 
     //toast
-    <string name="notEnough">Za mało danych aby policzyć!</string>
+    <string name="notEnough">Not enough data, clear and insert new data!</string>
     <string name="premium">Skorzystaj z konta premium aby zobaczyć rozwiązanie</string>
-    <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
-    <string name="deleted">Skasowane!</string>
+    <string name="ups">Ups! Something is wrong :/ Check your data.</string>
+    <string name="deleted">Deleted!</string>
 
     //titles
     <string name="tales">Twierdzenie Talesa</string>
@@ -49,4 +49,7 @@
     <string name="talespoliczEzBD">Obliczanie e mając BD, b i f</string>
     <string name="talespoliczFzAC">Obliczanie f mając AC, a i e</string>
     <string name="talespoliczEzAC">Obliczanie e mając AC, a i f</string>
+    <string name="wait">Please wait...</string>
+    <string name="review">Review</string>
+    <string name="data">Data</string>
 </resources>

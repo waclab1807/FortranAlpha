@@ -2,6 +2,7 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,14 +23,14 @@ public class ListViewMain extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
-/*
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-*/
+
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
-
+        /*if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            listView.setBackgroundResource(R.drawable.tlo_land);
+        }else{
+            listView.setBackgroundResource(R.drawable.tlo);
+        }*/
         // Defined Array values to show in ListView
         String[] values = new String[] { getString(R.string.geomerty2d),
                 getString(R.string.geometry3d),
