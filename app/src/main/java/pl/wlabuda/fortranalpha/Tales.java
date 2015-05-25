@@ -2,6 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -148,9 +150,9 @@ public class Tales extends Activity implements OnFocusChangeListener {
         ac_val.setOnFocusChangeListener(this);
         bd_val.setOnFocusChangeListener(this);
 
-        Global.TouchListener(figura,R.drawable.talesa,a_val);
-        Global.TouchListener(figura,R.drawable.talesb,b_val);
-        Global.TouchListener(figura,R.drawable.talesc,c_val);
+        Global.TouchListener(figura, R.drawable.talesa, a_val);
+        Global.TouchListener(figura, R.drawable.talesb, b_val);
+        Global.TouchListener(figura, R.drawable.talesc, c_val);
         Global.TouchListener(figura,R.drawable.talesd,d_val);
         Global.TouchListener(figura,R.drawable.talese,e_val);
         Global.TouchListener(figura,R.drawable.talesf,f_val);
@@ -165,12 +167,19 @@ public class Tales extends Activity implements OnFocusChangeListener {
 
         btnSolution.setEnabled(false);
 
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
+
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 tekst = "";
                 figura.setImageResource(drawable.tales);
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0; //za mało danych aby policzyć
@@ -453,6 +462,8 @@ public class Tales extends Activity implements OnFocusChangeListener {
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.tales);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(Tales.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }

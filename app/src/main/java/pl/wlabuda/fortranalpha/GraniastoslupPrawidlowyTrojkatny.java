@@ -5,6 +5,8 @@ import pl.wlabuda.fortranalpha.R.*;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -191,13 +193,13 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         triangle_val.setOnFocusChangeListener(this);
 
         Global.TouchListener(figura, drawable.gran_pros_trojkatnypp, pp_val);
-        Global.TouchListener(figura, drawable.gran_pros_trojkatnypb,pb_val);
-        Global.TouchListener(figura, drawable.gran_pros_trojkatnypc,pc_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnypb, pb_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnypc, pc_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnya,a_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnydd,D_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyd,d_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyh,h_val);
-        Global.TouchListener(figura, drawable.gran_pros_trojkatnyhh,H_val);
+        Global.TouchListener(figura, drawable.gran_pros_trojkatnyhh, H_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwp,obwp_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobwb,obwb_val);
         Global.TouchListener(figura, drawable.gran_pros_trojkatnyobj,obj_val);
@@ -210,6 +212,9 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
         figura.setImageResource(drawable.gran_pros_trojkatny);
 
         btnSolution.setEnabled(false);
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,408 +233,411 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 boolean bobwb = false;
                 boolean btriangle = false;
 
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
+
                 int x = 0; //koniec petli, wszystko policzone
 
-                if(Wartosc.nawiasy(a_val.getText().toString()) &&
+                if (Wartosc.nawiasy(a_val.getText().toString()) &&
                         Wartosc.nawiasy(pp_val.getText().toString()) &&
                         Wartosc.nawiasy(D_val.getText().toString()) &&
-                        Wartosc.nawiasy(obwp_val.getText().toString())&&
-                        Wartosc.nawiasy(obwb_val.getText().toString())&&
-                        Wartosc.nawiasy(obj_val.getText().toString())&&
-                        Wartosc.nawiasy(d_val.getText().toString())&&
-                        Wartosc.nawiasy(H_val.getText().toString())&&
-                        Wartosc.nawiasy(h_val.getText().toString())&&
-                        Wartosc.nawiasy(triangle_val.getText().toString())&&
-                        Wartosc.nawiasy(pb_val.getText().toString())&&
+                        Wartosc.nawiasy(obwp_val.getText().toString()) &&
+                        Wartosc.nawiasy(obwb_val.getText().toString()) &&
+                        Wartosc.nawiasy(obj_val.getText().toString()) &&
+                        Wartosc.nawiasy(d_val.getText().toString()) &&
+                        Wartosc.nawiasy(H_val.getText().toString()) &&
+                        Wartosc.nawiasy(h_val.getText().toString()) &&
+                        Wartosc.nawiasy(triangle_val.getText().toString()) &&
+                        Wartosc.nawiasy(pb_val.getText().toString()) &&
                         Wartosc.nawiasy(pc_val.getText().toString())) {
-                try{
-                    while (x == 0) {
-                        //obliczanie a lub h lub pp lub obwp
-                        //czy jest a
-                        if (!isEmpty(a_val)) {
-                            System.out.println("^^^^^^^^1");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            ba = true;
-                            if (isEmpty(pp_val) && !bpp) {
-                                System.out.println("^^^^^^^^1.1");
-                                String s = policzPp(a);
-                                pp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewPp);
-                                bpp = true;
+                    try {
+                        while (x == 0) {
+                            //obliczanie a lub h lub pp lub obwp
+                            //czy jest a
+                            if (!isEmpty(a_val)) {
+                                System.out.println("^^^^^^^^1");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                ba = true;
+                                if (isEmpty(pp_val) && !bpp) {
+                                    System.out.println("^^^^^^^^1.1");
+                                    String s = policzPp(a);
+                                    pp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                }
+                                if (isEmpty(h_val) && !bh) {
+                                    System.out.println("^^^^^^^^1.2");
+                                    String s = policzhza(a);
+                                    h_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewh);
+                                    bh = true;
+                                }
+                                if (isEmpty(obwp_val) && !bobwp) {
+                                    System.out.println("^^^^^^^^1.3");
+                                    String s = policzObwp(a);
+                                    obwp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObwp);
+                                    bobwp = true;
+                                }
                             }
-                            if (isEmpty(h_val) && !bh) {
-                                System.out.println("^^^^^^^^1.2");
-                                String s = policzhza(a);
-                                h_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewh);
+                            //czy jest h
+                            if (!isEmpty(h_val)) {
+                                System.out.println("^^^^^^^^2");
+                                h = h_val.getText().toString();
+                                JavaScript.showFormatted(h, mWebViewh);
                                 bh = true;
+                                if (isEmpty(a_val) && !ba) {
+                                    System.out.println("^^^^^^^^2.1");
+                                    String s = policzAzh(h);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (isEmpty(pp_val) && !bpp) {
+                                    String s = policzPp(policzAzh(h));
+                                    pp_val.setText(s);
+                                    System.out.println("^^^^^^^^2.2");
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                }
+                                if (isEmpty(obwp_val) && !bobwp) {
+                                    String s = policzObwp(policzAzh(h));
+                                    obwp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObwp);
+                                    System.out.println("^^^^^^^^2.3");
+                                    bobwp = true;
+                                }
                             }
-                            if (isEmpty(obwp_val) && !bobwp) {
-                                System.out.println("^^^^^^^^1.3");
-                                String s = policzObwp(a);
-                                obwp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewObwp);
+                            //czy jest pp
+                            if (!isEmpty(pp_val)) {
+                                System.out.println("^^^^^^^^3");
+                                pp = pp_val.getText().toString();
+                                JavaScript.showFormatted(pp, mWebViewPp);
+                                bpp = true;
+                                if (isEmpty(a_val) && !ba) {
+                                    String s = policzAzPp(pp);
+                                    System.out.println("^^^^^^^^3.1");
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (h_val.getText().toString().equals("") && !bh) {
+                                    String s = policzhzPp(pp);
+                                    System.out.println("^^^^^^^^3.2");
+                                    h_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewh);
+                                    bh = true;
+                                }
+                                if (obwp_val.getText().toString().equals("") && !bobwp) {
+                                    String s = policzObwp(policzAzPp(pp));
+                                    System.out.println("^^^^^^^^3.3");
+                                    obwp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewObwp);
+                                    bobwp = true;
+                                }
+                            }
+                            //czy jest obwp
+                            if (!isEmpty(obwp_val)) {
+                                System.out.println("^^^^^^^^4");
+                                obwp = obwp_val.getText().toString();
+                                JavaScript.showFormatted(obwp, mWebViewObwp);
                                 bobwp = true;
+                                if (isEmpty(a_val) && !ba) {
+                                    System.out.println("^^^^^^^^4.1");
+                                    String s = policzAzObwp(obwp);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                                if (isEmpty(pp_val) && !bpp) {
+                                    System.out.println("^^^^^^^^4.2");
+                                    String s = policzAzObwp(obwp);
+                                    pp_val.setText(policzPp(s));
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                }
+                                if (isEmpty(h_val) && !bh) {
+                                    System.out.println("^^^^^^^^4.3");
+                                    String s = policzhza(policzAzObwp(obwp));
+                                    h_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewh);
+                                    bh = true;
+                                }
                             }
-                        }
-                        //czy jest h
-                        if (!isEmpty(h_val)) {
-                            System.out.println("^^^^^^^^2");
-                            h = h_val.getText().toString();
-                            JavaScript.showFormatted(h, mWebViewh);
-                            bh = true;
-                            if (isEmpty(a_val) && !ba) {
-                                System.out.println("^^^^^^^^2.1");
-                                String s = policzAzh(h);
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            }
-                            if (isEmpty(pp_val) && !bpp) {
-                                String s = policzPp(policzAzh(h));
-                                pp_val.setText(s);
-                                System.out.println("^^^^^^^^2.2");
-                                JavaScript.showFormatted(s, mWebViewPp);
-                                bpp = true;
-                            }
-                            if (isEmpty(obwp_val) && !bobwp) {
-                                String s = policzObwp(policzAzh(h));
-                                obwp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewObwp);
-                                System.out.println("^^^^^^^^2.3");
-                                bobwp = true;
-                            }
-                        }
-                        //czy jest pp
-                        if (!isEmpty(pp_val)) {
-                            System.out.println("^^^^^^^^3");
-                            pp = pp_val.getText().toString();
-                            JavaScript.showFormatted(pp, mWebViewPp);
-                            bpp = true;
-                            if (isEmpty(a_val) && !ba) {
-                                String s = policzAzPp(pp);
-                                System.out.println("^^^^^^^^3.1");
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            }
-                            if (h_val.getText().toString().equals("") && !bh) {
-                                String s = policzhzPp(pp);
-                                System.out.println("^^^^^^^^3.2");
-                                h_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewh);
-                                bh = true;
-                            }
-                            if (obwp_val.getText().toString().equals("") && !bobwp) {
-                                String s = policzObwp(policzAzPp(pp));
-                                System.out.println("^^^^^^^^3.3");
-                                obwp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewObwp);
-                                bobwp = true;
-                            }
-                        }
-                        //czy jest obwp
-                        if (!isEmpty(obwp_val)) {
-                            System.out.println("^^^^^^^^4");
-                            obwp = obwp_val.getText().toString();
-                            JavaScript.showFormatted(obwp, mWebViewObwp);
-                            bobwp = true;
-                            if (isEmpty(a_val) && !ba) {
-                                System.out.println("^^^^^^^^4.1");
-                                String s = policzAzObwp(obwp);
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            }
-                            if (isEmpty(pp_val) && !bpp) {
-                                System.out.println("^^^^^^^^4.2");
-                                String s = policzAzObwp(obwp);
-                                pp_val.setText(policzPp(s));
-                                JavaScript.showFormatted(s, mWebViewPp);
-                                bpp = true;
-                            }
-                            if (isEmpty(h_val) && !bh) {
-                                System.out.println("^^^^^^^^4.3");
-                                String s = policzhza(policzAzObwp(obwp));
-                                h_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewh);
-                                bh = true;
-                            }
-                        }
-                        //czy jest obj i H
-                        if (!isEmpty(H_val)) {
-                            System.out.println("^^^^^^^^5");
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            bH = true;
-                            if (!isEmpty(obj_val) && !bpp) {
-                                System.out.println("^^^^^^^^5.1");
-                                obj = obj_val.getText().toString();
-                                JavaScript.showFormatted(obj, mWebViewObj);
-                                bobj = true;
-                                String s = policzPpZObjiH(obj, H);
-                                pp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewPp);
-                                bpp = true;
-                            } else if (!isEmpty(d_val) && !ba) {
-                                System.out.println("^^^^^^^^5.2");
-                                d = d_val.getText().toString();
-                                JavaScript.showFormatted(d, mWebViewd);
-                                bd = true;
-                                String s = policzAzHid(H, d);
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            } else if (!isEmpty(D_val) && !bh) {
-                                System.out.println("^^^^^^^^5.3");
-                                D = D_val.getText().toString();
-                                JavaScript.showFormatted(D, mWebViewD);
-                                bD = true;
-                                String s = policzhzHiD(H, D);
-                                h_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewh);
-                                bh = true;
-                            } else if (!isEmpty(obwb_val) && !ba) {
-                                System.out.println("^^^^^^^^5.4");
-                                obwb = obwb_val.getText().toString();
-                                JavaScript.showFormatted(obwb, mWebViewObwb);
-                                bobwb = true;
-                                String s = policzAzHiObwb(H, obwb);
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            } else if (!isEmpty(pb_val) && !ba) {
-                                System.out.println("^^^^^^^^5.5");
-                                pb = pb_val.getText().toString();
-                                JavaScript.showFormatted(pb, mWebViewPb);
-                                bpb = true;
-                                String s = policzAzHiPb(H, pb);
-                                a_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewA);
-                                ba = true;
-                            }
-                        }
-                        //obliczanie H
-                        if (!isEmpty(a_val)) {
-                            System.out.println("^^^^^^^^6");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            ba = true;
-                            if (!isEmpty(obj_val) && !bH) {
-                                System.out.println("^^^^^^^^6.1");
-                                obj = obj_val.getText().toString();
-                                JavaScript.showFormatted(obj, mWebViewObj);
-                                bobj = true;
-                                String s = policzHzObjiA(obj, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
+                            //czy jest obj i H
+                            if (!isEmpty(H_val)) {
+                                System.out.println("^^^^^^^^5");
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
                                 bH = true;
-                            } else if (!isEmpty(d_val) && !bH) {
-                                System.out.println("^^^^^^^^6.2");
-                                d = d_val.getText().toString();
-                                JavaScript.showFormatted(d, mWebViewd);
-                                bd = true;
-                                String s = policzHzdiA(d, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            } else if (!isEmpty(D_val) && !bH) {
-                                System.out.println("^^^^^^^^6.3");
-                                D = D_val.getText().toString();
-                                JavaScript.showFormatted(D, mWebViewD);
-                                bD = true;
-                                String s = policzHzDiA(D, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            } else if (!isEmpty(pc_val) && !bH) {
-                                System.out.println("^^^^^^^^6.4");
+                                if (!isEmpty(obj_val) && !bpp) {
+                                    System.out.println("^^^^^^^^5.1");
+                                    obj = obj_val.getText().toString();
+                                    JavaScript.showFormatted(obj, mWebViewObj);
+                                    bobj = true;
+                                    String s = policzPpZObjiH(obj, H);
+                                    pp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                } else if (!isEmpty(d_val) && !ba) {
+                                    System.out.println("^^^^^^^^5.2");
+                                    d = d_val.getText().toString();
+                                    JavaScript.showFormatted(d, mWebViewd);
+                                    bd = true;
+                                    String s = policzAzHid(H, d);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                } else if (!isEmpty(D_val) && !bh) {
+                                    System.out.println("^^^^^^^^5.3");
+                                    D = D_val.getText().toString();
+                                    JavaScript.showFormatted(D, mWebViewD);
+                                    bD = true;
+                                    String s = policzhzHiD(H, D);
+                                    h_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewh);
+                                    bh = true;
+                                } else if (!isEmpty(obwb_val) && !ba) {
+                                    System.out.println("^^^^^^^^5.4");
+                                    obwb = obwb_val.getText().toString();
+                                    JavaScript.showFormatted(obwb, mWebViewObwb);
+                                    bobwb = true;
+                                    String s = policzAzHiObwb(H, obwb);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                } else if (!isEmpty(pb_val) && !ba) {
+                                    System.out.println("^^^^^^^^5.5");
+                                    pb = pb_val.getText().toString();
+                                    JavaScript.showFormatted(pb, mWebViewPb);
+                                    bpb = true;
+                                    String s = policzAzHiPb(H, pb);
+                                    a_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewA);
+                                    ba = true;
+                                }
+                            }
+                            //obliczanie H
+                            if (!isEmpty(a_val)) {
+                                System.out.println("^^^^^^^^6");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                ba = true;
+                                if (!isEmpty(obj_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.1");
+                                    obj = obj_val.getText().toString();
+                                    JavaScript.showFormatted(obj, mWebViewObj);
+                                    bobj = true;
+                                    String s = policzHzObjiA(obj, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(d_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.2");
+                                    d = d_val.getText().toString();
+                                    JavaScript.showFormatted(d, mWebViewd);
+                                    bd = true;
+                                    String s = policzHzdiA(d, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(D_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.3");
+                                    D = D_val.getText().toString();
+                                    JavaScript.showFormatted(D, mWebViewD);
+                                    bD = true;
+                                    String s = policzHzDiA(D, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(pc_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.4");
+                                    pc = pc_val.getText().toString();
+                                    JavaScript.showFormatted(pc, mWebViewPc);
+                                    bpc = true;
+                                    String s = policzHzPciA(pc, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(pb_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.4.1");
+                                    pb = pb_val.getText().toString();
+                                    JavaScript.showFormatted(pb, mWebViewPb);
+                                    bpb = true;
+                                    String s = policzHzPbiA(pb, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(obwb_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.5");
+                                    obwb = obwb_val.getText().toString();
+                                    JavaScript.showFormatted(obwb, mWebViewObwb);
+                                    bobwb = true;
+                                    String s = policzHzObwbiA(obwb, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (!isEmpty(triangle_val) && !bH) {
+                                    System.out.println("^^^^^^^^6.6");
+                                    triangle = triangle_val.getText().toString();
+                                    JavaScript.showFormatted(triangle, mWebViewPtw);
+                                    btriangle = true;
+                                    String s = policzHzTriangleiA(triangle, a);
+                                    H_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewH);
+                                    bH = true;
+                                } else if (isEmpty(obj_val) && isEmpty(d_val) && isEmpty(D_val) && isEmpty(pc_val) && isEmpty(obwb_val) && isEmpty(triangle_val)) {
+                                    System.out.println("^^^^^^^^6.7");
+                                    figura.setImageResource(drawable.gran_pros_trojkatny);
+                                    licz.setEnabled(false);
+                                    btnSolution.setEnabled(true);
+                                    imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                    x = 1;
+                                }
+                            }
+                            //czy jest pc i pb
+                            if (!isEmpty(pc_val)) {
+                                System.out.println("^^^^^^^^7");
                                 pc = pc_val.getText().toString();
                                 JavaScript.showFormatted(pc, mWebViewPc);
                                 bpc = true;
-                                String s = policzHzPciA(pc, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            } else if (!isEmpty(pb_val) && !bH) {
-                                System.out.println("^^^^^^^^6.4.1");
-                                pb = pb_val.getText().toString();
-                                JavaScript.showFormatted(pb, mWebViewPb);
+                                if (!isEmpty(pb_val) && !bpp) {
+                                    pb = pb_val.getText().toString();
+                                    JavaScript.showFormatted(pb, mWebViewPb);
+                                    bpb = true;
+                                    String s = policzPpzPciPb(pc, pb);
+                                    pp_val.setText(s);
+                                    JavaScript.showFormatted(s, mWebViewPp);
+                                    bpp = true;
+                                }
+                            }
+                            //obliczanie pozostałych na podstawie a i H
+                            //D
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bD) {
+                                System.out.println("^^^^^^^^8");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzDzHiA(H, a);
+                                D_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewD);
+                                bD = true;
+                            }
+                            //d
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bd) {
+                                System.out.println("^^^^^^^^9");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzdzHiA(H, a);
+                                d_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewd);
+                                bd = true;
+                            }
+                            //pb
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bpb) {
+                                System.out.println("^^^^^^^^10");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzPbzAiH(a, H);
+                                pb_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewPb);
                                 bpb = true;
-                                String s = policzHzPbiA(pb, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            }else if (!isEmpty(obwb_val) && !bH) {
-                                System.out.println("^^^^^^^^6.5");
-                                obwb = obwb_val.getText().toString();
-                                JavaScript.showFormatted(obwb, mWebViewObwb);
+                            }
+                            //pc
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bpc) {
+                                System.out.println("^^^^^^^^11");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzPczAiH(a, H);
+                                pc_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewPc);
+                                bpc = true;
+                            }
+                            //obwb
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bobwb) {
+                                System.out.println("^^^^^^^^12");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzObwbZAiH(a, H);
+                                obwb_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewObwb);
                                 bobwb = true;
-                                String s = policzHzObwbiA(obwb, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            } else if (!isEmpty(triangle_val) && !bH) {
-                                System.out.println("^^^^^^^^6.6");
-                                triangle = triangle_val.getText().toString();
-                                JavaScript.showFormatted(triangle, mWebViewPtw);
+                            }
+                            //triangle
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !btriangle) {
+                                System.out.println("^^^^^^^^13");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzTriangleZaiH(a, H);
+                                triangle_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewPtw);
                                 btriangle = true;
-                                String s = policzHzTriangleiA(triangle, a);
-                                H_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewH);
-                                bH = true;
-                            } else if (isEmpty(obj_val) && isEmpty(d_val) && isEmpty(D_val) && isEmpty(pc_val) && isEmpty(obwb_val) && isEmpty(triangle_val)) {
-                                System.out.println("^^^^^^^^6.7");
+                            }
+                            //obj
+                            if (!isEmpty(a_val) && !isEmpty(H_val) && !bobj) {
+                                System.out.println("^^^^^^^^14");
+                                a = a_val.getText().toString();
+                                JavaScript.showFormatted(a, mWebViewA);
+                                H = H_val.getText().toString();
+                                JavaScript.showFormatted(H, mWebViewH);
+                                String s = policzObjZaiH(a, H);
+                                obj_val.setText(s);
+                                JavaScript.showFormatted(s, mWebViewObj);
+                                bobj = true;
+                            }
+                            //za malo danych
+                            if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
+                                x = 1;
                                 figura.setImageResource(drawable.gran_pros_trojkatny);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.notEnough),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            //wszystko policzone, koniec petli
+                            if (!a_val.getText().toString().equals("") &&
+                                    !h_val.getText().toString().equals("") &&
+                                    !pp_val.getText().toString().equals("") &&
+                                    !obwp_val.getText().toString().equals("") &&
+                                    !H_val.getText().toString().equals("") &&
+                                    !obj_val.getText().toString().equals("") &&
+                                    !pb_val.getText().toString().equals("") &&
+                                    !pc_val.getText().toString().equals("") &&
+                                    !triangle_val.getText().toString().equals("") &&
+                                    !d_val.getText().toString().equals("") &&
+                                    !D_val.getText().toString().equals("") &&
+                                    !obwb_val.getText().toString().equals("")
+                                    ) {
                                 x = 1;
-                            }
-                        }
-                        //czy jest pc i pb
-                        if (!isEmpty(pc_val)) {
-                            System.out.println("^^^^^^^^7");
-                            pc = pc_val.getText().toString();
-                            JavaScript.showFormatted(pc, mWebViewPc);
-                            bpc = true;
-                            if (!isEmpty(pb_val) && !bpp) {
-                                pb = pb_val.getText().toString();
-                                JavaScript.showFormatted(pb, mWebViewPb);
-                                bpb = true;
-                                String s = policzPpzPciPb(pc, pb);
-                                pp_val.setText(s);
-                                JavaScript.showFormatted(s, mWebViewPp);
-                                bpp = true;
-                            }
-                        }
-                        //obliczanie pozostałych na podstawie a i H
-                        //D
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bD) {
-                            System.out.println("^^^^^^^^8");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzDzHiA(H, a);
-                            D_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewD);
-                            bD = true;
-                        }
-                        //d
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bd) {
-                            System.out.println("^^^^^^^^9");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzdzHiA(H, a);
-                            d_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewd);
-                            bd = true;
-                        }
-                        //pb
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bpb) {
-                            System.out.println("^^^^^^^^10");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzPbzAiH(a, H);
-                            pb_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewPb);
-                            bpb = true;
-                        }
-                        //pc
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bpc) {
-                            System.out.println("^^^^^^^^11");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzPczAiH(a, H);
-                            pc_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewPc);
-                            bpc = true;
-                        }
-                        //obwb
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bobwb) {
-                            System.out.println("^^^^^^^^12");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzObwbZAiH(a, H);
-                            obwb_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewObwb);
-                            bobwb = true;
-                        }
-                        //triangle
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !btriangle) {
-                            System.out.println("^^^^^^^^13");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzTriangleZaiH(a, H);
-                            triangle_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewPtw);
-                            btriangle = true;
-                        }
-                        //obj
-                        if (!isEmpty(a_val) && !isEmpty(H_val) && !bobj) {
-                            System.out.println("^^^^^^^^14");
-                            a = a_val.getText().toString();
-                            JavaScript.showFormatted(a, mWebViewA);
-                            H = H_val.getText().toString();
-                            JavaScript.showFormatted(H, mWebViewH);
-                            String s = policzObjZaiH(a, H);
-                            obj_val.setText(s);
-                            JavaScript.showFormatted(s, mWebViewObj);
-                            bobj = true;
-                        }
-                        //za malo danych
-                        if (isEmpty(a_val) && isEmpty(h_val) && isEmpty(pp_val) && isEmpty(obwp_val)) {
-                            x = 1;
-                            figura.setImageResource(drawable.gran_pros_trojkatny);
-                            licz.setEnabled(false);
-                            btnSolution.setEnabled(true);
-                            imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
-                            Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.notEnough),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                        //wszystko policzone, koniec petli
-                        if (!a_val.getText().toString().equals("") &&
-                                !h_val.getText().toString().equals("") &&
-                                !pp_val.getText().toString().equals("") &&
-                                !obwp_val.getText().toString().equals("") &&
-                                !H_val.getText().toString().equals("") &&
-                                !obj_val.getText().toString().equals("") &&
-                                !pb_val.getText().toString().equals("") &&
-                                !pc_val.getText().toString().equals("") &&
-                                !triangle_val.getText().toString().equals("") &&
-                                !d_val.getText().toString().equals("") &&
-                                !D_val.getText().toString().equals("") &&
-                                !obwb_val.getText().toString().equals("")
-                                ) {
-                            x = 1;
-                            figura.setImageResource(drawable.gran_pros_trojkatny);
-                            licz.setEnabled(false);
-                            btnSolution.setEnabled(true);
-                            imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
+                                figura.setImageResource(drawable.gran_pros_trojkatny);
+                                licz.setEnabled(false);
+                                btnSolution.setEnabled(true);
+                                imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
 
-                            Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.premium),
-                                    Toast.LENGTH_LONG).show();
+                                Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.premium),
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
+                        new ProgressBar(view);
+                    } catch (Exception e) {
+                        System.out.println("eMessage " + e.getMessage());
+                        Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.ups),
+                                Toast.LENGTH_LONG).show();
                     }
-                    new ProgressBar(view);
-                }catch (Exception e){
-                    System.out.println("eMessage "+e.getMessage());
-                    Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.ups),
-                            Toast.LENGTH_LONG).show();
-                }
-                }else{
+                } else {
                     Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
@@ -648,7 +656,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
             @Override
             public void onClick(View view) {
                 Global.setEmpty(a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
-                Global.setEmptyWeb(mWebViewA,mWebViewD,mWebViewObwp,mWebViewPp,mWebViewObwb,mWebViewObj, mWebViewd,mWebViewH,mWebViewh,mWebViewPtw,mWebViewPb,mWebViewPc);
+                Global.setEmptyWeb(mWebViewA, mWebViewD, mWebViewObwp, mWebViewPp, mWebViewObwb, mWebViewObj, mWebViewd, mWebViewH, mWebViewh, mWebViewPtw, mWebViewPb, mWebViewPc);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 Global.EditTextHide(false, a_val, D_val, pp_val, obwp_val, obj_val, obwb_val, d_val, h_val, H_val, triangle_val, pb_val, pc_val);
@@ -656,6 +664,8 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(drawable.gran_pros_trojkatny);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }

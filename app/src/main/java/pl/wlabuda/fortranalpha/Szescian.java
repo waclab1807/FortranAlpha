@@ -2,6 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -193,6 +195,10 @@ public class Szescian extends Activity implements OnFocusChangeListener {
         new TabListener(buttons,imm,btnReview, btnData, btnSolution, figura, scrollView, mWebView);
         figura.setImageResource(R.drawable.szescian);
         btnSolution.setEnabled(false);
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
 
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +216,9 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 boolean btriangle = false;
 
                 tekst = "";
+
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0; //za malo danych
@@ -442,6 +451,8 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.szescian);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(Szescian.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }

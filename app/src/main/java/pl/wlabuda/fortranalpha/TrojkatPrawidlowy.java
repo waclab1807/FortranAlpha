@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
@@ -128,6 +130,11 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
 
         btnSolution.setEnabled(false);
 
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
+
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,6 +147,9 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
                 tekst = "";
 
                 figura.setImageResource(drawable.troj_praw);
+
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
 
                 int x = 0; //koniec petli, wszystko policzone
 
@@ -309,6 +319,8 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(drawable.troj_praw);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(TrojkatPrawidlowy.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }

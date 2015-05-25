@@ -1,5 +1,8 @@
 package pl.wlabuda.fortranalpha;
 
+import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.Typeface;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -21,7 +24,7 @@ public class TabListener {
     }
     public TabListener(){};
 
-    public TabListener(final LinearLayout buttons, final InputMethodManager imm,Button btn1, Button btn2, Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
+    public TabListener(final LinearLayout buttons, final InputMethodManager imm, final Button btn1, final Button btn2, final Button btn3, final ImageView imageView, final ScrollView data, final WebView webView){
 
         if(btn1!=null) {
             btn1.setOnClickListener(new View.OnClickListener() {
@@ -30,7 +33,21 @@ public class TabListener {
                     data.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     imageView.setVisibility(View.VISIBLE);
+
+                    btn1.setTextSize(30);
+                    btn2.setTextSize(22);
+                    btn3.setTextSize(22);
+
+                    btn1.setBackgroundColor(Color.TRANSPARENT);
+                    btn2.setBackgroundColor(Color.rgb(0, 150, 136));
+                    btn3.setBackgroundColor(Color.rgb(0,150,136));
+
+                    btn1.setTypeface(null, Typeface.BOLD);
+                    btn2.setTypeface(null, Typeface.NORMAL);
+                    btn3.setTypeface(null, Typeface.NORMAL);
+
                     buttons.setVisibility(View.GONE);
+
                     if(imm.isActive()) {
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
                     }else{
@@ -46,7 +63,21 @@ public class TabListener {
                     imageView.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     data.setVisibility(View.VISIBLE);
+
+                    btn1.setTextSize(22);
+                    btn2.setTextSize(30);
+                    btn3.setTextSize(22);
+
+                    btn1.setBackgroundColor(Color.rgb(0, 150, 136));
+                    btn2.setBackgroundColor(Color.TRANSPARENT);
+                    btn3.setBackgroundColor(Color.rgb(0,150,136));
+
+                    btn1.setTypeface(null, Typeface.NORMAL);
+                    btn2.setTypeface(null, Typeface.BOLD);
+                    btn3.setTypeface(null, Typeface.NORMAL);
+
                     buttons.setVisibility(View.VISIBLE);
+
                     if(imm.isActive()) {
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
                     }else{
@@ -62,7 +93,21 @@ public class TabListener {
                     imageView.setVisibility(View.GONE);
                     data.setVisibility(View.GONE);
                     webView.setVisibility(View.VISIBLE);
+
+                    btn1.setTextSize(22);
+                    btn2.setTextSize(22);
+                    btn3.setTextSize(30);
+
+                    btn1.setBackgroundColor(Color.rgb(0, 150, 136));
+                    btn2.setBackgroundColor(Color.rgb(0, 150, 136));
+                    btn3.setBackgroundColor(Color.TRANSPARENT);
+
+                    btn1.setTypeface(null, Typeface.NORMAL);
+                    btn2.setTypeface(null, Typeface.NORMAL);
+                    btn3.setTypeface(null, Typeface.BOLD);
+
                     buttons.setVisibility(View.GONE);
+
                     if(imm.isActive()) {
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //hide
                     }else{

@@ -2,6 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -107,8 +109,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         pp_val.setOnFocusChangeListener(this);
         obwp_val.setOnFocusChangeListener(this);
 
-        Global.TouchListener(figura,R.drawable.kwadratpp,pp_val);
-        Global.TouchListener(figura,R.drawable.kwadrata,a_val);
+        Global.TouchListener(figura, R.drawable.kwadratpp, pp_val);
+        Global.TouchListener(figura, R.drawable.kwadrata, a_val);
         Global.TouchListener(figura,R.drawable.kwadratd,D_val);
         Global.TouchListener(figura,R.drawable.kwadratobw,obwp_val);
 
@@ -120,6 +122,10 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
 
         btnSolution.setEnabled(false);
 
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
+
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,6 +135,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 boolean bobwp = false;
 
                 tekst = "";
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0; //za mało danych aby policzyć
@@ -245,7 +253,7 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Global.setEmpty(a_val,D_val,pp_val,obwp_val);
+                Global.setEmpty(a_val, D_val, pp_val, obwp_val);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 Global.EditTextHide(false, a_val, D_val, pp_val, obwp_val);
@@ -253,6 +261,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.kwadrat);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(Kwadrat.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }

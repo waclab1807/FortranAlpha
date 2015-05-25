@@ -2,6 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -165,12 +167,19 @@ public class Katy extends Activity implements OnFocusChangeListener {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
+
+        btnReview.setTypeface(null, Typeface.BOLD);
+        btnReview.setTextSize(30);
+        btnReview.setBackgroundColor(Color.TRANSPARENT);
+
         licz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 tekst = "";
                 figura.setImageResource(drawable.katy);
+                licz.setTypeface(null, Typeface.NORMAL);
+                clear.setTypeface(null, Typeface.BOLD);
 
                 int x = 0; //koniec petli, wszystko policzone
                 int y = 0;
@@ -401,6 +410,8 @@ public class Katy extends Activity implements OnFocusChangeListener {
                 licz.setEnabled(true);
                 btnSolution.setEnabled(false);
                 figura.setImageResource(R.drawable.katy);
+                clear.setTypeface(null, Typeface.NORMAL);
+                licz.setTypeface(null, Typeface.BOLD);
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
 
                 Toast.makeText(Katy.this, getString(R.string.deleted),
