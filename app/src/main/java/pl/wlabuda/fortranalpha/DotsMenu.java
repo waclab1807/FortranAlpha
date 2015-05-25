@@ -19,7 +19,7 @@ public class DotsMenu extends Activity{
                 builder
                         .setTitle(R.string.about)
                         .setMessage("Wacław Łabuda \ne-mail: waclab1807@gmail.com \nPolska/Nowy Sącz")
-                        .setIcon(R.drawable.logo)
+                        .setIcon(R.drawable.author)
                         .setPositiveButton("OK", null)
                         .show();
                 break;
@@ -32,7 +32,7 @@ public class DotsMenu extends Activity{
                                 "Więcej figur i brył, \n" +
                                 "Zmieniona klawiatura\n" +
                                 "Wiele, wiele innych...")
-                        .setIcon(R.drawable.logo)
+                        .setIcon(R.drawable.author)
                         .setPositiveButton("OK", null)
                         .show();
                 break;

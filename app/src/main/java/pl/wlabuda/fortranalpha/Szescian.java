@@ -392,6 +392,7 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                             if(isEmpty(pp_val) && isEmpty(pb_val) && isEmpty(pc_val) && isEmpty(obwp_val) && isEmpty(obwb_val) && isEmpty(triangle_val) && isEmpty(a_val) && isEmpty(d_val) && isEmpty(D_val) && isEmpty(obj_val)){
                                 Toast.makeText(Szescian.this, getString(R.string.notEnough),
                                         Toast.LENGTH_LONG).show();
+                                licz.setEnabled(false);
                                 x = 1;
                                 y = 1;
                             }
@@ -429,11 +430,12 @@ public class Szescian extends Activity implements OnFocusChangeListener {
                 JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
 
-                if(y == 0) {
-                    Global.WebViewHide(false, mWebView, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
-                    Global.EditTextHide(true, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
-                }
+
+                Global.WebViewHide(false, mWebView, mWebViewA, mWebViewObwp, mWebViewD, mWebViewPp, mWebViewPc, mWebViewObwb, mWebViewd, mWebViewPb, mWebViewObj, mWebViewPtw);
+                Global.EditTextHide(true, pp_val, a_val, D_val, obwp_val, pc_val, d_val, obj_val, obwb_val, triangle_val, pb_val);
+
                 TabListener refresh = new TabListener();
+
                 if (btnData.getVisibility() == View.VISIBLE) {
                     refresh.refresh(figura, scrollView, mWebView);
                 }

@@ -1,7 +1,6 @@
 package pl.wlabuda.fortranalpha;
 
 import android.graphics.Color;
-import android.graphics.ColorMatrix;
 import android.graphics.Typeface;
 import android.view.View;
 import android.webkit.WebView;
@@ -10,12 +9,16 @@ import android.widget.ImageView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
+
+import static android.provider.Settings.Global.getString;
 
 /**
  * Created by waclab1807 on 23.04.15.
  */
 public class TabListener {
 
+    private int x = 0;
 
     public static void refresh(ImageView imageView, ScrollView data, WebView webView){
         data.setVisibility(View.VISIBLE);
@@ -60,6 +63,15 @@ public class TabListener {
             btn2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    if(x == 0){
+                        Toast.makeText(Global.mContext,
+                                R.string.firstClick, Toast.LENGTH_LONG)
+                                .show();
+                    }
+
+                    x = 1;
+
                     imageView.setVisibility(View.GONE);
                     webView.setVisibility(View.GONE);
                     data.setVisibility(View.VISIBLE);
@@ -70,7 +82,7 @@ public class TabListener {
 
                     btn1.setBackgroundColor(Color.rgb(0, 150, 136));
                     btn2.setBackgroundColor(Color.TRANSPARENT);
-                    btn3.setBackgroundColor(Color.rgb(0,150,136));
+                    btn3.setBackgroundColor(Color.rgb(0, 150, 136));
 
                     btn1.setTypeface(null, Typeface.NORMAL);
                     btn2.setTypeface(null, Typeface.BOLD);

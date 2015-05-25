@@ -32,6 +32,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="Graniastosłup prawidłowy trójkątny"></activity>
 
+        <activity android:name=".Kolo"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Koło"></activity>
+
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"

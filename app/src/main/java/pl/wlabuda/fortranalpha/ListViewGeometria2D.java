@@ -35,6 +35,7 @@ public class ListViewGeometria2D extends Activity {
                 getString(R.string.isoscelesTriangle),
                 getString(R.string.rightangledTriangle),
                 getString(R.string.square),
+                getString(R.string.circle)
         };
 
         // Define a new Adapter
@@ -79,6 +80,11 @@ public class ListViewGeometria2D extends Activity {
                         Intent intent2;
                         intent2 = new Intent(ListViewGeometria2D.this, Kwadrat.class);
                         startActivity(intent2);
+                        break;
+                    case 4:
+                        Intent intent3;
+                        intent3 = new Intent(ListViewGeometria2D.this, Kolo.class);
+                        startActivity(intent3);
                         break;
                     default:
                         Toast.makeText(getApplicationContext(),

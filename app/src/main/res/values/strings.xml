@@ -44,6 +44,8 @@
 liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="deleted">Skasowane!</string>
     <string name="wait">Proszę czekać...</string>
+    <string name="backButton">Naciśnij cofnij jeszcze raz, aby wyjść.</string>
+    <string name="firstClick">Zaznacz jakieś pole i wróć do zakładki Podgląd</string>
 
     //titles
     <string name="tales">Twierdzenie Talesa</string>
@@ -156,6 +158,20 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="troj_praw_policzAzPp">Obliczanie a mając pole</string>
     <string name="troj_praw_policzAzObwp">Obliczanie a mając obwód</string>
     <string name="troj_praw_policzhzPp">Obliczanie a mając pole</string>
+
+    //kolo
+    <string name="kolo_policzPp">Obliczanie pola mając promień r</string>
+    <string name="kolo_policzS">Obliczanie średnicy mając promień r</string>
+    <string name="kolo_policzR">Obliczanie promienia mając średnicę S</string>
+    <string name="kolo_policzObwp">Obliczanie obwodu koła mając promień r</string>
+    <string name="kolo_policzRzPp">Obliczanie promienia mając pole koła</string>
+    <string name="kolo_policzRzObw">Obliczanie promienia mając obwód koła</string>
+    <string name="kolo_policzSzObw">Obliczanie średnicy mając obwód koła</string>
+    <string name="kolo_policzSzPp">Obliczanie średnicy mając pole koła</string>
+    <string name="kolo_policzObwpzS">Obliczanie obwodu koła mając średnicę S</string>
+    <string name="kolo_policzObwzPp">Obliczanie obwodu koła mając pole</string>
+    <string name="kolo_policzPpzS">Obliczanie pola koła mając średnicę S</string>
+    <string name="kolo_policzPpzObw">Obliczanie pola koła mając obwód</string>
 
     //katy
     <string name="katypoliczBzA">Obliczanie b mając a</string>

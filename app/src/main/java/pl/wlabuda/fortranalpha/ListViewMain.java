@@ -2,8 +2,8 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +18,7 @@ import android.widget.Toast;
  */
 public class ListViewMain extends Activity {
     ListView listView ;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,7 @@ public class ListViewMain extends Activity {
 
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
-        /*if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            listView.setBackgroundResource(R.drawable.tlo_land);
-        }else{
-            listView.setBackgroundResource(R.drawable.tlo);
-        }*/
+
         // Defined Array values to show in ListView
         String[] values = new String[] { getString(R.string.geomerty2d),
                 getString(R.string.geometry3d),
@@ -94,6 +91,26 @@ public class ListViewMain extends Activity {
 
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
