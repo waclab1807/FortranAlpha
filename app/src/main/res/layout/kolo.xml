@@ -93,7 +93,6 @@
             android:layout_height="match_parent"
             android:id="@+id/dwa"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:visibility="gone">
 
             <LinearLayout
@@ -177,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="a: "
+                        android:text=" r: "
                         android:id="@+id/textView29"
                         android:layout_gravity="center_vertical" />
 
@@ -188,7 +187,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/a"
+                            android:id="@+id/r"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
@@ -197,7 +196,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:id="@+id/weba" />
+                            android:id="@+id/webR" />
                     </FrameLayout>
                 </LinearLayout>
 
@@ -210,7 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="d: "
+                        android:text=" S: "
                         android:id="@+id/textView32"
                         android:layout_gravity="center_vertical" />
 
@@ -221,7 +220,7 @@
                         <EditText
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
-                            android:id="@+id/d"
+                            android:id="@+id/S"
                             android:layout_weight="1"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
@@ -230,7 +229,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:visibility="gone"
-                            android:id="@+id/webd" />
+                            android:id="@+id/webS" />
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>

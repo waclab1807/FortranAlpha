@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,8 @@ import android.widget.Toast;
 
 public class Kolo extends Activity implements OnFocusChangeListener{
 
+    private String PI = "3.1415";
+    private boolean doubleBackToExitPressedOnce = false;
     private Button licz;
     private Button clear;
     private Button sqrtbtn;
@@ -345,13 +348,13 @@ public class Kolo extends Activity implements OnFocusChangeListener{
 
     private String policzPp(String r) {
         String jeden = Wartosc.policz(r,r,"*");
-        String dwa = Wartosc.policz(jeden,"3.14159","*");
+        String dwa = Wartosc.policz(jeden,PI,"*");
         System.out.println("policzPp "+r);
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzPp)+"</b></center><br>" +
                 "$$P={π * {r^2}}$$<br>" +
                 "$$P={π * {{"+Wartosc.formatuj(r)+"}^2}}$$<br>" +
                 "$$P={π * {"+Wartosc.formatuj(jeden)+"}}$$<br>" +
-                "$$P={"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$P≈{"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -388,12 +391,12 @@ public class Kolo extends Activity implements OnFocusChangeListener{
 
     private String policzObwp(String r) {
         String jeden = Wartosc.policz("2",r,"*");
-        String dwa = Wartosc.policz("3.14159",r,"*");
+        String dwa = Wartosc.policz(PI,r,"*");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzObwp)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
                 "$$Obw={2*π*{"+Wartosc.formatuj(r)+"}}$$<br>" +
                 "$$Obw={π*{"+Wartosc.formatuj(jeden)+"}}$$<br>" +
-                "$$Obw={"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$Obw≈{"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -402,19 +405,19 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     }
 
     private String policzRzPp(String Pp) {
-        String jeden = Wartosc.policz("()\u221a("+Pp+")","1","*");
-        String dwa = Wartosc.policz("()\u221a(3.14159)",jeden,"*");
-        String trzy = Wartosc.policz(dwa,"3.14159","/");
+        String jeden = Wartosc.policz(Pp,PI,"*");
+        String dwa = Wartosc.policz("()\u221a("+jeden+")","1","*");
+        String trzy = Wartosc.policz(dwa,PI,"/");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzRzPp)+"</b></center><br>" +
                 "$$P={π*{r^2}}$$<br>" +
                 "$${P/π}={r^2}$$<br>" +
                 "$$r={√{P/π}}$$<br>" +
                 "$$r={{√{P}}/{√{π}}}$$<br>" +
-                "$$r={{{√{P}}*{√{π}}}/{π}}$$<br>" +
-                "$$r={{{√{"+Wartosc.formatuj(Pp)+"}}*{√{π}}}/{π}}$$<br>" +
-                "$$r={{{"+Wartosc.formatuj(jeden)+"}*{√{π}}}/{π}}$$<br>" +
-                "$$r={{"+Wartosc.formatuj(dwa)+"}/{π}}$$<br>" +
-                "$$r={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "$$r={{√{(P*π)}}/{π}}$$<br>" +
+                "$$r={{√{({"+Wartosc.formatuj(Pp)+"}*π)}}/{π}}$$<br>" +
+                "$$r≈{{√{"+Wartosc.formatuj(jeden)+"}}/{π}}$$<br>" +
+                "$$r≈{{"+Wartosc.formatuj(dwa)+"}/{π}}$$<br>" +
+                "$$r≈{"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -424,13 +427,13 @@ public class Kolo extends Activity implements OnFocusChangeListener{
 
     private String policzRzObw(String Obwp){
         String jeden = Wartosc.policz(Obwp,"2","/");
-        String dwa = Wartosc.policz(jeden,"3.14159","/");
+        String dwa = Wartosc.policz(jeden,PI,"/");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzRzObw)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
                 "$$r={{Obw}/{2*π}}$$<br>" +
                 "$$r={{"+Wartosc.formatuj(Obwp)+"}/{2*π}}$$<br>" +
                 "$$r={{"+Wartosc.formatuj(jeden)+"}/{π}}$$<br>" +
-                "$$r={"+Wartosc.formatuj(dwa)+"}$$<br>" +
+                "$$r≈{"+Wartosc.formatuj(dwa)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -439,14 +442,14 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     }
 
     private String policzSzObw(String Obwp){
-        String jeden = Wartosc.policz(Obwp,"3.14159","/");
+        String jeden = Wartosc.policz(Obwp,PI,"/");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzSzObw)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
                 "$$S={2*r}$$<br>" +
                 "$$Obw={S*π}$$<br>" +
                 "$$S={{Obw}/π}$$<br>" +
                 "$$S={{"+Wartosc.formatuj(Obwp)+"}/π}$$<br>" +
-                "$$S={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+                "$$S≈{"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -455,9 +458,9 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     }
 
     private String policzSzPp(String pp){
-        String jeden = Wartosc.policz("()\u221a("+pp+")","1","*");
-        String dwa = Wartosc.policz("()\u221a(3.14159)",jeden,"*");
-        String trzy = Wartosc.policz(dwa,"3.14159","/");
+        String jeden = Wartosc.policz(pp,PI,"*");
+        String dwa = Wartosc.policz("()\u221a("+jeden+")","1","*");
+        String trzy = Wartosc.policz(dwa,PI,"/");
         String cztery = Wartosc.policz(trzy,"2","*");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzSzPp)+"</b></center><br>" +
                 "$$S={2*r}$$<br>" +
@@ -465,13 +468,13 @@ public class Kolo extends Activity implements OnFocusChangeListener{
                 "$${P/π}={r^2}$$<br>" +
                 "$$r={√{P/π}}$$<br>" +
                 "$$r={{√{P}}/{√{π}}}$$<br>" +
-                "$$r={{{√{P}}*{√{π}}}/{π}}$$<br>" +
-                "$$S={2*{{{√{P}}*{√{π}}}/{π}}}$$<br>" +
-                "$$S={2*{{{√{"+Wartosc.formatuj(pp)+"}}*{√{π}}}/{π}}}$$<br>" +
-                "$$S={2*{{{"+Wartosc.formatuj(jeden)+"}*{√{π}}}/{π}}}$$<br>" +
-                "$$S={2*{{"+Wartosc.formatuj(dwa)+"}/{π}}}$$<br>" +
-                "$$S={2*{"+Wartosc.formatuj(trzy)+"}}$$<br>" +
-                "$$S={"+Wartosc.formatuj(cztery)+"}$$<br>" +
+                "$$r={{√{(P*π)}}/{π}}$$<br>" +
+                "$$S={2*{{√{(P*π)}}/{π}}}$$<br>" +
+                "$$S={2*{{√{({"+Wartosc.formatuj(pp)+"}*π)}}/{π}}}$$<br>" +
+                "$$S≈{2*{{√{"+Wartosc.formatuj(jeden)+"}}/{π}}}$$<br>" +
+                "$$S≈{2*{{"+Wartosc.formatuj(dwa)+"}/{π}}}$$<br>" +
+                "$$S≈{2*{"+Wartosc.formatuj(trzy)+"}}$$<br>" +
+                "$$S≈{"+Wartosc.formatuj(cztery)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -480,13 +483,13 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     }
 
     private String policzObwpzS(String S){
-        String jeden = Wartosc.policz(S,"3.14159","*");
+        String jeden = Wartosc.policz(S,PI,"*");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzObwpzS)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
                 "$$S={2*r}$$<br>" +
                 "$$Obw={S*π}$$<br>" +
                 "$$Obw={{"+Wartosc.formatuj(S)+"}*π}$$<br>" +
-                "$$Obw={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+                "$$Obw≈{"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -495,8 +498,8 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     }
 
     private String policzObwpzPp(String Pp){
-        String jeden = Wartosc.policz("()\u221a("+Pp+")","1","*");
-        String dwa = Wartosc.policz("()\u221a(3.14159)",jeden,"*");
+        String jeden = Wartosc.policz(Pp,PI,"*");
+        String dwa = Wartosc.policz("()\u221a("+jeden+")","1","*");
         String trzy = Wartosc.policz("2",dwa,"*");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzObwzPp)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
@@ -504,13 +507,13 @@ public class Kolo extends Activity implements OnFocusChangeListener{
                 "$${P/π}={r^2}$$<br>" +
                 "$$r={√{P/π}}$$<br>" +
                 "$$r={{√{P}}/{√{π}}}$$<br>" +
-                "$$r={{{√{P}}*{√{π}}}/{π}}$$<br>" +
-                "$$Obw={2*π*{{{√{P}}*{√{π}}}/{π}}}$$<br>" +
-                "$$Obw={2*{{{√{P}}*{√{π}}}}}$$<br>" +
-                "$$Obw={2*{{{√{"+Wartosc.formatuj(Pp)+"}}*{√{π}}}}}$$<br>" +
-                "$$Obw={2*{{{"+Wartosc.formatuj(jeden)+"}*{√{π}}}}}$$<br>" +
-                "$$Obw={2*{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
-                "$$Obw={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "$$r={{√{(P*π)}}/{π}}$$<br>" +
+                "$$Obw={2*π*{{√{(P*π)}}/{π}}}$$<br>" +
+                "$$Obw={2*{{√{(P*π)}}}}$$<br>" +
+                "$$Obw={2*{{√({{"+Wartosc.formatuj(Pp)+"}*π)}}}}$$<br>" +
+                "$$Obw≈{2*{{√{"+Wartosc.formatuj(jeden)+"}}}}$$<br>" +
+                "$$Obw≈{2*{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
+                "$$Obw≈{"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -521,17 +524,17 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     private String policzPpzS(String S){
         String jeden = Wartosc.policz(S,S,"*");
         String dwa = Wartosc.policz(jeden,"4","/");
-        String trzy = Wartosc.policz(dwa,"3.14159","*");
+        String trzy = Wartosc.policz(dwa,PI,"*");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzPpzS)+"</b></center><br>" +
                 "$$P={π*{r^2}}$$<br>" +
                 "$$S={2*r}$$<br>" +
                 "$$r={S/2}$$<br>" +
                 "$$P={π*{{S/2}^2}}$$<br>" +
                 "$$P={{π*{S^2}}/4}$$<br>" +
-                "$$P={{π*{"+Wartosc.formatuj(S)+"^2}}/4}$$<br>" +
+                "$$P={{π*{{"+Wartosc.formatuj(S)+"}^2}}/4}$$<br>" +
                 "$$P={{π*{"+Wartosc.formatuj(jeden)+"}}/4}$$<br>" +
                 "$$P={π*{"+Wartosc.formatuj(dwa)+"}}$$<br>" +
-                "$$P={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "$$P≈{"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -542,7 +545,7 @@ public class Kolo extends Activity implements OnFocusChangeListener{
     private String policzPpzObw(String Obwp){
         String jeden = Wartosc.policz(Obwp,Obwp,"*");
         String dwa = Wartosc.policz(jeden,"4","/");
-        String trzy = Wartosc.policz(dwa,"3.14159","/");
+        String trzy = Wartosc.policz(dwa,PI,"/");
         String solucja1 = "<center><b>"+getString(R.string.kolo_policzPpzObw)+"</b></center><br>" +
                 "$$Obw={2*π*r}$$<br>" +
                 "$$r={{Obw}/{2*π}}$$<br>" +
@@ -552,12 +555,31 @@ public class Kolo extends Activity implements OnFocusChangeListener{
                 "$$P={{{"+Wartosc.formatuj(Obwp)+"}^2}/{4*π}}$$<br>" +
                 "$$P={{"+Wartosc.formatuj(jeden)+"}/{4*π}}$$<br>" +
                 "$$P={{"+Wartosc.formatuj(dwa)+"}/{π}}$$<br>" +
-                "$$P={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+                "$$P≈{"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
         }
         return trzy;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override
