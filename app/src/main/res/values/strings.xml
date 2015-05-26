@@ -46,6 +46,7 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="wait">Proszę czekać...</string>
     <string name="backButton">Naciśnij cofnij jeszcze raz, aby wyjść.</string>
     <string name="firstClick">Zaznacz jakieś pole i wróć do zakładki Podgląd</string>
+    <string name="longClick">Przytrzymaj dłużej aby zobaczyć podpowiedź</string>
 
     //titles
     <string name="tales">Twierdzenie Talesa</string>
@@ -60,9 +61,9 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="globe">Kula</string>
     <string name="circle">Koło</string>
     <string name="prismAndscaleneTriangle">Graniastosłup prowidłowy trójkątny</string>
-    <string name="scaleneTriangle">Trójkątny prawidłowy</string>
-    <string name="isoscelesTriangle">Trójkątny równoramienny</string>
-    <string name="rightangledTriangle">Trójkątny prostokątny</string>
+    <string name="scaleneTriangle">Trójkąt prawidłowy</string>
+    <string name="isoscelesTriangle">Trójkąt równoramienny</string>
+    <string name="rightangledTriangle">Trójkąt prostokątny</string>
 
     //menu descriptions
     <string name="scaleneTriangleDesc">Wszystkie jego boki są równe</string>

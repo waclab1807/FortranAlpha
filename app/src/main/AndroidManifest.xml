@@ -38,6 +38,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="Koło"></activity>
 
+        <activity android:name=".Trygonometria"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Trygonometria"></activity>
+
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"

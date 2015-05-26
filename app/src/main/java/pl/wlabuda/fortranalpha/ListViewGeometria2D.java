@@ -30,6 +30,10 @@ public class ListViewGeometria2D extends Activity {
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
 
+        Toast.makeText(getApplicationContext(),
+                getString(R.string.longClick), Toast.LENGTH_SHORT)
+                .show();
+
         // Defined Array values to show in ListView
         String[] values = new String[] { getString(R.string.scaleneTriangle),
                 getString(R.string.isoscelesTriangle),
