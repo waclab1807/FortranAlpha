@@ -44,6 +44,12 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="Trygonometria"></activity>
 
+        <activity android:name=".Trygonometria2"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="Trygonometria2"></activity>
+
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"

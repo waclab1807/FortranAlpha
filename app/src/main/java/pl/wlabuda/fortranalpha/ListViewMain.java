@@ -33,7 +33,8 @@ public class ListViewMain extends Activity {
                 getString(R.string.geometry3d),
                 getString(R.string.trigonometry),
                 getString(R.string.tales),
-                getString(R.string.angle)
+                getString(R.string.angle),
+                "Trygonometria2"
         };
 
         // Define a new Adapter
@@ -83,6 +84,10 @@ public class ListViewMain extends Activity {
                     case 4:
                         Intent intent4 = new Intent(ListViewMain.this, Katy.class);
                         startActivity(intent4);
+                        break;
+                    case 5:
+                        Intent intent5 = new Intent(ListViewMain.this, Trygonometria2.class);
+                        startActivity(intent5);
                         break;
                     default:
                         Toast.makeText(getApplicationContext(),

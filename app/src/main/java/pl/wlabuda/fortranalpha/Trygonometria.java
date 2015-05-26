@@ -130,7 +130,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
         c_val.setOnFocusChangeListener(this);
 
         Global.TouchListener(figura, R.drawable.troj_pros_a, a_val);
-        Global.TouchListener(figura, R.drawable.troj_pros_b, b_val);   //todo grafiki
+        Global.TouchListener(figura, R.drawable.troj_pros_b, b_val);
         Global.TouchListener(figura,R.drawable.troj_pros_c,c_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
