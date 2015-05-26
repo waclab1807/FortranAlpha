@@ -129,15 +129,15 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
         b_val.setOnFocusChangeListener(this);
         c_val.setOnFocusChangeListener(this);
 
-        Global.TouchListener(figura, R.drawable.kwadratpp, a_val);
-        Global.TouchListener(figura, R.drawable.kwadrata, b_val);   //todo grafiki
-        Global.TouchListener(figura,R.drawable.kwadratd,c_val);
+        Global.TouchListener(figura, R.drawable.troj_pros_a, a_val);
+        Global.TouchListener(figura, R.drawable.troj_pros_b, b_val);   //todo grafiki
+        Global.TouchListener(figura,R.drawable.troj_pros_c,c_val);
 
         final InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
 
         new TabListener(buttons,imm,btnReview,btnData,btnSolution,figura,scrollView,mWebView);
 
-        figura.setImageResource(R.drawable.kwadrat);
+        figura.setImageResource(R.drawable.troj_pros);
 
         btnSolution.setEnabled(false);
 
@@ -202,7 +202,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                                 ctgb = true;
 
                                 x = 1;
-                                figura.setImageResource(R.drawable.kwadrat);
+                                figura.setImageResource(R.drawable.troj_pros);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
@@ -245,7 +245,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                                 cosa = true;
                                 sinb = true;
 
-                            } else{
+                            }
                                 a = a_val.getText().toString();
                                 b = b_val.getText().toString();
                                 c = c_val.getText().toString();
@@ -259,32 +259,32 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                                     c = "c";
                                 }
                                 if (!sina){
-                                JavaScript.showFormatted(a+"/"+c, mWebViewSinA);}
+                                JavaScript.showFormatted(policz("sin", "α", a, c), mWebViewSinA);}
                                 if (!cosa){
-                                JavaScript.showFormatted(b+"/"+c,mWebViewCosA);}
+                                JavaScript.showFormatted(policz("cos", "α", b, c),mWebViewCosA);}
                                 if (!tga){
-                                JavaScript.showFormatted(a+"/"+b,mWebViewTgA);}
+                                JavaScript.showFormatted(policz("tg", "α", a, b),mWebViewTgA);}
                                 if (!ctga){
-                                JavaScript.showFormatted(b+"/"+a,mWebViewCtgA);}
+                                JavaScript.showFormatted(policz("ctg", "α", b, a),mWebViewCtgA);}
 
                                 if (!sinb){
-                                JavaScript.showFormatted(b+"/"+c,mWebViewSinB);}
+                                JavaScript.showFormatted(policz("sin", "β", b, c),mWebViewSinB);}
                                 if (!cosb){
-                                JavaScript.showFormatted(a+"/"+c,mWebViewCosB);}
+                                JavaScript.showFormatted(policz("cos", "β", a, c),mWebViewCosB);}
                                 if (!tgb){
-                                JavaScript.showFormatted(b+"/"+a,mWebViewTgB);}
+                                JavaScript.showFormatted(policz("tg", "β", b, a),mWebViewTgB);}
                                 if (!ctgb){
-                                JavaScript.showFormatted(a+"/"+b,mWebViewCtgB);}
+                                JavaScript.showFormatted(policz("ctg", "β", a, b),mWebViewCtgB);}
 
                                 x = 1;
-                                figura.setImageResource(R.drawable.kwadrat);
+                                figura.setImageResource(R.drawable.troj_pros);
                                 licz.setEnabled(false);
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
 
                                 Toast.makeText(Trygonometria.this, getString(R.string.premium),
                                         Toast.LENGTH_LONG).show();
-                            } //za malo danych
+                            //za malo danych
                             if(isEmpty(a_val) && isEmpty(b_val) && isEmpty(c_val)){
                                 Toast.makeText(Trygonometria.this, getString(R.string.notEnough),
                                         Toast.LENGTH_LONG).show();
@@ -303,6 +303,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                 }
                 JavaScript JS = new JavaScript(tekst);
                 mWebView.loadDataWithBaseURL("", "" + JS.getTekst(), "text/html", "UTF-8", "");
+                mWebView.setVisibility(View.VISIBLE);
 
                 TabListener refresh = new TabListener();
                 if (btnData.getVisibility() == View.VISIBLE) {
@@ -316,6 +317,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
             @Override
             public void onClick(View view) {
                 Global.setEmpty(a_val, b_val, c_val);
+                Global.setEmptyWeb(mWebViewSinA, mWebViewSinB, mWebViewCosA, mWebViewCosB, mWebViewTgA, mWebViewTgB, mWebViewCtgA, mWebViewCtgB);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 licz.setEnabled(true);
@@ -323,7 +325,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                 a_val.setEnabled(true);
                 b_val.setEnabled(true);
                 c_val.setEnabled(true);
-                figura.setImageResource(R.drawable.kwadrat);
+                figura.setImageResource(R.drawable.troj_pros);
                 clear.setTypeface(null, Typeface.NORMAL);
                 licz.setTypeface(null, Typeface.BOLD);
                 Toast.makeText(Trygonometria.this, getString(R.string.deleted),
@@ -354,13 +356,22 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
         return x.getText().toString().equals("");
     }
 
+    private String policz(String s, String AB, String x, String y) {
+        String solucja1 = "$$"+s+AB+" = "+x+"/"+y+"$$<br>" +
+                        "$$"+s+AB+" = {"+Wartosc.formatuj(x)+"}/{"+Wartosc.formatuj(y)+"}$$<br>" +
+                        "<center>*============================*</center>";
+        if(!tekst.contains(solucja1)) {
+            tekst = tekst + solucja1;
+        }
+        return x+"/"+y;
+    }
+
     private String policzSinA(String a, String c) {
-        String jeden = Wartosc.policz(a,a,"*");
-        System.out.println("policzPp "+a);
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczPp)+"</b></center><br>" +
-                "$$P={a^2}$$<br>" +
-                "$$P={{"+Wartosc.formatuj(a)+"}^2}$$<br>" +
-                "$$P={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(a,c,"/");
+        String solucja1 =
+                "$$sinα = a/c$$<br>" +
+                "$$sinα = {"+Wartosc.formatuj(a)+"}/{"+Wartosc.formatuj(c)+"}$$<br>" +
+                "$$sinα = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -369,28 +380,24 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     }
 
     private String policzCosA(String b, String c) {
-        String dwa = Wartosc.policz("()\u221a(2)",c,"*");
-        String piec = Wartosc.policz(dwa,"2","/");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczAzD)+"</b></center><br>" +
-                "$$d={a*√2}$$<br>" +
-                "$$a={d/√2}$$<br>" +
-                "$$a={{d*√2}/2}$$<br>" +
-                "$$a={{{"+Wartosc.formatuj(c)+"}*√2}/2}$$<br>" +
-                "$$a={{"+Wartosc.formatuj(dwa)+"}/2}$$<br>" +
-                "$$a={"+Wartosc.formatuj(piec)+"}$$<br>" +
+        String jeden = Wartosc.policz(b,c,"/");
+        String solucja1 =
+                "$$cosα = b/c$$<br>" +
+                "$$cosα = {"+Wartosc.formatuj(b)+"}/{"+Wartosc.formatuj(c)+"}$$<br>" +
+                "$$cosα = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
         }
-        return piec;
+        return jeden;
     }
 
     private String policzTgA(String a, String b) {
-        String jeden = Wartosc.policz(a,"()\u221a(2)","*");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczD)+"</b></center><br>" +
-                "$$d={a*√2}$$<br>" +
-                "$$d={{"+Wartosc.formatuj(a)+"}*√2}$$<br>" +
-                "$$d={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(a,b,"/");
+        String solucja1 =
+                "$$tgα = a/b$$<br>" +
+                "$$tgα = {"+Wartosc.formatuj(a)+"}/{"+Wartosc.formatuj(b)+"}$$<br>" +
+                "$$tgα = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -399,11 +406,11 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     }
 
     private String policzCtgA(String b, String a) {
-        String jeden = Wartosc.policz("4",a,"*");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczObwp)+"</b></center><br>" +
-                "$$ObwP={a*4}$$<br>" +
-                "$$ObwP={{"+Wartosc.formatuj(a)+"}*4}$$<br>" +
-                "$$ObwP={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(b,a,"/");
+        String solucja1 =
+                "$$ctgα = b/a$$<br>" +
+                "$$ctgα = {"+Wartosc.formatuj(b)+"}/{"+Wartosc.formatuj(a)+"}$$<br>" +
+                "$$ctgα = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -412,26 +419,24 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     }
 
     private String policzSinB(String b, String c) {
-        String trzy = Wartosc.policz("()\u221a("+c+")","1","*");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczAzPp)+"</b></center><br>" +
-                "$$P={a^2}$$<br>" +
-                "$$a={√P}$$<br>" +
-                "$$a={√{"+Wartosc.formatuj(c)+"}}$$<br>" +
-                "$$a={"+Wartosc.formatuj(trzy)+"}$$<br>" +
+        String jeden = Wartosc.policz(b,c,"/");
+        String solucja1 =
+                "$$sinβ = b/c$$<br>" +
+                "$$sinβ = {"+Wartosc.formatuj(b)+"}/{"+Wartosc.formatuj(c)+"}$$<br>" +
+                "$$sinβ = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
         }
-        return trzy;
+        return jeden;
     }
 
     private String policzCosB(String a, String c){
-        String jeden = Wartosc.policz(a,"4","/");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczAzObwp)+"</b></center><br>" +
-                "$$ObwP={4*a}$$<br>" +
-                "$$a={{ObwP}/4}$$<br>" +
-                "$$a={{"+Wartosc.formatuj(a)+"}/4}$$<br>" +
-                "$$a={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(a,c,"/");
+        String solucja1 =
+                "$$cosβ = a/c$$<br>" +
+                "$$cosβ = {"+Wartosc.formatuj(a)+"}/{"+Wartosc.formatuj(c)+"}$$<br>" +
+                "$$cosβ = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -440,11 +445,11 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     }
 
     private String policzTgB(String b, String a) {
-        String jeden = Wartosc.policz(a,"()\u221a(2)","*");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczD)+"</b></center><br>" +
-                "$$d={a*√2}$$<br>" +
-                "$$d={{"+Wartosc.formatuj(a)+"}*√2}$$<br>" +
-                "$$d={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(b,a,"/");
+        String solucja1 =
+                "$$tgβ = b/a$$<br>" +
+                "$$tgβ = {"+Wartosc.formatuj(b)+"}/{"+Wartosc.formatuj(a)+"}$$<br>" +
+                "$$tgβ = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
@@ -453,11 +458,11 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     }
 
     private String policzCtgB(String a, String b) {
-        String jeden = Wartosc.policz("4",a,"*");
-        String solucja1 = "<center><b>"+getString(R.string.kwadratpoliczObwp)+"</b></center><br>" +
-                "$$ObwP={a*4}$$<br>" +
-                "$$ObwP={{"+Wartosc.formatuj(a)+"}*4}$$<br>" +
-                "$$ObwP={"+Wartosc.formatuj(jeden)+"}$$<br>" +
+        String jeden = Wartosc.policz(a,b,"/");
+        String solucja1 =
+                "$$ctgβ  = a/b$$<br>" +
+                "$$ctgβ  = {"+Wartosc.formatuj(a)+"}/{"+Wartosc.formatuj(b)+"}$$<br>" +
+                "$$ctgβ  = {"+Wartosc.formatuj(jeden)+"}$$<br>" +
                 "<center>*============================*</center>";
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
