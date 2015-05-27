@@ -123,6 +123,7 @@
                             android:layout_height="fill_parent"
                             android:id="@+id/pp"
                             android:layout_weight="1"
+                            android:hint="@string/hint2"
                             android:focusable="true"
                             android:focusableInTouchMode="true" />
 

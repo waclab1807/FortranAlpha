@@ -17,6 +17,7 @@
     <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
     <string name="choose">Wybierz</string>
     <string name="hint">np. 1/3</string>
+    <string name="hint2">Wprowadź tyle danych ile posiadasz</string>
     
     //names
     <string name="area"> Pole: </string>
@@ -46,7 +47,7 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="deleted">Skasowane!</string>
     <string name="wait">Proszę czekać...</string>
     <string name="backButton">Naciśnij cofnij jeszcze raz, aby wyjść.</string>
-    <string name="firstClick">Zaznacz jakieś pole i wróć do zakładki Podgląd</string>
+    <string name="firstClick">Podgląd zmienia się dynamicznie wraz z wprowadzaniem danych</string>
     <string name="longClick">Przytrzymaj dłużej aby zobaczyć podpowiedź</string>
 
     //titles

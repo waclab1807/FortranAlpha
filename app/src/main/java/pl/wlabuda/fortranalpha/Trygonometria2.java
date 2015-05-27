@@ -86,25 +86,30 @@ public class Trygonometria2 extends Activity implements OnFocusChangeListener{
                 android.R.layout.simple_spinner_item, list);
         spinner.setAdapter(dataAdapter);
         spinner.setSelection(0);
-
-
         spinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
-
                     @Override
                     public void onItemSelected(AdapterView<?> arg0, View arg1,
                                                int arg2, long arg3) {
-
                         wybor = spinner.getSelectedItem().toString();
-                        // TODO Auto-generated method stub
+                        switch (wybor) {
+                            case "sin":
+                                figura.setImageResource(R.drawable.tryg_sin);
+                                break;
+                            case "cos":
+                                figura.setImageResource(R.drawable.tryg_cos);
+                                break;
+                            case "tg":
+                                figura.setImageResource(R.drawable.tryg_tg);
+                                break;
+                            case "ctg":
+                                figura.setImageResource(R.drawable.tryg_ctg);
+                                break;
+                        }
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> arg0) {
-                        // TODO Auto-generated method stub
-
                     }
-
                 }
         );
 
@@ -329,8 +334,6 @@ public class Trygonometria2 extends Activity implements OnFocusChangeListener{
                 "$${ctg} = {"+Wartosc.formatuj(cos)+"}/{"+Wartosc.formatuj(trzy)+"}$$<br>" +
                 "$${ctg} = {"+Wartosc.formatuj(piec)+"}$$<br>" +
                 "<center>*============================*</center>";
-        Toast.makeText(Trygonometria2.this, Sin+"\n"+Cos+"\n"+Tg+"\n"+Ctg,
-                Toast.LENGTH_LONG).show();
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
         }
