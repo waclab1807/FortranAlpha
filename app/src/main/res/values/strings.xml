@@ -24,7 +24,6 @@
     <string name="area"> Pole: </string>
     <string name="baseArea"> Pole podstawy: </string>
     <string name="circuit"> Obwód: </string>
-    <string name="baseCircuit"> Obwód podstawy: </string>
     <string name="capacity"> Objętość: </string>
     <string name="sideArea"> Pole boczne: </string>
     <string name="baseRound"> Obwód podstawy: </string>
@@ -70,13 +69,6 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="scaleneTriangle">Trójkąt prawidłowy</string>
     <string name="isoscelesTriangle">Trójkąt równoramienny</string>
     <string name="rightangledTriangle">Trójkąt prostokątny</string>
-
-    //menu descriptions
-    <string name="scaleneTriangleDesc">Wszystkie jego boki są równe</string>
-    <string name="rightangledTriangleDesc">Posiada kąt prosty</string>
-    <string name="squareDesc">Wszystkie jego boki są równe, a kąty proste</string>
-    <string name="prismAndscaleneTriangleDesc">W podstawie ma trójkąt, którego wszystkie boki są równe</string>
-    <string name="cubeDesc">Złożony z kwadratów, wszystkie jego boki są równe</string>
 
     //tales
     <string name="talespoliczAC">Obliczanie AC mając a i c</string>

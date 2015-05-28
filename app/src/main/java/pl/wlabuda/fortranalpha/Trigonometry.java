@@ -88,45 +88,6 @@ public class Trigonometry extends Activity {
             }
 
         });
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position){
-                    case 0:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Trigonometry.this);
-                        builder
-                                .setTitle(getString(R.string.scaleneTriangle))
-                                .setMessage(R.string.scaleneTriangleDesc)
-                                .setIcon(R.drawable.troj_praw)
-                                .setPositiveButton("OK", null)
-                                .show();
-                        break;
-                    case 1:
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Trigonometry.this);
-                        builder1
-                                .setTitle(getString(R.string.rightangledTriangle))
-                                .setMessage(R.string.rightangledTriangleDesc)
-                                .setIcon(R.drawable.trojkat_prostokatny)
-                                .setPositiveButton("OK", null)
-                                .show();
-                        break;
-                    case 2:
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(Trigonometry.this);
-                        builder2
-                                .setTitle(getString(R.string.square))
-                                .setMessage(R.string.squareDesc)
-                                .setIcon(R.drawable.kwadrat)
-                                .setPositiveButton("OK", null)
-                                .show();
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
-
     }
 
     @Override

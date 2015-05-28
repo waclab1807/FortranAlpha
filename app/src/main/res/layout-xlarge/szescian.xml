@@ -204,7 +204,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/baseCircuit"
+                    android:text="@string/baseRound"
                     android:id="@+id/textView47"
                     android:layout_gravity="center_vertical" />
 
