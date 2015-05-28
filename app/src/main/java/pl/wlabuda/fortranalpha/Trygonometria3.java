@@ -33,8 +33,6 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
 
     private Button licz;
     private Button clear;
-    private Button sqrtbtn;
-    private Button powbtn;
     private Button btnReview;
     private Button btnData;
     private Button btnSolution;
@@ -75,8 +73,6 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
 
         licz = (Button) findViewById(R.id.magic);
         clear = (Button) findViewById(R.id.clear);
-        sqrtbtn = (Button) findViewById(R.id.sqrtbtn);
-        powbtn = (Button) findViewById(R.id.powbtn);
         figura = (ImageView) findViewById(R.id.imageView);
         btnReview = (Button) findViewById(R.id.btnReview);
         btnData = (Button) findViewById(R.id.btnData);
@@ -238,53 +234,32 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
                 //clear.setTypeface(null, Typeface.BOLD);
                 //spinner.setEnabled(false);
 
+
                 try {
                     fun1 = wybor + wybor2;
                     fun2 = wybor4 + wybor5;
                     oper = wybor3;
 
+                    wynik = "8";
                     switch (oper) {
                         case "+":
-                            String a = "()√(3)";
-                            System.out.println("$$$$$$1 " + Wartosc.policz(a, "(()√(2))/2", "+"));
-//                            System.out.println("$$$$$$2 " + Wartosc.policz(a, "√(2)/2", "-"));
-//                            System.out.println("$$$$$$3 " + Wartosc.policz(a, "√(2)/2", "*"));
-//                            System.out.println("$$$$$$4 " + Wartosc.policz(a, "√(2)/2", "/"));
-
-//                            System.out.println("$$$$$$5 " + Wartosc.policz(a, "√(3)/2", "+"));
-//                            System.out.println("$$$$$$6 " + Wartosc.policz(a, "√(3)/2", "-"));
-//                            System.out.println("$$$$$$7 " + Wartosc.policz(a, "√(3)/2", "*"));
-//                            System.out.println("$$$$$$8 " + Wartosc.policz(a, "√(3)/2", "/"));
-
-//                            System.out.println("$$$$$$1 " + Wartosc.policz(a, "√(3)/3", "+"));
-//                            System.out.println("$$$$$$2 " + Wartosc.policz(a, "√(3)/3", "-"));
-//                            System.out.println("$$$$$$3 " + Wartosc.policz(a, "√(3)/3", "*"));
-//                            System.out.println("$$$$$$4 " + Wartosc.policz(a, "√(3)/3", "/"));
-//
-//                            System.out.println("$$$$$$5 " + Wartosc.policz(a, "1", "+"));
-//                            System.out.println("$$$$$$6 " + Wartosc.policz(a, "1", "-"));
-//                            System.out.println("$$$$$$7 " + Wartosc.policz(a, "1", "*"));
-//                            System.out.println("$$$$$$8 " + Wartosc.policz(a, "1", "/"));
-
-//                            System.out.println("$$$$$$1 " + Wartosc.policz(a, "√(3)", "+"));
-//                            System.out.println("$$$$$$2 " + Wartosc.policz(a, "√(3)", "-"));
-//                            System.out.println("$$$$$$3 " + Wartosc.policz(a, "√(3)", "*"));
-//                            System.out.println("$$$$$$4 " + Wartosc.policz(a, "√(3)", "/"));
-
-                            wynik = "8";
-                            //wynik = Wartosc.policz(zamienFunkcje(fun1),zamienFunkcje(fun2),"+");
+                            wynik = Wartosc.policz(zamienFunkcje(fun1), zamienFunkcje(fun2), "+");
+                            webTekst("+");
                             break;
                         case "-":
-                            wynik = Wartosc.policz(zamienFunkcje(fun1),zamienFunkcje(fun2),"-");
+                            wynik = Wartosc.policz(zamienFunkcje(fun1), zamienFunkcje(fun2), "-");
+                            webTekst("-");
                             break;
                         case "*":
-                            wynik = Wartosc.policz(zamienFunkcje(fun1),zamienFunkcje(fun2),"*");
+                            wynik = Wartosc.policz(zamienFunkcje(fun1), zamienFunkcje(fun2), "*");
+                            webTekst("*");
                             break;
                         case "/":
-                            wynik = Wartosc.policz(zamienFunkcje(fun1),zamienFunkcje(fun2),"/");
+                            wynik = Wartosc.policz(zamienFunkcje(fun1), zamienFunkcje(fun2), "/");
+                            webTekst("/");
                             break;
                     }
-                    //new ProgressBar(view);
+                    new ProgressBar(view);
                 } catch (Exception e) {
                     System.out.println("emessage " + e.getMessage());
                     Toast.makeText(Trygonometria3.this, getString(R.string.ups),
@@ -327,24 +302,6 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
                         Toast.LENGTH_SHORT).show();
             }
         });
-        sqrtbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()\u221a()");
-                int s = lastFocused.getSelectionStart();
-                int a = s - 1;
-                lastFocused.setSelection(a);
-            }
-        });
-        powbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()^()");
-                int s = lastFocused.getSelectionStart();
-                int a = s - 4;
-                lastFocused.setSelection(a);
-            }
-        });
     }
 
     public Boolean isEmpty(EditText x) {
@@ -352,22 +309,22 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
     }
 
     public String zamienFunkcje(String fun) {
-        String wartosc="";
-        switch (fun){
+        String wartosc = "";
+        switch (fun) {
             case "sin30":
                 wartosc = "1/2";
                 break;
             case "sin45":
-                wartosc = "()√(2)/2";
+                wartosc = "√(2)/2";
                 break;
             case "sin60":
-                wartosc = "()√(3)/2";
+                wartosc = "√(3)/2";
                 break;
             case "cos30":
-                wartosc = "()√(3)/2";
+                wartosc = "√(3)/2";
                 break;
             case "cos45":
-                wartosc = "()√(2)/2";
+                wartosc = "√(2)/2";
                 break;
             case "cos60":
                 wartosc = "1/2";
@@ -394,154 +351,12 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
         return wartosc;
     }
 
-    private void policzZsin(String sin) {
-        Sin = sin;
-        String jeden = Wartosc.policz(sin, sin, "*");
-        String dwa = Wartosc.policz("1", jeden, "-");
-        String trzy = Wartosc.policz("1", "()√(" + dwa + ")", "*");
-        Cos = trzy;
-        String cztery = Wartosc.policz(sin, trzy, "/");
-        Tg = cztery;
-        String piec = Wartosc.policz(trzy, sin, "/");
-        Ctg = piec;
-        String solucja1 = "<center>*============================*</center><br>" +
-                "$${{sin}^2}+{{cos}^2} = 1$$<br>" +
-                "$${{cos}^2} = 1 - {{sin}^2}$$<br>" +
-                "$${cos} = {√{1 - {{sin}^2}}}$$<br>" +
-                "$${cos} = {√{1 - {{" + Wartosc.formatuj(sin) + "}^2}}}$$<br>" +
-                "$${cos} = {√{1 - {" + Wartosc.formatuj(jeden) + "}}}$$<br>" +
-                "$${cos} = {√{" + Wartosc.formatuj(dwa) + "}}$$<br>" +
-                "$${cos} = {" + Wartosc.formatuj(trzy) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-                "$${tg} = {sin}/{cos}$$<br>" +
-                "$${tg} = {" + Wartosc.formatuj(sin) + "}/{" + Wartosc.formatuj(trzy) + "}$$<br>" +
-                "$${tg} = {" + Wartosc.formatuj(cztery) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-                "$${ctg} = {cos}/{sin}$$<br>" +
-                "$${ctg} = {" + Wartosc.formatuj(trzy) + "}/{" + Wartosc.formatuj(sin) + "}$$<br>" +
-                "$${ctg} = {" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "<center>*============================*</center>";
-        if (!tekst.contains(solucja1)) {
-            tekst = tekst + solucja1;
-        }
-    }
-
-    private void policzZcos(String cos) {
-        Cos = cos;
-        String jeden = Wartosc.policz(cos, cos, "*");
-        String dwa = Wartosc.policz("1", jeden, "-");
-        String trzy = Wartosc.policz("1", "()√(" + dwa + ")", "*");
-        Sin = trzy;
-        String cztery = Wartosc.policz(trzy, cos, "/");
-        Tg = cztery;
-        String piec = Wartosc.policz(cos, trzy, "/");
-        Ctg = piec;
-        String solucja1 = "<center>*============================*</center><br>" +
-                "$${{sin}^2}+{{cos}^2} = 1$$<br>" +
-                "$${{sin}^2} = 1 - {{cos}^2}$$<br>" +
-                "$${sin} = {√{1 - {{cos}^2}}}$$<br>" +
-                "$${sin} = {√{1 - {{" + Wartosc.formatuj(cos) + "}^2}}}$$<br>" +
-                "$${sin} = {√{1 - {" + Wartosc.formatuj(jeden) + "}}}$$<br>" +
-                "$${sin} = {√{" + Wartosc.formatuj(dwa) + "}}$$<br>" +
-                "$${sin} = {" + Wartosc.formatuj(trzy) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-                "$${tg} = {sin}/{cos}$$<br>" +
-                "$${tg} = {" + Wartosc.formatuj(trzy) + "}/{" + Wartosc.formatuj(cos) + "}$$<br>" +
-                "$${tg} = {" + Wartosc.formatuj(cztery) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-                "$${ctg} = {cos}/{sin}$$<br>" +
-                "$${ctg} = {" + Wartosc.formatuj(cos) + "}/{" + Wartosc.formatuj(trzy) + "}$$<br>" +
-                "$${ctg} = {" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "<center>*============================*</center>";
-        if (!tekst.contains(solucja1)) {
-            tekst = tekst + solucja1;
-        }
-    }
-
-    private void policzZtg(String tg) {
-        Tg = tg;
-        String jeden = Wartosc.policz("1", tg, "/");
-        Ctg = jeden;
-        String dwa = Wartosc.policz(tg, tg, "*");
-        String trzy = Wartosc.policz(dwa, "1", "+");
-        String cztery = Wartosc.policz("1", trzy, "/");
-        String piec = Wartosc.policz("1", "()√(" + cztery + ")", "*");
-        Cos = piec;
-        String szesc = Wartosc.policz(tg, piec, "*");
-        Sin = szesc;
-        String solucja1 = "<center>*============================*</center><br>" +
-                "$${ctg} = {1}/{tg}$$<br>" +
-                "$${ctg} = {1}/{" + Wartosc.formatuj(tg) + "}$$<br>" +
-                "$${ctg} = {" + Wartosc.formatuj(jeden) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-
-                "$${tg} = {sin}/{cos}$$<br>" +
-                "$${sin} = {tg}*{cos}$$<br>" +
-                "$${{sin}^2} = {{{tg}^2}*{{cos}^2}}$$<br>" +
-                "$${{sin}^2}+{{cos}^2} = 1$$<br>" +
-                "$${{{tg}^2}*{{cos}^2}}+{{cos}^2} = 1$$<br>" +
-                "$${({{tg}^2}+1)*{{cos}^2}} = 1$$<br>" +
-                "$${{cos}^2} = {1}/{({{tg}^2}+1)}$$<br>" +
-                "$${cos} = {√{{1}/{({{tg}^2}+1)}}}$$<br>" +
-                "$${cos} = {√{{1}/{({{" + Wartosc.formatuj(tg) + "}^2}+1)}}}$$<br>" +
-                "$${cos} = {√{{1}/{({" + Wartosc.formatuj(dwa) + "}+1)}}}$$<br>" +
-                "$${cos} = {√{{1}/{" + Wartosc.formatuj(trzy) + "}}}$$<br>" +
-                "$${cos} = {√{" + Wartosc.formatuj(cztery) + "}}$$<br>" +
-                "$${cos} = {" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-
-                "$${tg} = {sin}/{cos}$$<br>" +
-                "$${sin} = {tg}*{cos}$$<br>" +
-                "$${sin} = {" + Wartosc.formatuj(tg) + "}*{" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "$${sin} = {" + Wartosc.formatuj(szesc) + "}$$<br>" +
-
-                "<center>*============================*</center>";
-        if (!tekst.contains(solucja1)) {
-            tekst = tekst + solucja1;
-        }
-    }
-
-    private void policzZctg(String ctg) {
-        Ctg = ctg;
-        String jeden = Wartosc.policz("1", ctg, "/");
-        Tg = jeden;
-        String dwa = Wartosc.policz(ctg, ctg, "*");
-        String trzy = Wartosc.policz(dwa, "1", "+");
-        String cztery = Wartosc.policz("1", trzy, "/");
-        String piec = Wartosc.policz("1", "()√(" + cztery + ")", "*");
-        Sin = piec;
-        String szesc = Wartosc.policz(ctg, piec, "*");
-        Cos = szesc;
-        String solucja1 = "<center>*============================*</center><br>" +
-                "$${tg} = {1}/{ctg}$$<br>" +
-                "$${tg} = {1}/{" + Wartosc.formatuj(ctg) + "}$$<br>" +
-                "$${tg} = {" + Wartosc.formatuj(jeden) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-
-                "$${ctg} = {cos}/{sin}$$<br>" +
-                "$${cos} = {ctg}*{sin}$$<br>" +
-                "$${{cos}^2} = {{{ctg}^2}*{{sin}^2}}$$<br>" +
-                "$${{sin}^2}+{{cos}^2} = 1$$<br>" +
-                "$${{{ctg}^2}*{{sin}^2}}+{{sin}^2} = 1$$<br>" +
-                "$${({{ctg}^2}+1)*{{sin}^2}} = 1$$<br>" +
-                "$${{sin}^2} = {1}/{({{ctg}^2}+1)}$$<br>" +
-                "$${sin} = {√{{1}/{({{ctg}^2}+1)}}}$$<br>" +
-                "$${sin} = {√{{1}/{({{" + Wartosc.formatuj(ctg) + "}^2}+1)}}}$$<br>" +
-                "$${sin} = {√{{1}/{({" + Wartosc.formatuj(dwa) + "}+1)}}}$$<br>" +
-                "$${sin} = {√{{1}/{" + Wartosc.formatuj(trzy) + "}}}$$<br>" +
-                "$${sin} = {√{" + Wartosc.formatuj(cztery) + "}}$$<br>" +
-                "$${sin} = {" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "<center>*============================*</center><br>" +
-
-                "$${tg} = {sin}/{cos}$$<br>" +
-                "$${cos} = {ctg}*{sin}$$<br>" +
-                "$${cos} = {" + Wartosc.formatuj(ctg) + "}*{" + Wartosc.formatuj(piec) + "}$$<br>" +
-                "$${cos} = {" + Wartosc.formatuj(szesc) + "}$$<br>" +
-
-                "<center>*============================*</center>";
-        if (!tekst.contains(solucja1)) {
-            tekst = tekst + solucja1;
-        }
+    private void webTekst(String operator) {
+        tekst = "<center>*============================*</center><br>" +
+                "$${" + Wartosc.formatuj(fun1) + "} "+operator+" {" + Wartosc.formatuj(fun2) + "} =$$<br>" +
+                "$$= {" + Wartosc.formatuj(zamienFunkcje(fun1)) + "} "+operator+" {" + Wartosc.formatuj(zamienFunkcje(fun2)) + "} = $$<br>" +
+                "$$= {" + Wartosc.formatuj(wynik) + "}$$<br>" +
+                "<center>*============================*</center><br>";
     }
 
     @Override

@@ -45,22 +45,6 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:text="@string/sqrt"
-            android:id="@+id/sqrtbtn"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="@string/pow"
-            android:id="@+id/powbtn"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
             android:text="@string/count"
             android:id="@+id/magic"
             android:textStyle="bold"
@@ -130,6 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
                         android:id="@+id/spinner3"
+                        android:paddingLeft="25dp"
                         android:layout_weight="1" />
 
                     <Spinner

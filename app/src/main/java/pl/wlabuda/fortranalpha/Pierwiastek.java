@@ -145,6 +145,9 @@ public class Pierwiastek {
         if(wynik.contains("()\u221a")){
             wynik = wynik.replace("()\u221a","\u221a");
         }
+        if(wynik.contains("(0)√")){
+            return "0";
+        }
         return wynik;
     }
 

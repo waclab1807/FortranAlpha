@@ -220,23 +220,12 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
             @Override
             public void onClick(View view) {
 
-                boolean bH = false;
-                boolean ba = false;
-                boolean bh = false;
-                boolean bD = false;
-                boolean bd = false;
-                boolean bobj = false;
-                boolean bpp = false;
-                boolean bpb = false;
-                boolean bpc = false;
-                boolean bobwp = false;
-                boolean bobwb = false;
-                boolean btriangle = false;
+
 
                 licz.setTypeface(null, Typeface.NORMAL);
                 clear.setTypeface(null, Typeface.BOLD);
 
-                int x = 0; //koniec petli, wszystko policzone
+
 
                 if (Wartosc.nawiasy(a_val.getText().toString()) &&
                         Wartosc.nawiasy(pp_val.getText().toString()) &&
@@ -250,7 +239,21 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                         Wartosc.nawiasy(triangle_val.getText().toString()) &&
                         Wartosc.nawiasy(pb_val.getText().toString()) &&
                         Wartosc.nawiasy(pc_val.getText().toString())) {
+
                     try {
+                                boolean bH = false;
+                                boolean ba = false;
+                                boolean bh = false;
+                                boolean bD = false;
+                                boolean bd = false;
+                                boolean bobj = false;
+                                boolean bpp = false;
+                                boolean bpb = false;
+                                boolean bpc = false;
+                                boolean bobwp = false;
+                                boolean bobwb = false;
+                                boolean btriangle = false;
+                                int x = 0; //koniec petli, wszystko policzone
                         while (x == 0) {
                             //obliczanie a lub h lub pp lub obwp
                             //czy jest a
@@ -631,12 +634,15 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
                                         Toast.LENGTH_LONG).show();
                             }
                         }
+
                         new ProgressBar(view);
+
                     } catch (Exception e) {
                         System.out.println("eMessage " + e.getMessage());
                         Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.ups),
                                 Toast.LENGTH_LONG).show();
                     }
+
                 } else {
                     Toast.makeText(GraniastoslupPrawidlowyTrojkatny.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
@@ -921,7 +927,9 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
 
     private String policzDzHiA(String H, String a) {
         String j = Wartosc.policz(a, "()\u221a(3)", "*");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$j "+j);
         String d = Wartosc.policz(j, "2", "/");
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$d "+d);
         String jeden = d;
         String dwa = Wartosc.policz(jeden, jeden, "*");
         String trzy = Wartosc.policz(H, H, "*");

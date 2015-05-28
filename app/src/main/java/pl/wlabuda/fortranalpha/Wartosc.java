@@ -13,12 +13,26 @@ public class Wartosc {
     public Wartosc(String a) { //konstruktor zamienia liczbe na ulamek
         if (a.contains("/")) {
             String[] t = a.split("/");
-            if (t[0].startsWith("√")){
+            if(t[0].startsWith("((") && t[0].endsWith("))")){
+                t[0] = t[0].substring(1,t[0].length()-1);
+            }
+            if(t[1].startsWith("((") && t[1].endsWith("))")){
+                t[1] = t[1].substring(1,t[1].length()-1);
+            }
+            if (t[0].startsWith("√") || t[0].contains("√")){
                 t[0] = "("+t[0]+")";
             }
-            if (t[1].startsWith("√")){
+            if (t[1].startsWith("√") || t[1].contains("√")){
                 t[1] = "("+t[1]+")";
             }
+            if (t[0].contains("^")){
+                t[0] = "("+t[0]+")";
+            }
+            if (t[1].contains("^")){
+                t[1] = "("+t[1]+")";
+            }
+            t[0] = t[0].replaceAll("-√","-1√");
+            t[1] = t[1].replaceAll("-√","-1√");
             if(t[0].contains("(") && t[0].contains(")")) {
                 String x = t[0].substring(1, t[0].length() - 1);       //jak licznik albo mianownik jest dzialaniem to zamienia nawiasy na kwadratowe
                 System.out.println("wartKonstrx " + t[0] + " & " + x);
@@ -304,7 +318,7 @@ public class Wartosc {
                       //      "(\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")\n";
                 }
             } else {
-                wynik = "(\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")"; // dokleja pierwiastek do licznika
+                wynik = "\u221a(" + Integer.parseInt(p.getInside()) + ")/(" + (int) Double.parseDouble(w.getMianownik()) + ")"; // dokleja pierwiastek do licznika
                 if (Double.parseDouble(p.getFirst()) != (int) Double.parseDouble(w.getLicznik())) {
                     //todo sprawdzic to rozwiazanie
                     //MainActivity.tekst = MainActivity.tekst + "\nSkracanie:\n" + "((" + Integer.parseInt(p.getFirst()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + liczba + ") = " +
@@ -549,7 +563,7 @@ public class Wartosc {
             case "/":
                 System.out.println("case / ");
                 wyr = wyr.replace("|","/");
-                if (!op.contains("/")){ //todo dzielenie
+                if (!op.contains("/")){ //todo dzielenie zrobic
                     tmp = wyr.split("\\"+op);
                     for(int i=0;i<tmp.length;i++){
                         if(tmp[i].startsWith("((") && tmp[i].endsWith("))")){
@@ -654,7 +668,6 @@ public class Wartosc {
         String wynik = a;
         a = a.replace("*-","*|");
         a = a.replace("/-","/|");
-        System.out.println("jakieto tralalala: " + jakieToWyrazenie(a));
         if(jakieToWyrazenie(a).contains("+")){
             a=a.replace("/|","/-");
             d = a.split("\\+");
