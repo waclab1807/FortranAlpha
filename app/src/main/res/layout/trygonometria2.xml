@@ -85,12 +85,18 @@
 
         <ImageView
             android:id="@+id/imageView"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:id="@+id/dwa"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"

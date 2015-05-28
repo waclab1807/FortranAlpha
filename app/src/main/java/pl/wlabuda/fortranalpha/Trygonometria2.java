@@ -159,15 +159,6 @@ public class Trygonometria2 extends Activity implements OnFocusChangeListener{
             @Override
             public void onClick(View view) {
 
-                boolean sina = false;
-                boolean cosa = false;
-                boolean tga = false;
-                boolean ctga = false;
-                boolean sinb = false;
-                boolean cosb = false;
-                boolean tgb = false;
-                boolean ctgb = false;
-
                 wartosc = a_val.getText().toString();
 
                 tekst = "";

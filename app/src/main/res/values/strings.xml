@@ -18,7 +18,8 @@
     <string name="choose">Wybierz</string>
     <string name="hint">np. 1/3</string>
     <string name="hint2">Wprowadź tyle danych ile posiadasz</string>
-    
+    <string name="result">Wynik: </string>
+
     //names
     <string name="area"> Pole: </string>
     <string name="baseArea"> Pole podstawy: </string>
