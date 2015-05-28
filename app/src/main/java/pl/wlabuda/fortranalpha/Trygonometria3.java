@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,7 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
     private Spinner spinner3;
     private Spinner spinner4;
     private Spinner spinner5;
+    private boolean doubleBackToExitPressedOnce = false;
 
     private String wybor;
     private String wybor2;
@@ -357,6 +359,25 @@ public class Trygonometria3 extends Activity implements OnFocusChangeListener {
                 "$$= {" + Wartosc.formatuj(zamienFunkcje(fun1)) + "} "+operator+" {" + Wartosc.formatuj(zamienFunkcje(fun2)) + "} = $$<br>" +
                 "$$= {" + Wartosc.formatuj(wynik) + "}$$<br>" +
                 "<center>*============================*</center><br>";
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override

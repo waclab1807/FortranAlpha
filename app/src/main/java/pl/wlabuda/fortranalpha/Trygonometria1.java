@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +24,7 @@ import android.widget.Toast;
  * Created by waclab1807 on 31.03.15.
  */
 
-public class Trygonometria extends Activity implements OnFocusChangeListener{
+public class Trygonometria1 extends Activity implements OnFocusChangeListener{
 
     private Button licz;
     private Button clear;
@@ -49,6 +50,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
     private ImageView figura;
     private ScrollView scrollView;
     private LinearLayout buttons;
+    private boolean doubleBackToExitPressedOnce = false;
 
     String a;
     String b;
@@ -207,7 +209,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
 
-                                Toast.makeText(Trygonometria.this, getString(R.string.premium),
+                                Toast.makeText(Trygonometria1.this, getString(R.string.premium),
                                         Toast.LENGTH_LONG).show();
 
                             } else if(!isEmpty(a_val) && !isEmpty(b_val)){
@@ -282,11 +284,11 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                                 btnSolution.setEnabled(true);
                                 imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
 
-                                Toast.makeText(Trygonometria.this, getString(R.string.premium),
+                                Toast.makeText(Trygonometria1.this, getString(R.string.premium),
                                         Toast.LENGTH_LONG).show();
                             //za malo danych
                             if(isEmpty(a_val) && isEmpty(b_val) && isEmpty(c_val)){
-                                Toast.makeText(Trygonometria.this, getString(R.string.notEnough),
+                                Toast.makeText(Trygonometria1.this, getString(R.string.notEnough),
                                         Toast.LENGTH_LONG).show();
                                 x = 1;
                             }
@@ -294,11 +296,11 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                         new ProgressBar(view);
                     } catch (Exception e) {
                         System.out.println("emessage " + e.getMessage());
-                        Toast.makeText(Trygonometria.this, getString(R.string.ups),
+                        Toast.makeText(Trygonometria1.this, getString(R.string.ups),
                                 Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(Trygonometria.this, getString(R.string.bracket),
+                    Toast.makeText(Trygonometria1.this, getString(R.string.bracket),
                             Toast.LENGTH_LONG).show();
                 }
                 JavaScript JS = new JavaScript(tekst);
@@ -328,7 +330,7 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
                 figura.setImageResource(R.drawable.troj_pros);
                 clear.setTypeface(null, Typeface.NORMAL);
                 licz.setTypeface(null, Typeface.BOLD);
-                Toast.makeText(Trygonometria.this, getString(R.string.deleted),
+                Toast.makeText(Trygonometria1.this, getString(R.string.deleted),
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -468,6 +470,25 @@ public class Trygonometria extends Activity implements OnFocusChangeListener{
             tekst = tekst + solucja1;
         }
         return jeden;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override

@@ -86,34 +86,6 @@ public class ListViewGeometria3D extends Activity {
             }
 
         });
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                switch(position){
-                    case 0:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ListViewGeometria3D.this);
-                        builder
-                                .setTitle(getString(R.string.prismAndscaleneTriangle))
-                                .setMessage(R.string.prismAndscaleneTriangleDesc)
-                                .setIcon(R.drawable.gran_pros_trojkatny)
-                                .setPositiveButton("OK", null)
-                                .show();
-                        break;
-                    case 1:
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListViewGeometria3D.this);
-                        builder1
-                                .setTitle(getString(R.string.cube))
-                                .setMessage(getString(R.string.cubeDesc))
-                                .setIcon(R.drawable.szescian)
-                                .setPositiveButton("OK", null)
-                                .show();
-                        break;
-                    default:
-                        break;
-                }
-                return true;
-            }
-        });
     }
 
     @Override

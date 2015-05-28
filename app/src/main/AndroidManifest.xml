@@ -30,31 +30,37 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Graniastosłup prawidłowy trójkątny"></activity>
+            android:label="@string/prismAndscaleneTriangle"></activity>
 
         <activity android:name=".Kolo"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Koło"></activity>
+            android:label="@string/circle"></activity>
 
-        <activity android:name=".Trygonometria"
+        <activity android:name=".Trygonometria1"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Trygonometria"></activity>
+            android:label="@string/trigonometry"></activity>
 
         <activity android:name=".Trygonometria2"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Trygonometria2"></activity>
+            android:label="@string/trigonometry"></activity>
 
         <activity android:name=".Trygonometria3"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Trygonometria3"></activity>
+            android:label="@string/trigonometry"></activity>
+
+        <activity android:name=".Trigonometry"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/trigonometry"></activity>
 
         <activity android:name=".Szescian"
             android:windowSoftInputMode="stateHidden"
@@ -72,13 +78,13 @@
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Trojkąt prawidlowy"></activity>
+            android:label="@string/scaleneTriangle"></activity>
 
         <activity android:name=".TrojkatProstokatny"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme"
             android:configChanges="orientation|keyboardHidden"
-            android:label="Trojkąt prostokątny"></activity>
+            android:label="@string/rightangledTriangle"></activity>
 
         <activity android:name=".Tales"
             android:windowSoftInputMode="stateHidden"

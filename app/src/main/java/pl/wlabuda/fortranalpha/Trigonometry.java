@@ -15,7 +15,7 @@ import android.widget.Toast;
 /**
  * Created by waclab1807 on 30.03.15.
  */
-public class ListViewGeometria2D extends Activity {
+public class Trigonometry extends Activity {
     ListView listView ;
 
     @Override
@@ -31,11 +31,9 @@ public class ListViewGeometria2D extends Activity {
         listView = (ListView) findViewById(R.id.list);
 
         // Defined Array values to show in ListView
-        String[] values = new String[] { getString(R.string.scaleneTriangle),
-                getString(R.string.isoscelesTriangle),
-                getString(R.string.rightangledTriangle),
-                getString(R.string.square),
-                getString(R.string.circle)
+        String[] values = new String[] { getString(R.string.trigonometry1),
+                getString(R.string.trigonometry2),
+                getString(R.string.trigonometry3)
         };
 
         // Define a new Adapter
@@ -68,23 +66,18 @@ public class ListViewGeometria2D extends Activity {
                 switch (itemPosition){
                     case 0:
                         Intent intent;
-                        intent = new Intent(ListViewGeometria2D.this, TrojkatPrawidlowy.class);
+                        intent = new Intent(Trigonometry.this, Trygonometria1.class);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 1:
                         Intent intent1;
-                        intent1 = new Intent(ListViewGeometria2D.this, TrojkatProstokatny.class);
+                        intent1 = new Intent(Trigonometry.this, Trygonometria2.class);
                         startActivity(intent1);
                         break;
-                    case 3:
+                    case 2:
                         Intent intent2;
-                        intent2 = new Intent(ListViewGeometria2D.this, Kwadrat.class);
+                        intent2 = new Intent(Trigonometry.this, Trygonometria3.class);
                         startActivity(intent2);
-                        break;
-                    case 4:
-                        Intent intent3;
-                        intent3 = new Intent(ListViewGeometria2D.this, Kolo.class);
-                        startActivity(intent3);
                         break;
                     default:
                         Toast.makeText(getApplicationContext(),
@@ -93,7 +86,47 @@ public class ListViewGeometria2D extends Activity {
                         break;
                 }
             }
+
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                switch(position){
+                    case 0:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Trigonometry.this);
+                        builder
+                                .setTitle(getString(R.string.scaleneTriangle))
+                                .setMessage(R.string.scaleneTriangleDesc)
+                                .setIcon(R.drawable.troj_praw)
+                                .setPositiveButton("OK", null)
+                                .show();
+                        break;
+                    case 1:
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Trigonometry.this);
+                        builder1
+                                .setTitle(getString(R.string.rightangledTriangle))
+                                .setMessage(R.string.rightangledTriangleDesc)
+                                .setIcon(R.drawable.trojkat_prostokatny)
+                                .setPositiveButton("OK", null)
+                                .show();
+                        break;
+                    case 2:
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(Trigonometry.this);
+                        builder2
+                                .setTitle(getString(R.string.square))
+                                .setMessage(R.string.squareDesc)
+                                .setIcon(R.drawable.kwadrat)
+                                .setPositiveButton("OK", null)
+                                .show();
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+
     }
 
     @Override

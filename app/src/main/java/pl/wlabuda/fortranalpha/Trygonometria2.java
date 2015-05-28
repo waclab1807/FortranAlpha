@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,7 @@ public class Trygonometria2 extends Activity implements OnFocusChangeListener{
     private LinearLayout buttons;
     private Spinner spinner;
     private EditText a_val;
+    private boolean doubleBackToExitPressedOnce = false;
 
     private String wybor;
     private String wartosc;
@@ -414,6 +416,25 @@ public class Trygonometria2 extends Activity implements OnFocusChangeListener{
         if(!tekst.contains(solucja1)) {
             tekst = tekst + solucja1;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override

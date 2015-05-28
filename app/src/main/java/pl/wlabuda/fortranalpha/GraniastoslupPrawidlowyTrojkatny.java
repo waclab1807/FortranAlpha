@@ -63,6 +63,7 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
     private Button btnData;
     private Button btnSolution;
     private LinearLayout buttons;
+    private boolean doubleBackToExitPressedOnce = false;
 
     String a;
     String pp;
@@ -1203,6 +1204,25 @@ public class GraniastoslupPrawidlowyTrojkatny extends Activity implements OnFocu
             tekst = tekst + solucja;
         }
         return trzy;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override

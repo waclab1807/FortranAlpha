@@ -14,11 +14,6 @@
         android:title="@string/futurePlans">
     </item>
     <item
-        android:id="@+id/item3"
-        android:orderInCategory="3"
-        android:title="Kalkulator">
-    </item>
-    <item
         android:id="@+id/item4"
         android:orderInCategory="4"
         android:title="@string/finish">

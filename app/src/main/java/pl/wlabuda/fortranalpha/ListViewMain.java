@@ -33,9 +33,7 @@ public class ListViewMain extends Activity {
                 getString(R.string.geometry3d),
                 getString(R.string.trigonometry),
                 getString(R.string.tales),
-                getString(R.string.angle),
-                "Trygonometria2",
-                "Trygonometria3"
+                getString(R.string.angle)
         };
 
         // Define a new Adapter
@@ -75,7 +73,7 @@ public class ListViewMain extends Activity {
                         startActivity(intent1);
                         break;
                     case 2:
-                        Intent intent2 = new Intent(ListViewMain.this, Trygonometria.class);
+                        Intent intent2 = new Intent(ListViewMain.this, Trigonometry.class);
                         startActivity(intent2);
                         break;
                     case 3:
@@ -86,21 +84,12 @@ public class ListViewMain extends Activity {
                         Intent intent4 = new Intent(ListViewMain.this, Katy.class);
                         startActivity(intent4);
                         break;
-                    case 5:
-                        Intent intent5 = new Intent(ListViewMain.this, Trygonometria2.class);
-                        startActivity(intent5);
-                        break;
-                    case 6:
-                        Intent intent6 = new Intent(ListViewMain.this, Trygonometria3.class);
-                        startActivity(intent6);
-                        break;
                     default:
                         Toast.makeText(getApplicationContext(),
                                 "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT)
                                 .show();
                         break;
                 }
-
             }
 
         });

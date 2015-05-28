@@ -1,11 +1,13 @@
 package pl.wlabuda.fortranalpha;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * Created by waclab1807 on 03.04.15.
@@ -63,4 +65,5 @@ public class Global {
             }
         });
     }
+
 }

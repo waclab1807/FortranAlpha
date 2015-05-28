@@ -26,7 +26,7 @@ import android.widget.Toast;
 
 public class Kolo extends Activity implements OnFocusChangeListener{
 
-    private String PI = "3.1415";
+    private String PI = "3.14";
     private boolean doubleBackToExitPressedOnce = false;
     private Button licz;
     private Button clear;
@@ -309,6 +309,7 @@ public class Kolo extends Activity implements OnFocusChangeListener{
             @Override
             public void onClick(View view) {
                 Global.setEmpty(r_val, s_val, pp_val, obwp_val);
+                Global.setEmptyWeb(mWebViewPp,mWebViewObw,mWebViewR,mWebViewS);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 Global.EditTextHide(false, r_val, s_val, pp_val, obwp_val);

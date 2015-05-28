@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
     private WebView mWebViewA;
     private WebView mWebViewH;
     private LinearLayout buttons;
+    private boolean doubleBackToExitPressedOnce = false;
 
     String a;
     String pp;
@@ -476,6 +478,25 @@ public class TrojkatPrawidlowy extends Activity implements OnFocusChangeListener
             tekst = tekst + solucja;
         }
         return trzy;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, getString(R.string.backButton), Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 1000);
     }
 
     @Override

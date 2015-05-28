@@ -27,18 +27,15 @@ public class DotsMenu extends Activity{
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(context);
                 builder2
                         .setTitle("Plany na przyszłość:")
-                        .setMessage("Kąty alfa, beta itd. \n" +
-                                "Dynamiczne oznaczenia pól, które można policzyć, \n" +
+                        .setMessage("Logika i tautologia\n" +
+                                "Statystyka \n" +
+                                "Geometria analityczna\n" +
                                 "Więcej figur i brył, \n" +
                                 "Zmieniona klawiatura\n" +
                                 "Wiele, wiele innych...")
                         .setIcon(R.drawable.author)
                         .setPositiveButton("OK", null)
                         .show();
-                break;
-            case R.id.item3:
-                Toast.makeText(context, R.string.inProgress,
-                        Toast.LENGTH_LONG).show();
                 break;
             case R.id.item4:
                 //android.os.Process.killProcess(android.os.Process.myPid());

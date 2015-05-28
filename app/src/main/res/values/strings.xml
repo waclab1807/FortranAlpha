@@ -59,6 +59,9 @@ liczbie nawiasów zamykających! Popraw to, prosze.</string>
     <string name="geomerty2d">Geometria 2D</string>
     <string name="geometry3d">Geometria 3D</string>
     <string name="trigonometry">Trygonometria</string>
+    <string name="trigonometry1">Związki pomiędzy funkcjami</string>
+    <string name="trigonometry2">Oblicz wartości trygonometryczne</string>
+    <string name="trigonometry3">Funkcje trygonometryczne w trójkącie</string>
     <string name="pyramid">Ostrosłup</string>
     <string name="cylinder">Walec</string>
     <string name="globe">Kula</string>
