@@ -426,6 +426,10 @@ public class Tales extends Activity implements OnFocusChangeListener {
                                     !bd_val.getText().toString().equals("")
                                     ) {
                                 x = 1;
+                                btnSolution.setEnabled(true);
+                                Global.WebViewHide(false, mWebView, mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewAC, mWebViewBD);
+                                Global.EditTextHide(true, a_val, b_val, c_val, d_val, e_val, f_val, ac_val, bd_val);
+                                imm.hideSoftInputFromWindow(lastFocused.getWindowToken(), 0);
                                 Toast.makeText(Tales.this, getString(R.string.premium),
                                         Toast.LENGTH_LONG).show();
                             }
@@ -457,6 +461,7 @@ public class Tales extends Activity implements OnFocusChangeListener {
             @Override
             public void onClick(View view) {
                 Global.setEmpty(a_val,b_val,c_val,d_val,e_val,f_val,ac_val,bd_val);
+                Global.setEmptyWeb(mWebViewA, mWebViewB, mWebViewC, mWebViewD, mWebViewE, mWebViewF, mWebViewAC, mWebViewBD);
                 tekst = "";
                 mWebView.loadDataWithBaseURL("", "", "text/html", "UTF-8", "");
                 Global.EditTextHide(false, a_val, b_val, c_val, d_val, e_val, f_val, ac_val, bd_val);
