@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
     <application
         android:allowBackup="true"
-        android:icon="@drawable/applogo"
+        android:icon="@drawable/ikonafa"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -20,6 +20,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListViewMain"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme1"
+            android:screenOrientation="nosensor"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"></activity>
+
+        <activity android:name=".Tescik"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/CustomAppTheme1"
             android:screenOrientation="nosensor"

@@ -116,6 +116,19 @@ public class Pierwiastek {
                         wynik = pierw.wartoscPierwiastka();
                     }
                 }
+                if (Wartosc.jakieToWyrazenie(this.getInside()).contains("\u03C0")) {                                          //pierwiastek z pi
+                    System.out.println("pierwiastek z pi ");
+                    LiczbaPi tmp = new LiczbaPi(this.getInside());
+                    Pierwiastek pierw = new Pierwiastek("(" + this.getFirst() + ")\u221a(" + tmp.getFirst() + ")");
+                    if(pierw.wartoscPierwiastka().equals("1")){
+                        wynik = "(1)\u221a(π)";
+                    } else if(pierw.wartoscPierwiastka().contains("\u221a")) {
+                        wynik = pierw.wartoscPierwiastka() + "*\u221a(π)";
+                    } else {
+                        wynik = "(" + pierw.wartoscPierwiastka() + ")\u221a(π)";
+                    }
+
+                }
                 if (Wartosc.jakieToWyrazenie(this.getInside()).contains(".")) {                                          //pierwiastek z kropki
                     Pierwiastek tmp = new Pierwiastek(this.getFirst() + "\u221a(" + Wartosc.zamienKropke(this.getInside()) + ")");
                     wynik = tmp.wartoscPierwiastka();
