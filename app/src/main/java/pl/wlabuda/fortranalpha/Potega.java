@@ -306,7 +306,7 @@ public class Potega {
                     System.out.println("liczba do potegi kropka ");
                     Potega p = new Potega("(" + this.getDown() + ")^" + Wartosc.zamienKropke(this.getUp()));
                     wynik = p.wartoscPotegi();
-                } else if (!Wartosc.jakieToWyrazenie(this.getUp()).contains("/") && !Wartosc.jakieToWyrazenie(this.getUp()).contains("\u221a") && !Wartosc.jakieToWyrazenie(this.getUp()).contains("^") && !Wartosc.jakieToWyrazenie(this.getUp()).contains(".")) {             //liczba do potegi liczba
+                } else if (!Wartosc.jakieToWyrazenie(this.getUp()).contains("/") && !Wartosc.jakieToWyrazenie(this.getUp()).contains("\u221a") && !Wartosc.jakieToWyrazenie(this.getUp()).contains("^") && !Wartosc.jakieToWyrazenie(this.getUp()).contains(".") && !Wartosc.jakieToWyrazenie(this.getUp()).contains("\u03C0")) {             //liczba do potegi liczba
                     System.out.println("liczba do potegi liczba");
                     if (!this.getDown().contains("-") && this.getUp().contains("-")) {  //2^(-2)
                         String up = this.getUp().replace("-", "");

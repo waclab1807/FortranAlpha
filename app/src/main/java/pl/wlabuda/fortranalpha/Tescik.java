@@ -61,10 +61,10 @@ public class Tescik extends Activity{
         pier21 = (TextView) findViewById(R.id.pier21);
         pier22 = (TextView) findViewById(R.id.pier22);
 
-        pier1.setText(Wartosc.policz("1","0","/"));
-//        pier2.setText(Wartosc.policz("√3","2","-"));
-//        pier3.setText(Wartosc.policz("√3","2","*"));
-//        pier4.setText(Wartosc.policz("√3","2","/"));//na odwrót
+        pier1.setText(Wartosc.policz("π","-2π","+"));
+//        pier2.setText(Wartosc.policz("2π","3π","-"));
+//        pier3.setText(Wartosc.policz("2π","3π","*"));
+//        pier4.setText(Wartosc.policz("2π","4π","/"));
 //        pier5.setText(Wartosc.policz("√3","√3","+"));
 //        pier6.setText(Wartosc.policz("√3","√3","-"));
 //        pier7.setText(Wartosc.policz("√3","√3","*"));

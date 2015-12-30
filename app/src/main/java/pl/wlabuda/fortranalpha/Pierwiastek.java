@@ -133,7 +133,7 @@ public class Pierwiastek {
                     Pierwiastek tmp = new Pierwiastek(this.getFirst() + "\u221a(" + Wartosc.zamienKropke(this.getInside()) + ")");
                     wynik = tmp.wartoscPierwiastka();
                 }
-                if (!Wartosc.jakieToWyrazenie(this.getInside()).contains("\u221a") && !Wartosc.jakieToWyrazenie(this.getInside()).contains("/") && !Wartosc.jakieToWyrazenie(this.getInside()).contains("^") && !Wartosc.jakieToWyrazenie(this.getInside()).contains(".")) { //pierwiastek z liczby
+                if (!Wartosc.jakieToWyrazenie(this.getInside()).contains("\u221a") && !Wartosc.jakieToWyrazenie(this.getInside()).contains("/") && !Wartosc.jakieToWyrazenie(this.getInside()).contains("^") && !Wartosc.jakieToWyrazenie(this.getInside()).contains(".") && !Wartosc.jakieToWyrazenie(this.getInside()).contains("\u03C0")) { //pierwiastek z liczby
                     System.out.println("pierwiastek z liczby " + this.getFirst());
                     Pierwiastek tmp = new Pierwiastek("(" + this.getFirst() + ")\u221a(" + this.getInside() + ")");
                     wynik = tmp.skrocPierwiastek();

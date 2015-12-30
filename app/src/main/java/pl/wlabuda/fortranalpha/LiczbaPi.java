@@ -12,15 +12,19 @@ public class LiczbaPi {
             first = "1";
             valpi = "1π";
         }
-        if(pi.endsWith("π") && pi.substring(pi.length()-1,pi.length()).endsWith("-")) { //-pi => -1pi
-            pi = pi.substring(pi.length()-1,pi.length()) + "1π";
+        if(pi.contains("-π")) { //-pi => -1pi
+            pi = pi.replace("-π","-1π");
         }
-        if(pi.endsWith("π") && !pi.substring(pi.length()-1,pi.length()).equals("/") && !pi.substring(pi.length()-1,pi.length()).equals("^") && !pi.substring(pi.length()-1,pi.length()).equals("√")) {
-            first = pi.substring(pi.length()-1,pi.length());
+        if(pi.endsWith("π") && pi.length() != 1 && !pi.substring(pi.length()-1,pi.length()).equals("/") && !pi.substring(pi.length()-1,pi.length()).equals("^") && !pi.substring(pi.length()-1,pi.length()).equals("√")) {
+            first = pi.replace("π","");
             valpi = first + "π";
         }
-        if(pi.endsWith("π") && pi.substring(pi.length()-1,pi.length()).equals("/")) {
-            first = pi.substring(pi.length()-2,pi.length());
+        if(pi.endsWith("/π")) {
+            first = pi.substring(0,pi.length()-2);
+            valpi = first + "π";
+        }
+        if(pi.endsWith("π") && pi.substring(0,pi.length()-1).equals("/")) {
+            first = pi.substring(0,pi.length()-1);
             valpi = first + "π";
         }
         if(pi.contains("π/")) {
