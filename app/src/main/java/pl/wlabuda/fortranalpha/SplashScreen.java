@@ -34,7 +34,7 @@ public class SplashScreen extends Activity {
 			}
 
 			// Start main activity
-			Intent intent = new Intent(SplashScreen.this, Tescik.class);
+			Intent intent = new Intent(SplashScreen.this, ListViewMain.class);
 			SplashScreen.this.startActivity(intent);
 			SplashScreen.this.finish();
 		}

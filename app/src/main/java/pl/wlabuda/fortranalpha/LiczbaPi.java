@@ -10,7 +10,7 @@ public class LiczbaPi {
     public LiczbaPi(String pi) {
         if(pi.contains("π") && pi.length() == 1){
             first = "1";
-            valpi = "1π";
+            valpi = "π";
         }
         if(pi.contains("-π")) { //-pi => -1pi
             pi = pi.replace("-π","-1π");
@@ -19,13 +19,13 @@ public class LiczbaPi {
             first = pi.replace("π","");
             valpi = first + "π";
         }
-        if(pi.endsWith("/π")) {
-            first = pi.substring(0,pi.length()-2);
-            valpi = first + "π";
+        if(pi.contains("/π")) {         //
+            first = pi;
+            valpi = "(" + pi + ")";
         }
-        if(pi.endsWith("π") && pi.substring(0,pi.length()-1).equals("/")) {
+        if(pi.endsWith("π") && pi.substring(0,pi.length()-1).equals("/") && !pi.contains("/π")) {       // (3/4)π
             first = pi.substring(0,pi.length()-1);
-            valpi = first + "π";
+            valpi = "(" + first + ")π";
         }
         if(pi.contains("π/")) {
             String[] tmp = pi.split("/");
@@ -46,5 +46,7 @@ public class LiczbaPi {
     public String getPi() {
         return this.valpi;
     }
+
+//    wartoscPi()
 
 }

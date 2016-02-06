@@ -241,7 +241,13 @@ public class Potega {
                         Potega tmp = new Potega(pi.getPi() + "^" + Wartosc.zamienKropke(this.getUp()));
                         wynik = tmp.wartoscPotegi();
                     } else {                                                                             //pi do potegi liczba
-                        wynik = pi.getPi() + "^" + this.getUp();
+                        if (pi.getFirst().equals("1")) {
+                            wynik = "π^" + this.getUp();
+                        } else if(pi.getFirst().equals("-1")) {
+                            wynik = "-π^" + this.getUp();
+                        } else {
+                            wynik = pi.getPi() + "^" + this.getUp();
+                        }
                     }
                 } else {                                                                                      //pi do ujemnej
                     Potega f = new Potega("(" + this.getDown() + ")^" + this.getUp().replace("-", ""));
