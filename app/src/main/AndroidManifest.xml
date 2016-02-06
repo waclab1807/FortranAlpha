@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pl.wlabuda.fortranalpha" >
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ikonafa"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:name=".SplashScreen"
+            android:screenOrientation="nosensor"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ListViewMain"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme1"
+            android:screenOrientation="nosensor"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"></activity>
+
+        <activity android:name=".Tescik"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme1"
+            android:screenOrientation="nosensor"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"></activity>
+
+        <activity android:name=".GraniastoslupPrawidlowyTrojkatny"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/prismAndscaleneTriangle"></activity>
+
+        <activity android:name=".Kolo"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/circle"></activity>
+
+        <activity android:name=".Trygonometria1"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/trigonometry"></activity>
+
+        <activity android:name=".Trygonometria2"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/trigonometry"></activity>
+
+        <activity android:name=".Trygonometria3"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/trigonometry"></activity>
+
+        <activity android:name=".Trigonometry"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/trigonometry"></activity>
+
+        <activity android:name=".Szescian"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/cube"></activity>
+
+        <activity android:name=".Kwadrat"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/square"></activity>
+
+        <activity android:name=".TrojkatPrawidlowy"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/scaleneTriangle"></activity>
+
+        <activity android:name=".TrojkatProstokatny"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/rightangledTriangle"></activity>
+
+        <activity android:name=".Tales"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/tales"></activity>
+
+        <activity android:name=".Katy"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/CustomAppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/angle"></activity>
+
+        <activity android:name=".ListViewGeometria2D"
+            android:theme="@style/CustomAppTheme1"
+            android:screenOrientation="nosensor"
+            android:label="@string/geomerty2d"></activity>
+
+        <activity android:name=".ListViewGeometria3D"
+            android:theme="@style/CustomAppTheme1"
+            android:screenOrientation="nosensor"
+            android:label="@string/geometry3d"></activity>
+    </application>
+
+</manifest>

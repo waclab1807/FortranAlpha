@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">FortranAlpha</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    //buttons
+    <string name="count">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="sqrt">Insert \u221ax\u0305</string>
+    <string name="pow">Insert x\u207F</string>
+    <string name="solution">Solution</string>
+
+    //extras
+    <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
+
+    //menu
+    <string name="about">About</string>
+    <string name="futurePlans">Plans for future</string>
+    <string name="finish">Quit</string>
+
+    //toast
+    <string name="notEnough">Not enough data, clear and insert new data!</string>
+    <string name="premium">All done :) \nCheck the solution!</string>
+    <string name="ups">Ups! Something is wrong :/ Check your data.</string>
+    <string name="deleted">Deleted!</string>
+
+    //titles
+    <string name="tales">Twierdzenie Talesa</string>
+
+    //tales
+    <string name="talespoliczAC">Obliczanie AC mając a i c</string>
+    <string name="talespoliczBD">Obliczanie BD mając b i d</string>
+    <string name="talespoliczDzABC">Obliczanie d mając a, b i c</string>
+    <string name="talespoliczB">Obliczanie b mając BD i d</string>
+    <string name="talespoliczD">Obliczanie d mając BD i b</string>
+    <string name="talespoliczA">Obliczanie a mając AC i c</string>
+    <string name="talespoliczC">Obliczanie c mając AC i a</string>
+    <string name="talespoliczAzBCD">Obliczanie a mając b, c i d</string>
+    <string name="talespoliczBzACD">Obliczanie b mając a, c i d</string>
+    <string name="talespoliczCzABD">Obliczanie c mając a, b i d</string>
+    <string name="talespoliczBzACBDA">Obliczanie b mając AC, BD i a</string>
+    <string name="talespoliczAzACBDB">Obliczanie a mając AC, BD i b</string>
+    <string name="talespoliczACzAEF">Obliczanie AC mając a, e i f</string>
+    <string name="talestalespoliczBDzBEF">Obliczanie BD mając b, e i f</string>
+    <string name="talespoliczAzACEF">Obliczanie a mając AC, e i f</string>
+    <string name="talespoliczBzBDEF">Obliczanie b mając BD, e i f</string>
+    <string name="talespoliczFzBD">Obliczanie f mając BD, b i e</string>
+    <string name="talespoliczEzBD">Obliczanie e mając BD, b i f</string>
+    <string name="talespoliczFzAC">Obliczanie f mając AC, a i e</string>
+    <string name="talespoliczEzAC">Obliczanie e mając AC, a i f</string>
+    <string name="wait">Please wait...</string>
+    <string name="review">Review</string>
+    <string name="data">Data</string>
+    <string name="cube">Cube</string>
+    <string name="circuit">Circumference:</string>
+    <string name="circle">Circle</string>
+    <string name="choose">Choose</string>
+    <string name="cylinder">Cylinder</string>
+    <string name="capacity">Capacity:</string>
+    <string name="bracket">The number of open and close brackets is not equal</string>
+    <string name="area">Area:</string>
+    <string name="backButton">Press back again to exit</string>
+    <string name="baseArea">Area of base:</string>
+    <string name="baseRound">Perimeter of base</string>
+    <string name="blockRound">Perimeter of block</string>
+    <string name="angle">Dependings on the angles</string>
+    <string name="firstClick">Review changes dynamically when you input some data</string>
+    <string name="geomerty2d">2D Geometry</string>
+    <string name="geometry3d">3D Geometry</string>
+    <string name="globe">Sphere</string>
+    <string name="granprostroj_policzAzHiObwb">Calculation of a from H and perimeter of block</string>
+    <string name="granprostroj_policzAzHiPb">Calculation of a from H and side area</string>
+    <string name="inProgress">In progress</string>
+    <string name="hint">e.g. 1/3</string>
+    <string name="hint2">Input as many data as you can</string>
+    <string name="overallArea">Surface area:</string>
+    <string name="sideArea">Side are:</string>
+    <string name="solutionText">Fill missing data and click Calculate to see solution</string>
+    <string name="result">Result:</string>
+    <string name="longClick">Longpress for hint</string>
+</resources>
