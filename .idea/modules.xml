@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/FortranAlpha-karol.iml" filepath="$PROJECT_DIR$/FortranAlpha-karol.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/FortranAlpha.iml" filepath="$PROJECT_DIR$/FortranAlpha.iml" />
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

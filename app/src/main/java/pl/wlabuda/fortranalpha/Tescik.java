@@ -2,7 +2,14 @@ package pl.wlabuda.fortranalpha;
 
 import android.app.Activity;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.Window;
+=======
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
 import android.widget.TextView;
 
 /**
@@ -10,6 +17,7 @@ import android.widget.TextView;
  */
 public class Tescik extends Activity{
 
+<<<<<<< HEAD
     private TextView pier1;
     private TextView pier2;
     private TextView pier3;
@@ -32,12 +40,43 @@ public class Tescik extends Activity{
     private TextView pier20;
     private TextView pier21;
     private TextView pier22;
+=======
+//    private EditText poleWartoscA;
+//    private EditText poleOperator;
+//    private EditText poleWartoscB;
+//    private TextView poleWynik;
+//    private Button btnPolicz;
+//    private Button btnPierwiastek;
+//    private Button btnPotega;
+//    private Button btnPi;
+//    private TextView pier3;
+//    private TextView pier4;
+//    private TextView pier5;
+//    private TextView pier6;
+//    private TextView pier7;
+//    private TextView pier8;
+//    private TextView pier9;
+//    private TextView pier10;
+//    private TextView pier11;
+//    private TextView pier12;
+//    private TextView pier13;
+//    private TextView pier14;
+//    private TextView pier15;
+//    private TextView pier16;
+//    private TextView pier17;
+//    private TextView pier18;
+//    private TextView pier19;
+//    private TextView pier20;
+//    private TextView pier21;
+//    private TextView pier22;
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tescik);
 
+<<<<<<< HEAD
         pier1 = (TextView) findViewById(R.id.pier1);
         pier2 = (TextView) findViewById(R.id.pier2);
         pier3 = (TextView) findViewById(R.id.pier3);
@@ -64,6 +103,71 @@ public class Tescik extends Activity{
         pier1.setText(Wartosc.policz("3/4","π","/"));
         pier2.setText(Wartosc.policz("3/4","2π","/"));
         pier3.setText(Wartosc.policz("3/4","(1/2)π","/"));
+=======
+//        poleWartoscA = (EditText) findViewById(R.id.poleWartoscA);
+//        poleOperator = (EditText) findViewById(R.id.poleOperator);
+//        poleWartoscB = (EditText) findViewById(R.id.poleWartoscB);
+//        poleWynik = (TextView) findViewById(R.id.poleWynik);
+//        btnPolicz = (Button) findViewById(R.id.btnPolicz1);
+//        btnPierwiastek = (Button) findViewById(R.id.pierw1);
+//        btnPotega = (Button) findViewById(R.id.potega1);
+//        btnPi = (Button) findViewById(R.id.pi1);
+
+//        btnPolicz.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                poleWynik.setText(Wartosc.policz(poleWartoscA.getText().toString(),poleWartoscB.getText().toString(),poleOperator.getText().toString()));
+//            }
+//        });
+//
+//        btnPierwiastek.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                poleWartoscA.append("()√()");
+//            }
+//        });
+//
+//        btnPotega.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                poleWartoscA.append("()^()");
+//            }
+//        });
+//
+//        btnPi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                poleWartoscA.append("()π");
+//            }
+//        });
+
+//        pier1 = (TextView) findViewById(R.id.pier1);
+//        pier2 = (TextView) findViewById(R.id.pier2);
+//        pier3 = (TextView) findViewById(R.id.pier3);
+//        pier4 = (TextView) findViewById(R.id.pier4);
+//        pier5 = (TextView) findViewById(R.id.pier5);
+//        pier6 = (TextView) findViewById(R.id.pier6);
+//        pier7 = (TextView) findViewById(R.id.pier7);
+//        pier8 = (TextView) findViewById(R.id.pier8);
+//        pier9 = (TextView) findViewById(R.id.pier9);
+//        pier10 = (TextView) findViewById(R.id.pier10);
+//        pier11 = (TextView) findViewById(R.id.pier11);
+//        pier12 = (TextView) findViewById(R.id.pier12);
+//        pier13 = (TextView) findViewById(R.id.pier13);
+//        pier14 = (TextView) findViewById(R.id.pier14);
+//        pier15 = (TextView) findViewById(R.id.pier15);
+//        pier16 = (TextView) findViewById(R.id.pier16);
+//        pier17 = (TextView) findViewById(R.id.pier17);
+//        pier18 = (TextView) findViewById(R.id.pier18);
+//        pier19 = (TextView) findViewById(R.id.pier19);
+//        pier20 = (TextView) findViewById(R.id.pier20);
+//        pier21 = (TextView) findViewById(R.id.pier21);
+//        pier22 = (TextView) findViewById(R.id.pier22);
+//
+//        pier1.setText(Wartosc.policz("3/4","π","/"));
+//        pier2.setText(Wartosc.policz("3/4","2π","/"));
+//        pier3.setText(Wartosc.policz("3/4","(1/2)π","/"));
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
 //        pier4.setText(Wartosc.policz("√4","2π","/"));
 //        pier5.setText(Wartosc.policz("3π","3/4","+"));
 //        pier6.setText(Wartosc.policz("3π","8/4","+"));

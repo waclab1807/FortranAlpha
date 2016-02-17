@@ -2,7 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#FFF"
+=======
+    android:background="@drawable/siatka"
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
     android:orientation="vertical">
 
     <LinearLayout

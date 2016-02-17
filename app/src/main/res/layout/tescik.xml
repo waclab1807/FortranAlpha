@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<<<<<<< HEAD
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -296,5 +297,67 @@
         </LinearLayout>
         </ScrollView>
     </FrameLayout>
+=======
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/poleWartoscA" />-->
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/poleOperator"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:text="*" />-->
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/poleWartoscB"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="wynik"-->
+        <!--android:id="@+id/poleWynik"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="policz"-->
+        <!--android:id="@+id/btnPolicz1"-->
+        <!--android:layout_gravity="center_horizontal" />-->
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="pierwiastek"-->
+            <!--android:id="@+id/pierw1" />-->
+
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="potega"-->
+            <!--android:id="@+id/potega1"-->
+            <!--android:layout_gravity="center_horizontal" />-->
+
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="pi"-->
+            <!--android:id="@+id/pi1"-->
+            <!--android:layout_gravity="right" />-->
+    <!--</LinearLayout>-->
+>>>>>>> 47f0d348db7e6f2e8f30e218ee97f0a66b2af661
 
 </LinearLayout>
