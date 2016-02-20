@@ -1772,8 +1772,15 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "*");
                             break;
                         case '/':
-                            wynik = policz(czynnik1 + "π", pi.getFirst(), "/");
-                            break;
+                            String tmp = policz(czynnik1, pi.getFirst(), "/");
+                            if(tmp.contains("/")){
+                                Wartosc w = new Wartosc(tmp);
+                                wynik = "(" + w.getLicznik() + "/" + w.getMianownik() + "π)";
+                                break;
+                            } else {
+                                wynik = tmp + "/π";
+                                break;
+                            }
                     }
                 } else if (jakieToWyrazenie(czynnik2).contains(".")) { // liczba i liczba z kropka
                     System.out.println("liczba i kropka");
