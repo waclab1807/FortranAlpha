@@ -1,7 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
 /**
- * Created by waclab1807 on 29.12.15.
+ * Created by waclab1807 & SkylinR  on 29.12.15.
  */
 public class LiczbaPi {
     public String first;
@@ -48,5 +48,4 @@ public class LiczbaPi {
         }
         return wynik;
     }
-
 }

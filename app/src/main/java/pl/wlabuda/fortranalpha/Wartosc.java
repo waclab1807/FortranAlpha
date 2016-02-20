@@ -3,7 +3,7 @@ package pl.wlabuda.fortranalpha;
 import android.widget.Toast;
 
 /**
- * Created by Wacław on 11.07.14.
+ * Created by Wacław & SkylinR on 11.07.14.
  */
 public class Wartosc {
     public String licznik;
@@ -1539,12 +1539,10 @@ public class Wartosc {
                                 break;
                             }
                     }
-                } else if (jakieToWyrazenie(czynnik2).contains("/")) { // pi i ulamek
+                } else if (jakieToWyrazenie(czynnik2).contains("/")) { // PI i UŁAMEK *******************************************
                     System.out.println("pi i ulamek");
                     Wartosc w = new Wartosc(czynnik2);
-                    String x = policz(w.getLicznik(),w.getMianownik(),"/");
-//                    LiczbaPi pi = new LiczbaPi(czynnik1);
-                    //todo watość pi
+                    String x = policz(w.getLicznik(), w.getMianownik(), "/");
                     switch (operator.charAt(0)) {
                         case '+':
                             if (jakieToWyrazenie(x).contains("/")) {
@@ -1563,28 +1561,40 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            if (jakieToWyrazenie(x).contains("/")) {
+                            if (jakieToWyrazenie(x).contains("/") && !y.contains("0")) {
                                 Wartosc tmp = new Wartosc(x);
-                                wynik = policz(policz(pi.getFirst(), tmp.getMianownik(), "/"),tmp.getLicznik(),"*") + "π";
+                                wynik = policz( pi.getFirst(), x, "*") + "π";
+                                //wynik = policz( policz(pi.getFirst(), tmp.getMianownik(), "/")   ,tmp.getLicznik(),"*") + "π";
                                 break;
                             } else {
-                                wynik = policz(pi.getFirst(), x, "*") + "π";
-                                break;
+                                if(y.contains("0")) {
+                                    wynik = "0";
+                                    break;
+                                }
+                                else {
+                                    wynik = policz(pi.getFirst(), x, "*") + "π";
+                                    break;
+                                }
                             }
                         case '/':
-                            if (jakieToWyrazenie(x).contains("/")) {
+                            if (jakieToWyrazenie(x).contains("/") && !y.contains("0")) {
                                 Wartosc tmp = new Wartosc(x);
                                 wynik = policz(policz(pi.getFirst(), tmp.getLicznik(), "/"),tmp.getMianownik(),"*") + "π";
                                 break;
                             } else {
-                                wynik = policz(pi.getFirst(), x, "/") + "π";
-                                break;
+                                if (y.contains("0")) {
+                                    wynik = "0";
+                                    break;
+                                } else {
+                                    wynik = policz(pi.getFirst(), x, "/") + "π";
+                                    break;
+                                }
                             }
                     }
-                } else if (jakieToWyrazenie(czynnik2).contains("\u03C0")) { // pi i pi
+                } else if (jakieToWyrazenie(czynnik2).contains("\u03C0")) { // PI i PI **********************************************************
                     System.out.println("pi i pi");
                     LiczbaPi pi2 = new LiczbaPi(czynnik2);
-                    String x;
+                    String x;   // zmienna tymczasowa do działan na First liczby PI1 i liczby PI2
                     switch (operator.charAt(0)) {
                         case '+':
                             x = policz(pi.getFirst(), pi2.getFirst(), "+");
@@ -1639,7 +1649,7 @@ public class Wartosc {
                                     wynik = "π^2";
                                     break;
                                 } else if(x.equals("-1")) {
-                                    wynik = "-π^2";
+                                    wynik = "-(π^2)"; // BO -3.14 * 3.14 = -6.... a bez nawiasu byłoby 6...
                                     break;
                                 } else {
                                     wynik = x + "π^2";
@@ -1647,6 +1657,7 @@ public class Wartosc {
                                 }
                             }
                         case '/':
+                            //TODO DZIELENIE PI przez PI^2
                             x = policz(pi.getFirst(), pi2.getFirst(), "/");
                             wynik = x;
                             break;
