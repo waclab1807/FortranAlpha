@@ -13,76 +13,76 @@ import android.widget.TextView;
  */
 public class Tescik extends Activity{
 
-//    private EditText poleWartoscA;
-//    private EditText poleOperator;
-//    private EditText poleWartoscB;
-//    private TextView poleWynik;
-//    private Button btnPolicz;
-//    private Button btnPierwiastek;
-//    private Button btnPotega;
-//    private Button btnPi;
-//    private TextView pier3;
-//    private TextView pier4;
-//    private TextView pier5;
-//    private TextView pier6;
-//    private TextView pier7;
-//    private TextView pier8;
-//    private TextView pier9;
-//    private TextView pier10;
-//    private TextView pier11;
-//    private TextView pier12;
-//    private TextView pier13;
-//    private TextView pier14;
-//    private TextView pier15;
-//    private TextView pier16;
-//    private TextView pier17;
-//    private TextView pier18;
-//    private TextView pier19;
-//    private TextView pier20;
-//    private TextView pier21;
-//    private TextView pier22;
+    private EditText poleWartoscA;
+    private EditText poleOperator;
+    private EditText poleWartoscB;
+    private TextView poleWynik;
+    private Button btnPolicz;
+    private Button btnPierwiastek;
+    private Button btnPotega;
+    private Button btnPi;
+    private TextView pier3;
+    private TextView pier4;
+    private TextView pier5;
+    private TextView pier6;
+    private TextView pier7;
+    private TextView pier8;
+    private TextView pier9;
+    private TextView pier10;
+    private TextView pier11;
+    private TextView pier12;
+    private TextView pier13;
+    private TextView pier14;
+    private TextView pier15;
+    private TextView pier16;
+    private TextView pier17;
+    private TextView pier18;
+    private TextView pier19;
+    private TextView pier20;
+    private TextView pier21;
+    private TextView pier22;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.tescik);
 
-//        poleWartoscA = (EditText) findViewById(R.id.poleWartoscA);
-//        poleOperator = (EditText) findViewById(R.id.poleOperator);
-//        poleWartoscB = (EditText) findViewById(R.id.poleWartoscB);
-//        poleWynik = (TextView) findViewById(R.id.poleWynik);
-//        btnPolicz = (Button) findViewById(R.id.btnPolicz1);
-//        btnPierwiastek = (Button) findViewById(R.id.pierw1);
-//        btnPotega = (Button) findViewById(R.id.potega1);
-//        btnPi = (Button) findViewById(R.id.pi1);
+        poleWartoscA = (EditText) findViewById(R.id.poleWartoscA);
+        poleOperator = (EditText) findViewById(R.id.poleOperator);
+        poleWartoscB = (EditText) findViewById(R.id.poleWartoscB);
+        poleWynik = (TextView) findViewById(R.id.poleWynik);
+        btnPolicz = (Button) findViewById(R.id.btnPolicz1);
+        btnPierwiastek = (Button) findViewById(R.id.pierw1);
+        btnPotega = (Button) findViewById(R.id.potega1);
+        btnPi = (Button) findViewById(R.id.pi1);
 
-//        btnPolicz.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                poleWynik.setText(Wartosc.policz(poleWartoscA.getText().toString(),poleWartoscB.getText().toString(),poleOperator.getText().toString()));
-//            }
-//        });
-//
-//        btnPierwiastek.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                poleWartoscA.append("()√()");
-//            }
-//        });
-//
-//        btnPotega.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                poleWartoscA.append("()^()");
-//            }
-//        });
-//
-//        btnPi.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                poleWartoscA.append("()π");
-//            }
-//        });
+        btnPolicz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poleWynik.setText(Wartosc.policz(poleWartoscA.getText().toString(),poleWartoscB.getText().toString(),poleOperator.getText().toString()));
+            }
+        });
+
+        btnPierwiastek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poleWartoscA.append("()√()");
+            }
+        });
+
+        btnPotega.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poleWartoscA.append("()^()");
+            }
+        });
+
+        btnPi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                poleWartoscA.append("()π");
+            }
+        });
 
 //        pier1 = (TextView) findViewById(R.id.pier1);
 //        pier2 = (TextView) findViewById(R.id.pier2);

@@ -224,21 +224,21 @@ public class Potega {
                     if (Wartosc.jakieToWyrazenie(this.getUp()).contains("\u221a")) {                                        //pi do potegi pierwiastek
                         System.out.println("pi do potegi pierwiastek");
                         Pierwiastek d = new Pierwiastek(this.getUp());
-                        wynik = pi.getPi() + "^" + d.wartoscPierwiastka();
+                        wynik = pi.wartoscPi() + "^" + d.wartoscPierwiastka();
                     }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("^")) {                                        //pi do potegi potega
                         System.out.println("pi do potegi potega");
                         Potega p = new Potega(this.getUp());
-                        wynik = pi.getPi() + "^" + p.wartoscPotegi();
+                        wynik = pi.wartoscPi() + "^" + p.wartoscPotegi();
                     }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("/")) {                                             //pi do potegi ulamek
                         System.out.println("pi do potegi ulamek");
-                        wynik = pi.getPi() + "^" + Wartosc.skrocUlamek(this.getUp());
+                        wynik = pi.wartoscPi() + "^" + Wartosc.skrocUlamek(this.getUp());
                     } else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("\u03C0")) {                                             //pi do potegi pi
                         System.out.println("pi do potegi pi");
                         LiczbaPi d = new LiczbaPi(this.getUp());
-                        wynik = pi.getPi() + "^" + d.getPi();
+                        wynik = pi.wartoscPi() + "^" + d.wartoscPi();
                     } else if (Wartosc.jakieToWyrazenie(this.getUp()).contains(".")) {                                             //pi do potegi kropka
                         System.out.println("pi do potegi kropka");
-                        Potega tmp = new Potega(pi.getPi() + "^" + Wartosc.zamienKropke(this.getUp()));
+                        Potega tmp = new Potega(pi.wartoscPi() + "^" + Wartosc.zamienKropke(this.getUp()));
                         wynik = tmp.wartoscPotegi();
                     } else {                                                                             //pi do potegi liczba
                         if (pi.getFirst().equals("1")) {
@@ -246,7 +246,7 @@ public class Potega {
                         } else if(pi.getFirst().equals("-1")) {
                             wynik = "-π^" + this.getUp();
                         } else {
-                            wynik = pi.getPi() + "^" + this.getUp();
+                            wynik = pi.wartoscPi() + "^" + this.getUp();
                         }
                     }
                 } else {                                                                                      //pi do ujemnej

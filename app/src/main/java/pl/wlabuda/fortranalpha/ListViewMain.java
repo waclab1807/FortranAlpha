@@ -81,7 +81,7 @@ public class ListViewMain extends Activity {
                         startActivity(intent3);
                         break;
                     case 4:
-                        Intent intent4 = new Intent(ListViewMain.this, Katy.class);
+                        Intent intent4 = new Intent(ListViewMain.this, Tescik.class);
                         startActivity(intent4);
                         break;
                     default:
