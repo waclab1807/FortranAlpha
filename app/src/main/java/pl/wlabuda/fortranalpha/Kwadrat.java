@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 /**
  * Created by waclab1807 on 31.03.15.
@@ -272,7 +275,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         sqrtbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastFocused.getText().insert(lastFocused.getSelectionStart(), "()\u221a()");
+                String tmp = "<font color='" + Global.gencode() + "'>" + "()\u221a()" + "</font>";
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), Html.fromHtml(tmp));
                 int s = lastFocused.getSelectionStart();
                 int a = s - 1;
                 lastFocused.setSelection(a);
@@ -281,7 +285,8 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
         powbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastFocused.getText().insert(lastFocused.getSelectionStart(),"()^()");
+                String tmp = "<font color='" + Global.gencode() + "'>" + "()^()" + "</font>";
+                lastFocused.getText().insert(lastFocused.getSelectionStart(), Html.fromHtml(tmp));
                 int s = lastFocused.getSelectionStart();
                 int a = s - 4;
                 lastFocused.setSelection(a);
