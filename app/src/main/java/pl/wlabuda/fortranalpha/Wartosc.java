@@ -628,7 +628,7 @@ public class Wartosc {
         switch (op){
             case "+":
                 tmp = wyr1.split("\\+");
-                a = policz(tmp[0],tmp[0],"*");
+                a = policz(tmp[0], tmp[0], "*");
                 b = policz(tmp[1],tmp[1],"*");
                 wynik = policz(a,b,"+");
                 break;
@@ -636,20 +636,20 @@ public class Wartosc {
                 tmp = wyr1.split("-");//todo uwzglednic liczby ujemne
                 a = policz(tmp[0],tmp[0],"*");
                 b = policz(tmp[1],tmp[1],"*");
-                wynik = policz(a,b,"-");
+                wynik = policz(a, b, "-");
                 break;
             case "*":
                 tmp = wyr1.split("\\*");
                 a = policz(tmp[0],tmp[0],"*");
                 b = policz(tmp[1],tmp[1],"*");
-                wynik = policz(a,b,"*");
+                wynik = policz(a, b, "*");
                 break;
             case "/":
                 wyr1 = wyr1.substring(1,wyr1.length()-1);
                 tmp = wyr1.split("/");
                 a = policz(tmp[0],tmp[0],"*");
                 b = policz(tmp[1],tmp[1],"*");
-                wynik = policz(a,b,"/");
+                wynik = policz(a, b, "/");
                 break;
         }
      /*
