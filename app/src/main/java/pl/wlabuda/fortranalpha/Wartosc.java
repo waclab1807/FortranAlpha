@@ -955,17 +955,18 @@ public class Wartosc {
                     String valPi = pi.wartoscPi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(czynnik2, czynnik1, "+");
+                            wynik = policz(czynnik2, czynnik1, "+");            //przeniesienie do pi i ulamek
                             break;
                         case '-':
                             if(valPi.equals("0")){
                                 wynik = policz(war.getLicznik(),war.getMianownik(),"/");
+                                break;
                             } else {
                                 wynik = "(" + policz(war.getLicznik(),war.getMianownik(),"/") + ")-" + pi.wartoscPi();
+                                break;
                             }
-                            break;
                         case '*':
-                            wynik = policz(czynnik2, czynnik1, "*");
+                            wynik = policz(czynnik2, czynnik1, "*");          //przeniesienie do pi i ulamek
                             break;
                         case '/':
                             if(valPi.equals("0")){
@@ -1095,22 +1096,32 @@ public class Wartosc {
                     String valPot = pot.wartoscPotegi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(czynnik2, czynnik1, "+");
+                            wynik = policz(czynnik2, czynnik1, "+");        //przeniesienie do pi i potęga
                             break;
                         case '-':
                             if(valPot.contains("^") && valPi.contains("π")) {
                                 wynik = valPot + "-" + valPi;
-                            } else {
-                                wynik = policz(valPot, valPi, "-");
+                                break;
                             }
-                            break;
+                            else if(valPi.contains("0")){
+                                wynik=valPot;
+                                break;
+                            }
+                            else{
+                                wynik = policz(valPot, valPi, "-");
+                                break;
+                            }
                         case '*':
-                            wynik = policz(czynnik2, czynnik1, "*");
+                            wynik = policz(czynnik2, czynnik1, "*");        //przeniesienie do pi i potęga
                             break;
                         case '/':
                             if(valPot.contains("^") && valPi.contains("π")) {
                                 wynik = valPot + "/" + valPi;
-                            } else {
+                            }
+                            else if(valPi.contains("0")){
+                                wynik = "0";
+                            }
+                            else{
                                 wynik = policz(valPot, valPi, "/");
                             }
                             break;
@@ -1267,22 +1278,32 @@ public class Wartosc {
                     String valPierw = pier.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(czynnik2, czynnik1, "+");
+                            wynik = policz(czynnik2, czynnik1, "+");        //przeniesienie do pi i pierwiastek
                             break;
                         case '-':
                             if(valPierw.contains("√") && valPi.contains("π")) {
                                 wynik = valPierw + "-" + valPi;
-                            } else {
-                                wynik = policz(valPierw, valPi, "-");
+                                break;
                             }
-                            break;
+                            else if (valPi.contains("0")){
+                                wynik=valPierw;
+                                break;
+                            }
+                            else{
+                                wynik = policz(valPierw, valPi, "-");
+                                break;
+                            }
                         case '*':
-                            wynik = policz(czynnik2, czynnik1, "*");
+                            wynik = policz(czynnik2, czynnik1, "*");        //przeniesienie do pi i pierwiastek
                             break;
                         case '/':
                             if(valPierw.contains("√") && valPi.contains("π")) {
                                 wynik = valPierw + "/" + valPi;
-                            } else {
+                            }
+                            else if(valPi.contains("0")){
+                                wynik="0";
+                            }
+                            else {
                                 wynik = policz(valPierw, valPi, "/");
                             }
                             break;
@@ -1459,12 +1480,14 @@ public class Wartosc {
                     String x = p.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            if (y.contains("π")){
+                            if (y.contains("π") && !x.equals("0")){
                                 wynik = x + "+" + y;
-                            } else {
-                                wynik = x;
+                                break;
                             }
-                            break;
+                            else{
+                                wynik = x;
+                                break;
+                            }
                         case '-': //todo uwzglednić valPi
                             if (jakieToWyrazenie(x).contains("\u221a")) {
                                 wynik = y + "-" + x;
@@ -1483,7 +1506,7 @@ public class Wartosc {
                             }
                             break;
                         case '/': //todo uwzglednić valPi
-                            String tmp2 = policz(pi.wartoscPi(), x, "/");
+                            String tmp2 = policz(y, x, "/");
                             if (czyJestWyrazeniem(tmp2)) {
                                 wynik = y + "/" + x;
                                 break;
@@ -1516,8 +1539,14 @@ public class Wartosc {
                             }
                         case '-':
                             if (jakieToWyrazenie(x).contains("^")) {
-                                wynik = y + "-" + x;
-                                break;
+                                if(y.contains("π")) {
+                                    wynik = y + "-" + x;
+                                    break;
+                                }
+                                else{
+                                    wynik = x;
+                                    break;
+                                }
                             } else {
                                 wynik = policz(y, x, "-");
                                 break;
@@ -1532,8 +1561,14 @@ public class Wartosc {
                             }
                         case '/':
                             if (jakieToWyrazenie(x).contains("^")) {
-                                wynik = y + "/" + x;
-                                break;
+                                if(y.contains("π")) {
+                                    wynik = y + "/" + x;
+                                    break;
+                                }
+                                else{
+                                    wynik = "0";
+                                    break;
+                                }
                             } else {
                                 wynik = policz(pi.getFirst(), x, "/") + "π";
                                 break;
@@ -1546,8 +1581,14 @@ public class Wartosc {
                     switch (operator.charAt(0)) {
                         case '+':
                             if (jakieToWyrazenie(x).contains("/")) {
-                                wynik = y + "+" + x;
-                                break;
+                                if(y.contains("π")) {
+                                    wynik = y + "+" + x;
+                                    break;
+                                }
+                                else{
+                                    wynik=x;
+                                    break;
+                                }
                             } else {
                                 wynik = policz(x, y, "+");
                                 break;
@@ -1561,13 +1602,14 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            if (jakieToWyrazenie(x).contains("/") && !y.contains("0")) {
-                                Wartosc tmp = new Wartosc(x);
+                            if (jakieToWyrazenie(x).contains("/") && y.contains("π")) {
+                                //Wartosc tmp = new Wartosc(x);
+                                //todo CZY tutaj w ogóle śa potrzebne  else ???
                                 wynik = policz( pi.getFirst(), x, "*") + "π";
                                 //wynik = policz( policz(pi.getFirst(), tmp.getMianownik(), "/")   ,tmp.getLicznik(),"*") + "π";
                                 break;
                             } else {
-                                if(y.contains("0")) {
+                                if(y.equals("0")) {
                                     wynik = "0";
                                     break;
                                 }
@@ -1577,12 +1619,14 @@ public class Wartosc {
                                 }
                             }
                         case '/':
-                            if (jakieToWyrazenie(x).contains("/") && !y.contains("0")) {
+                            if (jakieToWyrazenie(x).contains("/") && y.contains("π")) {
                                 Wartosc tmp = new Wartosc(x);
-                                wynik = policz(policz(pi.getFirst(), tmp.getLicznik(), "/"),tmp.getMianownik(),"*") + "π";
+                                //TODO Sprawdzic czy dobrze
+                                //wynik = policz(policz(pi.getFirst(), tmp.getLicznik(), "/"),tmp.getMianownik(),"*") + "π";
+                                wynik = policz(tmp.getLicznik(),policz(pi.getFirst(),tmp.getMianownik(),"*"),"/")+"π";
                                 break;
                             } else {
-                                if (y.contains("0")) {
+                                if (y.equals("0")) {
                                     wynik = "0";
                                     break;
                                 } else {
