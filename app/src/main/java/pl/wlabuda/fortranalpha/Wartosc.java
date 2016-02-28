@@ -1474,7 +1474,8 @@ public class Wartosc {
                 LiczbaPi pi = new LiczbaPi(czynnik1);
                 String y = pi.wartoscPi();
                 System.out.println(y);
-                if (czynnik2.contains("\u221a")) { // pi i pierwiastek
+
+                if (jakieToWyrazenie(czynnik2).contains("\u221a")) { // pi i pierwiastek
                     System.out.println("pi i pierwiastek");
                     Pierwiastek p = new Pierwiastek(czynnik2);
                     String x = p.wartoscPierwiastka();
@@ -1488,7 +1489,7 @@ public class Wartosc {
                                 wynik = x;
                                 break;
                             }
-                        case '-': //todo uwzglednić valPi
+                        case '-':
                             if (jakieToWyrazenie(x).contains("\u221a")) {
                                 wynik = y + "-" + x;
                                 break;
@@ -1505,20 +1506,19 @@ public class Wartosc {
                                 wynik = "0";
                             }
                             break;
-                        case '/': //todo uwzglednić valPi
-                            String tmp2 = policz(y, x, "/");
-                            if (czyJestWyrazeniem(tmp2)) {
-                                wynik = y + "/" + x;
+                        case '/': //todo Kod do edycji
+                            if (y.contains("π")&& x.contains("√")) {
+                                wynik= y + "/" + x;
                                 break;
-                            } else {
-                                if (tmp2.equals("1")){
-                                    wynik = "π";
+                            }
+                            else {
+                                if (y.equals("0") || x.equals(0)){
+                                    wynik = "0";
                                     break;
-                                } else if (tmp2.equals("-1")){
-                                    wynik = tmp2 + "-π";
-                                    break;
-                                } else {
-                                    wynik = tmp2 + "π";
+                                }
+                                else{
+                                    System.out.println("y="+y + " x=" +x);
+                                    wynik = policz(y,x,"/");
                                     break;
                                 }
 
@@ -1621,9 +1621,8 @@ public class Wartosc {
                         case '/':
                             if (jakieToWyrazenie(x).contains("/") && y.contains("π")) {
                                 Wartosc tmp = new Wartosc(x);
-                                //TODO Sprawdzic czy dobrze
-                                //wynik = policz(policz(pi.getFirst(), tmp.getLicznik(), "/"),tmp.getMianownik(),"*") + "π";
-                                wynik = policz(tmp.getLicznik(),policz(pi.getFirst(),tmp.getMianownik(),"*"),"/")+"π";
+                                //TODO WYSWIETLA 1π zamiast π
+                                wynik = policz( policz(pi.getFirst(),tmp.getMianownik(),"*"), tmp.getLicznik() ,"/")+"π";
                                 break;
                             } else {
                                 if (y.equals("0")) {
@@ -1710,10 +1709,10 @@ public class Wartosc {
                     System.out.println("pi i liczba");
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = czynnik1 + "+" + czynnik2;
+                            wynik = y + "+" + czynnik2;
                             break;
                         case '-':
-                            wynik = czynnik1 + "-" + czynnik2;
+                            wynik = y + "-" + czynnik2;
                             break;
                         case '*':
                             String a = policz(pi.getFirst(), czynnik2, "*");
@@ -1843,15 +1842,16 @@ public class Wartosc {
                 } else if (jakieToWyrazenie(czynnik2).contains("\u03C0")) { // liczba i pi
                     System.out.println("liczba i pi");
                     LiczbaPi pi = new LiczbaPi(czynnik2);
+                    String valpi=pi.wartoscPi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(czynnik2,czynnik1,"+");
+                            wynik = policz(valpi,czynnik1,"+");
                             break;
                         case '-':
-                            wynik = czynnik1 + "-" + czynnik2;
+                            wynik = czynnik1 + "-" + valpi;
                             break;
                         case '*':
-                            wynik = policz(czynnik2, czynnik1, "*");
+                            wynik = policz(valpi, czynnik1, "*");
                             break;
                         case '/':
                             String tmp = policz(czynnik1, pi.getFirst(), "/");
