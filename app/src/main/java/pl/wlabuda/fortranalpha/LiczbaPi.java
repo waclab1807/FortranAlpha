@@ -40,11 +40,17 @@ public class LiczbaPi {
     public String wartoscPi() {
         System.out.println("WPi: " + this.getFirst() + " π ");
         String wynik;
-
         if (this.getFirst().equals("0")){
             wynik = "0";
-        } else {
+        }
+        else if(!this.getFirst().equals("1") && !this.getFirst().equals("-1")){
             wynik = this.getPi();
+        }
+        else if(this.getFirst().equals("-1")){
+            wynik="-π";
+        }
+        else{
+            wynik="π";
         }
         return wynik;
     }

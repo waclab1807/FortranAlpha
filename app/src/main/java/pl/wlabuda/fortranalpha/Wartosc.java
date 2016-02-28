@@ -1111,10 +1111,10 @@ public class Wartosc {
                                 wynik = policz(valPot, valPi, "-");
                                 break;
                             }
-                        case '*':
+                        case '*':                 //TODO UWZGLEDNIC PI^2 * PI!!!!!!!!!!!!!!!!!!!!!
                             wynik = policz(czynnik2, czynnik1, "*");        //przeniesienie do pi i potęga
                             break;
-                        case '/':
+                        case '/':                 //TODO UWZGLEDNIC PI^2 / PI!!!!!!!!!!!!!!!!!!!!!
                             if(valPot.contains("^") && valPi.contains("π")) {
                                 wynik = valPot + "/" + valPi;
                             }
@@ -1481,7 +1481,7 @@ public class Wartosc {
                     String x = p.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            if (y.contains("π") && !x.equals("0")){
+                            if (jakieToWyrazenie(y).contains("π") && !x.equals("0")){ //todo sprawdzic czemu jest contains pi
                                 wynik = x + "+" + y;
                                 break;
                             }
@@ -1498,30 +1498,21 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            System.out.println(x);
-                            if (y.contains("π")){
+                            if (jakieToWyrazenie(y).contains("π")){//todo sprawdzic czemu jest contains pi
                                 String tmp = policz(x,pi.getFirst(),"*");
-                                wynik = tmp + "π";      //w razie czego dodać nawiasy
+                                wynik = "(" + tmp + ")π";      //w razie czego dodać nawiasy
                             } else {
                                 wynik = "0";
                             }
                             break;
                         case '/': //todo Kod do edycji
-                            if (y.contains("π")&& x.contains("√")) {
-                                wynik= y + "/" + x;
+                            if (jakieToWyrazenie(x).contains("√")) {
+                                wynik = policz(policz(pi.getFirst(),x,"/"),"π","*");
                                 break;
                             }
                             else {
-                                if (y.equals("0") || x.equals(0)){
-                                    wynik = "0";
-                                    break;
-                                }
-                                else{
-                                    System.out.println("y="+y + " x=" +x);
-                                    wynik = policz(y,x,"/");
-                                    break;
-                                }
-
+                                wynik = y + "/" + x;
+                                break;
                             }
                     }
                 } else if (jakieToWyrazenie(czynnik2).contains("^")) { // pi i potega
@@ -1553,6 +1544,7 @@ public class Wartosc {
                             }
                         case '*':
                             if (jakieToWyrazenie(x).contains("^")) {
+//                                if(p.getDown().)
                                 wynik = y + "*" + x;
                                 break;
                             } else {
@@ -1602,36 +1594,22 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            if (jakieToWyrazenie(x).contains("/") && y.contains("π")) {
-                                //Wartosc tmp = new Wartosc(x);
-                                //todo CZY tutaj w ogóle śa potrzebne  else ???
-                                wynik = policz( pi.getFirst(), x, "*") + "π";
-                                //wynik = policz( policz(pi.getFirst(), tmp.getMianownik(), "/")   ,tmp.getLicznik(),"*") + "π";
+                            if (jakieToWyrazenie(x).contains("/")) {
+                                Wartosc tmp = new Wartosc(x);
+                                wynik = policz( policz(y, tmp.getLicznik(), "*"), tmp.getMianownik(),"/");
                                 break;
                             } else {
-                                if(y.equals("0")) {
-                                    wynik = "0";
-                                    break;
-                                }
-                                else {
-                                    wynik = policz(pi.getFirst(), x, "*") + "π";
-                                    break;
-                                }
+                                wynik = policz(y,x,"*");
+                                break;
                             }
                         case '/':
-                            if (jakieToWyrazenie(x).contains("/") && y.contains("π")) {
+                            if (jakieToWyrazenie(x).contains("/")) {
                                 Wartosc tmp = new Wartosc(x);
-                                //TODO WYSWIETLA 1π zamiast π
                                 wynik = policz( policz(pi.getFirst(),tmp.getMianownik(),"*"), tmp.getLicznik() ,"/")+"π";
                                 break;
                             } else {
-                                if (y.equals("0")) {
-                                    wynik = "0";
-                                    break;
-                                } else {
-                                    wynik = policz(pi.getFirst(), x, "/") + "π";
-                                    break;
-                                }
+                                wynik = policz(y,x,"/");
+                                break;
                             }
                     }
                 } else if (jakieToWyrazenie(czynnik2).contains("\u03C0")) { // PI i PI **********************************************************
@@ -1695,7 +1673,7 @@ public class Wartosc {
                                     wynik = "-(π^2)"; // BO -3.14 * 3.14 = -6.... a bez nawiasu byłoby 6...
                                     break;
                                 } else {
-                                    wynik = x + "π^2";
+                                    wynik = x + "*(π^2)";
                                     break;
                                 }
                             }
@@ -1703,6 +1681,22 @@ public class Wartosc {
                             //TODO DZIELENIE PI przez PI^2
                             x = policz(pi.getFirst(), pi2.getFirst(), "/");
                             wynik = x;
+                            break;
+                    }
+                } else if (jakieToWyrazenie(czynnik2).contains(".")) { // pi i liczba z kropka
+                    System.out.println("pi i kropka");
+                    switch (operator.charAt(0)) {
+                        case '+':
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "+");
+                            break;
+                        case '-':
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "-");
+                            break;
+                        case '*':
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "*");
+                            break;
+                        case '/':
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "/");
                             break;
                     }
                 } else if (!jakieToWyrazenie(czynnik2).contains("\u221a") && !jakieToWyrazenie(czynnik2).contains("^") && !jakieToWyrazenie(czynnik2).contains("/") && !jakieToWyrazenie(czynnik2).contains(".")) { // kropka i liczba
@@ -1716,32 +1710,35 @@ public class Wartosc {
                             break;
                         case '*':
                             String a = policz(pi.getFirst(), czynnik2, "*");
-                            if(czyJestWyrazeniem(a)){
-                                wynik = "(" + a + ")*π";
+                            if(jakieToWyrazenie(a).contains("/") || jakieToWyrazenie(a).contains("√") || jakieToWyrazenie(a).contains("^")){
+                                wynik = "(" + a + ")π";
                                 break;
                             } else {
-                                wynik = policz(pi.getFirst(), czynnik2, "*") + "π";
+                                wynik = a + "π";
                                 break;
                             }
                         case '/':
-                            System.out.println(pi.getFirst());
                             String b = policz(pi.getFirst(), czynnik2, "/");
-                            System.out.println(b);
-                            if(czyJestWyrazeniem(b)){
-                                wynik = "(" + b + ")*π";
-                                break;
-                            } else {
+//                            if(jakieToWyrazenie(b).contains("/")){
+//                                Wartosc tmp = new Wartosc(b);
+//                                wynik = policz(policz(tmp.getLicznik(), "π", "*"), tmp.getMianownik(), "/");
+//                                wynik= "(" + b + ")π";
+//                                break;
+//                            } else {
                                 if(b.equals("1")){
                                     wynik = "π";
                                     break;
                                 } else if (b.equals("-1")) {
                                     wynik = "-π";
                                     break;
+                                } else if (b.equals("0")) {
+                                    wynik = "0";
+                                    break;
                                 } else {
-                                    wynik = policz(pi.getFirst(), czynnik2, "/") + "π";
+                                    wynik = "(" + b + ")π";
                                     break;
                                 }
-                            }
+//                            }
                     }
                 }
             } else if (!jakieToWyrazenie(czynnik1).contains("\u221a") && !jakieToWyrazenie(czynnik1).contains("^") && !jakieToWyrazenie(czynnik1).contains("/") && !jakieToWyrazenie(czynnik1).contains(".") && !jakieToWyrazenie(czynnik1).contains("\u03C0")) {
@@ -1917,8 +1914,18 @@ public class Wartosc {
             wynik = wynik.replace("--","+");
         }
         if (wynik.contains("+-")) {
-            wynik = wynik.replace("+-","-");
+            wynik = wynik.replace("+-", "-");
         }
+        //todo ROZWAZYC WIECEJ WARUNKOW
+        if(wynik.equals("1π")){
+            wynik = "π";
+        } else if (wynik.equals("-1π")) {
+            wynik = "-π";
+        } else if (wynik.equals("0π")) {
+            wynik = "0";
+        }
+
+
         System.out.println("Wynik z policz: " + wynik);
         return wynik;
     }
