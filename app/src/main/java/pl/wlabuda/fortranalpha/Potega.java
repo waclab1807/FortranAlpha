@@ -1,5 +1,7 @@
 package pl.wlabuda.fortranalpha;
 
+import java.sql.SQLOutput;
+
 /**
  * Created by Wacław on 11.07.14.
  */
@@ -25,6 +27,13 @@ public class Potega {
             System.out.println("potKonstrPox " + x);
             t[0] = x;
         }
+
+        if (t[1].contains("\u221a")){
+            if(!t[1].startsWith("(\u221a") && !t[1].startsWith("((")){
+                t[1] = "(" + t[1] + ")";
+            }
+        }
+
         if(t[1].contains("(") && t[1].contains(")")) {
             String y = t[1].substring(1, t[1].length() - 1);
             System.out.println("potKonstry " + t[1] + " & " + y);
@@ -221,39 +230,51 @@ public class Potega {
                 System.out.println("pi do potegi");
                 if (!this.getUp().contains("-")) {
                     LiczbaPi pi = new LiczbaPi(this.getDown());
-
                     if (Wartosc.jakieToWyrazenie(this.getUp()).contains("\u221a")) {                                        //pi do potegi pierwiastek
                         System.out.println("pi do potegi pierwiastek");
                         Pierwiastek d = new Pierwiastek(this.getUp());
-                        wynik = pi.wartoscPi() + "^" + d.wartoscPierwiastka();                                                                          //TODO ZMIENIC FIRST * FIRST
-
-                    }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("^")) {                                        //pi do potegi potega  //TODO DO TESTOW
+                        String x = d.wartoscPierwiastka();
+                        if(x.contains("√")){
+                            wynik = "(" + pi.wartoscPi() + ")^(" + x + ")";
+                        } else {
+                            Potega p  = new Potega("("+this.getDown() + ")^" + x);
+                            wynik = p.wartoscPotegi();
+                        }
+                    }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("^")) {                                        //pi do potegi potega
 
                         System.out.println("pi do potegi potega");
                         Potega p = new Potega(this.getUp());
                         Potega tmp = new Potega ("(" + pi.getFirst() + ")^(" + p.wartoscPotegi() + ")");
                         //wynik = pi.wartoscPi() + "^" + p.wartoscPotegi();
-                        wynik = "((" + tmp.wartoscPotegi() + ")π^" + p.wartoscPotegi()+ ")";                                              //TODO ZMIENIC FIRST * FIRST
+                        wynik = "((" + tmp.wartoscPotegi() + ")*π^" + p.wartoscPotegi()+ ")";
 
-                    }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("/")) {                                             //pi do potegi ulamek //TODO DO TESTOW
+                    }else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("/")) {                                             //pi do potegi ulamek
                         System.out.println("pi do potegi ulamek");
                         Potega tmp = new Potega("(" + pi.getFirst() + ")^(" + this.getUp() + ")");
-                        wynik = "(("+tmp.wartoscPotegi() + ")π^" + Wartosc.skrocUlamek(this.getUp())+ ")";
-                    } else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("\u03C0")) {                                             //pi do potegi pi
+                        if(!Wartosc.skrocUlamek(this.getUp()).equals("1")){
+                            wynik = "((" + tmp.wartoscPotegi() + ")*π^" + Wartosc.skrocUlamek(this.getUp())+ ")";
+                        } else {
+                            wynik = this.getDown();
+                        }
+                    } else if (Wartosc.jakieToWyrazenie(this.getUp()).contains("π")) {                                             //pi do potegi pi
                         System.out.println("pi do potegi pi");
                         LiczbaPi d = new LiczbaPi(this.getUp());
-                        wynik = pi.wartoscPi() + "^" + d.wartoscPi();                                                                                      //TODO ZMIENIC FIRST * FIRST
+                        wynik = "(" + pi.wartoscPi() + ")^(" + d.wartoscPi() + ")";
                     } else if (Wartosc.jakieToWyrazenie(this.getUp()).contains(".")) {                                             //pi do potegi kropka
                         System.out.println("pi do potegi kropka");
-                        Potega tmp = new Potega(pi.wartoscPi() + "^" + Wartosc.zamienKropke(this.getUp()));
-                        wynik = tmp.wartoscPotegi();
-                    } else {                                                                             //pi do potegi liczba
-                        if (pi.getFirst().equals("1")) {
+                        Potega tmp = new Potega("(" + pi.getFirst() + ")^(" + Wartosc.zamienKropke(this.getUp()) + ")");
+                        wynik = "((" + tmp.wartoscPotegi() + ")*π^" + Wartosc.skrocUlamek(this.getUp())+ ")";
+                    } else {                                                                                                        //pi do potegi liczba
+                        if (this.getUp().equals("1")){
+                            wynik = this.getDown();
+                        } else if (this.getUp().equals("0")) {
+                            wynik = "1";
+                        } else if (pi.getFirst().equals("1")) {
                             wynik = "π^" + this.getUp();
                         } else if(pi.getFirst().equals("-1")) {
                             wynik = "-π^" + this.getUp();
                         } else {
-                            wynik =Wartosc.policz(pi.getFirst(), pi.getFirst(), "*") + "*(π^" + this.getUp() + ")";
+                            wynik =Wartosc.policz("(" + pi.getFirst() + ")^" + this.getUp(), "1", "*") + "*(π^" + this.getUp() + ")";
                         }
                     }
                 } else {                                                                                      //pi do ujemnej

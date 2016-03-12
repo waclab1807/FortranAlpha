@@ -663,7 +663,7 @@ public class Wartosc {
     return wynik;
     }
 
-    public static String obliczWyrazenie(String a){
+    public static String obliczWyrazenie(String a){     //todo dodac zamiane '--' na '+' i '+-' na '-'
         System.out.println("obliczWyrazenie " + a);
         String[] m;
         String[] d;

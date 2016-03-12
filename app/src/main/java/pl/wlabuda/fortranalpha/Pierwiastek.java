@@ -11,6 +11,12 @@ public class Pierwiastek {
     public String inside;
 
     public Pierwiastek(String pierwiastek) {
+
+        if(!pierwiastek.contains(")√")) {
+            pierwiastek = pierwiastek.replace("\u221a", ")\u221a");
+            pierwiastek = pierwiastek.substring(0,pierwiastek.length()-1);
+        }
+
         String[] tmp = pierwiastek.split("\u221a");
         String a, b;
         if (tmp.length > 2) {         //pierwiastek z pierwiastka
@@ -29,6 +35,7 @@ public class Pierwiastek {
             System.out.println("pierwKonstrPox " + x);
             t[0] = x;
         }
+
         if(t[1].contains("(") && t[1].contains(")")) {
             String y = t[1].substring(1, t[1].length() - 1);
             System.out.println("pierwKonstry " + t[1] + " & " + y);
@@ -47,6 +54,7 @@ public class Pierwiastek {
             t[0] = t[0].replace("]", ")");
             first = t[0];
         }
+
         t[1] = t[1].replace("(", "");
         t[1] = t[1].replace(")", "");
         t[1] = t[1].replace("[", "(");

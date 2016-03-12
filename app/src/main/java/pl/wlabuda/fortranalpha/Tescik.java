@@ -59,7 +59,8 @@ public class Tescik extends Activity{
         btnPolicz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                poleWynik.setText(Wartosc.policz(poleWartoscA.getText().toString(),poleWartoscB.getText().toString(),poleOperator.getText().toString()));
+                poleWynik.setText(Wartosc.obliczWyrazenie("2/-2*2"));
+//                poleWynik.setText(Wartosc.policz(poleWartoscA.getText().toString(),poleWartoscB.getText().toString(),poleOperator.getText().toString()));
             }
         });
 
