@@ -53,6 +53,15 @@ public class Kwadrat extends Activity implements OnFocusChangeListener{
     private LinearLayout buttons;
     private boolean doubleBackToExitPressedOnce = false;
 
+
+
+
+//git ty chuju zacznij działać
+
+
+
+
+
 //    wartości jakie będziemy liczyć
     String a;
     String pp;
