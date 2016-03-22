@@ -1,0 +1,179 @@
+<resources>
+    <string name="app_name">FortranAlpha</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Ustawienia</string>
+
+    //buttons
+    <string name="count">Policz</string>
+    <string name="clear">Wyczyść</string>
+    <string name="sqrt">Wstaw \u221ax\u0305</string>
+    <string name="pow">Wstaw x\u207F</string>
+    <string name="data">Dane</string>
+    <string name="review">Podgląd</string>
+    <string name="solution">Rozwiązanie</string>
+
+    //extras
+    <string name="enterData">Wprowadź poniżej tyle danych ile jesteś w stanie</string>
+    <string name="choose">Wybierz</string>
+    <string name="hint">np. 1/3</string>
+    <string name="hint2">Wprowadź tyle danych ile posiadasz</string>
+    <string name="result">Wynik: </string>
+
+    //names
+    <string name="area"> Pole: </string>
+    <string name="baseArea"> Pole podstawy: </string>
+    <string name="circuit"> Obwód: </string>
+    <string name="capacity"> Objętość: </string>
+    <string name="sideArea"> Pole boczne: </string>
+    <string name="baseRound"> Obwód podstawy: </string>
+    <string name="blockRound"> Obwód bryły: </string>
+    <string name="overallArea"> Pole całkowite: </string>
+    <string name="triangleArea"> Pole trójkąta wewnętrznego: </string>
+
+    //dots menu
+    <string name="about">O autorze</string>
+    <string name="futurePlans">Plany na przyszłość</string>
+    <string name="finish">Zakończ</string>
+    <string name="inProgress">W budowie...</string>
+
+    //toast
+    <string name="notEnough">Za mało danych aby policzyć!\nWyczyść i wprowadź nowe dane</string>
+    <string name="solutionText">Uzupełnij dane i kliknij policz, aby zobaczyć rozwiązanie</string>
+    <string name="premium">Wszystko jest już policzone :)\nZobacz rozwiązanie!</string>
+    <string name="ups">Ups! Coś poszło nie tak :/ Sprawdź wprowadzone dane.</string>
+    <string name="bracket">Liczba nawiasów otwierających nie równa się
+liczbie nawiasów zamykających! Popraw to, prosze.</string>
+    <string name="deleted">Skasowane!</string>
+    <string name="wait">Proszę czekać...</string>
+    <string name="backButton">Naciśnij cofnij jeszcze raz, aby wyjść.</string>
+    <string name="firstClick">Podgląd zmienia się dynamicznie wraz z wprowadzaniem danych</string>
+    <string name="longClick">Przytrzymaj dłużej aby zobaczyć podpowiedź</string>
+
+    //titles
+    <string name="tales">Twierdzenie Talesa</string>
+    <string name="square">Kwadrat</string>
+    <string name="angle">Zależności pomiędzy kątami</string>
+    <string name="cube">Sześcian</string>
+    <string name="geomerty2d">Geometria 2D</string>
+    <string name="geometry3d">Geometria 3D</string>
+    <string name="trigonometry">Trygonometria</string>
+    <string name="trigonometry1">Związki pomiędzy funkcjami</string>
+    <string name="trigonometry2">Oblicz wartości trygonometryczne</string>
+    <string name="trigonometry3">Funkcje trygonometryczne w trójkącie</string>
+    <string name="pyramid">Ostrosłup</string>
+    <string name="cylinder">Walec</string>
+    <string name="globe">Kula</string>
+    <string name="circle">Koło</string>
+    <string name="prismAndscaleneTriangle">Graniastosłup prowidłowy trójkątny</string>
+    <string name="scaleneTriangle">Trójkąt prawidłowy</string>
+    <string name="isoscelesTriangle">Trójkąt równoramienny</string>
+    <string name="rightangledTriangle">Trójkąt prostokątny</string>
+
+    //tales
+    <string name="talespoliczAC">Obliczanie AC mając a i c</string>
+    <string name="talespoliczBD">Obliczanie BD mając b i d</string>
+    <string name="talespoliczDzABC">Obliczanie d mając a, b i c</string>
+    <string name="talespoliczB">Obliczanie b mając BD i d</string>
+    <string name="talespoliczD">Obliczanie d mając BD i b</string>
+    <string name="talespoliczA">Obliczanie a mając AC i c</string>
+    <string name="talespoliczC">Obliczanie c mając AC i a</string>
+    <string name="talespoliczAzBCD">Obliczanie a mając b, c i d</string>
+    <string name="talespoliczBzACD">Obliczanie b mając a, c i d</string>
+    <string name="talespoliczCzABD">Obliczanie c mając a, b i d</string>
+    <string name="talespoliczBzACBDA">Obliczanie b mając AC, BD i a</string>
+    <string name="talespoliczAzACBDB">Obliczanie a mając AC, BD i b</string>
+    <string name="talespoliczACzAEF">Obliczanie AC mając a, e i f</string>
+    <string name="talestalespoliczBDzBEF">Obliczanie BD mając b, e i f</string>
+    <string name="talespoliczAzACEF">Obliczanie a mając AC, e i f</string>
+    <string name="talespoliczBzBDEF">Obliczanie b mając BD, e i f</string>
+    <string name="talespoliczFzBD">Obliczanie f mając BD, b i e</string>
+    <string name="talespoliczEzBD">Obliczanie e mając BD, b i f</string>
+    <string name="talespoliczFzAC">Obliczanie f mając AC, a i e</string>
+    <string name="talespoliczEzAC">Obliczanie e mając AC, a i f</string>
+
+    //kwadrat
+    <string name="kwadratpoliczPp">Obliczanie pola mając a</string>
+    <string name="kwadratpoliczAzD">Obliczanie a mając przekątną</string>
+    <string name="kwadratpoliczD">Obliczanie przekątnej mając a</string>
+    <string name="kwadratpoliczObwp">Obliczanie obwodu mając a</string>
+    <string name="kwadratpoliczAzPp">Obliczanie a mając pole</string>
+    <string name="kwadratpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
+
+    //szescian
+    <string name="szescianpoliczPp">Obliczanie pola podstawy mając a</string>
+    <string name="szescianpoliczAzObj">Obliczanie a mając objętość</string>
+    <string name="szescianpoliczAzPc">Obliczanie a mając pole całkowite</string>
+    <string name="szescianpoliczAzPb">Obliczanie a mając pole boczne</string>
+    <string name="szescianpoliczAzd">Obliczanie a mając przekątną bryły</string>
+    <string name="szescianpoliczAzD">Obliczanie a mając przekątną podstawy</string>
+    <string name="szescianpoliczAzTriangle">Obliczanie a mając pole trójkąta wewnętrznego</string>
+    <string name="szescianpoliczD">Obliczanie przekątnej podstawy mając a</string>
+    <string name="szescianpoliczd">Obliczanie przekątnej bryły mając a</string>
+    <string name="szescianpoliczPb">Obliczanie pola bocznego mając a</string>
+    <string name="szescianpoliczPc">Obliczanie pola całkowitego mając a</string>
+    <string name="szescianpoliczObwb">Obliczanie obwodu bryły mając a</string>
+    <string name="szescianpoliczTriangle">Obliczanie pola trójkąta wewnętrznego mając a</string>
+    <string name="szescianpoliczObj">Obliczanie objętości mając a</string>
+    <string name="szescianpoliczObwp">Obliczanie obwodu podstawy mając a</string>
+    <string name="szescianpoliczAzPp">Obliczanie a mając pole podstawy</string>
+    <string name="szescianpoliczAzObwb">Obliczanie a mając obwód bryły</string>
+    <string name="szescianpoliczAzObwp">Obliczanie a mając obwód podstawy</string>
+
+    //graniastoslup prawidlowy trojkatny
+    <string name="granprostroj_policzPp">Obliczanie pola podstawy mając a</string>
+    <string name="granprostroj_policzPpZObjiH">Obliczanie pola podstawy mając objętość i H</string>
+    <string name="granprostroj_policzAzHid">Obliczanie a mając H i d</string>
+    <string name="granprostroj_policzhzHiD">Obliczanie h mając H i D</string>
+    <string name="granprostroj_policzHzObjiA">Obliczanie H mając objętość i a</string>
+    <string name="granprostroj_policzHzdiA">Obliczanie H mając d i a</string>
+    <string name="granprostroj_policzHzDiA">Obliczanie H mając D i a</string>
+    <string name="granprostroj_policzHzPciA">Obliczanie H mając Pc i a</string>
+    <string name="granprostroj_policzHzPbiA">Obliczanie H mając Pb i a</string>
+    <string name="granprostroj_policzHzObwbiA">Obliczanie H mając obwód bryły i a</string>
+    <string name="granprostroj_policzHzTriangleiA">Obliczanie H mając Ptw i a</string>
+    <string name="granprostroj_policzPpzPciPb">Obliczanie pola podstawy mając Pc i Pb</string>
+    <string name="granprostroj_policzDzHiA">Obliczanie D mając H i a</string>
+    <string name="granprostroj_policzdzHiA">Obliczanie d mając H i a</string>
+    <string name="granprostroj_policzPbzAiH">Obliczanie pola bocznego mając a i H</string>
+    <string name="granprostroj_policzPczAiH">Obliczanie pola całkowitego mając a i H</string>
+    <string name="granprostroj_policzObwbZAiH">Obliczanie obwodu bryły mając a i H</string>
+    <string name="granprostroj_policzTriangleZaiH">Obliczanie pola trójkąta wewnętrznego mając a i H</string>
+    <string name="granprostroj_policzObjZaiH">Obliczanie objętości mając a i H</string>
+    <string name="granprostroj_policzObwp">Obliczanie obwodu podstawy mając a</string>
+    <string name="granprostroj_policzAzh">Obliczanie a mając h</string>
+    <string name="granprostroj_policzAzHiPb">Obliczanie a mając H i pole boczne</string>
+    <string name="granprostroj_policzAzPp">Obliczanie a mając pole podstawy</string>
+    <string name="granprostroj_policzAzHiObwb">Obliczanie a mając H i obwód bryły</string>
+    <string name="granprostroj_policzAzObwp">Obliczanie a mając obwód podstawy</string>
+    <string name="granprostroj_policzhza">Obliczanie h mając a</string>
+    <string name="granprostroj_policzhzPp">Obliczanie h mając pole podstawy</string>
+
+    //trojkat prawidlowy
+    <string name="troj_praw_policzPp">Obliczanie pola mając a</string>
+    <string name="troj_praw_policzAzh">Obliczanie a mając h</string>
+    <string name="troj_praw_policzhza">Obliczanie h mając a</string>
+    <string name="troj_praw_policzObwp">Obliczanie obwodu mając a</string>
+    <string name="troj_praw_policzAzPp">Obliczanie a mając pole</string>
+    <string name="troj_praw_policzAzObwp">Obliczanie a mając obwód</string>
+    <string name="troj_praw_policzhzPp">Obliczanie a mając pole</string>
+
+    //kolo
+    <string name="kolo_policzPp">Obliczanie pola mając promień r</string>
+    <string name="kolo_policzS">Obliczanie średnicy mając promień r</string>
+    <string name="kolo_policzR">Obliczanie promienia mając średnicę S</string>
+    <string name="kolo_policzObwp">Obliczanie obwodu koła mając promień r</string>
+    <string name="kolo_policzRzPp">Obliczanie promienia mając pole koła</string>
+    <string name="kolo_policzRzObw">Obliczanie promienia mając obwód koła</string>
+    <string name="kolo_policzSzObw">Obliczanie średnicy mając obwód koła</string>
+    <string name="kolo_policzSzPp">Obliczanie średnicy mając pole koła</string>
+    <string name="kolo_policzObwpzS">Obliczanie obwodu koła mając średnicę S</string>
+    <string name="kolo_policzObwzPp">Obliczanie obwodu koła mając pole</string>
+    <string name="kolo_policzPpzS">Obliczanie pola koła mając średnicę S</string>
+    <string name="kolo_policzPpzObw">Obliczanie pola koła mając obwód</string>
+
+    //katy
+    <string name="katypoliczBzA">Obliczanie b mając a</string>
+    <string name="katypoliczAzB">Obliczanie a mając b</string>
+
+</resources>
