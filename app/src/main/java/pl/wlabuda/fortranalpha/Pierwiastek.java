@@ -12,7 +12,20 @@ public class Pierwiastek {
 
     public Pierwiastek(String pierwiastek) {
 
+        if(!pierwiastek.contains("(") && !pierwiastek.contains(")")){
+            pierwiastek = "(" + pierwiastek.replace("\u221a", ")\u221a(") + ")";
+        }
+
+        if(pierwiastek.startsWith("()√")) {
+            pierwiastek = pierwiastek.replace("()\u221a", "(1)\u221a");
+        }
+
+        if(pierwiastek.startsWith("√")) {
+            pierwiastek = pierwiastek.replace("\u221a", "(1)\u221a");
+        }
+
         if(!pierwiastek.contains(")√")) {
+            System.out.println("aaaaaaa");
             pierwiastek = pierwiastek.replace("\u221a", ")\u221a");
             pierwiastek = pierwiastek.substring(0,pierwiastek.length()-1);
         }
@@ -61,6 +74,7 @@ public class Pierwiastek {
         t[1] = t[1].replace("]", ")");
         t[1] = t[1].replace("|", "\u221a");
         inside = t[1];
+        System.out.println("aaaaaaa" + inside);
     }
 
     public void setFirst(String f) {
