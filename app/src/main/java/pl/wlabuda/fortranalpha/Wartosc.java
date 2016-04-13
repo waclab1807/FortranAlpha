@@ -245,6 +245,13 @@ public class Wartosc {
         }
     }
 
+    public static Boolean sprawdzZnak(String a){ //TODO Funkcja do rozszerzenia - znaki w argumentach funkcji, DODATKOWO USUNIĘTY WARUNEK NA MINUS
+        if(/*a.contains("-") ||*/ a.contains("+")||a.contains("*") || a.contains("/"))
+        return true;
+        else
+        return false;
+    }
+
     public static String generujZera(int i) {
         String zera = "";
         while (i > 0) {
@@ -408,8 +415,23 @@ public class Wartosc {
             }
         }
         else {
-            System.out.println("Posiada √");
-            return false;
+            System.out.println("Posiada pierwiastek :  " + a);
+            String[] pierwParts = a.split("√");
+            pierwParts[1]="√" + pierwParts[1];
+            System.out.println("Lewa: " + pierwParts[0] + " Prawa: " + pierwParts[1] );
+            //TODO DO POTESTOWANIA !!!
+            if( (pierwParts[0].length() - pierwParts[0].replace("-", "").length() == 1 && pierwParts[0].indexOf('-')==0 || !sprawdzZnak(a) ) &&
+                    (!pierwParts[1].contains("(") || !(pierwParts[1].substring(pierwParts[1].indexOf("√"),pierwParts[1].indexOf("(")).length() > 1) && !(pierwParts[1].substring(pierwParts[1].indexOf(")")).length() > 1)  ) ){
+                System.out.println("BLABLALBALABLBA " + pierwParts.length );
+                System.out.println("Nie jest dzialaniem");
+                return false;
+            }
+            else{
+                System.out.println("Jest dzialaniem");
+                return true;
+            }
+
+
         }
     }
 
