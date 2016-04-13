@@ -380,7 +380,8 @@ public class Wartosc {
     public static Boolean czyJestWyrazeniem(String a) {
         //TODO TUTAJ TRZEBA MU POKAZAC ZE 2√-2 to nie jest działanie ale 2+√-2 juz jest dzialaniem oraz 2+2√-2
 
-            System.out.println("czy " + a + " jest dzialaniem?");
+        if (!a.contains("√")){
+                System.out.println("czy " + a + " jest dzialaniem?");
             String[] d = a.split("\\+");
             String[] m = a.split("\\*");
             String[] dz = a.split("/");
@@ -388,9 +389,7 @@ public class Wartosc {
             if (a.contains("-")) {
                 if (a.indexOf("-") == 0) {
                     a = a.substring(1, a.length());
-                    System.out.println(" !!! "+a);
                 }
-                System.out.println(" TO JEST a  !!!! " + a);
                 ok = sprawdzMinus(a);
             }
             if (jakieToWyrazenie(a).contains("\u221a") || jakieToWyrazenie(a).contains("^")) {
@@ -398,17 +397,20 @@ public class Wartosc {
                     System.out.println("jest dzialaniem");
                     return true;
                 } else {
-                    System.out.println("nie jest dzialaniem 11111111111");
                     return false;
                 }
             }
             if (d.length > 1 || m.length > 1 || dz.length > 2 || ok) {
-                System.out.println("jest dzialaniem2");
                 return true;
             } else {
                 System.out.println("nie jest dzialaniem");
                 return false;
             }
+        }
+        else {
+            System.out.println("Posiada √");
+            return false;
+        }
     }
 
     public static Boolean nawiasy(String text){
