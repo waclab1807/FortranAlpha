@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * Created by Wacław on 09.07.14.
+ * Created by Wacław & SkylinR on 09.07.14.
  */
 public class Pierwiastek {
     public String first;
@@ -12,6 +12,9 @@ public class Pierwiastek {
 
     public Pierwiastek(String pierwiastek) {
 
+        if(pierwiastek.startsWith("-√")) {
+            pierwiastek = pierwiastek.replace("-√", "(-1)\u221a");
+        }
         if(!pierwiastek.contains("(") && !pierwiastek.contains(")")){
             pierwiastek = "(" + pierwiastek.replace("\u221a", ")\u221a(") + ")";
         }
@@ -182,6 +185,10 @@ public class Pierwiastek {
         }
         if(wynik.contains("(0)√")){
             return "0";
+        }
+        if(wynik.startsWith("-√")){
+            wynik = wynik.replace("-√","(-1)√");
+            System.out.println("TESCIOR -1 ");
         }
         return wynik;
     }

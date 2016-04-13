@@ -105,10 +105,10 @@ public class Tescik extends Activity {
 //        pier1.setText(Wartosc.policz("-2","3","+"));
 //        pier2.setText(Wartosc.policz("-2","3","-"));
 //        pier3.setText(Wartosc.policz("-2","3","*"));
-//        pier4.setText(Wartosc.policz("-2","3","/")); //TODO
+//        pier4.setText(Wartosc.policz("-2","3","/"));
 //        pier5.setText(Wartosc.policz("-3","2","-"));
-//        pier6.setText(Wartosc.policz("-3","2","/")); //TODO
-//        pier7.setText(Wartosc.policz("-2","6","/")); //TODO
+//        pier6.setText(Wartosc.policz("-3","2","/"));
+//        pier7.setText(Wartosc.policz("-2","6","/"));
 //        pier8.setText(Wartosc.policz("-6","2","/"));
 //        pier9.setText(Wartosc.policz("-3","0","*"));
 //        pier10.setText(Wartosc.policz("-2","0","/"));
@@ -116,13 +116,13 @@ public class Tescik extends Activity {
 //        pier1.setText(Wartosc.policz("2","-3","+"));
 //        pier2.setText(Wartosc.policz("2","-3","-"));
 //        pier3.setText(Wartosc.policz("2","-3","*"));
-//        pier4.setText(Wartosc.policz("2","-3","/")); //TODO
+//        pier4.setText(Wartosc.policz("2","-3","/"));
 //        pier5.setText(Wartosc.policz("3","-2","-"));
-//        pier6.setText(Wartosc.policz("3","-2","/")); //TODO
-//        pier7.setText(Wartosc.policz("2","-6","/")); //TODO
+//        pier6.setText(Wartosc.policz("3","-2","/"));
+//        pier7.setText(Wartosc.policz("2","-6","/"));
 //        pier8.setText(Wartosc.policz("6","-2","/"));
 //        pier9.setText(Wartosc.policz("3","-0","*"));
-//        pier10.setText(Wartosc.policz("2","-0","/")); //TODO
+//        pier10.setText(Wartosc.policz("2","-0","/"));
 //        pier11.setText(Wartosc.policz("0","-2","/"));
 //        pier1.setText(Wartosc.policz("-2","-3","+"));
 //        pier2.setText(Wartosc.policz("-2","-3","-"));
@@ -133,7 +133,7 @@ public class Tescik extends Activity {
 //        pier7.setText(Wartosc.policz("-2","-6","/"));
 //        pier8.setText(Wartosc.policz("-6","-2","/"));
 //        pier9.setText(Wartosc.policz("-3","-0","*"));
-//        pier10.setText(Wartosc.policz("-2","-0","/")); //TODO
+//        pier10.setText(Wartosc.policz("-2","-0","/"));
 //        pier11.setText(Wartosc.policz("-0","-2","/"));
 //        pier1.setText(Wartosc.policz("0","0","+"));
 //        pier2.setText(Wartosc.policz("0","0","-"));
@@ -170,9 +170,9 @@ public class Tescik extends Activity {
 //        pier1.setText(Wartosc.policz("2√3","√3","/"));
 //        pier2.setText(Wartosc.policz("6√3","2√3","/"));
 //        pier3.setText(Wartosc.policz("√0","1","*"));
-//        pier4.setText(Wartosc.policz("(-1)√2","1","*")); //TODO
+//        pier4.setText(Wartosc.policz("-√2","1","*"));
 //        pier5.setText(Wartosc.policz("√-2","1","*"));
-//        pier6.setText(Wartosc.policz("-√-2","1","*"));
+        pier6.setText(Wartosc.policz("-√-2","1","*"));
 //        pier1.setText(Wartosc.policz("-1√3","√2","+"));
 //        pier2.setText(Wartosc.policz("-1√3","√2","-"));
 //        pier3.setText(Wartosc.policz("-1√3","√2","*"));

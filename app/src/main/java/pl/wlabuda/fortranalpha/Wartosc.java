@@ -267,7 +267,7 @@ public class Wartosc {
             mianownik = w.getMianownik().replace("((","");
             mianownik = mianownik.replace("))", "");
         }
-        if(mianownik.equals("0") || mianownik.equals("0.0")){
+        if(mianownik.equals("0") || mianownik.equals("0.0") || mianownik.equals("-0") || mianownik.equals("-0.0") ){
             return "0";
         }
         if(licznik.contains("\u221a") || licznik.contains("^") || licznik.contains("/") || mianownik.contains("\u221a") || mianownik.contains("^") || mianownik.contains("/")){
@@ -378,45 +378,37 @@ public class Wartosc {
     }
 
     public static Boolean czyJestWyrazeniem(String a) {
-        System.out.println("czy " + a + " jest dzialaniem?");
-        String[] d = a.split("\\+");
-        String[] m = a.split("\\*");
-        String[] dz = a.split("/");
-        boolean ok = false;
-        if (a.contains("-")) {
-            if (a.indexOf("-") == 0) {
-                a = a.substring(1, a.length());
+        //TODO TUTAJ TRZEBA MU POKAZAC ZE 2√-2 to nie jest działanie ale 2+√-2 juz jest dzialaniem oraz 2+2√-2
+
+            System.out.println("czy " + a + " jest dzialaniem?");
+            String[] d = a.split("\\+");
+            String[] m = a.split("\\*");
+            String[] dz = a.split("/");
+            boolean ok = false;
+            if (a.contains("-")) {
+                if (a.indexOf("-") == 0) {
+                    a = a.substring(1, a.length());
+                    System.out.println(" !!! "+a);
+                }
+                System.out.println(" TO JEST a  !!!! " + a);
+                ok = sprawdzMinus(a);
             }
-            ok = sprawdzMinus(a);
-        }
-        /*if(a.contains("/")){
-            if(dz[0].contains("\u221a") || dz[0].contains("^") || dz[0].contains(".") || dz[1].contains("\u221a") || dz[1].contains("^") || dz[1].contains(".")){
-                System.out.println("czy ulamek skomplikowany");
-                String tmp = policz(dz[0],dz[1],"/");
-                if(tmp.contains("/")){
-                    String[] dz1 = tmp.split("/");
-                    if(dz1[0].contains("\u221a") || dz1[0].contains("^") || dz1[0].contains(".") || dz1[1].contains("\u221a") || dz1[1].contains("^") || dz1[1].contains(".")){
-                        return true;
-                    }
+            if (jakieToWyrazenie(a).contains("\u221a") || jakieToWyrazenie(a).contains("^")) {
+                if (jakieToWyrazenie(a).contains("+") || jakieToWyrazenie(a).contains("-") || jakieToWyrazenie(a).contains("*")) {   // ... || jakieToWyrazenie(a).contains("/")
+                    System.out.println("jest dzialaniem");
+                    return true;
+                } else {
+                    System.out.println("nie jest dzialaniem 11111111111");
+                    return false;
                 }
             }
-        }*/
-        if (jakieToWyrazenie(a).contains("\u221a") || jakieToWyrazenie(a).contains("^")){
-            if (jakieToWyrazenie(a).contains("+") || jakieToWyrazenie(a).contains("-") || jakieToWyrazenie(a).contains("*")){   // ... || jakieToWyrazenie(a).contains("/")
-                System.out.println("jest dzialaniem");
+            if (d.length > 1 || m.length > 1 || dz.length > 2 || ok) {
+                System.out.println("jest dzialaniem2");
                 return true;
-            }else {
+            } else {
                 System.out.println("nie jest dzialaniem");
                 return false;
             }
-        }
-        if (d.length > 1 || m.length > 1 || dz.length > 2 || ok) {
-            System.out.println("jest dzialaniem");
-            return true;
-        } else {
-            System.out.println("nie jest dzialaniem");
-            return false;
-        }
     }
 
     public static Boolean nawiasy(String text){
