@@ -1352,6 +1352,7 @@ public class Wartosc {
                         Toast.makeText(Global.mContext, "Nie ma pierwiastka z liczby ujemnej!", Toast.LENGTH_SHORT).show();
                         wynik = "";
                     } else {
+                        //TODO WYNIK WYRAZENIA Pierwiastek + Liczba MUSI być w nawiasach bo kolejne działania jak mnożenie lub dzielenie musza być wykonywane na całym wyrażeniu.
                         switch (operator.charAt(0)) {
                             case '+':
                                 if (jakieToWyrazenie(x).contains("\u221a")) {
