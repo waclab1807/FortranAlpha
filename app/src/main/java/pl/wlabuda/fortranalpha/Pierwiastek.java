@@ -77,7 +77,8 @@ public class Pierwiastek {
         t[1] = t[1].replace("]", ")");
         t[1] = t[1].replace("|", "\u221a");
         inside = t[1];
-        System.out.println("aaaaaaa" + inside);
+        System.out.println("first " + first);
+        System.out.println("inside " + inside);
     }
 
     public void setFirst(String f) {

@@ -172,7 +172,9 @@ public class Tescik extends Activity {
 //        pier3.setText(Wartosc.policz("√0","1","*"));
 //        pier4.setText(Wartosc.policz("-√2","1","*"));
 //        pier5.setText(Wartosc.policz("√-2","1","*"));
-          pier6.setText(Wartosc.policz("-2√(2)+6","-1","*")); //TODO DO POTESTOWANIA !!!
+//        pier6.setText(Wartosc.policz("-2√(-2+4)","-3","*"));
+//        pier6.setText(""+Wartosc.czyJestWyrazeniem("-2^(-2 +(3))-(2)"));
+//        pier7.setText(""+Wartosc.czyJestWyrazeniem("-2^(-2)+4"));
 //        pier1.setText(Wartosc.policz("-1√3","√2","+"));
 //        pier2.setText(Wartosc.policz("-1√3","√2","-"));
 //        pier3.setText(Wartosc.policz("-1√3","√2","*"));

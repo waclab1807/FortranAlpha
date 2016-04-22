@@ -13,27 +13,27 @@ public class Wartosc {
     public Wartosc(String a) { //konstruktor zamienia liczbe na ulamek
         if (a.contains("/")) {
             String[] t = a.split("/");
-            if(t[0].startsWith("((") && t[0].endsWith("))")){
-                t[0] = t[0].substring(1,t[0].length()-1);
+            if (t[0].startsWith("((") && t[0].endsWith("))")) {
+                t[0] = t[0].substring(1, t[0].length() - 1);
             }
-            if(t[1].startsWith("((") && t[1].endsWith("))")){
-                t[1] = t[1].substring(1,t[1].length()-1);
+            if (t[1].startsWith("((") && t[1].endsWith("))")) {
+                t[1] = t[1].substring(1, t[1].length() - 1);
             }
-            if (t[0].startsWith("√") || t[0].contains("√")){
-                t[0] = "("+t[0]+")";
+            if (t[0].startsWith("√") || t[0].contains("√")) {
+                t[0] = "(" + t[0] + ")";
             }
-            if (t[1].startsWith("√") || t[1].contains("√")){
-                t[1] = "("+t[1]+")";
+            if (t[1].startsWith("√") || t[1].contains("√")) {
+                t[1] = "(" + t[1] + ")";
             }
-            if (t[0].contains("^")){
-                t[0] = "("+t[0]+")";
+            if (t[0].contains("^")) {
+                t[0] = "(" + t[0] + ")";
             }
-            if (t[1].contains("^")){
-                t[1] = "("+t[1]+")";
+            if (t[1].contains("^")) {
+                t[1] = "(" + t[1] + ")";
             }
-            t[0] = t[0].replaceAll("-√","-1√");
-            t[1] = t[1].replaceAll("-√","-1√");
-            if(t[0].contains("(") && t[0].contains(")")) {
+            t[0] = t[0].replaceAll("-√", "-1√");
+            t[1] = t[1].replaceAll("-√", "-1√");
+            if (t[0].contains("(") && t[0].contains(")")) {
                 String x = t[0].substring(1, t[0].length() - 1);       //jak licznik albo mianownik jest dzialaniem to zamienia nawiasy na kwadratowe
                 System.out.println("wartKonstrx " + t[0] + " & " + x);
                 x = x.replace("(", "[");
@@ -41,10 +41,10 @@ public class Wartosc {
                 System.out.println("wartKonstrPox " + x);
                 t[0] = x;
             }
-            if(t[0].contains("(") && !t[0].contains(")")) {
-                t[0] = t[0].replace("(","");
+            if (t[0].contains("(") && !t[0].contains(")")) {
+                t[0] = t[0].replace("(", "");
             }
-            if(t[1].contains("(") && t[1].contains(")")) {
+            if (t[1].contains("(") && t[1].contains(")")) {
                 String y = t[1].substring(1, t[1].length() - 1);
                 System.out.println("wartKonstry " + t[1] + " & " + y);
                 y = y.replace("(", "[");
@@ -52,7 +52,7 @@ public class Wartosc {
                 System.out.println("wartKonstrPoy " + y);
                 t[1] = y;
             }
-            if(!t[1].contains("(") && t[1].contains(")")) {
+            if (!t[1].contains("(") && t[1].contains(")")) {
                 t[1] = t[1].replace(")", "");
             }
 
@@ -90,46 +90,52 @@ public class Wartosc {
         }
     }
 
-    public static String jakieToWyrazenie(String wyrazenie){
-        System.out.println("jakie to wyrazenie? "+ wyrazenie);
-        int k=0;
-        boolean test=true;
-        boolean first=true;
-        String temp="";
+    public static String jakieToWyrazenie(String wyrazenie) {
+        System.out.println("jakie to wyrazenie? " + wyrazenie);
+        int k = 0;
+        boolean test = true;
+        boolean first = true;
+        String temp = "";
         String wynik = "";
-        if(wyrazenie.contains("/√")){
-            wyrazenie = wyrazenie.replaceAll("/√","/()√");
+        if (wyrazenie.contains("/√")) {
+            wyrazenie = wyrazenie.replaceAll("/√", "/()√");
         }
-        if(!wyrazenie.contains("(") && !wyrazenie.contains(")")){
+        if (!wyrazenie.contains("(") && !wyrazenie.contains(")")) {
             return wyrazenie;
         }
-        for (int i=0;wyrazenie.length()>i;i++){
-            if ((wyrazenie.charAt(i)!='(')&(first)){temp+=wyrazenie.charAt(i);}
-            else if(wyrazenie.charAt(i)=='('){k++; test=true;first=false;}
-            else if (wyrazenie.charAt(i)==')'){k--;
-                if(k==0){test=false;}}
-            if (!test){
-                if (wyrazenie.length()>(i+1))
-                {
-                    wynik+="()"+wyrazenie.charAt(i+1);
+        for (int i = 0; wyrazenie.length() > i; i++) {
+            if ((wyrazenie.charAt(i) != '(') & (first)) {
+                temp += wyrazenie.charAt(i);
+            } else if (wyrazenie.charAt(i) == '(') {
+                k++;
+                test = true;
+                first = false;
+            } else if (wyrazenie.charAt(i) == ')') {
+                k--;
+                if (k == 0) {
+                    test = false;
                 }
-                else{
-                    wynik+="()";
+            }
+            if (!test) {
+                if (wyrazenie.length() > (i + 1)) {
+                    wynik += "()" + wyrazenie.charAt(i + 1);
+                } else {
+                    wynik += "()";
                 }
-                test=true;
+                test = true;
             }
         }
-        if(wynik.replace("()","").equals("")){
-            wyrazenie = wyrazenie.replace("(","");
-            wyrazenie = wyrazenie.replace(")","");
+        if (wynik.replace("()", "").equals("")) {
+            wyrazenie = wyrazenie.replace("(", "");
+            wyrazenie = wyrazenie.replace(")", "");
             return wyrazenie;
         }
-        String tmp = temp+wynik;
-        if (tmp.contains("√()/") || tmp.contains("^()/") || tmp.contains("/()√") || tmp.contains("/()^")){
+        String tmp = temp + wynik;
+        if (tmp.contains("√()/") || tmp.contains("^()/") || tmp.contains("/()√") || tmp.contains("/()^")) {
             System.out.println(wyrazenie + " jakie to wyrazenie? /");
             return "/";
         } else {
-            System.out.println(wyrazenie + " jakie to wyrazenie? "+temp + wynik.replace("()", ""));
+            System.out.println(wyrazenie + " jakie to wyrazenie? " + temp + wynik.replace("()", ""));
             return temp + wynik.replace("()", "");
         }
     }
@@ -229,10 +235,10 @@ public class Wartosc {
         return "(" + licznik + ")/(" + mianownik + ")"; // uwymiernia ulamek, a/sqrt(b) wzroci a*sqrt(b)/b
     }
 
-    public static String formatuj(String a){
-        a = a.replace("(","{");
-        a = a.replace(")","}");
-        System.out.println("formatuj "+a);
+    public static String formatuj(String a) {
+        a = a.replace("(", "{");
+        a = a.replace(")", "}");
+        System.out.println("formatuj " + a);
         return a;
     }
 
@@ -245,11 +251,11 @@ public class Wartosc {
         }
     }
 
-    public static Boolean sprawdzZnak(String a){ //TODO Funkcja do rozszerzenia - znaki w argumentach funkcji, DODATKOWO USUNIĘTY WARUNEK NA MINUS
-        if(/*a.contains("-") ||*/ a.contains("+")||a.contains("*") || a.contains("/"))
-        return true;
+    public static Boolean sprawdzZnak(String a) { //TODO Funkcja do rozszerzenia - znaki w argumentach funkcji, DODATKOWO USUNIĘTY WARUNEK NA MINUS
+        if (/*a.contains("-") ||*/ a.contains("+") || a.contains("*") || a.contains("/"))
+            return true;
         else
-        return false;
+            return false;
     }
 
     public static String generujZera(int i) {
@@ -266,20 +272,20 @@ public class Wartosc {
         Wartosc w = new Wartosc(a);
         String licznik = w.getLicznik();
         String mianownik = w.getMianownik();
-        if (w.getLicznik().startsWith("((") && w.getLicznik().endsWith("))")){
-            licznik = w.getLicznik().replace("((","");
+        if (w.getLicznik().startsWith("((") && w.getLicznik().endsWith("))")) {
+            licznik = w.getLicznik().replace("((", "");
             licznik = licznik.replace("))", "");
         }
-        if (w.getMianownik().startsWith("((") && w.getMianownik().endsWith("))")){
-            mianownik = w.getMianownik().replace("((","");
+        if (w.getMianownik().startsWith("((") && w.getMianownik().endsWith("))")) {
+            mianownik = w.getMianownik().replace("((", "");
             mianownik = mianownik.replace("))", "");
         }
-        if(mianownik.equals("0") || mianownik.equals("0.0") || mianownik.equals("-0") || mianownik.equals("-0.0") ){
+        if (mianownik.equals("0") || mianownik.equals("0.0") || mianownik.equals("-0") || mianownik.equals("-0.0")) {
             return "0";
         }
-        if(licznik.contains("\u221a") || licznik.contains("^") || licznik.contains("/") || mianownik.contains("\u221a") || mianownik.contains("^") || mianownik.contains("/")){
-            return policz(licznik,mianownik,"/");
-        }else {
+        if (licznik.contains("\u221a") || licznik.contains("^") || licznik.contains("/") || mianownik.contains("\u221a") || mianownik.contains("^") || mianownik.contains("/")) {
+            return policz(licznik, mianownik, "/");
+        } else {
             double nwd = NWD_2(Double.parseDouble(licznik), Double.parseDouble(mianownik));
             double x = Double.parseDouble(licznik) / nwd;
             double y = Double.parseDouble(mianownik) / nwd;
@@ -312,12 +318,12 @@ public class Wartosc {
                 wynik = "(" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + ")";
                 //todo sprawdzic to rozwiazanie
                 //MainActivity.tekst = MainActivity.tekst + "\nObliczenia poboczne:\nSkracanie:\n" + "((" + Integer.parseInt(p.getFirst()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + liczba + ") = " +
-                  //      "(" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + ")\n";
+                //      "(" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + ")\n";
             } else {
                 wynik = "\u221a(" + Integer.parseInt(p.getInside()) + ")";
                 //todo sprawdzic to rozwiazanie
                 //MainActivity.tekst = MainActivity.tekst + "\nSkracanie:\n" + "((" + Integer.parseInt(p.getFirst()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + liczba + ") = " +
-                  //      "(" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + ")\n";
+                //      "(" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + ")\n";
             }
         } else {
             if (!w.getLicznik().equals("1")) {
@@ -325,14 +331,14 @@ public class Wartosc {
                 if (Double.parseDouble(p.getFirst()) != (int) Double.parseDouble(w.getLicznik())) {
                     //todo sprawdzic to rozwiazanie
                     //MainActivity.tekst = MainActivity.tekst + "\nSkracanie:\n" + "((" + Integer.parseInt(p.getFirst()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + liczba + ") = " +
-                      //      "(\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")\n";
+                    //      "(\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")\n";
                 }
             } else {
                 wynik = "\u221a(" + Integer.parseInt(p.getInside()) + ")/(" + (int) Double.parseDouble(w.getMianownik()) + ")"; // dokleja pierwiastek do licznika
                 if (Double.parseDouble(p.getFirst()) != (int) Double.parseDouble(w.getLicznik())) {
                     //todo sprawdzic to rozwiazanie
                     //MainActivity.tekst = MainActivity.tekst + "\nSkracanie:\n" + "((" + Integer.parseInt(p.getFirst()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + liczba + ") = " +
-                      //      "((" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")\n";
+                    //      "((" + (int) Double.parseDouble(w.getLicznik()) + ")\u221a(" + Integer.parseInt(p.getInside()) + "))/(" + (int) Double.parseDouble(w.getMianownik()) + ")\n";
                 }
             }
         }
@@ -350,11 +356,11 @@ public class Wartosc {
 
     public static String pomnozLiczbePrzezPierwiastek(String liczba, String pierwiastek) {
         System.out.println("pomnozLiczbePrzezPierwiastek " + pierwiastek);
-        if(liczba.equals("1")){
+        if (liczba.equals("1")) {
             return pierwiastek;
         }
         Pierwiastek p = new Pierwiastek(pierwiastek);
-        if(p.getFirst().equals("")){
+        if (p.getFirst().equals("")) {
             p.setFirst("1");
         }
         String wynik = policz(liczba, p.getFirst(), "*");
@@ -387,8 +393,123 @@ public class Wartosc {
     public static Boolean czyJestWyrazeniem(String a) {
         //TODO TUTAJ TRZEBA MU POKAZAC ZE 2√-2 to nie jest działanie ale 2+√-2 juz jest dzialaniem oraz 2+2√-2
 
-        if (!a.contains("√")){
-                System.out.println("czy " + a + " jest dzialaniem?");
+        if(a.contains("√")) {
+            System.out.println("Posiada pierwiastek :  " + a);
+            String[] pierwParts = a.split("√");
+            System.out.println("Lewa: " + pierwParts[0] + " Prawa: " + pierwParts[1]);
+
+            Boolean warunek1 = false;
+            Boolean warunek2 = false;
+
+            if(pierwParts[0].charAt(0) == '('){
+                int counter = 1;
+                for(int i=1; i < pierwParts[0].length(); i++){
+                    if(pierwParts[0].charAt(i) == '('){
+                        counter++;
+                    }
+                    if(pierwParts[0].charAt(i) == ')' && counter == 1){
+                        String tmp = pierwParts[0].substring(0,i+1);
+                        System.out.println("przedpierw " + tmp);
+                        warunek1 = tmp.length() != pierwParts[0].length();
+                        break;
+                    }
+                    if(pierwParts[0].charAt(i) == ')'){
+                        counter--;
+                    }
+
+                }
+            } else {
+                System.out.println("a");
+                warunek1 = czyJestWyrazeniem(pierwParts[0]);
+            }
+
+            if(pierwParts[1].charAt(0) == '('){
+                int counter = 1;
+                for(int i=1; i < pierwParts[1].length(); i++){
+                    if(pierwParts[1].charAt(i) == '('){
+                        counter++;
+                    }
+                    if(pierwParts[1].charAt(i) == ')' && counter == 1){
+                        String tmp = pierwParts[1].substring(0,i+1);
+                        System.out.println("popierw " + tmp);
+                        warunek2 = tmp.length() != pierwParts[1].length();
+                        break;
+                    }
+                    if(pierwParts[1].charAt(i) == ')'){
+                        counter--;
+                    }
+                }
+            } else {
+                System.out.println("b");
+                warunek2 = czyJestWyrazeniem(pierwParts[0]);
+            }
+            System.out.println(warunek1 + " " + warunek2);
+            return warunek1 || warunek2;
+//            return !(!czyJestWyrazeniem(pierwParts[0]) && !czyJestWyrazeniem(pierwParts[1]));
+            //TODO DO POTESTOWANIA !!!
+//            if ((pierwParts[0].length() - pierwParts[0].replace("-", "").length() == 1 && pierwParts[0].indexOf('-') == 0 || !sprawdzZnak(a)) &&
+//                    (!pierwParts[1].contains("(") || !(pierwParts[1].substring(pierwParts[1].indexOf("√"), pierwParts[1].indexOf("(")).length() > 1) && !(pierwParts[1].substring(pierwParts[1].indexOf(")")).length() > 1))) {
+//                System.out.println("BLABLALBALABLBA " + pierwParts.length);
+//                System.out.println("Nie jest dzialaniem");
+//                return false;
+//            } else {
+//                System.out.println("Jest dzialaniem");
+//                return true;
+//            }
+        } else if(a.contains("^")) {
+            System.out.println("Posiada potege :  " + a);
+            String[] pierwParts = a.split("\\^");
+            System.out.println("Lewa: " + pierwParts[0] + " Prawa: " + pierwParts[1]);
+
+            Boolean warunek1 = false;
+            Boolean warunek2 = false;
+
+            if(pierwParts[0].charAt(0) == '('){
+                int counter = 1;
+                for(int i=1; i < pierwParts[0].length(); i++){
+                    if(pierwParts[0].charAt(i) == '('){
+                        counter++;
+                    }
+                    if(pierwParts[0].charAt(i) == ')' && counter == 1){
+                        String tmp = pierwParts[0].substring(0,i+1);
+                        System.out.println("przedpot " + tmp);
+                        warunek1 = tmp.length() != pierwParts[0].length();
+                        break;
+                    }
+                    if(pierwParts[0].charAt(i) == ')'){
+                        counter--;
+                    }
+
+                }
+            } else {
+                System.out.println("a");
+                warunek1 = czyJestWyrazeniem(pierwParts[0]);
+            }
+
+            if(pierwParts[1].charAt(0) == '('){
+                int counter = 1;
+                for(int i=1; i < pierwParts[1].length(); i++){
+                    if(pierwParts[1].charAt(i) == '('){
+                        counter++;
+                    }
+                    if(pierwParts[1].charAt(i) == ')' && counter == 1){
+                        String tmp = pierwParts[1].substring(0,i+1);
+                        System.out.println("popot " + tmp);
+                        warunek2 = tmp.length() != pierwParts[1].length();
+                        break;
+                    }
+                    if(pierwParts[1].charAt(i) == ')'){
+                        counter--;
+                    }
+                }
+            } else {
+                System.out.println("b");
+                warunek2 = czyJestWyrazeniem(pierwParts[0]);
+            }
+            System.out.println(warunek1 + " " + warunek2);
+            return warunek1 || warunek2;
+        } else {
+            System.out.println("czy " + a + " jest dzialaniem?");
             String[] d = a.split("\\+");
             String[] m = a.split("\\*");
             String[] dz = a.split("/");
@@ -408,103 +529,82 @@ public class Wartosc {
                 }
             }
             if (d.length > 1 || m.length > 1 || dz.length > 2 || ok) {
+                System.out.println("aaa");
                 return true;
             } else {
                 System.out.println("nie jest dzialaniem");
                 return false;
             }
         }
-        else {
-            System.out.println("Posiada pierwiastek :  " + a);
-            String[] pierwParts = a.split("√");
-            pierwParts[1]="√" + pierwParts[1];
-            System.out.println("Lewa: " + pierwParts[0] + " Prawa: " + pierwParts[1] );
-            //TODO DO POTESTOWANIA !!!
-            if( (pierwParts[0].length() - pierwParts[0].replace("-", "").length() == 1 && pierwParts[0].indexOf('-')==0 || !sprawdzZnak(a) ) &&
-                    (!pierwParts[1].contains("(") || !(pierwParts[1].substring(pierwParts[1].indexOf("√"),pierwParts[1].indexOf("(")).length() > 1) && !(pierwParts[1].substring(pierwParts[1].indexOf(")")).length() > 1)  ) ){
-                System.out.println("BLABLALBALABLBA " + pierwParts.length );
-                System.out.println("Nie jest dzialaniem");
-                return false;
-            }
-            else{
-                System.out.println("Jest dzialaniem");
-                return true;
-            }
-
-
-        }
     }
 
-    public static Boolean nawiasy(String text){
+    public static Boolean nawiasy(String text) {
         int counto = 0;
         int countz = 0;
         char no = '(';
         char nz = ')';
-        for (int i=0; i < text.length(); i++)
-        {
-            if (text.charAt(i) == no)
-            {
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == no) {
                 counto++;
             }
-            if (text.charAt(i) == nz)
-            {
+            if (text.charAt(i) == nz) {
                 countz++;
             }
         }
-        if(counto == countz) {
+        if (counto == countz) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static String xZWyrazeniem(String x,String wyr, String operator){//glowny operator +8
-        System.out.println("xZWyrazeniem " + x + " "+operator+" " + wyr);
-        if(x.equals("1") && (operator.equals("*") || operator.equals("/"))){
+    public static String xZWyrazeniem(String x, String wyr, String operator) {//glowny operator +8
+        System.out.println("xZWyrazeniem " + x + " " + operator + " " + wyr);
+        if (x.equals("1") && (operator.equals("*") || operator.equals("/"))) {
             System.out.println("wyrazenie razy jeden ");
             return wyr;
         }
         String tmpop = jakieToWyrazenie(wyr);
         System.out.println("tmpop: " + tmpop);
         String op = "";
-        if(tmpop.contains("+")){
+        if (tmpop.contains("+")) {
             op = "+";
-        }else if(tmpop.contains("-")){
+        } else if (tmpop.contains("-")) {
             op = "-";
-        }else if(tmpop.contains("/")){
+        } else if (tmpop.contains("/")) {
             op = "/";
-            wyr = wyr.replace(")/(",");(");
-            wyr = wyr.replace(")/",");");
-            wyr = wyr.replace("/(",";(");
-            wyr = wyr.replace("/","|");
-            wyr = wyr.replace(";","/");
-        }else if(tmpop.contains("*")){
+            wyr = wyr.replace(")/(", ");(");
+            wyr = wyr.replace(")/", ");");
+            wyr = wyr.replace("/(", ";(");
+            wyr = wyr.replace("/", "|");
+            wyr = wyr.replace(";", "/");
+        } else if (tmpop.contains("*")) {
             op = "*";
         }
-        if (operator.contains("/") && jakieToWyrazenie(x).contains("\u221a")){  //pierwiastek i ulamek
-            String aa = xZWyrazeniem(x,wyr,"*");
-            return xZWyrazeniem(policz(x,x,"*"),aa,"/");
+        if (operator.contains("/") && jakieToWyrazenie(x).contains("\u221a")) {  //pierwiastek i ulamek
+            String aa = xZWyrazeniem(x, wyr, "*");
+            return xZWyrazeniem(policz(x, x, "*"), aa, "/");
         }
         System.out.println("op: " + op);
         String[] tmp;
         String a, b;
-        switch (operator){
+        switch (operator) {
             case "+":
                 System.out.println("case + " + wyr);
-                tmp = wyr.split("\\"+op);
-                for(int i=0;i<tmp.length;i++){
-                    if(tmp[i].startsWith("((") && tmp[i].endsWith("))")){
-                        tmp[i] = tmp[i].substring(1,tmp[i].length()-1);
+                tmp = wyr.split("\\" + op);
+                for (int i = 0; i < tmp.length; i++) {
+                    if (tmp[i].startsWith("((") && tmp[i].endsWith("))")) {
+                        tmp[i] = tmp[i].substring(1, tmp[i].length() - 1);
                     }
-                    tmp[i] = tmp[i].replace("|","/");
+                    tmp[i] = tmp[i].replace("|", "/");
                 }
-                for(int i=0;i<tmp.length;i++) {
-                    System.out.println("tmp[0]: " + tmp[i] + " tmp[1]: " + tmp[i+1]);
+                for (int i = 0; i < tmp.length; i++) {
+                    System.out.println("tmp[0]: " + tmp[i] + " tmp[1]: " + tmp[i + 1]);
                     a = policz(x, tmp[i], operator);
                     if (op.equals("-")) {
-                        b = policz(x, "-" + tmp[i+1], operator);
+                        b = policz(x, "-" + tmp[i + 1], operator);
                     } else {
-                        b = policz(x, tmp[i+1], operator);
+                        b = policz(x, tmp[i + 1], operator);
                     }
                     System.out.println("a: " + a + " b: " + b);
                     if (czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
@@ -512,27 +612,27 @@ public class Wartosc {
                     } else if (czyJestWyrazeniem(a) && !czyJestWyrazeniem(b)) {
                         return tmp[i] + op + b;
                     } else if (!czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
-                        return a + op + tmp[i+1];
+                        return a + op + tmp[i + 1];
                     } else {
                         return policz(a, b, operator);
                     }
                 }
             case "-":
                 System.out.println("case - ");
-                tmp = wyr.split("\\"+op);
-                for(int i=0;i<tmp.length;i++){
-                    if(tmp[i].startsWith("((") && tmp[i].endsWith("))")){
-                        tmp[i] = tmp[i].substring(1,tmp[i].length()-1);
+                tmp = wyr.split("\\" + op);
+                for (int i = 0; i < tmp.length; i++) {
+                    if (tmp[i].startsWith("((") && tmp[i].endsWith("))")) {
+                        tmp[i] = tmp[i].substring(1, tmp[i].length() - 1);
                     }
-                    tmp[i] = tmp[i].replace("|","/");
+                    tmp[i] = tmp[i].replace("|", "/");
                 }
-                for(int i=0;i<tmp.length;i++) {
-                    System.out.println("%%%%%%%%%tmp0: " + tmp[i] + " tmp1: " + tmp[i+1]);
+                for (int i = 0; i < tmp.length; i++) {
+                    System.out.println("%%%%%%%%%tmp0: " + tmp[i] + " tmp1: " + tmp[i + 1]);
                     a = policz(x, tmp[i], operator);
                     if (op.equals("-")) {
-                        b = policz(x, "-" + tmp[i+1], operator);
+                        b = policz(x, "-" + tmp[i + 1], operator);
                     } else {
-                        b = policz(x, tmp[i+1], operator);
+                        b = policz(x, tmp[i + 1], operator);
                     }
                     System.out.println("a: " + a + " b: " + b);
                     if (czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
@@ -540,7 +640,7 @@ public class Wartosc {
                     } else if (czyJestWyrazeniem(a) && !czyJestWyrazeniem(b)) {
                         return tmp[i] + op + b;
                     } else if (!czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
-                        return a + op + tmp[i+1];
+                        return a + op + tmp[i + 1];
                     } else {
                         return policz(a, b, operator);
                     }
@@ -549,31 +649,31 @@ public class Wartosc {
                 System.out.println("case * ");
                 //wyr = wyr.replace("[","");
                 //wyr = wyr.replace("]","");
-                tmp = wyr.split("\\"+op);
-                for(int i=0;i<tmp.length;i++){
-                    if(tmp[i].startsWith("((") && tmp[i].endsWith("))")){
-                        tmp[i] = tmp[i].substring(1,tmp[i].length()-1);
+                tmp = wyr.split("\\" + op);
+                for (int i = 0; i < tmp.length; i++) {
+                    if (tmp[i].startsWith("((") && tmp[i].endsWith("))")) {
+                        tmp[i] = tmp[i].substring(1, tmp[i].length() - 1);
                     }
-                    tmp[i] = tmp[i].replace("|","/");
+                    tmp[i] = tmp[i].replace("|", "/");
                 }
-                for(int i=0;i<tmp.length;i++) {
+                for (int i = 0; i < tmp.length; i++) {
                     System.out.println("case * for ");
                     if (op.equals("/")) {
                         String aa = xZWyrazeniem(x, tmp[i], operator);
-                        return xZWyrazeniem(tmp[i+1], aa, "/");
+                        return xZWyrazeniem(tmp[i + 1], aa, "/");
                     }
                     a = policz(x, tmp[i], operator);
                     if (op.equals("-")) {
-                        b = policz(x, "-" + tmp[i+1], operator);
+                        b = policz(x, "-" + tmp[i + 1], operator);
                     } else {
-                        b = policz(x, tmp[i+1], operator);
+                        b = policz(x, tmp[i + 1], operator);
                     }
                     if (czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
                         return wyr + operator + x;
                     } else if (czyJestWyrazeniem(a) && !czyJestWyrazeniem(b)) {
                         return tmp[i] + op + b;
                     } else if (!czyJestWyrazeniem(a) && czyJestWyrazeniem(b)) {
-                        return a + op + tmp[i+1];
+                        return a + op + tmp[i + 1];
                     } else {
                         return policz(a, b, operator);
                     }
@@ -581,38 +681,38 @@ public class Wartosc {
                 //todo zrobic skracanie np. (2+2√(2))/4 = (1+√(2))/2
             case "/":
                 System.out.println("case / ");
-                wyr = wyr.replace("|","/");
-                if (!op.contains("/")){ //todo dzielenie zrobic
-                    tmp = wyr.split("\\"+op);
-                    for(int i=0;i<tmp.length;i++){
-                        if(tmp[i].startsWith("((") && tmp[i].endsWith("))")){
-                            tmp[i] = tmp[i].substring(1,tmp[i].length()-1);
+                wyr = wyr.replace("|", "/");
+                if (!op.contains("/")) { //todo dzielenie zrobic
+                    tmp = wyr.split("\\" + op);
+                    for (int i = 0; i < tmp.length; i++) {
+                        if (tmp[i].startsWith("((") && tmp[i].endsWith("))")) {
+                            tmp[i] = tmp[i].substring(1, tmp[i].length() - 1);
                         }
-                        tmp[i] = tmp[i].replace("|","/");
+                        tmp[i] = tmp[i].replace("|", "/");
                     }
-                    for(int i=0;i<tmp.length;i++) {
+                    for (int i = 0; i < tmp.length; i++) {
                         /*a = policz(tmp[i], x, operator);
                         if (op.equals("-")) {
                             b = policz("-" + tmp[i+1], x, operator);
                         } else {
                             b = policz(tmp[i+1], x, operator);
                         }*/
-                        String tmpx = tmp[i]+operator+x;
+                        String tmpx = tmp[i] + operator + x;
                         String tmpy;
                         if (op.equals("-")) {
-                            tmpy = "-"+tmp[i+1]+operator+x;
+                            tmpy = "-" + tmp[i + 1] + operator + x;
                         } else {
-                            tmpy = tmp[i+1]+operator+x;
+                            tmpy = tmp[i + 1] + operator + x;
                         }
                         String skroconex = skrocUlamek(tmpx);
                         String skroconey = skrocUlamek(tmpy);
-                        if (tmpx.equals(skroconex) && tmpy.equals(skroconey)){
-                            return policz(skroconex,skroconey,op);
-                        }else{
-                            return "("+wyr+")/("+x+")";
+                        if (tmpx.equals(skroconex) && tmpy.equals(skroconey)) {
+                            return policz(skroconex, skroconey, op);
+                        } else {
+                            return "(" + wyr + ")/(" + x + ")";
                         }
                     }
-                }else{
+                } else {
                     return "(" + wyr + ")/" + x;
                 }
         }
@@ -620,51 +720,51 @@ public class Wartosc {
     }
 
     //todo sprawdzic i poprawic
-    public static String wyrazenieZWyrazeniem(String wyr1){
+    public static String wyrazenieZWyrazeniem(String wyr1) {
         System.out.println("wyrazenieZwyrazeniem");
         String wynik = "";
         String tmpop = jakieToWyrazenie(wyr1);
         String op = "";
-        if(tmpop.contains("+")){
+        if (tmpop.contains("+")) {
             op = "+";
-        }else if(tmpop.contains("-")){
+        } else if (tmpop.contains("-")) {
             op = "-";
-        }else if(tmpop.contains("/")){
+        } else if (tmpop.contains("/")) {
             op = "/";
-            wyr1 = wyr1.replace(")/(",");(");
-            wyr1 = wyr1.replace(")/",");");
-            wyr1 = wyr1.replace("/(",";(");
-            wyr1 = wyr1.replace("/","|");
-            wyr1 = wyr1.replace(";","/");
-        }else if(tmpop.contains("*")){
+            wyr1 = wyr1.replace(")/(", ");(");
+            wyr1 = wyr1.replace(")/", ");");
+            wyr1 = wyr1.replace("/(", ";(");
+            wyr1 = wyr1.replace("/", "|");
+            wyr1 = wyr1.replace(";", "/");
+        } else if (tmpop.contains("*")) {
             op = "*";
         }
         String[] tmp;
-        String a,b;
-        switch (op){
+        String a, b;
+        switch (op) {
             case "+":
                 tmp = wyr1.split("\\+");
                 a = policz(tmp[0], tmp[0], "*");
-                b = policz(tmp[1],tmp[1],"*");
-                wynik = policz(a,b,"+");
+                b = policz(tmp[1], tmp[1], "*");
+                wynik = policz(a, b, "+");
                 break;
             case "-":
                 tmp = wyr1.split("-");//todo uwzglednic liczby ujemne
-                a = policz(tmp[0],tmp[0],"*");
-                b = policz(tmp[1],tmp[1],"*");
+                a = policz(tmp[0], tmp[0], "*");
+                b = policz(tmp[1], tmp[1], "*");
                 wynik = policz(a, b, "-");
                 break;
             case "*":
                 tmp = wyr1.split("\\*");
-                a = policz(tmp[0],tmp[0],"*");
-                b = policz(tmp[1],tmp[1],"*");
+                a = policz(tmp[0], tmp[0], "*");
+                b = policz(tmp[1], tmp[1], "*");
                 wynik = policz(a, b, "*");
                 break;
             case "/":
-                wyr1 = wyr1.substring(1,wyr1.length()-1);
+                wyr1 = wyr1.substring(1, wyr1.length() - 1);
                 tmp = wyr1.split("/");
-                a = policz(tmp[0],tmp[0],"*");
-                b = policz(tmp[1],tmp[1],"*");
+                a = policz(tmp[0], tmp[0], "*");
+                b = policz(tmp[1], tmp[1], "*");
                 wynik = policz(a, b, "/");
                 break;
         }
@@ -676,95 +776,95 @@ public class Wartosc {
         String a = policz(tmp1[0],tmp2[0],operator);
         String b = policz(tmp1[1],tmp2[1],operator);
         return policz(a,b,op);*/
-    return wynik;
+        return wynik;
     }
 
-    public static String obliczWyrazenie(String a){     //todo dodac zamiane '--' na '+' i '+-' na '-'
+    public static String obliczWyrazenie(String a) {     //todo dodac zamiane '--' na '+' i '+-' na '-'
         System.out.println("obliczWyrazenie " + a);
         String[] m;
         String[] d;
         String[] o;
         String wynik = a;
-        a = a.replace("*-","*|");
-        a = a.replace("/-","/|");
-        if(jakieToWyrazenie(a).contains("+")){
-            a=a.replace("/|","/-");
+        a = a.replace("*-", "*|");
+        a = a.replace("/-", "/|");
+        if (jakieToWyrazenie(a).contains("+")) {
+            a = a.replace("/|", "/-");
             d = a.split("\\+");
-            for(int i=0;i<d.length-1;i++){
-                System.out.println("obliczWyrazenie + " + d[i]+" ; "+d[i+1]);
-                if (czyJestWyrazeniem(d[i])){
-                    d[i]=obliczWyrazenie(d[i]);
+            for (int i = 0; i < d.length - 1; i++) {
+                System.out.println("obliczWyrazenie + " + d[i] + " ; " + d[i + 1]);
+                if (czyJestWyrazeniem(d[i])) {
+                    d[i] = obliczWyrazenie(d[i]);
                 }
-                if (czyJestWyrazeniem(d[i+1])){
-                    d[i+1]=obliczWyrazenie(d[i + 1]);
+                if (czyJestWyrazeniem(d[i + 1])) {
+                    d[i + 1] = obliczWyrazenie(d[i + 1]);
                 }
-                if(d[i].startsWith("((") && d[i].endsWith("))")){
-                    d[i] = d[i].substring(1,d[i].length()-1);
+                if (d[i].startsWith("((") && d[i].endsWith("))")) {
+                    d[i] = d[i].substring(1, d[i].length() - 1);
                 }
-                if(d[i+1].startsWith("((") && d[i+1].endsWith("))")){
-                    d[i+1] = d[i+1].substring(1,d[i+1].length()-1);
+                if (d[i + 1].startsWith("((") && d[i + 1].endsWith("))")) {
+                    d[i + 1] = d[i + 1].substring(1, d[i + 1].length() - 1);
                 }
-                System.out.println("obliczWyrazenie + " + d[i]+" ; "+d[i+1]);
-                d[i+1]=policz(d[i],d[i+1],"+");
+                System.out.println("obliczWyrazenie + " + d[i] + " ; " + d[i + 1]);
+                d[i + 1] = policz(d[i], d[i + 1], "+");
 
             }
-            return d[d.length-1];
+            return d[d.length - 1];
         }
-        if(jakieToWyrazenie(a).contains("-")){
-            if (a.charAt(0)=='-'){
-                a=a.substring(1,a.length());
+        if (jakieToWyrazenie(a).contains("-")) {
+            if (a.charAt(0) == '-') {
+                a = a.substring(1, a.length());
                 o = a.split("-");
-                o[0]="-"+o[0];
-            }else if(a.startsWith("(-")){
-                a="("+a.substring(2,a.length());
+                o[0] = "-" + o[0];
+            } else if (a.startsWith("(-")) {
+                a = "(" + a.substring(2, a.length());
                 o = a.split("-");
-                o[0]="-"+o[0];
-            }else {
+                o[0] = "-" + o[0];
+            } else {
                 o = a.split("-");
             }
-            for(int i=0;i<o.length-1;i++){
-                if (czyJestWyrazeniem(o[i])){
-                    o[i]=obliczWyrazenie(o[i]);
+            for (int i = 0; i < o.length - 1; i++) {
+                if (czyJestWyrazeniem(o[i])) {
+                    o[i] = obliczWyrazenie(o[i]);
                 }
-                if (czyJestWyrazeniem(o[i+1])){
-                    o[i+1]=obliczWyrazenie(o[i + 1]);
+                if (czyJestWyrazeniem(o[i + 1])) {
+                    o[i + 1] = obliczWyrazenie(o[i + 1]);
                 }
-                if(o[i].startsWith("((") && o[i].endsWith("))")){
-                    o[i] = o[i].substring(1,o[i].length()-1);
+                if (o[i].startsWith("((") && o[i].endsWith("))")) {
+                    o[i] = o[i].substring(1, o[i].length() - 1);
                 }
-                if(o[i+1].startsWith("((") && o[i+1].endsWith("))")){
-                    o[i+1] = o[i+1].substring(1,o[i+1].length()-1);
+                if (o[i + 1].startsWith("((") && o[i + 1].endsWith("))")) {
+                    o[i + 1] = o[i + 1].substring(1, o[i + 1].length() - 1);
                 }
-                System.out.println("obliczWyrazenie - " + o[i]+" ; "+o[i+1]);
-                o[i+1]=policz(o[i],o[i+1],"-");
+                System.out.println("obliczWyrazenie - " + o[i] + " ; " + o[i + 1]);
+                o[i + 1] = policz(o[i], o[i + 1], "-");
             }
-            return o[o.length-1];
+            return o[o.length - 1];
         }
-        if(jakieToWyrazenie(a).contains("*")){
-            a=a.replace("/|","/-");
-            a=a.replace("*|","*-");
+        if (jakieToWyrazenie(a).contains("*")) {
+            a = a.replace("/|", "/-");
+            a = a.replace("*|", "*-");
             m = a.split("\\*");
-            for(int i=0;i<m.length-1;i++){
-                System.out.println("obliczWyrazenie * " + m[i]+" ; "+m[i+1]);
-                if (czyJestWyrazeniem(m[i])){
-                    m[i]=obliczWyrazenie(m[i]);
+            for (int i = 0; i < m.length - 1; i++) {
+                System.out.println("obliczWyrazenie * " + m[i] + " ; " + m[i + 1]);
+                if (czyJestWyrazeniem(m[i])) {
+                    m[i] = obliczWyrazenie(m[i]);
                 }
-                if (czyJestWyrazeniem(m[i+1])){
-                    m[i+1]=obliczWyrazenie(m[i + 1]);
+                if (czyJestWyrazeniem(m[i + 1])) {
+                    m[i + 1] = obliczWyrazenie(m[i + 1]);
                 }
-                if(m[i].startsWith("((") && m[i].endsWith("))")){
-                    m[i] = m[i].substring(1,m[i].length()-1);
+                if (m[i].startsWith("((") && m[i].endsWith("))")) {
+                    m[i] = m[i].substring(1, m[i].length() - 1);
                 }
-                if(m[i+1].startsWith("((") && m[i+1].endsWith("))")){
-                    m[i+1] = m[i+1].substring(1,m[i+1].length()-1);
+                if (m[i + 1].startsWith("((") && m[i + 1].endsWith("))")) {
+                    m[i + 1] = m[i + 1].substring(1, m[i + 1].length() - 1);
                 }
-                m[i+1]=policz(m[i],m[i+1],"*");
+                m[i + 1] = policz(m[i], m[i + 1], "*");
             }
-            return m[m.length-1];
+            return m[m.length - 1];
         }
-        if(jakieToWyrazenie(a).contains("/")){
-            a=a.replace("/|","/-");
-            wynik = policz(a,"1","*");
+        if (jakieToWyrazenie(a).contains("/")) {
+            a = a.replace("/|", "/-");
+            wynik = policz(a, "1", "*");
         }
         return wynik;
     }
@@ -792,12 +892,12 @@ public class Wartosc {
                             wynik = "1";
                             break;
                     }
-                }else{
-                    wynik = policz(x,x,operator.charAt(0)+"");
+                } else {
+                    wynik = policz(x, x, operator.charAt(0) + "");
                 }
-            } else if(czyJestWyrazeniem(czynnik1) && !czyJestWyrazeniem(czynnik2)){                                                        //rozne wyrazenia
+            } else if (czyJestWyrazeniem(czynnik1) && !czyJestWyrazeniem(czynnik2)) {                                                        //rozne wyrazenia
                 System.out.println("wyrazenie z X " + czynnik1 + " ; " + czynnik2);
-                if(!czynnik2.equals("1")) {
+                if (!czynnik2.equals("1")) {
                     String x = obliczWyrazenie(czynnik1);
                     switch (operator.charAt(0)) {
                         case '+':
@@ -835,12 +935,12 @@ public class Wartosc {
                                 break;
                             }
                     }
-                }else{
+                } else {
                     wynik = czynnik1;
                 }
-            }else if (!czyJestWyrazeniem(czynnik1) && czyJestWyrazeniem(czynnik2)){
+            } else if (!czyJestWyrazeniem(czynnik1) && czyJestWyrazeniem(czynnik2)) {
                 System.out.println("X z wyrazeniem " + czynnik1 + " ; " + czynnik2);
-                if(!czynnik1.equals("1")) {
+                if (!czynnik1.equals("1")) {
                     String x = obliczWyrazenie(czynnik2);
                     switch (operator.charAt(0)) {
                         case '+':
@@ -868,10 +968,10 @@ public class Wartosc {
                                 break;
                             }
                     }
-                }else{
+                } else {
                     wynik = czynnik2;
                 }
-            }else {
+            } else {
                 System.out.println("wyrazenie z wyrazeniem " + czynnik1 + " ; " + czynnik2);
                 String x = obliczWyrazenie(czynnik1);
                 String y = obliczWyrazenie(czynnik2);
@@ -899,10 +999,10 @@ public class Wartosc {
                     String x = p.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(policz(war.getLicznik(), policz(x,war.getMianownik(),"*"), "+"), war.getMianownik(), "/");
+                            wynik = policz(policz(war.getLicznik(), policz(x, war.getMianownik(), "*"), "+"), war.getMianownik(), "/");
                             break;
                         case '-':
-                            wynik = policz(policz(war.getLicznik(), policz(x,war.getMianownik(),"*"), "-"), war.getMianownik(), "/");
+                            wynik = policz(policz(war.getLicznik(), policz(x, war.getMianownik(), "*"), "-"), war.getMianownik(), "/");
                             break;
                         case '*':
                             wynik = policz(policz(war.getLicznik(), x, "*"), war.getMianownik(), "/");
@@ -927,7 +1027,7 @@ public class Wartosc {
                             wynik = policz(policz(war.getLicznik(), x, "*"), war.getMianownik(), "/");
                             break;
                         case '/':
-                            wynik = policz(policz(war.getLicznik(), war.getMianownik(), "/"),"1/"+x,"*");
+                            wynik = policz(policz(war.getLicznik(), war.getMianownik(), "/"), "1/" + x, "*");
                             break;
                     }
                 } else if (jakieToWyrazenie(czynnik2).contains("/")) { // ulamek i ulamek
@@ -974,21 +1074,21 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "+");            //przeniesienie do pi i ulamek
                             break;
                         case '-':
-                            if(valPi.equals("0")){
-                                wynik = policz(war.getLicznik(),war.getMianownik(),"/");
+                            if (valPi.equals("0")) {
+                                wynik = policz(war.getLicznik(), war.getMianownik(), "/");
                                 break;
                             } else {
-                                wynik = "(" + policz(war.getLicznik(),war.getMianownik(),"/") + ")-" + pi.wartoscPi();
+                                wynik = "(" + policz(war.getLicznik(), war.getMianownik(), "/") + ")-" + pi.wartoscPi();
                                 break;
                             }
                         case '*':
                             wynik = policz(czynnik2, czynnik1, "*");          //przeniesienie do pi i ulamek
                             break;
                         case '/':
-                            if(valPi.equals("0")){
+                            if (valPi.equals("0")) {
                                 wynik = "0";
                             } else {
-                                wynik = policz(czynnik1,"1/"+valPi,"*");
+                                wynik = policz(czynnik1, "1/" + valPi, "*");
                             }
                             break;
                     }
@@ -1092,16 +1192,16 @@ public class Wartosc {
                     System.out.println("potega i kropka");
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(czynnik1,zamienKropke(czynnik2),"+");
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "+");
                             break;
                         case '-':
-                            wynik = policz(czynnik1,zamienKropke(czynnik2),"-");
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "-");
                             break;
                         case '*':
-                            wynik = policz(czynnik1,zamienKropke(czynnik2),"*");
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "*");
                             break;
                         case '/':
-                            wynik = policz(czynnik1,zamienKropke(czynnik2),"/");
+                            wynik = policz(czynnik1, zamienKropke(czynnik2), "/");
                             break;
                     }
                 } else if (jakieToWyrazenie(czynnik2).contains(".")) { // potega i pi
@@ -1115,15 +1215,13 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "+");        //przeniesienie do pi i potęga
                             break;
                         case '-':
-                            if(valPot.contains("^") && valPi.contains("π")) {
+                            if (valPot.contains("^") && valPi.contains("π")) {
                                 wynik = valPot + "-" + valPi;
                                 break;
-                            }
-                            else if(valPi.contains("0")){
-                                wynik=valPot;
+                            } else if (valPi.contains("0")) {
+                                wynik = valPot;
                                 break;
-                            }
-                            else{
+                            } else {
                                 wynik = policz(valPot, valPi, "-");
                                 break;
                             }
@@ -1131,13 +1229,11 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "*");        //przeniesienie do pi i potęga
                             break;
                         case '/':                 //TODO UWZGLEDNIC PI^2 / PI!!!!!!!!!!!!!!!!!!!!!
-                            if(valPot.contains("^") && valPi.contains("π")) {
+                            if (valPot.contains("^") && valPi.contains("π")) {
                                 wynik = valPot + "/" + valPi;
-                            }
-                            else if(valPi.contains("0")){
+                            } else if (valPi.contains("0")) {
                                 wynik = "0";
-                            }
-                            else{
+                            } else {
                                 wynik = policz(valPot, valPi, "/");
                             }
                             break;
@@ -1148,39 +1244,39 @@ public class Wartosc {
                     String x = p.wartoscPotegi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = "" + x + "+" + czynnik2;
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(x, czynnik2, "+");
                                 break;
                             }
                         case '-':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = "" + x + "-" + czynnik2;
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(x, czynnik2, "-");
                                 break;
                             }
                         case '*':
-                            if(jakieToWyrazenie(x).contains("^")) {
-                                if(czynnik2.equals("1")){
+                            if (jakieToWyrazenie(x).contains("^")) {
+                                if (czynnik2.equals("1")) {
                                     wynik = x;
                                     break;
-                                }else {
+                                } else {
                                     wynik = "" + x + "*" + czynnik2;
                                     break;
                                 }
-                            }else {
+                            } else {
                                 wynik = policz(x, czynnik2, "*");
                                 break;
                             }
                         case '/':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = "" + x + "/" + czynnik2;
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(x, czynnik2, "/");
                                 break;
                             }
@@ -1274,10 +1370,10 @@ public class Wartosc {
                     String x = p.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(policz(policz(x,war.getMianownik(),"*"), war.getLicznik(), "+"), war.getMianownik(), "/");
+                            wynik = policz(policz(policz(x, war.getMianownik(), "*"), war.getLicznik(), "+"), war.getMianownik(), "/");
                             break;
                         case '-':
-                            wynik = policz(policz(policz(x,war.getMianownik(),"*"), war.getLicznik(), "-"), war.getMianownik(), "/");
+                            wynik = policz(policz(policz(x, war.getMianownik(), "*"), war.getLicznik(), "-"), war.getMianownik(), "/");
                             break;
                         case '*':
                             wynik = policz(policz(x, war.getLicznik(), "*"), war.getMianownik(), "/");
@@ -1297,15 +1393,13 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "+");        //przeniesienie do pi i pierwiastek
                             break;
                         case '-':
-                            if(valPierw.contains("√") && valPi.contains("π")) {
+                            if (valPierw.contains("√") && valPi.contains("π")) {
                                 wynik = valPierw + "-" + valPi;
                                 break;
-                            }
-                            else if (valPi.contains("0")){
-                                wynik=valPierw;
+                            } else if (valPi.contains("0")) {
+                                wynik = valPierw;
                                 break;
-                            }
-                            else{
+                            } else {
                                 wynik = policz(valPierw, valPi, "-");
                                 break;
                             }
@@ -1313,13 +1407,11 @@ public class Wartosc {
                             wynik = policz(czynnik2, czynnik1, "*");        //przeniesienie do pi i pierwiastek
                             break;
                         case '/':
-                            if(valPierw.contains("√") && valPi.contains("π")) {
+                            if (valPierw.contains("√") && valPi.contains("π")) {
                                 wynik = valPierw + "/" + valPi;
-                            }
-                            else if(valPi.contains("0")){
-                                wynik="0";
-                            }
-                            else {
+                            } else if (valPi.contains("0")) {
+                                wynik = "0";
+                            } else {
                                 wynik = policz(valPierw, valPi, "/");
                             }
                             break;
@@ -1498,11 +1590,10 @@ public class Wartosc {
                     String x = p.wartoscPierwiastka();
                     switch (operator.charAt(0)) {
                         case '+':
-                            if (jakieToWyrazenie(y).contains("π") && !x.equals("0")){ //todo sprawdzic czemu jest contains pi
+                            if (jakieToWyrazenie(y).contains("π") && !x.equals("0")) { //todo sprawdzic czemu jest contains pi
                                 wynik = x + "+" + y;
                                 break;
-                            }
-                            else{
+                            } else {
                                 wynik = x;
                                 break;
                             }
@@ -1515,8 +1606,8 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            if (jakieToWyrazenie(y).contains("π")){//todo sprawdzic czemu jest contains pi
-                                String tmp = policz(x,pi.getFirst(),"*");
+                            if (jakieToWyrazenie(y).contains("π")) {//todo sprawdzic czemu jest contains pi
+                                String tmp = policz(x, pi.getFirst(), "*");
                                 wynik = "(" + tmp + ")π";      //w razie czego dodać nawiasy
                             } else {
                                 wynik = "0";
@@ -1524,10 +1615,9 @@ public class Wartosc {
                             break;
                         case '/': //todo Kod do edycji
                             if (jakieToWyrazenie(x).contains("√")) {
-                                wynik = policz(policz(pi.getFirst(),x,"/"),"π","*");
+                                wynik = policz(policz(pi.getFirst(), x, "/"), "π", "*");
                                 break;
-                            }
-                            else {
+                            } else {
                                 wynik = y + "/" + x;
                                 break;
                             }
@@ -1547,11 +1637,10 @@ public class Wartosc {
                             }
                         case '-':
                             if (jakieToWyrazenie(x).contains("^")) {
-                                if(y.contains("π")) {
+                                if (y.contains("π")) {
                                     wynik = y + "-" + x;
                                     break;
-                                }
-                                else{
+                                } else {
                                     wynik = x;
                                     break;
                                 }
@@ -1570,11 +1659,10 @@ public class Wartosc {
                             }
                         case '/':
                             if (jakieToWyrazenie(x).contains("^")) {
-                                if(y.contains("π")) {
+                                if (y.contains("π")) {
                                     wynik = y + "/" + x;
                                     break;
-                                }
-                                else{
+                                } else {
                                     wynik = "0";
                                     break;
                                 }
@@ -1590,12 +1678,11 @@ public class Wartosc {
                     switch (operator.charAt(0)) {
                         case '+':
                             if (jakieToWyrazenie(x).contains("/")) {
-                                if(y.contains("π")) {
+                                if (y.contains("π")) {
                                     wynik = y + "+" + x;
                                     break;
-                                }
-                                else{
-                                    wynik=x;
+                                } else {
+                                    wynik = x;
                                     break;
                                 }
                             } else {
@@ -1613,19 +1700,19 @@ public class Wartosc {
                         case '*':
                             if (jakieToWyrazenie(x).contains("/")) {
                                 Wartosc tmp = new Wartosc(x);
-                                wynik = policz( policz(y, tmp.getLicznik(), "*"), tmp.getMianownik(),"/");
+                                wynik = policz(policz(y, tmp.getLicznik(), "*"), tmp.getMianownik(), "/");
                                 break;
                             } else {
-                                wynik = policz(y,x,"*");
+                                wynik = policz(y, x, "*");
                                 break;
                             }
                         case '/':
                             if (jakieToWyrazenie(x).contains("/")) {
                                 Wartosc tmp = new Wartosc(x);
-                                wynik = policz( policz(pi.getFirst(),tmp.getMianownik(),"*"), tmp.getLicznik() ,"/")+"π";
+                                wynik = policz(policz(pi.getFirst(), tmp.getMianownik(), "*"), tmp.getLicznik(), "/") + "π";
                                 break;
                             } else {
-                                wynik = policz(y,x,"/");
+                                wynik = policz(y, x, "/");
                                 break;
                             }
                     }
@@ -1636,17 +1723,17 @@ public class Wartosc {
                     switch (operator.charAt(0)) {
                         case '+':
                             x = policz(pi.getFirst(), pi2.getFirst(), "+");
-                            if(czyJestWyrazeniem(x)){
+                            if (czyJestWyrazeniem(x)) {
                                 wynik = "(" + x + ")*π";
                                 break;
                             } else {
-                                if(x.equals("0")) {
+                                if (x.equals("0")) {
                                     wynik = "0";
                                     break;
-                                } else if(x.equals("1")) {
+                                } else if (x.equals("1")) {
                                     wynik = "π";
                                     break;
-                                } else if(x.equals("-1")) {
+                                } else if (x.equals("-1")) {
                                     wynik = "-π";
                                     break;
                                 } else {
@@ -1656,17 +1743,17 @@ public class Wartosc {
                             }
                         case '-':
                             x = policz(pi.getFirst(), pi2.getFirst(), "-");
-                            if(czyJestWyrazeniem(x)){
+                            if (czyJestWyrazeniem(x)) {
                                 wynik = "(" + x + ")*π";
                                 break;
                             } else {
-                                if(x.equals("0")) {
+                                if (x.equals("0")) {
                                     wynik = "0";
                                     break;
-                                } else if(x.equals("1")) {
+                                } else if (x.equals("1")) {
                                     wynik = "π";
                                     break;
-                                } else if(x.equals("-1")) {
+                                } else if (x.equals("-1")) {
                                     wynik = "-π";
                                     break;
                                 } else {
@@ -1676,17 +1763,17 @@ public class Wartosc {
                             }
                         case '*':
                             x = policz(pi.getFirst(), pi2.getFirst(), "*");
-                            if(czyJestWyrazeniem(x)){
+                            if (czyJestWyrazeniem(x)) {
                                 wynik = "(" + x + ")*π^2";
                                 break;
                             } else {
-                                if(x.equals("0")) {
+                                if (x.equals("0")) {
                                     wynik = "0";
                                     break;
-                                } else if(x.equals("1")) {
+                                } else if (x.equals("1")) {
                                     wynik = "π^2";
                                     break;
-                                } else if(x.equals("-1")) {
+                                } else if (x.equals("-1")) {
                                     wynik = "-(π^2)"; // BO -3.14 * 3.14 = -6.... a bez nawiasu byłoby 6...
                                     break;
                                 } else {
@@ -1727,7 +1814,7 @@ public class Wartosc {
                             break;
                         case '*':
                             String a = policz(pi.getFirst(), czynnik2, "*");
-                            if(jakieToWyrazenie(a).contains("/") || jakieToWyrazenie(a).contains("√") || jakieToWyrazenie(a).contains("^")){
+                            if (jakieToWyrazenie(a).contains("/") || jakieToWyrazenie(a).contains("√") || jakieToWyrazenie(a).contains("^")) {
                                 wynik = "(" + a + ")π";
                                 break;
                             } else {
@@ -1742,19 +1829,19 @@ public class Wartosc {
 //                                wynik= "(" + b + ")π";
 //                                break;
 //                            } else {
-                                if(b.equals("1")){
-                                    wynik = "π";
-                                    break;
-                                } else if (b.equals("-1")) {
-                                    wynik = "-π";
-                                    break;
-                                } else if (b.equals("0")) {
-                                    wynik = "0";
-                                    break;
-                                } else {
-                                    wynik = "(" + b + ")π";
-                                    break;
-                                }
+                            if (b.equals("1")) {
+                                wynik = "π";
+                                break;
+                            } else if (b.equals("-1")) {
+                                wynik = "-π";
+                                break;
+                            } else if (b.equals("0")) {
+                                wynik = "0";
+                                break;
+                            } else {
+                                wynik = "(" + b + ")π";
+                                break;
+                            }
 //                            }
                     }
                 }
@@ -1781,19 +1868,19 @@ public class Wartosc {
                                 break;
                             }
                         case '*':
-                            if(jakieToWyrazenie(x).contains("\u221a")){
+                            if (jakieToWyrazenie(x).contains("\u221a")) {
                                 wynik = pomnozLiczbePrzezPierwiastek(czynnik1, x);
                                 break;
-                            }else {
-                                wynik = policz(czynnik1,x,"*");
+                            } else {
+                                wynik = policz(czynnik1, x, "*");
                                 break;
                             }
                         case '/':
                             if (jakieToWyrazenie(x).contains("\u221a")) {
                                 wynik = podzielLiczbePrzezPierwiastek(czynnik1, x);
                                 break;
-                            }else {
-                                wynik = policz(czynnik1,x,"/");
+                            } else {
+                                wynik = policz(czynnik1, x, "/");
                                 break;
                             }
                     }
@@ -1803,34 +1890,34 @@ public class Wartosc {
                     String x = p.wartoscPotegi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            if(jakieToWyrazenie(x).contains("^")) {//todo dodac nawiasy do liczby przy potegach
+                            if (jakieToWyrazenie(x).contains("^")) {//todo dodac nawiasy do liczby przy potegach
                                 wynik = czynnik1 + "+" + czynnik2 + "";
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(czynnik1, x, "+");
                                 break;
                             }
                         case '-':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = czynnik1 + "-" + czynnik2 + "";
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(czynnik1, x, "-");
                                 break;
                             }
                         case '*':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = czynnik1 + "*" + czynnik2 + "";
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(czynnik1, x, "*");
                                 break;
                             }
                         case '/':
-                            if(jakieToWyrazenie(x).contains("^")) {
+                            if (jakieToWyrazenie(x).contains("^")) {
                                 wynik = czynnik1 + "/" + czynnik2 + "";
                                 break;
-                            }else {
+                            } else {
                                 wynik = policz(czynnik1, x, "/");
                                 break;
                             }
@@ -1856,10 +1943,10 @@ public class Wartosc {
                 } else if (jakieToWyrazenie(czynnik2).contains("\u03C0")) { // liczba i pi
                     System.out.println("liczba i pi");
                     LiczbaPi pi = new LiczbaPi(czynnik2);
-                    String valpi=pi.wartoscPi();
+                    String valpi = pi.wartoscPi();
                     switch (operator.charAt(0)) {
                         case '+':
-                            wynik = policz(valpi,czynnik1,"+");
+                            wynik = policz(valpi, czynnik1, "+");
                             break;
                         case '-':
                             wynik = czynnik1 + "-" + valpi;
@@ -1869,7 +1956,7 @@ public class Wartosc {
                             break;
                         case '/':
                             String tmp = policz(czynnik1, pi.getFirst(), "/");
-                            if(tmp.contains("/")){
+                            if (tmp.contains("/")) {
                                 Wartosc w = new Wartosc(tmp);
                                 wynik = "(" + w.getLicznik() + "/" + w.getMianownik() + "π)";
                                 break;
@@ -1896,10 +1983,10 @@ public class Wartosc {
                     }
                 } else if (!jakieToWyrazenie(czynnik2).contains("\u221a") && !jakieToWyrazenie(czynnik2).contains("^") && !jakieToWyrazenie(czynnik2).contains("/") && !jakieToWyrazenie(czynnik2).contains(".")) { // liczba i liczba
                     System.out.println("liczba i liczba ");
-                    czynnik1 = czynnik1.replace("(","");
-                    czynnik1 = czynnik1.replace(")","");
-                    czynnik2 = czynnik2.replace("(","");
-                    czynnik2 = czynnik2.replace(")","");
+                    czynnik1 = czynnik1.replace("(", "");
+                    czynnik1 = czynnik1.replace(")", "");
+                    czynnik2 = czynnik2.replace("(", "");
+                    czynnik2 = czynnik2.replace(")", "");
                     switch (operator.charAt(0)) {
                         case '+':
                             wynik = czyJestCalkowita(String.valueOf(Double.parseDouble(czynnik1) + Double.parseDouble(czynnik2))) + "";
@@ -1917,24 +2004,24 @@ public class Wartosc {
                 }
             }
         }
-        if(wynik.contains("(1)\u221a")){
-            wynik = wynik.replace("(1)\u221a","\u221a");
+        if (wynik.contains("(1)\u221a")) {
+            wynik = wynik.replace("(1)\u221a", "\u221a");
         }
-        if(wynik.contains("()\u221a")){
-            wynik = wynik.replace("()\u221a","\u221a");
+        if (wynik.contains("()\u221a")) {
+            wynik = wynik.replace("()\u221a", "\u221a");
         }
-        if(wynik.contains("+0") || wynik.contains("-0")){
-            wynik = wynik.replace("+0","");
-            wynik = wynik.replace("-0","");
+        if (wynik.contains("+0") || wynik.contains("-0")) {
+            wynik = wynik.replace("+0", "");
+            wynik = wynik.replace("-0", "");
         }
         if (wynik.contains("--")) {
-            wynik = wynik.replace("--","+");
+            wynik = wynik.replace("--", "+");
         }
         if (wynik.contains("+-")) {
             wynik = wynik.replace("+-", "-");
         }
         //todo ROZWAZYC WIECEJ WARUNKOW
-        if(wynik.equals("1π")){
+        if (wynik.equals("1π")) {
             wynik = "π";
         } else if (wynik.equals("-1π")) {
             wynik = "-π";
